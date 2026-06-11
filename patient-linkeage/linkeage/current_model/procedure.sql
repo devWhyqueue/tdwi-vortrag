@@ -1,0 +1,530 @@
+CREATE PROC [dbo].[M20_HIS_P_01AB000_PATIENTENBILDUNG] @Abr [INT], @Abr1Case [VARCHAR](50), @Quartal [INT] AS
+
+-- Für den Test verwendete Tabellen:
+-- eingehende Scheine: PatTest_stg_Abr1Scheine
+-- Scheinvarianten, um neue Scheine mit bekannten Patienten zu vergleichen: M20_HIS_T_01AB000_PATIENTEN_LOOKUP
+-- Mappingtabelle Scheine -> Patienten: M20_HIS_T_01AB100_PATID_MAPPING
+
+-- je nachdem, ob Abrechnung 1 oder 2 geladen werden sollen, ist die Quelltabelle eine andere:
+--DECLARE @Abr INT = 1;
+--DECLARE @Abr1Case VARCHAR(50) = 'UNBEARBEITET'
+--DECLARE @Quartal INT = 20233
+
+IF OBJECT_ID(N'tempdb..#mapped_EGK_Geb') IS NOT NULL DROP TABLE #mapped_EGK_Geb
+
+CREATE TABLE [dbo].[#mapped_EGK_Geb](
+	[SCHEINID] [bigint],
+	[MENGENID] [bigint],
+	[DWH_ZEITRAUM] [bigint],
+	[AUSFUHR_ID] [int],
+	[pat_pseudo_id] [bigint],
+	[EGKVERSICHERTENNUMMER] [varchar](20) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[VORNAME] [varchar](100) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[NACHNAME] [varchar](100) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[Geburtsdatum] [date],
+	[PLZ] [varchar](20) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	INDEX CI_INDEX CLUSTERED COLUMNSTORE
+) ON [PRIMARY]
+
+IF (@Abr = 1)
+	-- find Patient by EGKNR + Geburtsdatum
+	-- check if they are already inserted in Mapping table
+	IF (@Abr1Case = 'BEARBEITET') BEGIN
+		INSERT INTO [dbo].[#mapped_EGK_Geb]
+			([SCHEINID], [MENGENID], [DWH_ZEITRAUM], [AUSFUHR_ID], [PAT_PSEUDO_ID],
+			 [EGKVERSICHERTENNUMMER], [VORNAME], [NACHNAME], [Geburtsdatum], [PLZ])
+		SELECT
+			ScheineNeu.SCHEINID, ScheineNeu.MENGENID, ScheineNeu.DWH_ZEITRAUM, NULL AS AUSFUHR_ID,
+			ScheineAlt.pat_pseudo_id, ScheineNeu.EGKVERSICHERTENNUMMER, ScheineNeu.VORNAME, ScheineNeu.NACHNAME,
+			-- einige Scheine haben im Geburtsdatum keinen Tag oder keinen Monat. In Abr2 werden diese auf den ersten gesetzt.
+			TRY_CONVERT(DATE, CASE 
+				WHEN ScheineNeu.GEBURTSDATUM LIKE '%0000' THEN CONCAT(LEFT(ScheineNeu.GEBURTSDATUM,5), '101')
+				WHEN ScheineNeu.GEBURTSDATUM LIKE '%00' THEN CONCAT(LEFT(ScheineNeu.GEBURTSDATUM,7), '1')
+				ELSE ScheineNeu.GEBURTSDATUM END, 112) AS Geburtsdatum,
+			ScheineNeu.PLZ
+		FROM dbo.M20_HIS_T_01AB100_SCHEINE ScheineNeu
+			LEFT JOIN dbo.M20_HIS_T_01AB100_PATID_MAPPING map
+				ON map.SCHEINID = ScheineNeu.SCHEINID AND map.MENGENID = ScheineNeu.MENGENID
+				AND map.DWH_ZEITRAUM = ScheineNeu.DWH_ZEITRAUM AND map.Datenkoerper = @Abr1Case
+			LEFT JOIN (
+				SELECT EGKVERSICHERTENNUMMER, GEBURTSDATUM, MAX(PAT_PSEUDO_ID) AS PAT_PSEUDO_ID
+				FROM M20_HIS_T_01AB000_PATIENTEN_LOOKUP
+				GROUP BY EGKVERSICHERTENNUMMER, GEBURTSDATUM
+			) ScheineAlt
+				ON ScheineNeu.EGKVERSICHERTENNUMMER = ScheineAlt.EGKVERSICHERTENNUMMER
+				AND TRY_CONVERT(DATE, CASE 
+					WHEN ScheineNeu.GEBURTSDATUM LIKE '%0000' THEN CONCAT(LEFT(ScheineNeu.GEBURTSDATUM,5), '101')
+					WHEN ScheineNeu.GEBURTSDATUM LIKE '%00' THEN CONCAT(LEFT(ScheineNeu.GEBURTSDATUM,7), '1')
+					ELSE ScheineNeu.GEBURTSDATUM END, 112) = ScheineAlt.GEBURTSDATUM
+		WHERE map.ScheinID IS NULL AND ScheineNeu.DWH_ZEITRAUM = @Quartal
+	END
+
+	IF (@Abr1Case = 'UNBEARBEITET') BEGIN
+		INSERT INTO [dbo].[#mapped_EGK_Geb]
+			([SCHEINID], [MENGENID], [DWH_ZEITRAUM], [AUSFUHR_ID], [PAT_PSEUDO_ID],
+			 [EGKVERSICHERTENNUMMER], [VORNAME], [NACHNAME], [Geburtsdatum], [PLZ])
+		SELECT
+			ScheineNeu.SCHEINID, ScheineNeu.MENGENID, ScheineNeu.DWH_ZEITRAUM, NULL AS AUSFUHR_ID,
+			ScheineAlt.pat_pseudo_id, ScheineNeu.EGKVERSICHERTENNUMMER, ScheineNeu.VORNAME, ScheineNeu.NACHNAME,
+			TRY_CONVERT(DATE, CASE 
+				WHEN ScheineNeu.GEBURTSDATUM LIKE '%0000' THEN CONCAT(LEFT(ScheineNeu.GEBURTSDATUM,5), '101')
+				WHEN ScheineNeu.GEBURTSDATUM LIKE '%00' THEN CONCAT(LEFT(ScheineNeu.GEBURTSDATUM,7), '1')
+				ELSE ScheineNeu.GEBURTSDATUM END, 112) AS Geburtsdatum,
+			ScheineNeu.PLZ
+		FROM dbo.M20_HIS_T_01AB100_SCHEINE_UNB ScheineNeu
+			LEFT JOIN dbo.M20_HIS_T_01AB100_PATID_MAPPING map
+				ON map.SCHEINID = ScheineNeu.SCHEINID AND map.MENGENID = ScheineNeu.MENGENID
+				AND map.DWH_ZEITRAUM = ScheineNeu.DWH_ZEITRAUM AND map.Datenkoerper = @Abr1Case
+			LEFT JOIN (
+				SELECT EGKVERSICHERTENNUMMER, GEBURTSDATUM, MAX(PAT_PSEUDO_ID) AS PAT_PSEUDO_ID
+				FROM M20_HIS_T_01AB000_PATIENTEN_LOOKUP
+				GROUP BY EGKVERSICHERTENNUMMER, GEBURTSDATUM
+			) ScheineAlt
+				ON ScheineNeu.EGKVERSICHERTENNUMMER = ScheineAlt.EGKVERSICHERTENNUMMER
+				AND TRY_CONVERT(DATE, CASE 
+					WHEN ScheineNeu.GEBURTSDATUM LIKE '%0000' THEN CONCAT(LEFT(ScheineNeu.GEBURTSDATUM,5), '101')
+					WHEN ScheineNeu.GEBURTSDATUM LIKE '%00' THEN CONCAT(LEFT(ScheineNeu.GEBURTSDATUM,7), '1')
+					ELSE ScheineNeu.GEBURTSDATUM END, 112) = ScheineAlt.GEBURTSDATUM
+		WHERE map.ScheinID IS NULL AND ScheineNeu.DWH_ZEITRAUM = @Quartal
+	END
+
+	IF (@Abr1Case = 'KVUEPP') BEGIN
+		INSERT INTO [dbo].[#mapped_EGK_Geb]
+			([SCHEINID], [MENGENID], [DWH_ZEITRAUM], [AUSFUHR_ID], [PAT_PSEUDO_ID],
+			 [EGKVERSICHERTENNUMMER], [VORNAME], [NACHNAME], [Geburtsdatum], [PLZ])
+		SELECT 
+			ScheineNeu.SCHEINID, ScheineNeu.MENGENID, ScheineNeu.DWH_ZEITRAUM, NULL AS AUSFUHR_ID,
+			ScheineAlt.pat_pseudo_id, ScheineNeu.EGKVERSICHERTENNUMMER, ScheineNeu.VORNAME, ScheineNeu.NACHNAME,
+			TRY_CONVERT(DATE, CASE 
+				WHEN ScheineNeu.GEBURTSDATUM LIKE '%0000' THEN CONCAT(LEFT(ScheineNeu.GEBURTSDATUM,5), '101')
+				WHEN ScheineNeu.GEBURTSDATUM LIKE '%00' THEN CONCAT(LEFT(ScheineNeu.GEBURTSDATUM,7), '1')
+				ELSE ScheineNeu.GEBURTSDATUM END, 112) AS Geburtsdatum,
+			ScheineNeu.PLZ
+		FROM dbo.M20_HIS_T_01AB100_SCHEINE_UNB_KVUEPP ScheineNeu
+			LEFT JOIN dbo.M20_HIS_T_01AB100_PATID_MAPPING map
+				ON map.SCHEINID = ScheineNeu.SCHEINID AND map.MENGENID = ScheineNeu.MENGENID
+				AND map.DWH_ZEITRAUM = ScheineNeu.DWH_ZEITRAUM AND map.Datenkoerper = @Abr1Case
+			LEFT JOIN (
+				SELECT EGKVERSICHERTENNUMMER, GEBURTSDATUM, MAX(PAT_PSEUDO_ID) AS PAT_PSEUDO_ID
+				FROM M20_HIS_T_01AB000_PATIENTEN_LOOKUP
+				GROUP BY EGKVERSICHERTENNUMMER, GEBURTSDATUM
+			) ScheineAlt
+				ON ScheineNeu.EGKVERSICHERTENNUMMER = ScheineAlt.EGKVERSICHERTENNUMMER
+				AND TRY_CONVERT(DATE, CASE 
+					WHEN ScheineNeu.GEBURTSDATUM LIKE '%0000' THEN CONCAT(LEFT(ScheineNeu.GEBURTSDATUM,5), '101')
+					WHEN ScheineNeu.GEBURTSDATUM LIKE '%00' THEN CONCAT(LEFT(ScheineNeu.GEBURTSDATUM,7), '1')
+					ELSE ScheineNeu.GEBURTSDATUM END, 112) = ScheineAlt.GEBURTSDATUM
+		WHERE map.ScheinID IS NULL AND ScheineNeu.DWH_ZEITRAUM = @Quartal
+	END
+
+ELSE IF @Abr = 2 BEGIN
+	-- find Patient by EGKNR + Geburtsdatum
+	-- check if they are already inserted in Mapping table
+	INSERT INTO [dbo].[#mapped_EGK_Geb]
+		([SCHEINID], [MENGENID], [DWH_ZEITRAUM], [AUSFUHR_ID], [PAT_PSEUDO_ID],
+		 [EGKVERSICHERTENNUMMER], [VORNAME], [NACHNAME], [Geburtsdatum], [PLZ])
+	SELECT
+		ScheineNeu.SK_IDENT AS ScheinID, NULL AS MengenID, ScheineNeu.DWH_ZEITRAUM, ScheineNeu.AUSFUHR_ID,
+		ScheineAlt.pat_pseudo_id, ScheineNeu.EGKVNR AS EGKVERSICHERTENNUMMER, ScheineNeu.VORNAME,
+		ScheineNeu.Name AS NACHNAME,
+		ISNULL(TRY_CONVERT(DATE, ScheineNeu.GEB_DATUM, 104), TRY_CONVERT(DATE, ScheineNeu.GEB_DATUM, 121)) AS GEBURTSDATUM,
+		ScheineNeu.PLZ
+	FROM dbo.M20_HIS_T_01AB200_KS_SK_PATIENT ScheineNeu
+		LEFT JOIN dbo.M20_HIS_T_01AB200_PATID_MAPPING map
+			ON map.SK_IDENT = ScheineNeu.SK_IDENT AND map.DWH_ZEITRAUM = ScheineNeu.DWH_ZEITRAUM
+			AND map.AUSFUHR_ID = ScheineNeu.AUSFUHR_ID
+		LEFT JOIN (
+			SELECT DISTINCT EGKVERSICHERTENNUMMER, GEBURTSDATUM, MAX(PAT_PSEUDO_ID) AS PAT_PSEUDO_ID
+			FROM M20_HIS_T_01AB000_PATIENTEN_LOOKUP
+			GROUP BY EGKVERSICHERTENNUMMER, GEBURTSDATUM
+		) ScheineAlt
+			ON ScheineNeu.EGKVNR = ScheineAlt.EGKVERSICHERTENNUMMER
+			AND ISNULL(TRY_CONVERT(DATE, ScheineNeu.GEB_DATUM, 104), TRY_CONVERT(DATE, ScheineNeu.GEB_DATUM, 121)) = ScheineAlt.GEBURTSDATUM
+	WHERE map.SK_IDENT IS NULL AND ScheineNeu.DWH_ZEITRAUM = @Quartal
+END
+
+-- find Patient by EGKNR + Name
+IF OBJECT_ID(N'tempdb..#mapped_EGK_Name') IS NOT NULL DROP TABLE #mapped_EGK_Name
+
+CREATE TABLE [dbo].[#mapped_EGK_Name](
+	[SCHEINID] [bigint],
+	[MENGENID] [bigint],
+	[DWH_ZEITRAUM] [bigint],
+	[AUSFUHR_ID] [int],
+	[PAT_PSEUDO_ID] [bigint],
+	[EGKVERSICHERTENNUMMER] [varchar](20) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[NACHNAME] [varchar](100) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[VORNAME] [varchar](100) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[GEBURTSDATUM] [date],
+	[PLZ] [varchar](20) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	INDEX CI_INDEX CLUSTERED COLUMNSTORE
+) ON [PRIMARY]
+
+INSERT INTO [dbo].[#mapped_EGK_Name]
+	([SCHEINID], [MENGENID], [DWH_ZEITRAUM], [AUSFUHR_ID], [PAT_PSEUDO_ID],
+	 [EGKVERSICHERTENNUMMER], [NACHNAME], [VORNAME], [GEBURTSDATUM], [PLZ])
+SELECT
+	ScheineNeu.SCHEINID, ScheineNeu.MENGENID, ScheineNeu.DWH_ZEITRAUM, ScheineNeu.AUSFUHR_ID,
+	ScheineAlt.PAT_PSEUDO_ID, ScheineNeu.EGKVERSICHERTENNUMMER, ScheineNeu.NACHNAME,
+	ScheineNeu.VORNAME, ScheineNeu.GEBURTSDATUM, ScheineNeu.PLZ
+FROM dbo.#mapped_EGK_Geb ScheineNeu
+	LEFT JOIN (
+		SELECT DISTINCT EGKVERSICHERTENNUMMER, NACHNAME, VORNAME, MAX(PAT_PSEUDO_ID) AS PAT_PSEUDO_ID
+		FROM M20_HIS_T_01AB000_PATIENTEN_LOOKUP
+		GROUP BY EGKVERSICHERTENNUMMER, NACHNAME, VORNAME
+	) ScheineAlt
+		ON ScheineNeu.EGKVERSICHERTENNUMMER = ScheineAlt.EGKVERSICHERTENNUMMER
+		AND ScheineNeu.NACHNAME = ScheineAlt.NACHNAME AND ScheineNeu.VORNAME = ScheineAlt.VORNAME
+WHERE ScheineNeu.PAT_PSEUDO_ID IS NULL
+
+-- find Patient by Name + Geburtsdatum + PLZ
+-- add ID to group not matched patients in next step
+IF OBJECT_ID(N'tempdb..#mapped_Name_Geb_PLZ') IS NOT NULL DROP TABLE #mapped_Name_Geb_PLZ
+
+CREATE TABLE [dbo].[#mapped_Name_Geb_PLZ](
+	[SCHEINID] [bigint],
+	[MENGENID] [bigint],
+	[DWH_ZEITRAUM] [bigint],
+	[AUSFUHR_ID] [int],
+	[PAT_PSEUDO_ID] [bigint],
+	[EGKVERSICHERTENNUMMER] [varchar](20) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[NACHNAME] [varchar](100) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[VORNAME] [varchar](100) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[GEBURTSDATUM] [date],
+	[PLZ] [varchar](20) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[ID] [bigint],
+	INDEX CI_INDEX CLUSTERED COLUMNSTORE
+) ON [PRIMARY]
+
+INSERT INTO [dbo].[#mapped_Name_Geb_PLZ]
+	([SCHEINID], [MENGENID], [DWH_ZEITRAUM], [AUSFUHR_ID], [PAT_PSEUDO_ID],
+	 [EGKVERSICHERTENNUMMER], [NACHNAME], [VORNAME], [GEBURTSDATUM], [PLZ], [ID])
+SELECT 
+	ScheineNeu.SCHEINID, ScheineNeu.MENGENID, ScheineNeu.DWH_ZEITRAUM, ScheineNeu.AUSFUHR_ID,
+	ScheineAlt.PAT_PSEUDO_ID, ScheineNeu.EGKVERSICHERTENNUMMER, ScheineNeu.NACHNAME,
+	ScheineNeu.VORNAME, ScheineNeu.GEBURTSDATUM, ScheineNeu.PLZ,
+	ROW_NUMBER() OVER (ORDER BY ScheinID) AS ID
+FROM dbo.#mapped_EGK_Name ScheineNeu
+	LEFT JOIN (
+		SELECT GEBURTSDATUM, NACHNAME, VORNAME, PLZ, MAX(PAT_PSEUDO_ID) AS PAT_PSEUDO_ID
+		FROM M20_HIS_T_01AB000_PATIENTEN_LOOKUP 
+		GROUP BY GEBURTSDATUM, NACHNAME, VORNAME, PLZ
+	) ScheineAlt
+		ON ScheineNeu.GEBURTSDATUM = ScheineAlt.GEBURTSDATUM
+		AND ScheineNeu.NACHNAME = ScheineAlt.NACHNAME AND ScheineNeu.VORNAME = ScheineAlt.VORNAME
+		AND ScheineNeu.PLZ = ScheineAlt.PLZ
+WHERE ScheineNeu.PAT_PSEUDO_ID IS NULL
+
+---------------------------------------------------------------------------------------------------
+-- Gruppieren nicht zugeordneter Patienten --------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+-- Group not matching Patients by EGKNR + Geburtstag, EGKNR + Name, and Name + Geburtsdatum + PLZ
+IF OBJECT_ID(N'tempdb..#group_Patients') IS NOT NULL DROP TABLE #group_Patients;
+
+CREATE TABLE [dbo].[#group_Patients](
+	[SCHEINID] [bigint],
+	[MENGENID] [bigint],
+	[DWH_ZEITRAUM] [bigint],
+	[AUSFUHR_ID] [int],
+	[EGKVERSICHERTENNUMMER] [varchar](20) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[NACHNAME] [varchar](100) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[VORNAME] [varchar](100) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[GEBURTSDATUM] [date],
+	[PLZ] [varchar](20) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[ID] [bigint],
+	[ID_AKT1] [bigint],
+	[ID_AKT2] [bigint],
+	[ID_AKT3] [bigint],
+	INDEX CI_INDEX CLUSTERED COLUMNSTORE
+) ON [PRIMARY]
+
+INSERT INTO [dbo].[#group_Patients]
+	([SCHEINID], [MENGENID], [DWH_ZEITRAUM], [AUSFUHR_ID], [EGKVERSICHERTENNUMMER],
+	 [NACHNAME], [VORNAME], [GEBURTSDATUM], [PLZ], [ID], [ID_AKT1], [ID_AKT2], [ID_AKT3])
+SELECT 
+	Scheine.SCHEINID, Scheine.MENGENID, Scheine.DWH_ZEITRAUM, Scheine.AUSFUHR_ID,
+	Scheine.EGKVERSICHERTENNUMMER, Scheine.NACHNAME, Scheine.VORNAME, Scheine.GEBURTSDATUM, Scheine.PLZ, ID,
+	CASE WHEN EGKVERSICHERTENNUMMER IS NOT NULL AND Scheine.GEBURTSDATUM IS NOT NULL 
+		THEN MIN(ID) OVER (PARTITION BY EGKVERSICHERTENNUMMER, Scheine.GEBURTSDATUM) ELSE NULL END AS ID_AKT1,
+	CASE WHEN EGKVERSICHERTENNUMMER IS NOT NULL AND VORNAME IS NOT NULL AND NACHNAME IS NOT NULL 
+		THEN MIN(ID) OVER (PARTITION BY EGKVERSICHERTENNUMMER, VORNAME, NACHNAME) END AS ID_AKT2,
+	CASE WHEN VORNAME IS NOT NULL AND NACHNAME IS NOT NULL AND GEBURTSDATUM IS NOT NULL AND PLZ IS NOT NULL 
+		THEN MIN(ID) OVER (PARTITION BY GEBURTSDATUM, VORNAME, NACHNAME, PLZ) END AS ID_AKT3
+FROM #mapped_Name_Geb_PLZ Scheine
+WHERE Scheine.PAT_PSEUDO_ID IS NULL
+
+-- find the best ID by taking the min of ID_AKT1, ID_AKT2, ID_AKT3
+IF OBJECT_ID(N'tempdb..#group_bestID') IS NOT NULL DROP TABLE #group_bestID;
+
+CREATE TABLE [dbo].[#group_bestID](
+	[SCHEINID] [bigint],
+	[MENGENID] [bigint],
+	[DWH_ZEITRAUM] [bigint],
+	[AUSFUHR_ID] [int],
+	[EGKVERSICHERTENNUMMER] [varchar](20) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[NACHNAME] [varchar](100) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[VORNAME] [varchar](100) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[GEBURTSDATUM] [date],
+	[PLZ] [varchar](20) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[ID] [bigint],
+	[ID_AKT1] [bigint],
+	[ID_AKT2] [bigint],
+	[ID_AKT3] [bigint],
+	[Pat_pseudo_ID] [bigint],
+	INDEX CI_INDEX CLUSTERED COLUMNSTORE
+) ON [PRIMARY]
+
+INSERT INTO [dbo].[#group_bestID]
+	([SCHEINID], [MENGENID], [DWH_ZEITRAUM], [AUSFUHR_ID], [EGKVERSICHERTENNUMMER],
+	 [NACHNAME], [VORNAME], [GEBURTSDATUM], [PLZ], [ID], [ID_AKT1], [ID_AKT2], [ID_AKT3], [Pat_pseudo_ID])
+SELECT 
+	Scheine.SCHEINID, Scheine.MENGENID, Scheine.DWH_ZEITRAUM, Scheine.AUSFUHR_ID,
+	Scheine.EGKVERSICHERTENNUMMER, Scheine.NACHNAME, Scheine.VORNAME, Scheine.GEBURTSDATUM, Scheine.PLZ,
+	ID, ID_AKT1, ID_AKT2, ID_AKT3,
+	(SELECT MIN(ID) FROM (SELECT Scheine.ID_AKT1 UNION ALL SELECT Scheine.ID_AKT2 UNION ALL SELECT ID_AKT3) AS T(ID)) AS Pat_pseudo_ID
+FROM #group_Patients Scheine
+
+-- find better ID at partner rows - best ID_AKT1
+IF OBJECT_ID(N'tempdb..#group_bestID2') IS NOT NULL DROP TABLE #group_bestID2;
+
+CREATE TABLE [dbo].[#group_bestID2](
+	[SCHEINID] [bigint],
+	[MENGENID] [bigint],
+	[DWH_ZEITRAUM] [bigint],
+	[AUSFUHR_ID] [int],
+	[EGKVERSICHERTENNUMMER] [varchar](20) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[NACHNAME] [varchar](100) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[VORNAME] [varchar](100) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[GEBURTSDATUM] [date],
+	[PLZ] [varchar](20) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[ID] [bigint],
+	[ID_AKT1] [bigint],
+	[ID_AKT2] [bigint],
+	[ID_AKT3] [bigint],
+	[Pat_Pseudo_ID] [bigint],
+	INDEX CI_INDEX CLUSTERED COLUMNSTORE
+) ON [PRIMARY]
+
+INSERT INTO [dbo].[#group_bestID2]
+	([SCHEINID], [MENGENID], [DWH_ZEITRAUM], [AUSFUHR_ID], [EGKVERSICHERTENNUMMER],
+	 [NACHNAME], [VORNAME], [GEBURTSDATUM], [PLZ], [ID], [ID_AKT1], [ID_AKT2], [ID_AKT3], [Pat_Pseudo_ID])
+SELECT 
+	Scheine.SCHEINID, Scheine.MENGENID, Scheine.DWH_ZEITRAUM, Scheine.AUSFUHR_ID,
+	Scheine.EGKVERSICHERTENNUMMER, Scheine.NACHNAME, Scheine.VORNAME, Scheine.GEBURTSDATUM, Scheine.PLZ,
+	Scheine.ID, Scheine.ID_AKT1, Scheine.ID_AKT2, Scheine.ID_AKT3,
+	CASE WHEN Scheine2.Pat_Pseudo_ID IS NOT NULL AND Scheine.Pat_pseudo_ID >= Scheine2.Pat_pseudo_ID 
+		THEN Scheine2.Pat_pseudo_ID ELSE Scheine.Pat_pseudo_ID END AS Pat_Pseudo_ID
+FROM #group_bestID Scheine
+	LEFT JOIN (
+		SELECT ID_AKT1, MIN(Pat_Pseudo_ID) AS Pat_Pseudo_ID
+		FROM #group_bestID 
+		GROUP BY ID_AKT1
+	) Scheine2 ON Scheine.Pat_pseudo_ID = Scheine2.ID_AKT1
+
+-- best ID_AKT2
+IF OBJECT_ID(N'tempdb..#group_bestID3') IS NOT NULL DROP TABLE #group_bestID3;
+
+CREATE TABLE [dbo].[#group_bestID3](
+	[SCHEINID] [bigint],
+	[MENGENID] [bigint],
+	[DWH_ZEITRAUM] [bigint],
+	[AUSFUHR_ID] [int],
+	[EGKVERSICHERTENNUMMER] [varchar](20) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[NACHNAME] [varchar](100) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[VORNAME] [varchar](100) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[GEBURTSDATUM] [date],
+	[PLZ] [varchar](20) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[ID] [bigint],
+	[ID_AKT1] [bigint],
+	[ID_AKT2] [bigint],
+	[ID_AKT3] [bigint],
+	[Pat_Pseudo_ID] [bigint],
+	INDEX CI_INDEX CLUSTERED COLUMNSTORE
+) ON [PRIMARY]
+
+INSERT INTO [dbo].[#group_bestID3]
+	([SCHEINID], [MENGENID], [DWH_ZEITRAUM], [AUSFUHR_ID], [EGKVERSICHERTENNUMMER],
+	 [NACHNAME], [VORNAME], [GEBURTSDATUM], [PLZ], [ID], [ID_AKT1], [ID_AKT2], [ID_AKT3], [Pat_Pseudo_ID])
+SELECT 
+	Scheine.SCHEINID, Scheine.MENGENID, Scheine.DWH_ZEITRAUM, Scheine.AUSFUHR_ID,
+	Scheine.EGKVERSICHERTENNUMMER, Scheine.NACHNAME, Scheine.VORNAME, Scheine.GEBURTSDATUM, Scheine.PLZ,
+	Scheine.ID, Scheine.ID_AKT1, Scheine.ID_AKT2, Scheine.ID_AKT3,
+	CASE WHEN Scheine2.Pat_Pseudo_ID IS NOT NULL AND Scheine.Pat_pseudo_ID >= Scheine2.Pat_pseudo_ID 
+		THEN Scheine2.Pat_pseudo_ID ELSE Scheine.Pat_pseudo_ID END AS Pat_Pseudo_ID
+FROM #group_bestID2 Scheine
+	LEFT JOIN (
+		SELECT ID_AKT2, MIN(Pat_Pseudo_ID) AS Pat_Pseudo_ID
+		FROM #group_bestID2
+		GROUP BY ID_AKT2
+	) Scheine2 ON Scheine.Pat_pseudo_ID = Scheine2.ID_AKT2
+
+-- best ID_AKT3
+IF OBJECT_ID(N'tempdb..#grouped_finish') IS NOT NULL DROP TABLE #grouped_finish;
+
+CREATE TABLE [dbo].[#grouped_finish](
+	[SCHEINID] [bigint],
+	[MENGENID] [bigint],
+	[DWH_ZEITRAUM] [bigint],
+	[AUSFUHR_ID] [int],
+	[EGKVERSICHERTENNUMMER] [varchar](20) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[NACHNAME] [varchar](100) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[VORNAME] [varchar](100) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[GEBURTSDATUM] [date],
+	[PLZ] [varchar](20) COLLATE Latin1_General_100_CI_AS_KS_WS,
+	[ID] [bigint],
+	[ID_AKT1] [bigint],
+	[ID_AKT2] [bigint],
+	[ID_AKT3] [bigint],
+	[Pat_Pseudo_ID] [bigint],
+	INDEX CI_INDEX CLUSTERED COLUMNSTORE
+) ON [PRIMARY]
+
+INSERT INTO [dbo].[#grouped_finish]
+	([SCHEINID], [MENGENID], [DWH_ZEITRAUM], [AUSFUHR_ID], [EGKVERSICHERTENNUMMER],
+	 [NACHNAME], [VORNAME], [GEBURTSDATUM], [PLZ], [ID], [ID_AKT1], [ID_AKT2], [ID_AKT3], [Pat_Pseudo_ID])
+SELECT 
+	Scheine.SCHEINID, Scheine.MENGENID, Scheine.DWH_ZEITRAUM, Scheine.AUSFUHR_ID,
+	Scheine.EGKVERSICHERTENNUMMER, Scheine.NACHNAME, Scheine.VORNAME, Scheine.GEBURTSDATUM, Scheine.PLZ,
+	Scheine.ID, Scheine.ID_AKT1, Scheine.ID_AKT2, Scheine.ID_AKT3,
+	CASE WHEN Scheine2.Pat_Pseudo_ID IS NOT NULL AND Scheine.Pat_pseudo_ID >= Scheine2.Pat_pseudo_ID 
+		THEN Scheine2.Pat_pseudo_ID ELSE Scheine.Pat_pseudo_ID END AS Pat_Pseudo_ID
+FROM #group_bestID3 Scheine
+	LEFT JOIN (
+		SELECT ID_AKT3, MIN(Pat_Pseudo_ID) AS Pat_Pseudo_ID
+		FROM #group_bestID3
+		GROUP BY ID_AKT3
+	) Scheine2 ON Scheine.Pat_pseudo_ID = Scheine2.ID_AKT3
+
+-- Insert neu gemappte Patienten in Mappingtabelle
+-- damit keine doppelten IDs vergeben werden, addiere die zufällige ID auf die bisher größte ID in der Mappingtabelle
+DECLARE @MaxID BIGINT = (SELECT ISNULL(MAX(Pat_pseudo_ID), 0) FROM (
+	SELECT ISNULL(MAX(Pat_pseudo_ID), 0) as Pat_Pseudo_id FROM dbo.M20_HIS_T_01AB100_PATID_MAPPING 
+	UNION SELECT ISNULL(MAX(Pat_pseudo_ID), 0) as Pat_Pseudo_id FROM dbo.M20_HIS_T_01AB200_PATID_MAPPING
+	UNION SELECT ISNULL(MAX(Pat_pseudo_ID), 0) as Pat_Pseudo_id FROM dbo.M20_HIS_T_01AB000_PATIENTEN_LOOKUP
+) a);
+
+IF @Abr = 1 BEGIN
+	INSERT INTO M20_HIS_T_01AB100_PATID_MAPPING
+	SELECT * FROM (
+		SELECT SCHEINID, MENGENID, DWH_ZEITRAUM, ISNULL(NewPatID + @MaxID, 0) AS Pat_Pseudo_ID, @Abr1Case AS Datenkoerper
+		FROM #grouped_finish gf 
+			LEFT JOIN (
+				SELECT Pat_Pseudo_id, ROW_NUMBER() OVER (ORDER BY Pat_Pseudo_id) NewPatID
+				FROM #grouped_finish GROUP BY Pat_Pseudo_id
+			) t1 ON gf.Pat_Pseudo_ID = t1.Pat_Pseudo_ID
+		UNION
+		SELECT SCHEINID, MENGENID, DWH_ZEITRAUM, PAT_PSEUDO_ID, @Abr1Case
+		FROM #mapped_EGK_Geb WHERE PAT_PSEUDO_ID IS NOT NULL
+		UNION
+		SELECT SCHEINID, MENGENID, DWH_ZEITRAUM, PAT_PSEUDO_ID, @Abr1Case
+		FROM #mapped_EGK_Name WHERE PAT_PSEUDO_ID IS NOT NULL
+		UNION
+		SELECT SCHEINID, MENGENID, DWH_ZEITRAUM, PAT_PSEUDO_ID, @Abr1Case
+		FROM #mapped_Name_Geb_PLZ WHERE PAT_PSEUDO_ID IS NOT NULL
+	) a
+
+	IF (@Abr1Case = 'BEARBEITET') BEGIN
+		-- Aggregierte Tabelle aufbauen (Scheinvarianten)
+		INSERT INTO M20_HIS_T_01AB000_PATIENTEN_LOOKUP
+		SELECT DISTINCT map.PAT_PSEUDO_ID, schein.EGKVERSICHERTENNUMMER, schein.VORNAME, schein.NACHNAME, 
+			TRY_CONVERT(date, schein.GEBURTSDATUM), schein.PLZ
+		FROM dbo.M20_HIS_T_01AB100_SCHEINE schein
+			LEFT JOIN dbo.M20_HIS_T_01AB100_PATID_MAPPING map
+				ON map.scheinid = schein.SCHEINID AND map.mengenid = schein.MENGENID
+				AND map.DWH_Zeitraum = schein.DWH_ZEITRAUM AND map.Datenkoerper = @Abr1Case
+			LEFT JOIN dbo.M20_HIS_T_01AB000_PATIENTEN_LOOKUP agg
+				ON agg.PAT_PSEUDO_ID = map.Pat_pseudo_ID
+				AND ISNULL(agg.EGKVERSICHERTENNUMMER, -1) = ISNULL(schein.EGKVERSICHERTENNUMMER, -1)
+				AND ISNULL(agg.VORNAME, -1) = ISNULL(schein.VORNAME, -1)
+				AND ISNULL(agg.NACHNAME, -1) = ISNULL(schein.NACHNAME, -1)
+				AND ((agg.GEBURTSDATUM = TRY_CONVERT(DATE, schein.GEBURTSDATUM)) OR TRY_CONVERT(DATE, schein.GEBURTSDATUM) IS NULL)
+				AND ISNULL(agg.PLZ, -1) = ISNULL(schein.PLZ, -1)
+		WHERE agg.PAT_PSEUDO_ID IS NULL AND map.Pat_pseudo_ID IS NOT NULL
+			AND map.Pat_pseudo_ID NOT IN (0,-1) AND schein.DWH_ZEITRAUM = @Quartal
+			AND ((schein.EGKVERSICHERTENNUMMER IS NOT NULL 
+				AND (schein.VORNAME IS NOT NULL OR schein.NACHNAME IS NOT NULL OR schein.GEBURTSDATUM IS NOT NULL OR schein.PLZ IS NOT NULL))
+				OR (schein.VORNAME IS NOT NULL AND schein.NACHNAME IS NOT NULL AND schein.GEBURTSDATUM IS NOT NULL AND schein.PLZ IS NOT NULL))
+	END
+
+	IF (@Abr1Case = 'UNBEARBEITET') BEGIN
+		INSERT INTO M20_HIS_T_01AB000_PATIENTEN_LOOKUP
+		SELECT DISTINCT map.PAT_PSEUDO_ID, schein.EGKVERSICHERTENNUMMER, schein.VORNAME, schein.NACHNAME, 
+			TRY_CONVERT(date, schein.GEBURTSDATUM), schein.PLZ
+		FROM dbo.M20_HIS_T_01AB100_SCHEINE_UNB schein
+			LEFT JOIN dbo.M20_HIS_T_01AB100_PATID_MAPPING map
+				ON map.scheinid = schein.SCHEINID AND map.mengenid = schein.MENGENID
+				AND map.DWH_Zeitraum = schein.DWH_ZEITRAUM AND map.Datenkoerper = @Abr1Case
+			LEFT JOIN dbo.M20_HIS_T_01AB000_PATIENTEN_LOOKUP agg
+				ON agg.PAT_PSEUDO_ID = map.Pat_pseudo_ID
+				AND ISNULL(agg.EGKVERSICHERTENNUMMER, -1) = ISNULL(schein.EGKVERSICHERTENNUMMER, -1)
+				AND ISNULL(agg.VORNAME, -1) = ISNULL(schein.VORNAME, -1)
+				AND ISNULL(agg.NACHNAME, -1) = ISNULL(schein.NACHNAME, -1)
+				AND ((agg.GEBURTSDATUM = TRY_CONVERT(DATE, schein.GEBURTSDATUM)) OR TRY_CONVERT(DATE, schein.GEBURTSDATUM) IS NULL)
+				AND ISNULL(agg.PLZ, -1) = ISNULL(schein.PLZ, -1)
+		WHERE agg.PAT_PSEUDO_ID IS NULL AND map.Pat_pseudo_ID IS NOT NULL
+			AND map.Pat_pseudo_ID NOT IN (0,-1) AND schein.DWH_ZEITRAUM = @Quartal
+			AND ((schein.EGKVERSICHERTENNUMMER IS NOT NULL 
+				AND (schein.VORNAME IS NOT NULL OR schein.NACHNAME IS NOT NULL OR schein.GEBURTSDATUM IS NOT NULL OR schein.PLZ IS NOT NULL))
+				OR (schein.VORNAME IS NOT NULL AND schein.NACHNAME IS NOT NULL AND schein.GEBURTSDATUM IS NOT NULL AND schein.PLZ IS NOT NULL))
+	END
+
+	IF (@Abr1Case = 'KVUEPP') BEGIN
+		INSERT INTO M20_HIS_T_01AB000_PATIENTEN_LOOKUP
+		SELECT DISTINCT map.PAT_PSEUDO_ID, schein.EGKVERSICHERTENNUMMER, schein.VORNAME, schein.NACHNAME, 
+			TRY_CONVERT(date, schein.GEBURTSDATUM), schein.PLZ
+		FROM dbo.M20_HIS_T_01AB100_SCHEINE_UNB_KVUEPP schein
+			LEFT JOIN dbo.M20_HIS_T_01AB100_PATID_MAPPING map
+				ON map.scheinid = schein.SCHEINID AND map.mengenid = schein.MENGENID
+				AND map.DWH_Zeitraum = schein.DWH_ZEITRAUM AND map.Datenkoerper = @Abr1Case
+			LEFT JOIN dbo.M20_HIS_T_01AB000_PATIENTEN_LOOKUP agg
+				ON agg.PAT_PSEUDO_ID = map.Pat_pseudo_ID
+				AND ISNULL(agg.EGKVERSICHERTENNUMMER, -1) = ISNULL(schein.EGKVERSICHERTENNUMMER, -1)
+				AND ISNULL(agg.VORNAME, -1) = ISNULL(schein.VORNAME, -1)
+				AND ISNULL(agg.NACHNAME, -1) = ISNULL(schein.NACHNAME, -1)
+				AND ((agg.GEBURTSDATUM = TRY_CONVERT(DATE, schein.GEBURTSDATUM)) OR TRY_CONVERT(DATE, schein.GEBURTSDATUM) IS NULL)
+				AND ISNULL(agg.PLZ, -1) = ISNULL(schein.PLZ, -1)
+		WHERE agg.PAT_PSEUDO_ID IS NULL AND map.Pat_pseudo_ID IS NOT NULL
+			AND map.Pat_pseudo_ID NOT IN (0,-1) AND schein.DWH_ZEITRAUM = @Quartal
+			AND ((schein.EGKVERSICHERTENNUMMER IS NOT NULL 
+				AND (schein.VORNAME IS NOT NULL OR schein.NACHNAME IS NOT NULL OR schein.GEBURTSDATUM IS NOT NULL OR schein.PLZ IS NOT NULL))
+				OR (schein.VORNAME IS NOT NULL AND schein.NACHNAME IS NOT NULL AND schein.GEBURTSDATUM IS NOT NULL AND schein.PLZ IS NOT NULL))
+	END
+END
+ELSE IF @Abr = 2 BEGIN
+	INSERT INTO M20_HIS_T_01AB200_PATID_MAPPING (SK_IDENT, DWH_ZEITRAUM, AUSFUHR_ID, Pat_Pseudo_ID)
+	SELECT * FROM (
+		SELECT SCHEINID, DWH_ZEITRAUM, AUSFUHR_ID, ISNULL(NewPatID + @MaxID, 0) AS Pat_Pseudo_ID
+		FROM #grouped_finish gf 
+			LEFT JOIN (
+				SELECT Pat_Pseudo_id, ROW_NUMBER() OVER (ORDER BY Pat_Pseudo_id) NewPatID
+				FROM #grouped_finish GROUP BY Pat_Pseudo_id
+			) t1 ON gf.Pat_Pseudo_ID = t1.Pat_Pseudo_ID
+		UNION
+		SELECT SCHEINID, DWH_ZEITRAUM, AUSFUHR_ID, PAT_PSEUDO_ID FROM #mapped_EGK_Geb WHERE PAT_PSEUDO_ID IS NOT NULL
+		UNION
+		SELECT SCHEINID, DWH_ZEITRAUM, AUSFUHR_ID, PAT_PSEUDO_ID FROM #mapped_EGK_Name WHERE PAT_PSEUDO_ID IS NOT NULL
+		UNION
+		SELECT SCHEINID, DWH_ZEITRAUM, AUSFUHR_ID, PAT_PSEUDO_ID FROM #mapped_Name_Geb_PLZ WHERE PAT_PSEUDO_ID IS NOT NULL
+	) a
+
+	-- Aggregierte Tabelle aufbauen (Scheinvarianten)
+	INSERT INTO M20_HIS_T_01AB000_PATIENTEN_LOOKUP (PAT_PSEUDO_ID, EGKVERSICHERTENNUMMER, VORNAME, NACHNAME, GEBURTSDATUM, PLZ)
+	SELECT DISTINCT map.PAT_PSEUDO_ID, schein.EGKVNR, schein.VORNAME, schein.NAME, 
+		ISNULL(TRY_CONVERT(DATE, schein.GEB_DATUM, 104), TRY_CONVERT(DATE, schein.GEB_DATUM, 121)), schein.PLZ
+	FROM dbo.M20_HIS_T_01AB200_KS_SK_PATIENT schein
+		LEFT JOIN dbo.M20_HIS_T_01AB200_PATID_MAPPING map
+			ON map.SK_IDENT = schein.SK_IDENT AND map.DWH_Zeitraum = schein.DWH_ZEITRAUM AND map.AUSFUHR_ID = schein.AUSFUHR_ID
+		LEFT JOIN dbo.M20_HIS_T_01AB000_PATIENTEN_LOOKUP agg
+			ON agg.PAT_PSEUDO_ID = map.Pat_pseudo_ID
+			AND ISNULL(agg.EGKVERSICHERTENNUMMER, -1) = ISNULL(schein.EGKVNR, -1)
+			AND ISNULL(agg.VORNAME, -1) = ISNULL(schein.VORNAME, -1)
+			AND ISNULL(agg.NACHNAME, -1) = ISNULL(schein.NAME, -1)
+			AND agg.GEBURTSDATUM = ISNULL(TRY_CONVERT(DATE, schein.GEB_DATUM, 104), TRY_CONVERT(DATE, schein.GEB_DATUM, 121))
+			AND ISNULL(agg.PLZ, -1) = ISNULL(schein.PLZ, -1)
+	WHERE agg.PAT_PSEUDO_ID IS NULL AND map.Pat_pseudo_ID IS NOT NULL
+		AND map.Pat_pseudo_ID NOT IN (0,-1) AND schein.DWH_ZEITRAUM = @Quartal
+		AND ((schein.EGKVNR IS NOT NULL 
+			AND (schein.VORNAME IS NOT NULL OR schein.NAME IS NOT NULL OR schein.GEB_DATUM IS NOT NULL OR schein.PLZ IS NOT NULL))
+			OR (schein.VORNAME IS NOT NULL AND schein.NAME IS NOT NULL AND schein.GEB_DATUM IS NOT NULL AND schein.PLZ IS NOT NULL))
+END;
