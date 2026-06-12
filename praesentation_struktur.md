@@ -1,12 +1,12 @@
 # Lakehouse als Enabler für Machine Learning im Gesundheitswesen
 
-## Gliederung für ca. 35 Folien
+## Gliederung für ca. 36 Folien
 
 **Zielverteilung**
 
 * Intro und Einordnung: ca. 5 Folien
 * Lakehouse, Architektur und Orchestrierung: ca. 10 Folien
-* ML und Haupt-Use-Case: ca. 15 Folien
+* ML am Beispiel Patient Record Linkage: ca. 16 Folien
 * Lessons Learned und Outro: ca. 5 Folien
 
 **Verwendete Quellen im Repo**
@@ -22,6 +22,11 @@
 * MIT Sloan / Andrew Ng: [Why it's time for data-centric artificial intelligence](https://mitsloan.mit.edu/ideas-made-to-matter/why-its-time-data-centric-artificial-intelligence) - Fokus auf Datenqualität statt nur auf Modellkomplexität.
 * NIST: [AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) - KI braucht Governance, Messbarkeit und kontrollierte Betriebsprozesse.
 * DataHub: [What is DataHub?](https://docs.datahub.com/docs/features) - Data Catalog, Discovery, Lineage, Governance und Data Contracts als Governance-Komponente.
+
+**Quellen zum Record-Linkage-Teil**
+
+* FlexRL: Robach, K., van der Pas, S. L., van de Wiel, M. A. & Hof, M. H. (2024). *A Flexible Model for Record Linkage*. arXiv preprint. Implementierung: [github.com/robachowyk/FlexRL](https://github.com/robachowyk/FlexRL)
+* Record-Linkage-Grundlagen für die Hybrid Cascade: Fellegi, I. P. & Sunter, A. B. (1969). *A Theory for Record Linkage*. JASA. Sowie Christen, P. (2012). *Data Matching* (Springer) für Blocking und String-Ähnlichkeit (Q-Gram/Jaccard, Edit Distance).
 
 ---
 
@@ -58,14 +63,14 @@ Open Source, On-Premise, Data Engineering und ML auf einer Plattform
 
 ### Folie 3 - KVWL und Yannik Queisler
 
-**Kernaussage:** Die KVWL bringt die konkrete On-Premise-Implementierung, den KI-/ML-Haupt-Use-Case und die Lessons Learned aus dem Aufbau ein.
+**Kernaussage:** Die KVWL bringt die konkrete On-Premise-Implementierung, das durchgängige KI-/ML-Beispiel und die Lessons Learned aus dem Aufbau ein.
 
 **Inhalt**
 
 * Kassenärztliche Vereinigung Westfalen-Lippe
 * Yannik Queisler, Data Engineer
 * Schwerpunkt: Spark, Airflow, Delta Lake, ML Engineering
-* Rolle im Vortrag: KI-/ML-Teil, Patientenbildung als Haupt-Use-Case und Lessons Learned
+* Rolle im Vortrag: KI-/ML-Teil, Patientenbildung als durchgängiges Beispiel und Lessons Learned
 * Kontext: KI ist in der KVWL ein neues Handlungsfeld und wird über greifbare Fachprozesse eingeführt
 * Leitmotiv: erst Datenqualität, Plattform und konkrete Nutzenfälle - nicht zuerst ein großer unternehmensweiter Chatbot ohne belastbare Datenbasis
 
@@ -90,15 +95,15 @@ Open Source, On-Premise, Data Engineering und ML auf einer Plattform
 
 ### Folie 5 - Ablauf und Zielbild
 
-**Kernaussage:** Wir gehen von der Architektur zur Umsetzung und dann zu einem validierbaren Haupt-Use-Case, an dem systematische KI-/ML-Einführung greifbar wird.
+**Kernaussage:** Wir gehen von der Architektur zur Umsetzung und dann zu einem validierbaren Leitbeispiel, an dem systematische KI-/ML-Einführung greifbar wird.
 
 **Inhalt**
 
 * Ausgangslage: SSIS-/DWH-Welt und uneinheitliche Lake-Zonen
 * Zielarchitektur: Multi-Zone-Functional Lakehouse
 * Orchestrierung und Technologieentscheidungen
-* Haupt-Use-Case: Patientenbildung als Record Linkage und Survivorship
-* Abgrenzung: Abrechnungsanomalien nur als weiterer Prototyp, nicht als validierter Schwerpunkt
+* Leitbeispiel: Patientenbildung als Patient Record Linkage und Survivorship
+* Zweites Beispiel: Anomalieerkennung in Abrechnungsdaten als weiterer ML-Anwendungsfall
 * roter Faden: Nutzen früh greifbar machen, ohne die Datenplattform zu überspringen
 * Lessons Learned: Was hat sich bewährt, was bleibt schwierig?
 
@@ -273,7 +278,7 @@ Open Source, On-Premise, Data Engineering und ML auf einer Plattform
 
 ---
 
-## 2. ML und Haupt-Use-Case Patientenbildung
+## 2. ML am Beispiel Patientenbildung (Patient Record Linkage)
 
 ### Folie 16 - Was produktives Data Engineering und ML vom Lakehouse brauchen
 
@@ -291,20 +296,20 @@ Open Source, On-Premise, Data Engineering und ML auf einer Plattform
 
 ---
 
-### Folie 17 - Warum Patientenbildung als Haupt-Use-Case?
+### Folie 17 - Patientenbildung als Patient Record Linkage
 
-**Kernaussage:** Patientenbildung ist der bessere Haupt-Use-Case, weil fachlicher Nutzen, Datenqualitätsbezug und messbare Validierung zusammenkommen.
+**Kernaussage:** Patientenbildung lässt sich als bekanntes Problem aus der Literatur fassen - "Patient Record Linkage" - und verbindet fachlichen Nutzen mit messbarer Validierung.
 
 **Inhalt**
 
-* Record Linkage über heterogene Quellen
-* stabile Patient-Pseudo-IDs als Grundlage für Analysen und nachgelagerte ML-Use-Cases
+* Patientenbildung ist im Kern ein Patient-Record-Linkage-Problem - ein etablierter Begriff in der Forschungsliteratur
+* Record Linkage über heterogene Quellen, Ziel: stabile Patient-Pseudo-IDs als Grundlage für Analysen und nachgelagerte ML-Use-Cases
 * Golden Record über Survivorship
-* klar messbar über Proxy-/synthetisches Dataset mit Ground Truth
-* bessere Validierbarkeit als Abrechnungsanomalien:
-  * dort fehlt aktuell noch fachlich validierter Erfolg der Erkennung
-  * Patientenbildung erlaubt automatisierte Evaluation gegen bekannte Entitäten
-* Gemeinsamer Nenner: Datenqualität vor Modellqualität
+* gut messbar über ein Proxy-/synthetisches Dataset mit Ground Truth (`entity_id`):
+  * erlaubt automatisierte Evaluation gegen bekannte Entitäten
+  * macht aus einer fachlichen Diskussion eine messbare Engineering-Frage
+* zweites Beispiel später im Vortrag: Anomalieerkennung in Abrechnungsdaten als weiterer ML-Anwendungsfall auf derselben Plattform
+* gemeinsamer Nenner: Datenqualität vor Modellqualität
 * bewusstes Framing: klassisches ML ist kein Rückschritt, sondern oft der kürzeste Weg zu messbarem Nutzen auf strukturierten Unternehmensdaten
 
 ---
@@ -422,7 +427,7 @@ Open Source, On-Premise, Data Engineering und ML auf einer Plattform
 
 ---
 
-### Folie 23 - Validierungsdesign und Metriken
+### Folie 23 - Validierungsdesign
 
 **Kernaussage:** Die Proxy-Daten machen aus einer fachlichen Diskussion eine messbare Engineering-Frage.
 
@@ -431,13 +436,6 @@ Open Source, On-Premise, Data Engineering und ML auf einer Plattform
 * Ground Truth:
   * `entity_id` für wahre Personencluster
   * Golden-Record-Felder für Survivorship
-* Record-Linkage-Metriken:
-  * Pairwise Precision
-  * Pairwise Recall
-  * F1
-  * perfect clusters
-  * split entities / false negatives
-  * merged clusters / false positives
 * besonders wichtig bei Patientendaten:
   * false merges sind fachlich riskanter als false negatives
   * Schwellen müssen konservativ gewählt und begründet werden
@@ -447,7 +445,27 @@ Open Source, On-Premise, Data Engineering und ML auf einer Plattform
 
 ---
 
-### Folie 24 - Ansatz 1: Aktuelles deterministisches Modell
+### Folie 24 - Exkurs: Evaluationsmetriken für Record Linkage
+
+**Kernaussage:** Record Linkage wird paarweise bewertet - die zentralen Metriken sind Precision, Recall und F1, jeweils auf Record-Paaren; dieselben Metriken erlauben einen fairen Vergleich aller Ansätze.
+
+**Inhalt**
+
+* Grundidee: jedes Paar von Records ist entweder "gleiche Person" (Link) oder nicht
+* Begriffe:
+  * True Positive: korrekt verknüpftes Paar
+  * False Positive: fälschlich verknüpft = false merge
+  * False Negative: übersehener echter Link = split
+* Metriken:
+  * Precision = TP / (TP + FP) - Anteil korrekter unter den vorhergesagten Links, misst false merges
+  * Recall = TP / (TP + FN) - Anteil gefundener unter den echten Links, misst split entities
+  * F1 = harmonisches Mittel aus Precision und Recall
+* Clusterebene: perfect / split / merged clusters als anschauliche Ergänzung
+* bei Patientendaten: Precision (false merges) ist besonders kritisch, daher konservative Schwellen
+
+---
+
+### Folie 25 - Ansatz 1: Aktuelles deterministisches Modell
 
 **Kernaussage:** Das bestehende Modell ist ein starker konservativer Baseline-Ansatz, aber es verliert viele echte Links.
 
@@ -470,7 +488,7 @@ Open Source, On-Premise, Data Engineering und ML auf einer Plattform
 
 ---
 
-### Folie 25 - Ansatz 2: Hybrid Cascade
+### Folie 26 - Ansatz 2: Hybrid Cascade
 
 **Kernaussage:** Ein deterministisch dominierter Ansatz kann durch fuzzy Fallbacks deutlich mehr echte Links finden, ohne die Precision stark zu beschädigen.
 
@@ -495,13 +513,13 @@ Open Source, On-Premise, Data Engineering und ML auf einer Plattform
 
 ---
 
-### Folie 26 - Ansatz 3: FlexRL als probabilistischer Ansatz
+### Folie 27 - Ansatz 3: FlexRL als probabilistischer Ansatz
 
 **Kernaussage:** Probabilistische Linkage macht Unsicherheit explizit und lernt Fehler-/Zufallsmuster aus den Daten.
 
 **Inhalt**
 
-* FlexRL nach Robach et al. als latent-variable model
+* FlexRL als latent-variable model
 * Partially Identifying Variables:
   * Vorname, Nachname, Geburtsdatum, PLZ, EGK
 * EM-Algorithmus lernt:
@@ -510,10 +528,11 @@ Open Source, On-Premise, Data Engineering und ML auf einer Plattform
   * zufällige Übereinstimmungswahrscheinlichkeit je Variable
 * Blocking über EGK, DOB, PLZ + Geburtsjahr, Namenspräfix
 * konservativer Threshold `0,9`, weil false merges bei Patientendaten besonders kritisch sind
+* Quelle: Robach, van der Pas, van de Wiel & Hof (2024), *A Flexible Model for Record Linkage* (arXiv); Implementierung: [github.com/robachowyk/FlexRL](https://github.com/robachowyk/FlexRL)
 
 ---
 
-### Folie 27 - Ergebnisvergleich: Trade-off statt Modellhype
+### Folie 28 - Ergebnisvergleich: Trade-off statt Modellhype
 
 **Kernaussage:** Der beste Ansatz ist nicht automatisch der komplexeste, sondern der mit fachlich akzeptablem Trade-off.
 
@@ -538,13 +557,14 @@ Open Source, On-Premise, Data Engineering und ML auf einer Plattform
 
 ---
 
-### Folie 28 - Survivorship: Vom Cluster zum Golden Record
+### Folie 29 - Survivorship: Vom Cluster zum Golden Record
 
 **Kernaussage:** Record Linkage löst nur die Identität; nutzbar wird das Ergebnis erst durch konsolidierte Patientenstammdaten.
 
 **Inhalt**
 
 * Survivorship `M20_HIS_P_01AB000_BUILD_PATIENTEN_STAMM`
+* VSDM = Versichertenstammdatenmanagement: beim Einlesen der eGK wird online gegen das zentrale Versichertenregister geprüft, ob die Kartendaten mit dem maßgeblichen Register übereinstimmen - dieser bestätigte Abgleich gilt als vertrauenswürdigste Quelle
 * Two-tier-Strategie:
   * Tier 1: VSDM-verifizierte Daten mit höchstem Vertrauen
   * Tier 2: zeitgewichtete Häufigkeit plus Vollständigkeit
@@ -557,7 +577,7 @@ Open Source, On-Premise, Data Engineering und ML auf einer Plattform
 
 ---
 
-### Folie 29 - Vom Notebook in die Lakehouse-Pipeline
+### Folie 30 - Vom Notebook in die Lakehouse-Pipeline
 
 **Kernaussage:** Der Use Case zeigt den Weg von akademischer Evaluation zu produktionsnaher Data-Engineering-Arbeit.
 
@@ -580,29 +600,25 @@ Open Source, On-Premise, Data Engineering und ML auf einer Plattform
 
 ---
 
-### Folie 30 - Abgrenzung: Warum nicht Abrechnungsanomalien als Hauptstory?
+### Folie 31 - Zweites Beispiel: Anomalieerkennung in Abrechnungsdaten
 
-**Kernaussage:** Ein Use Case gehört erst in den Mittelpunkt, wenn Nutzen und Validierung belastbar genug sind.
+**Kernaussage:** Ein zweiter ML-Anwendungsfall auf derselben Plattform - technisch reizvoll, fachlich noch in der Validierung.
 
 **Inhalt**
 
-* Abrechnungsanomalien bleibt ein interessanter Prototyp:
-  * Feature Engineering, ECOD, Explainability, Review-App
-  * gute technische Pipeline-Demonstration
-* aber:
-  * fachlicher Erfolg der Erkennung noch nicht ausreichend validiert
-  * kein automatisiertes Ground-Truth-/Proxy-Dataset wie bei Patientenbildung
-  * aktuell voraussichtlich keine direkte Weiterentwicklung
-* Lesson:
-  * Prototypen sind wertvoll, aber nicht jeder Prototyp ist bereits eine gute Hauptstory
-  * Validierbarkeit ist ein zentrales Kriterium für Use-Case-Auswahl
-  * Patientenbildung zeigt den vollständigeren Weg von Problemabstraktion zu messbarer Evaluation
+* Ziel: auffällige Muster in Abrechnungsdaten erkennen
+* Bausteine: Feature Engineering, ECOD als Anomaliemodell, Explainability, Review-App
+* gute Demonstration der Pipeline von Process über Access bis zu einer ML-Anwendung mit Review-Oberfläche
+* Unterschied zur Patientenbildung:
+  * noch kein automatisiertes Ground-Truth-/Proxy-Dataset
+  * fachliche Validierung der erkannten Auffälligkeiten läuft noch
+* Lesson: Validierbarkeit ist ein zentrales Kriterium, wann aus einem Prototyp eine tragende Story wird
 
 ---
 
 ## 3. Lessons Learned und Abschluss
 
-### Folie 31 - Architektur-Lessons
+### Folie 32 - Architektur-Lessons
 
 **Kernaussage:** Die wichtigsten Architekturentscheidungen sind die klaren Layer-Verträge, nicht die Toolnamen.
 
@@ -617,7 +633,7 @@ Open Source, On-Premise, Data Engineering und ML auf einer Plattform
 
 ---
 
-### Folie 32 - KI-/ML-Lessons
+### Folie 33 - KI-/ML-Lessons
 
 **Kernaussage:** Produktive KI beginnt vor dem Modell: bei Entitäten, Features, Historie, Governance und fachlicher Prüfbarkeit.
 
@@ -634,7 +650,7 @@ Open Source, On-Premise, Data Engineering und ML auf einer Plattform
 
 ---
 
-### Folie 33 - Was wir wieder so machen würden
+### Folie 34 - Was wir wieder so machen würden
 
 **Kernaussage:** Einige Muster haben sich als besonders tragfähig erwiesen.
 
@@ -650,7 +666,7 @@ Open Source, On-Premise, Data Engineering und ML auf einer Plattform
 
 ---
 
-### Folie 34 - Was man vermeiden sollte
+### Folie 35 - Was man vermeiden sollte
 
 **Kernaussage:** Lakehouse-Projekte scheitern leicht an zu viel impliziter Logik und zu wenig Produktdenken.
 
@@ -667,7 +683,7 @@ Open Source, On-Premise, Data Engineering und ML auf einer Plattform
 
 ---
 
-### Folie 35 - Schlussbild und Q&A
+### Folie 36 - Schlussbild und Q&A
 
 **Kernaussage:** Das Lakehouse ist kein Selbstzweck, sondern die Plattform, auf der Data Engineering, Governance und KI/ML produktiv zusammenarbeiten.
 
@@ -678,5 +694,5 @@ Open Source, On-Premise, Data Engineering und ML auf einer Plattform
 * klare Verantwortlichkeiten statt gewachsener Zonenlogik
 * Datenqualität als Voraussetzung für Modellqualität
 * systematische KI-Einführung über konkrete, validierbare Use Cases statt abstrakter Technologieprogramme
-* Haupt-Use-Case: Patientenbildung; Abrechnungsanomalien als abgegrenzter, noch nicht validierter Prototyp
+* durchgängiges Beispiel: Patientenbildung als Patient Record Linkage; Anomalieerkennung in Abrechnungsdaten als zweites Beispiel
 * Q&A und Diskussion
