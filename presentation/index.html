@@ -1,0 +1,1938 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lakehouse als Enabler für Machine Learning im Gesundheitswesen</title>
+  <link rel="stylesheet" href="assets/vendor/reveal/reset.css">
+  <link rel="stylesheet" href="assets/vendor/reveal/reveal.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- ============================================================
+     SLIDE 1 — TITLE / COVER
+     ============================================================ -->
+<section class="slide--cover" style="position:relative;">
+  <div class="brand-bar">
+    <img src="assets/logos/datamart.png" alt="DATA MART Consulting">
+    <img src="assets/logos/kvwl.png" alt="KVWL" style="filter:brightness(0) invert(1);">
+  </div>
+
+  <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:16px;">
+    <h1 class="slide-headline">
+      Lakehouse als Enabler für <span class="hl">Machine Learning</span><br>
+      im <span class="hl">Gesundheitswesen</span>
+    </h1>
+    <p style="font-size:1.05em; color:rgba(255,255,255,0.8); margin:0;">
+      Open Source, On-Premise, Data Engineering und ML auf einer Plattform
+    </p>
+
+    <div class="row" style="gap:12px; margin-top:8px;">
+      <div class="cover-info" style="flex:1;">
+        <div style="color:rgba(255,255,255,0.6); font-size:0.75em; margin-bottom:4px;">Sprecher</div>
+        <div style="font-size:0.88em; color:white;">
+          <strong>Sebastian Gobst</strong> <span style="color:rgba(255,255,255,0.55);">(DATA MART Consulting)</span><br>
+          <strong>Yannik Queisler</strong> <span style="color:rgba(255,255,255,0.55);">(KVWL)</span>
+        </div>
+      </div>
+      <div class="cover-info" style="flex:1;">
+        <div style="color:rgba(255,255,255,0.6); font-size:0.75em; margin-bottom:4px;">Leitfrage</div>
+        <div style="font-size:0.82em; color:white;">
+          Welche Datenplattform braucht produktives Data Engineering und ML im Gesundheitswesen?
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="leitsatz" style="margin-top:16px;">
+    <strong>TDWI Conference 2025</strong>
+  </div>
+
+  <aside class="notes">
+    [SG] Herzlich willkommen. Unser Titel klingt nach einem großen Plattform-Versprechen — wir halten es konkret. Eine Implementierung, die bei der KVWL produktiv läuft: Open Source, On-Premise, von den Rohdaten bis zum ML-Modell.
+    [YQ] Wir nehmen Sie an einem echten Fachproblem mit, an dem man messen kann, ob sich der Aufwand gelohnt hat. Die Leitfrage: Welche Datenplattform braucht man, damit Data Engineering und ML im Gesundheitswesen produktiv funktionieren?
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 2 — DATA MART / SEBASTIAN GOBST
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    <span class="hl">DATA MART</span> bringt die Perspektive aus DWH-, BI- und Datenarchitekturprojekten ein.
+  </p>
+
+  <div class="speaker-layout flex-1">
+    <div style="text-align:center; flex-shrink:0;">
+      <div class="speaker-avatar">👤</div>
+      <div class="speaker-name" style="margin-top:10px;">Sebastian Gobst</div>
+      <div class="speaker-title">Principal Consultant<br>Systemarchitektur</div>
+    </div>
+
+    <div class="col flex-1">
+      <div class="card card--teal">
+        <div class="card__head"><span class="icon-tile">⚙</span> Schwerpunkt</div>
+        <div class="card__body">
+          <div class="card__item">Optimierung von Datenlandschaften</div>
+          <div class="card__item">BI/DWH — zunehmend Open Source Lakehouse</div>
+        </div>
+      </div>
+      <div class="card card--teal">
+        <div class="card__head"><span class="icon-tile">🎤</span> Rolle im Vortrag</div>
+        <div class="card__body">
+          <div class="card__item">Architekturperspektive &amp; Migrationslogik</div>
+          <div class="card__item">Einordnung gegen klassische DWH-Muster</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
+        <span class="chip chip--teal">Architektur</span>
+        <span class="chip chip--teal">Migration</span>
+        <span class="chip chip--teal">BI/DWH</span>
+      </div>
+    </div>
+  </div>
+
+  <aside class="notes">
+    [SG] Mein Name ist Sebastian Gobst, Principal Consultant für Systemarchitektur bei DATA MART Consulting. Wir kommen klassisch aus der Welt der Data Warehouses und begleiten Kunden bei der Modernisierung in Richtung Open-Source-Lakehouse. Meine Rolle heute ist die Architekturperspektive: Zielbild, Migrationslogik, Abgrenzung von klassischen DWH-Mustern.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 3 — KVWL / YANNIK QUEISLER
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Die <span class="hl">KVWL</span> bringt die On-Premise-Implementierung, das durchgängige KI-/ML-Beispiel und die Lessons Learned ein.
+  </p>
+
+  <div class="speaker-layout flex-1">
+    <div style="text-align:center; flex-shrink:0;">
+      <div class="speaker-avatar">👤</div>
+      <div class="speaker-name" style="margin-top:10px;">Yannik Queisler</div>
+      <div class="speaker-title">Data Engineer, KVWL</div>
+    </div>
+
+    <div class="col flex-1">
+      <div class="card card--teal">
+        <div class="card__head"><span class="icon-tile">⚙</span> Schwerpunkt</div>
+        <div class="card__body">
+          <div class="card__item">Spark · Airflow · Delta Lake · ML Engineering</div>
+          <div class="card__item">Von der Datenbasis bis zur produktiven Anwendung</div>
+        </div>
+      </div>
+      <div class="card card--teal">
+        <div class="card__head"><span class="icon-tile">🎤</span> Rolle im Vortrag</div>
+        <div class="card__body">
+          <div class="card__item">KI-/ML-Teil: Patientenbildung als Leitbeispiel</div>
+          <div class="card__item">Lessons Learned aus dem Aufbau</div>
+        </div>
+      </div>
+      <div class="callout callout--teal" style="margin-top:4px;">
+        <div><strong>Leitmotiv:</strong> Erst Datenqualität und Plattform, dann konkrete ML-Nutzenfälle — kein unternehmensweiter Chatbot ohne belastbare Datenbasis.</div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="notes">
+    [YQ] Ich bin Yannik Queisler, Data Engineer bei der KVWL. Spark, Airflow, Delta Lake — und zunehmend ML Engineering. KI ist bei uns ein neues Handlungsfeld: wir führen es bewusst über greifbare Fachprozesse ein, nicht mit einem großen Chatbot auf wackeliger Datenbasis. Erst Datenqualität, dann Plattform, dann konkrete Nutzenfälle.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 4 — WARUM DIESES THEMA? (DAS VERSPRECHEN)
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Produktive KI scheitert selten am Modell — sondern an <span class="hl">Datenhistorie, Datenqualität</span> und <span class="hl">Reproduzierbarkeit</span>.
+  </p>
+
+  <!-- Iceberg metaphor -->
+  <div class="row flex-1" style="align-items:center; gap:24px;">
+    <div style="flex:1; position:relative;">
+      <!-- Iceberg SVG -->
+      <svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-height:230px;">
+        <!-- Water line -->
+        <rect x="0" y="130" width="280" height="4" fill="#7ab8cc" rx="2"/>
+        <!-- Tip above water -->
+        <polygon points="140,20 180,130 100,130" fill="#2a7d8f" opacity="0.9"/>
+        <!-- Underwater body -->
+        <polygon points="100,134 180,134 220,290 60,290" fill="#163848" opacity="0.85"/>
+        <!-- Labels on underwater section -->
+        <text x="140" y="175" text-anchor="middle" fill="white" font-size="11" font-weight="600">Datenhistorie</text>
+        <text x="140" y="197" text-anchor="middle" fill="white" font-size="11" font-weight="600">Verantwortlichkeiten</text>
+        <text x="140" y="219" text-anchor="middle" fill="white" font-size="11" font-weight="600">Datenqualität</text>
+        <text x="140" y="241" text-anchor="middle" fill="white" font-size="11" font-weight="600">Governance</text>
+        <text x="140" y="263" text-anchor="middle" fill="white" font-size="11" font-weight="600">Reproduzierbarkeit</text>
+        <!-- Tip label -->
+        <text x="140" y="82" text-anchor="middle" fill="white" font-size="11" font-weight="700">ML Modell</text>
+        <!-- Water label -->
+        <text x="240" y="126" fill="#7ab8cc" font-size="10">≈ Sichtbar</text>
+      </svg>
+    </div>
+
+    <div class="col flex-1" style="gap:10px;">
+      <div class="callout callout--amber">
+        Robuste DWH-Landschaften liefern stabile BI, aber ML erzeugt neue Anforderungen.
+      </div>
+      <div class="card">
+        <div class="card__head">Typische Spannungen</div>
+        <div class="card__body">
+          <div class="card__item">Governance vs. Iterationsgeschwindigkeit</div>
+          <div class="card__item">Reporting-Stabilität vs. Feature-Engineering</div>
+          <div class="card__item">Kuratierte Datenprodukte vs. rohe Historie</div>
+        </div>
+      </div>
+      <div class="callout callout--navy">
+        Gesundheitsdaten verschärfen die Anforderungen an Nachvollziehbarkeit.
+      </div>
+    </div>
+  </div>
+
+  <div class="leitsatz mt-auto">
+    „Der Engpass ist nicht das Modell, sondern eine Plattform, die <strong>reproduzierbare, validierbare Datenstände</strong> liefert — gezeigt an einem Problem, das man messen kann."
+  </div>
+
+  <aside class="notes">
+    [YQ] Wenn heute über KI gesprochen wird, geht es fast immer ums Modell. Unsere Erfahrung ist eine andere: Produktive KI scheitert selten am Modell. Sie scheitert an der Datenhistorie, der Datenqualität, unklaren Verantwortlichkeiten und fehlender Reproduzierbarkeit. [auf den Eisberg zeigen] Das Modell ist die sichtbare Spitze; der große Teil unter Wasser sind Daten, Historie, Governance. Deshalb unser Leitsatz: Der Engpass ist nicht das Modell — auf diesen Satz kommen wir am Ende zurück.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 5 — ABLAUF UND ZIELBILD
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Von der <span class="hl">Architektur</span> zur Umsetzung und zu einem <span class="hl">validierbaren KI-Leitbeispiel</span>.
+  </p>
+
+  <div class="stage-path flex-1" style="align-items:stretch; gap:8px;">
+    <div class="stage">
+      <div class="stage__head">Ausgangslage</div>
+      <div class="stage__body">SSIS-/DWH-Welt und uneinheitliche Lake-Zonen</div>
+    </div>
+    <div class="stage-arrow">→</div>
+    <div class="stage">
+      <div class="stage__head">Zielarchitektur</div>
+      <div class="stage__body">Multi-Zone-Functional Lakehouse &amp; Orchestrierung</div>
+    </div>
+    <div class="stage-arrow">→</div>
+    <div class="stage">
+      <div class="stage__head">Leitbeispiel</div>
+      <div class="stage__body">Patientenbildung (Record Linkage) &amp; Anomalieerkennung</div>
+    </div>
+    <div class="stage-arrow">→</div>
+    <div class="stage">
+      <div class="stage__head">Lessons Learned</div>
+      <div class="stage__body">Was hat sich bewährt, was bleibt schwierig?</div>
+    </div>
+  </div>
+
+  <div class="callout callout--teal" style="margin-top:16px;">
+    <strong>Roter Faden:</strong> Nutzen früh greifbar machen, ohne die Datenplattform zu überspringen.
+  </div>
+
+  <aside class="notes">
+    [YQ] Unser Weg: Wir starten bei der Ausgangslage — klassische SSIS- und DWH-Welt. Dann zeigt Sebastian die Zielarchitektur, das Multi-Zone-Functional Lakehouse. Danach übernehme ich mit dem Leitbeispiel: Patientenbildung als Record-Linkage- und Survivorship-Problem. Ein zweites Beispiel — Anomalieerkennung — streifen wir kürzer. Der rote Faden: Nutzen früh greifbar machen, ohne die Plattform zu überspringen.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 6 — AUSGANGSLAGE: VON SSIS ZU LAKEHOUSE
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Der Umbau startet nicht bei Tools, sondern bei der Frage, <span class="hl">wo welche Logik verantwortlich liegt</span>.
+  </p>
+
+  <div class="row flex-1" style="align-items:center; gap:24px;">
+    <div style="text-align:center; flex-shrink:0; width:180px;">
+      <div style="background:var(--panel); border-radius:var(--r); padding:20px; border: 2px solid var(--panel-dark);">
+        <div style="font-size:2.5em;">🏭</div>
+        <div style="font-weight:700; color:var(--navy); margin-top:8px; font-size:0.9em;">LEGACY SYSTEM</div>
+        <div style="font-size:0.78em; color:var(--ink-muted);">SSIS-Welt</div>
+      </div>
+    </div>
+
+    <div class="col flex-1" style="gap:10px;">
+      <div class="callout callout--navy">
+        <strong>Übergeordnetes Ziel:</strong> Datentransformationen aus der alten SSIS-Welt ablösen.
+      </div>
+      <div class="card">
+        <div class="card__head">🔍 Offene Leitfragen</div>
+        <div class="card__body">
+          <div class="card__item">Wo wird Logik implementiert — im Projekt und im Layer?</div>
+          <div class="card__item">Welche Technologie passt für welchen Schritt — PySpark, dbt, SQL?</div>
+          <div class="card__item">Welche Garantien darf ein Downstream-Consumer von einem Dataset erwarten?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="notes">
+    [SG] Der Ausgangspunkt war eine gewachsene SSIS- und DWH-Welt. Ziel: Transformationen ablösen. Aber der Umbau beginnt nicht bei Tools, sondern bei drei Leitfragen: Wo liegt welche Logik? Welche Technologie passt? Welche Garantien darf ein Consumer erwarten? Wenn man diese Fragen nicht beantwortet, bekommt man genau die Probleme, die wir hatten.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 7 — PROBLEM DER ALTEN ZONENLOGIK
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Uneinheitliche <span class="hl">Layer-Verantwortlichkeiten</span> erzeugen kognitive Last, doppelte Logik und schwache Garantien.
+  </p>
+
+  <div class="flex-1" style="display:flex; flex-direction:column; gap:12px; justify-content:center;">
+    <!-- Chaos zone diagram -->
+    <div style="position:relative; background:var(--bg-soft); border-radius:var(--r); padding:16px; border:2px solid var(--panel-dark);">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+        <div class="card--warn" style="background:var(--amber-light); border-radius:var(--r-sm); padding:10px 12px; border:2px solid var(--amber);">
+          <div style="font-weight:700; font-size:0.82em; color:var(--amber);">Landing Zone</div>
+          <div style="font-size:0.76em; color:var(--ink-muted); margin-top:4px;">Gleichzeitig temporäre Ablage <em>und</em> Archiv</div>
+        </div>
+        <div class="card--warn" style="background:var(--amber-light); border-radius:var(--r-sm); padding:10px 12px; border:2px solid var(--amber);">
+          <div style="font-weight:700; font-size:0.82em; color:var(--amber);">Staging Zone</div>
+          <div style="font-size:0.76em; color:var(--ink-muted); margin-top:4px;">Nur sporadisch genutzt, unterschiedliche Formate</div>
+        </div>
+        <div class="card--warn" style="background:var(--amber-light); border-radius:var(--r-sm); padding:10px 12px; border:2px solid var(--amber);">
+          <div style="font-weight:700; font-size:0.82em; color:var(--amber);">History Zone</div>
+          <div style="font-size:0.76em; color:var(--ink-muted); margin-top:4px;">Teils Rohhistorie, teils Standardisierung, teils Fachlogik</div>
+        </div>
+        <div class="card--warn" style="background:var(--amber-light); border-radius:var(--r-sm); padding:10px 12px; border:2px solid var(--amber);">
+          <div style="font-weight:700; font-size:0.82em; color:var(--amber);">Analysis Zone</div>
+          <div style="font-size:0.76em; color:var(--ink-muted); margin-top:4px;">Stark von SSIS-/Altprozessen geprägt</div>
+        </div>
+      </div>
+      <!-- Chaos arrows -->
+      <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;" viewBox="0 0 400 160">
+        <g stroke="#c94040" stroke-width="2" fill="none" opacity="0.4" stroke-dasharray="6,4">
+          <path d="M200 60 Q280 80 200 100"/>
+          <path d="M100 40 Q200 120 300 60"/>
+          <path d="M300 100 Q150 50 100 120"/>
+          <path d="M150 80 Q350 40 250 130"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="callout callout--red">
+      <strong>Konsequenz:</strong> Unklare Codelokalisierung, extrem aufwendiges Reprocessing und hoher Bus-Faktor.
+    </div>
+  </div>
+
+  <aside class="notes">
+    [SG] Auf dem Papier gab es Zonen — aber ihre Verantwortlichkeiten waren unscharf. [auf die chaotischen Pfeile zeigen] Man wusste nicht, wo eine Logik liegt, Reprocessing wurde zur Qual, und der Bus-Faktor war hoch. Genau das wollten wir auflösen.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 8 — LAKEHOUSE-PRINZIP FÜR DIE KVWL
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Lakehouse heißt hier: <span class="hl">offene Speicherung</span> plus <span class="hl">Warehouse-Garantien</span> für BI und ML.
+  </p>
+
+  <div class="three-col flex-1" style="align-items:center;">
+    <!-- Data Lake -->
+    <div class="card" style="border-top:3px solid var(--steel);">
+      <div class="card__head" style="background:linear-gradient(135deg, var(--steel), #9fb8c5);">Data Lake</div>
+      <div class="card__body">
+        <div class="card__item">Offene Speicherung</div>
+        <div class="card__item">Semi-strukturierte Daten</div>
+        <div class="card__item">Flexibilität</div>
+      </div>
+    </div>
+
+    <!-- Arrow + Lakehouse center -->
+    <div style="text-align:center;">
+      <div style="font-size:1.5em; color:var(--teal); font-weight:700; margin-bottom:8px;">⇒</div>
+      <div class="card" style="border:2px solid var(--teal);">
+        <div class="card__head">🏠 Lakehouse</div>
+        <div class="card__body">
+          <div class="card__item">Einheitlicher Speicher für alle Datenformen</div>
+          <div class="card__item">Paralleler Lese-/Schreibzugriff über Delta Lake</div>
+          <div class="card__item">DataHub als zentrale Governance-Brücke</div>
+        </div>
+      </div>
+      <div style="font-size:1.5em; color:var(--teal); font-weight:700; margin-top:8px;">⇐</div>
+    </div>
+
+    <!-- Data Warehouse -->
+    <div class="card" style="border-top:3px solid var(--navy);">
+      <div class="card__head" style="background:linear-gradient(135deg, var(--navy-deep), var(--navy));">Data Warehouse</div>
+      <div class="card__body">
+        <div class="card__item">ACID Garantien</div>
+        <div class="card__item">Schema-Validierung</div>
+        <div class="card__item">Zugriffskontrolle</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout--teal mt-auto">
+    BI, Analytics und ML auf derselben Plattform — ohne redundante Schatten-ETL.
+  </div>
+
+  <aside class="notes">
+    [SG] Lakehouse bedeutet bei uns: Offenheit eines Data Lake, kombiniert mit Warehouse-Garantien. ACID-Tabellen und Lese-/Schreibzugriff über Delta Lake, Schema-Validierung, Metadatenkatalog, Lineage und Zugriffskontrolle. DataHub als Governance-Brücke. Der entscheidende Effekt: BI, Analytics und ML auf derselben Plattform, ohne Schatten-ETL.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 9 — ZIELARCHITEKTUR: MULTI-ZONE-FUNCTIONAL (ZONEN-MAP)
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Die neue Architektur definiert Zonen über <span class="hl">Funktionen und Verträge</span>, nicht über historisch gewachsene Namen.
+  </p>
+
+  <!-- Canonical Zone Map -->
+  <div style="flex:1; display:flex; flex-direction:column; gap:10px; justify-content:center;">
+    <div style="font-size:0.8em; font-weight:700; color:var(--ink-muted); margin-bottom:4px;">Zone Map</div>
+
+    <div style="display:flex; gap:0; border-radius:var(--r); overflow:hidden; border:2px solid var(--panel-dark);">
+      <div class="zone zone--landing" style="flex:1; padding:14px 16px;">
+        <div class="zone__label">Landing Zone</div>
+        <div style="font-size:0.78em; color:var(--ink-muted);">Optional und transient</div>
+      </div>
+      <div style="display:flex; align-items:center; padding:0 4px; background:var(--bg-soft);">
+        <span style="color:var(--navy); font-weight:900; font-size:1.2em;">→</span>
+      </div>
+      <div class="zone zone--raw" style="flex:1.2; padding:14px 16px;">
+        <div class="zone__label">Raw Zone</div>
+        <div style="font-size:0.78em; color:var(--ink-muted);">Unveränderliche Rohdatenhistorie</div>
+      </div>
+      <div style="display:flex; align-items:center; padding:0 4px; background:var(--bg-soft);">
+        <span style="color:var(--navy); font-weight:900; font-size:1.2em;">→</span>
+      </div>
+      <div class="zone zone--process" style="flex:1.2; padding:14px 16px;">
+        <div class="zone__label">Process Zone</div>
+        <div style="font-size:0.78em; color:var(--ink-muted);">Technische Qualität &amp; Standardisierung</div>
+      </div>
+      <div style="display:flex; align-items:center; padding:0 4px; background:var(--bg-soft);">
+        <span style="color:var(--navy); font-weight:900; font-size:1.2em;">→</span>
+      </div>
+      <div class="zone zone--access" style="flex:1.2; padding:14px 16px;">
+        <div class="zone__label">Access Zone</div>
+        <div style="font-size:0.78em; color:var(--ink-muted);">Fachliche Datenprodukte für BI, Analytics &amp; ML</div>
+      </div>
+    </div>
+
+    <!-- Vertical governance bars below -->
+    <div style="display:flex; gap:6px; margin-top:4px;">
+      <div style="flex:1; background:linear-gradient(90deg, var(--teal), var(--teal-light)); border-radius:var(--r-sm); padding:8px 12px; color:white; font-size:0.78em; font-weight:600; text-align:center;">
+        ⚙ Orchestrierung (Airflow)
+      </div>
+      <div style="flex:1; background:linear-gradient(90deg, var(--navy), var(--teal-deep)); border-radius:var(--r-sm); padding:8px 12px; color:white; font-size:0.78em; font-weight:600; text-align:center;">
+        🔒 Governance / Lineage (DataHub)
+      </div>
+    </div>
+
+    <div class="callout callout--teal">
+      <strong>Prinzip:</strong> Jede Zone hat eine klar definierte Aufgabe und ein unverhandelbares <strong>Versprechen</strong> an die nächste Schicht.
+    </div>
+  </div>
+
+  <aside class="notes">
+    [SG] Das hier ist das zentrale Bild des Vortrags — merken Sie es sich, es kommt später im ML-Teil immer wieder. Landing: optional und transient. Raw: unveränderliche Rohdatenhistorie. Process: technische Qualität und Standardisierung. Access: fachliche Datenprodukte. Horizontal die Zonen mit klaren Verträgen, vertikal Orchestrierung und Governance durch alle Schichten.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 10 — LANDING UND RAW ZONE
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Rohdatenhistorie ist die Grundlage für Audits, Reprocessing und <span class="hl">reproduzierbare ML-Datenstände</span>.
+  </p>
+
+  <!-- Mini zone map -->
+  <div class="zone-map-mini">
+    <div class="zm-zone zm-landing active">Landing</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-raw active">Raw</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-process">Process</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-access">Access</div>
+  </div>
+
+  <div class="two-col flex-1" style="margin-top:8px;">
+    <div class="card">
+      <div class="card__head">Landing Zone</div>
+      <div class="card__body">
+        <div class="card__item">Kurzlebig und optional</div>
+        <div class="card__item">Keine Transformationen</div>
+        <div class="card__item">Automatische Bereinigung nach kurzer Aufbewahrung</div>
+      </div>
+    </div>
+
+    <div class="card card--teal">
+      <div class="card__head">Raw Zone — System of Record</div>
+      <div class="card__body">
+        <div class="card__item">Langfristige Historisierung, Append-only</div>
+        <div class="card__item">Quellnah, Schema-on-Read</div>
+        <div class="card__item">Technische Metadaten: Quelle, Pfad, Ladezeitpunkt, Checksumme</div>
+        <div class="card__item">Nur minimale Validierung: Parsbarkeit, Existenz, Größe</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout--green mt-auto">
+    Eine <strong>unveränderliche Append-Only-Historie</strong> garantiert, dass jeder ML-Trainingsstand exakt reproduziert werden kann.
+  </div>
+
+  <aside class="notes">
+    [SG] Die Landing Zone ist bewusst kurzlebig. Die Raw Zone ist unser System of Record — langfristig historisiert, append-only, quellnah. Wir schreiben technische Metadaten mit und validieren nur minimal. Warum so streng? Weil eine unveränderliche, append-only Historie bedeutet: Wir können jederzeit exakt denselben Datenstand wiederherstellen. Das ist die Grundlage für reproduzierbare Datenstände — Yannik wird drei Algorithmen gegen exakt denselben Raw-Stand testen.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 11 — PROCESS ZONE
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    In der <span class="hl">Process Zone</span> wird aus historisierten Rohdaten eine technisch verlässliche Grundlage.
+  </p>
+
+  <div class="zone-map-mini">
+    <div class="zm-zone zm-landing">Landing</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-raw">Raw</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-process active">Process</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-access">Access</div>
+  </div>
+
+  <div class="two-col flex-1" style="margin-top:8px;">
+    <div class="card card--good">
+      <div class="card__head" style="background:linear-gradient(135deg,var(--green),#3ab870);">✓ Erlaubt (Technische Qualität)</div>
+      <div class="card__body">
+        <div class="card__item">Standardisierung von Formaten und Datentypen</div>
+        <div class="card__item">Delta Lake als robustes Tabellenformat</div>
+        <div class="card__item">Bereinigung: fehlende Werte, Inkonsistenzen, Deduplikation</div>
+        <div class="card__item">Schema-Evolution &amp; Provenienz</div>
+        <div class="card__item">Dataset-unabhängige Standardisierungslogik</div>
+      </div>
+    </div>
+
+    <div class="card card--bad">
+      <div class="card__head" style="background:linear-gradient(135deg,var(--red),#d65555);">✗ Verboten (Fachlichkeit)</div>
+      <div class="card__body">
+        <div class="card__item">Verbraucherspezifische Denormalisierung</div>
+        <div class="card__item">Fachliche Marts</div>
+        <div class="card__item">Logik auf Sub-Granularität der Quell-Datasets</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout--teal mt-auto">
+    <strong>Data Contract:</strong> Process liefert technisch sauber — fachliche Semantik gehört eine Zone weiter.
+  </div>
+
+  <aside class="notes">
+    [SG] Die Process Zone: Standardisierung von Formaten und Datentypen, Delta Lake als Tabellenformat, technische Bereinigung. Was erlaubt ist und was verboten ist, steht im Data Contract. Sobald man Fachlogik in die Process Zone schmuggelt, hat man wieder den Mischmasch von vorhin.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 12 — ACCESS ZONE UND DATENPRODUKTE
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Die <span class="hl">Access Zone</span> ist der Ort für fachliche Semantik, konsumierbare Datenprodukte und Feature Sets.
+  </p>
+
+  <div class="zone-map-mini">
+    <div class="zm-zone zm-landing">Landing</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-raw">Raw</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-process">Process</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-access active">Access</div>
+  </div>
+
+  <div class="three-col flex-1" style="margin-top:8px;">
+    <div class="card">
+      <div class="card__head">📊 Star Schemas</div>
+      <div class="card__body">
+        <div class="card__item">Fachliche Transformationen</div>
+        <div class="card__item">Aggregationen &amp; Metriken</div>
+        <div style="font-size:0.75em; color:var(--ink-muted); padding:6px 0;">Für BI &amp; Reporting</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card__head">📋 Wide Tables</div>
+      <div class="card__body">
+        <div class="card__item">Denormalisierte Analytics-Tabellen</div>
+        <div class="card__item">Dokumentierte Metrikdefinitionen</div>
+        <div style="font-size:0.75em; color:var(--ink-muted); padding:6px 0;">Für Analytics</div>
+      </div>
+    </div>
+    <div class="card card--teal">
+      <div class="card__head">🤖 ML Feature Sets</div>
+      <div class="card__body">
+        <div class="card__item">Feature Engineering</div>
+        <div class="card__item">Serving-nahe Tabellen für ML</div>
+        <div style="font-size:0.75em; color:var(--ink-muted); padding:6px 0;">Für ML Modelle</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout--navy mt-auto">
+    <ul class="bullets bullets--compact" style="margin:0;">
+      <li>Dokumentierte Metrikdefinitionen, SLOs und fachliche Granularität</li>
+      <li>Versionierung bei Breaking Changes, parallele Auslaufphasen</li>
+      <li>Keine Rückkopplung in Raw oder Process (außer dokumentierten Backfills)</li>
+    </ul>
+  </div>
+
+  <aside class="notes">
+    [SG] Die Access Zone: fachliche Transformationen, Aggregationen, Star Schemas, Wide Tables, Feature Engineering und serving-nahe Tabellen für ML. Echte Datenprodukte mit SLOs und Metrikdefinitionen. Versionierung bei Breaking Changes. Klare Regel: keine Rückkopplung zurück in Raw oder Process.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 13 — TECHNOLOGIEENTSCHEIDUNGEN
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Der Stack trennt <span class="hl">technische Verarbeitung</span> und <span class="hl">fachliche Modellierung</span> klarer als vorher.
+  </p>
+
+  <div class="zone-map-mini">
+    <div class="zm-zone zm-landing active">Landing</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-raw active">Raw</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-process active">Process</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-access active">Access</div>
+  </div>
+
+  <div style="display:flex; gap:12px; flex:1; margin-top:8px;">
+    <!-- Zone column with tools -->
+    <div style="flex:1; display:flex; flex-direction:column; gap:8px;">
+      <div class="card" style="border-top:3px solid var(--steel);">
+        <div class="card__head" style="background:linear-gradient(135deg,var(--steel),#9fb8c5);">Landing → Raw</div>
+        <div class="card__body">
+          <div class="card__item"><span class="chip chip--teal">PySpark</span> Ingestion &amp; Standardisierung</div>
+          <div class="card__item"><span class="chip chip--teal">Delta Lake</span> ACID, Time Travel</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__head">Process → Access</div>
+        <div class="card__body">
+          <div class="card__item"><span class="chip chip--teal">dbt</span> Fachliche Modelle, Tests, Lineage</div>
+          <div class="card__item"><span class="chip chip--navy">Hive Metastore</span> Zentraler Tabellenzugriff</div>
+        </div>
+      </div>
+    </div>
+    <!-- Governance column -->
+    <div style="width:220px; display:flex; flex-direction:column; gap:8px;">
+      <div class="card card--teal" style="flex:1;">
+        <div class="card__head">🔒 Governance (alle Zonen)</div>
+        <div class="card__body">
+          <div class="card__item"><strong>DataHub</strong></div>
+          <div class="card__item">Catalog &amp; Discovery</div>
+          <div class="card__item">Ownership &amp; Lineage</div>
+          <div class="card__item">Data Contracts</div>
+        </div>
+      </div>
+      <div class="callout callout--teal" style="font-size:0.78em;">
+        <strong>Prinzip:</strong> Erst einfache, containerisierte Services — Architektur migrationsfähig Richtung Kubernetes.
+      </div>
+    </div>
+  </div>
+
+  <aside class="notes">
+    [SG] PySpark für Ingestion, Standardisierung, große Datenmengen und komplexe Algorithmen. dbt für fachliche Modelle in der Access Zone — Tests, Dokumentation, Lineage. Delta Lake als Tabellenformat durch alle Zonen. Hive Metastore für zentralen Tabellenzugriff. DataHub als Brücke zwischen technischen Tabellen und fachlicher Nutzbarkeit. Prinzip: erst einfache, containerisierte Services — und Architektur so schneiden, dass spätere Migration Richtung Kubernetes möglich bleibt.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 14 — ORCHESTRIERUNG, GOVERNANCE UND PIPELINE-VERTRÄGE
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Reproduzierbarkeit entsteht erst, wenn <span class="hl">Jobs, Abhängigkeiten und Metadaten</span> nahtlos orchestriert werden.
+  </p>
+
+  <!-- Zone strip with DAG -->
+  <div style="flex:1; display:flex; flex-direction:column; gap:12px; justify-content:center;">
+    <div style="display:flex; align-items:center; gap:0; background:var(--bg-soft); border-radius:var(--r); padding:14px 16px; border:2px solid var(--panel-dark);">
+      <div style="text-align:center; flex:1;">
+        <div class="zone__label" style="background:var(--steel); color:white; border-radius:var(--r-sm); display:inline-block; padding:5px 12px; font-size:0.82em; font-weight:700;">Landing</div>
+      </div>
+      <div style="font-size:2em; color:var(--teal); padding:0 4px; font-weight:900;">→</div>
+      <div style="text-align:center; flex:1;">
+        <div class="zone__label" style="background:var(--teal-deep); color:white; border-radius:var(--r-sm); display:inline-block; padding:5px 12px; font-size:0.82em; font-weight:700;">Raw</div>
+      </div>
+      <!-- Quality gate -->
+      <div style="font-size:1.4em; padding:0 6px; color:var(--green);">🔒</div>
+      <div style="text-align:center; flex:1;">
+        <div class="zone__label" style="background:var(--teal); color:white; border-radius:var(--r-sm); display:inline-block; padding:5px 12px; font-size:0.82em; font-weight:700;">Process</div>
+      </div>
+      <div style="font-size:1.4em; padding:0 6px; color:var(--green);">🔒</div>
+      <div style="text-align:center; flex:1;">
+        <div class="zone__label" style="background:var(--navy); color:white; border-radius:var(--r-sm); display:inline-block; padding:5px 12px; font-size:0.82em; font-weight:700;">Access</div>
+      </div>
+    </div>
+
+    <!-- Airflow DAG label -->
+    <div style="text-align:center; font-size:0.8em; font-weight:700; color:var(--teal); letter-spacing:0.05em;">⚙ Airflow DAG</div>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="card__head">Pipeline-Metadaten pro Lauf</div>
+        <div class="card__body">
+          <div class="card__item">Quelle, Zeitraum, Extraktzeitpunkt</div>
+          <div class="card__item">Row Counts, Checksummen, Status</div>
+        </div>
+      </div>
+      <div class="card card--good">
+        <div class="card__head" style="background:linear-gradient(135deg,var(--green),#3ab870);">Quality Gates</div>
+        <div class="card__body">
+          <div class="card__item">Verhindern, dass unkontrollierte Transformationen von einer Zone in die nächste rutschen</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="notes">
+    [SG] Airflow als Steuerungsschicht über Ingestion, Processing und Access-Produkte. DAGs machen Abhängigkeiten, Wiederanläufe und Scheduling explizit. Pro Lauf: Pipeline-Metadaten. DataHub bleibt der sichtbare Governance-Layer. Zwischen den Layern sitzen Quality Gates — [auf die Schlösser zeigen] — sodass keine Transformation unkontrolliert von einer Zone in die nächste rutscht.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 15 — BETRIEBSMODELL: EINFACH STARTEN, SAUBER WACHSEN
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Enterprise-Grade Lakehouse funktioniert auch <span class="hl">ohne sofortige Kubernetes-Komplexität</span>.
+  </p>
+
+  <div class="zone-map-mini">
+    <div class="zm-zone zm-landing">Landing</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-raw">Raw</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-process">Process</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-access">Access</div>
+  </div>
+
+  <div style="flex:1; display:flex; gap:16px; align-items:center; margin-top:8px;">
+    <div class="col" style="flex:1; gap:10px;">
+      <div class="card">
+        <div class="card__head">🚀 Startpunkt KVWL</div>
+        <div class="card__body">
+          <div class="card__item">3 Red-Hat-Umgebungen: dev · test · prod</div>
+          <div class="card__item">Podman / systemctl für Containerisierung</div>
+          <div class="card__item">Sehr kleiner Admin-Footprint</div>
+        </div>
+      </div>
+      <div class="card card--good">
+        <div class="card__head" style="background:linear-gradient(135deg,var(--green),#3ab870);">✓ Ergebnis</div>
+        <div class="card__body">
+          <div class="card__item">Verarbeitung im Terabyte-Maßstab bereits mit einfachem Setup</div>
+          <div class="card__item">Klare Umgebungen, reproduzierbare Container</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Maturity arrow -->
+    <div style="text-align:center; padding:0 8px;">
+      <div style="font-size:2.5em; color:var(--teal);">⟶</div>
+      <div style="font-size:0.75em; color:var(--ink-muted); margin-top:4px;">Schrittweiser Umzug<br>ohne Architekturbruch</div>
+    </div>
+
+    <div class="card" style="flex:1;">
+      <div class="card__head">🎯 Zielbild</div>
+      <div class="card__body">
+        <div class="card__item">Unternehmensweites Kubernetes vorhanden</div>
+        <div class="card__item">Gleiche Container — kein Bruch</div>
+        <div class="card__item">Skalierung im Terabyte-Maßstab</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout--teal mt-auto">
+    <strong>Lesson:</strong> So simpel wie möglich starten und die technische Reife gezielt ausbauen.
+  </div>
+
+  <aside class="notes">
+    [SG] Enterprise-grade Lakehouse heißt nicht, dass man am ersten Tag ein Kubernetes-Cluster braucht. Wir sind mit drei Red-Hat-Umgebungen gestartet, mit Podman und systemctl, kleinem Admin-Footprint. Inzwischen gibt es unternehmensweites Kubernetes — schrittweiser Umzug ohne großen Architekturbruch, weil alles sauber containerisiert war. Die Plattform steht. Yannik, was lässt sich darauf bauen?
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 16 — WAS PRODUKTIVES ML VOM LAKEHOUSE BRAUCHT
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Der Engpass ist selten der Modellaufruf, sondern <span class="hl">fachlich verstandene, governancefähige Datenstände</span>.
+  </p>
+
+  <div class="zone-map-mini">
+    <div class="zm-zone zm-landing">Landing</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-raw">Raw</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-process active">Process</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-access active">Access</div>
+  </div>
+
+  <div class="two-col flex-1" style="margin-top:8px;">
+    <div>
+      <div class="section-label">Was Machine Learning zwingend braucht:</div>
+      <ul class="bullets bullets--large" style="margin-top:8px;">
+        <li>Konsistente Trainings- und Scoring-Daten</li>
+        <li>Stabile Entitäten (Patient, Praxis, Honorargruppe, Quartal)</li>
+        <li>Nachvollziehbare Feature-Definitionen</li>
+        <li>Auditierbarkeit &amp; Data Lineage</li>
+        <li>Datenqualitätschecks vor Modelltraining</li>
+        <li>Daten- und Code-Versionierung</li>
+      </ul>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:8px;">
+      <div class="callout callout--teal">
+        Jede Anforderung hängt an einer Zone der Lakehouse-Architektur.
+      </div>
+      <div class="card card--teal">
+        <div class="card__head">🎯 Stabiles Element: Entitäten</div>
+        <div class="card__body">
+          <div class="card__item">Stabile Patient-IDs = Grundlage für alle ML Use Cases</div>
+          <div class="card__item">→ Das ist unser Einstieg ins Leitbeispiel</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="notes">
+    [YQ] Danke, Sebastian. Die Plattform steht — jetzt zeigen wir an einem echten Fachproblem, was sie ermöglicht. Was Machine Learning wirklich braucht: konsistente Daten, stabile Entitäten, nachvollziehbare Features, Auditierbarkeit, Qualitätschecks, Versionierung und Lineage. Und das stabilste Element ganz oben — stabile Entitäten — ist unser Einstieg.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 17 — PATIENTENBILDUNG ALS PATIENT RECORD LINKAGE
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Patientenbildung ist im Kern ein <span class="hl">Patient-Record-Linkage-Problem</span> — und verbindet fachlichen Nutzen mit messbarer Validierung.
+  </p>
+
+  <div class="zone-map-mini">
+    <div class="zm-zone zm-landing">Landing</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-raw active">Raw</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-process">Process</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-access">Access</div>
+  </div>
+
+  <div class="row flex-1" style="align-items:center; gap:20px; margin-top:8px;">
+    <!-- Source records flowing to person -->
+    <div style="flex:1.2;">
+      <div style="display:flex; flex-direction:column; gap:6px;">
+        <div class="card" style="border-left:3px solid var(--steel);">
+          <div class="card__body" style="padding:7px 12px;">
+            <div style="font-size:0.78em;"><strong>ABR1:</strong> Müller, Hans, 1980-03-12, EGK 123456</div>
+          </div>
+        </div>
+        <div class="card" style="border-left:3px solid var(--steel);">
+          <div class="card__body" style="padding:7px 12px;">
+            <div style="font-size:0.78em;"><strong>ABR2:</strong> Mueller, H., 1980-03-12, PLZ 44139</div>
+          </div>
+        </div>
+        <div class="card" style="border-left:3px solid var(--steel);">
+          <div class="card__body" style="padding:7px 12px;">
+            <div style="font-size:0.78em;"><strong>KVUEPP:</strong> Müller, Hans-Peter, geb. 12.03.1980</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; font-size:2em; color:var(--teal); font-weight:900;">→</div>
+
+    <div style="flex:1; text-align:center;">
+      <div style="background:linear-gradient(135deg,var(--teal-deep),var(--teal)); color:white; border-radius:50%; width:110px; height:110px; display:flex; flex-direction:column; align-items:center; justify-content:center; margin:0 auto 8px; font-size:2.2em; border:4px solid var(--teal-light);">👤</div>
+      <div style="font-weight:700; color:var(--navy);">Person</div>
+      <div style="font-size:0.78em; color:var(--teal); font-family:monospace; margin-top:4px;">ID: 12456-STABLE</div>
+      <div class="chip chip--green" style="margin-top:6px;">Status: Validiert</div>
+    </div>
+  </div>
+
+  <div class="callout callout--teal mt-auto">
+    Ziel: <strong>Stabile Patient-Pseudo-IDs</strong> als Grundlage für Analysen und nachgelagerte ML-Use-Cases · Framing: klassisches ML ist oft der kürzeste Weg zu messbarem Nutzen auf strukturierten Daten.
+  </div>
+
+  <aside class="notes">
+    [YQ] Unser Leitbeispiel: Patientenbildung. Der entscheidende Schritt war zu erkennen — das ist kein KVWL-Sonderfall, sondern ein bekanntes Forschungsproblem: Patient Record Linkage. Dieselbe Person in mehreren Quellen mit leicht abweichenden Schreibweisen, zusammenführen zu stabilen Patient-Pseudo-IDs. Das Problem ist messbar — über ein synthetisches Dataset mit echter Ground Truth.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 18 — FALSE MERGES: STAKES
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    <span class="hl-red">Fehlverschmelzungen (False Merges)</span> bergen reale medizinische Risiken.
+  </p>
+
+  <div class="two-col flex-1" style="align-items:center;">
+    <!-- False Merge -->
+    <div class="card card--bad" style="padding:0;">
+      <div class="card__head" style="background:linear-gradient(135deg,var(--red),#d65555);">⚠ The Stakes: False Merge</div>
+      <div class="card__body">
+        <div style="display:flex; gap:8px; align-items:center; padding:8px 0;">
+          <div style="text-align:center; font-size:0.8em;">
+            <div style="font-size:1.8em;">👤</div>
+            <div>Müller, geb. 1980</div>
+          </div>
+          <div style="color:var(--red); font-size:1.5em; font-weight:900;">+</div>
+          <div style="text-align:center; font-size:0.8em;">
+            <div style="font-size:1.8em;">👤</div>
+            <div>Müller, geb. 1980</div>
+          </div>
+          <div style="color:var(--red); font-size:1.5em; font-weight:900;">→</div>
+          <div style="text-align:center; font-size:0.8em; color:var(--red);">
+            <div style="font-size:2em;">⚠</div>
+            <div style="font-weight:700;">1 Akte!</div>
+          </div>
+        </div>
+        <ul class="bullets" style="margin-top:6px;">
+          <li>Zwei verschiedene Personen werden fälschlich verschmolzen</li>
+          <li>Falsche medizinische Zuordnung — Hohes Risiko</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Split -->
+    <div class="card card--warn" style="padding:0;">
+      <div class="card__head" style="background:linear-gradient(135deg,var(--amber),#d99e30);">The Stakes: Split</div>
+      <div class="card__body">
+        <div style="display:flex; gap:8px; align-items:center; padding:8px 0;">
+          <div style="text-align:center; font-size:0.8em;">
+            <div style="font-size:1.8em;">👤</div>
+            <div>Müller, geb. 1980</div>
+          </div>
+          <div style="color:var(--amber); font-size:1.5em; font-weight:900;">→</div>
+          <div style="text-align:center; font-size:0.8em;">
+            <div style="font-size:1em;">👤<br>👤</div>
+            <div>2 Akten</div>
+          </div>
+        </div>
+        <ul class="bullets" style="margin-top:6px;">
+          <li>Eine Person zerfällt in mehrere Akten</li>
+          <li>Medizinisch weniger riskant — Niedrigeres Risiko</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout--red mt-auto" style="text-align:center;">
+    <strong>Diese Asymmetrie zwingt uns zu extrem hoher Präzision.</strong>
+  </div>
+
+  <aside class="notes">
+    [YQ, langsamer] Wenn wir zwei Datensätze fälschlich zusammenführen, die zu zwei verschiedenen Menschen gehören — false merge —, werden die medizinischen Daten zweier Personen vermischt. Das ist nicht nur eine Zahl in einer Metrik, das ist ein echtes Risiko. Der split ist umgekehrt: eine Person zerfällt in mehrere Akten — ärgerlich, aber weniger gefährlich. Diese Asymmetrie ist der Grund, warum wir das Problem präzise lösen müssen.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 19 — DAS BESTEHENDE DETERMINISTISCHE MODELL
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Der erste Schritt war <span class="hl">saubere Dokumentation</span> der bestehenden deterministischen Logik.
+  </p>
+
+  <div class="zone-map-mini">
+    <div class="zm-zone zm-landing">Landing</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-raw">Raw</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-process active">Process</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-access">Access</div>
+  </div>
+
+  <div class="two-col flex-1" style="margin-top:8px; align-items:center;">
+    <!-- Cascade diagram -->
+    <div>
+      <div class="section-label" style="margin-bottom:8px;">Sequentielle Matching-Kaskade</div>
+      <div class="cascade">
+        <div class="cascade-rule">
+          <div class="rule-box">Match: EGK + Geburtsdatum</div>
+          <div class="cascade-outcome">✓ Match</div>
+        </div>
+        <div style="font-size:0.75em; color:var(--ink-muted); padding:2px 0 2px 16px;">↓ Kein Match</div>
+        <div class="cascade-rule">
+          <div class="rule-box">Match: EGK + Vorname + Nachname</div>
+          <div class="cascade-outcome">✓ Match</div>
+        </div>
+        <div style="font-size:0.75em; color:var(--ink-muted); padding:2px 0 2px 16px;">↓ Kein Match</div>
+        <div class="cascade-rule">
+          <div class="rule-box">Match: Vorname + Nachname + Geburtsdatum + PLZ</div>
+          <div class="cascade-outcome">✓ Match</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card--teal">
+      <div class="card__head">Eigenschaften der Baseline</div>
+      <div class="card__body">
+        <div class="card__item">Sequentielle Matching-Kaskade</div>
+        <div class="card__item">Neue Patientencluster über transitive Closure</div>
+        <div class="card__item">Keine erneute Bewertung bereits gematchter Records</div>
+        <div class="card__item">Lookup-Tabelle für künftige Läufe</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout--navy mt-auto" style="font-size:0.8em;">
+    <code>M20_HIS_P_01AB000_PATIENTENBILDUNG</code> — sauberes Dokumentieren machte Stärken und Grenzen präzise benennbar.
+  </div>
+
+  <aside class="notes">
+    [YQ] Der erste Schritt war nicht Modellbau, sondern Verstehen. Eine Stored Procedure — sequentielle Matching-Kaskade mit drei Regeln. Wer einmal gematcht ist, wird nicht erneut bewertet. Neue Cluster über transitive Closure. Diese drei Regeln kommen gleich als Baseline zurück — merken Sie sie sich kurz.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 20 — RECHERCHE- UND EVALUATIONSVORGEHEN
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Ausführliche Recherche lohnt sich, bevor man einen produktiven Fachprozess durch ML <span class="hl">ersetzt oder ergänzt</span>.
+  </p>
+
+  <!-- 4-step path -->
+  <div class="stage-path" style="gap:6px; margin-bottom:14px;">
+    <div class="stage">
+      <div class="stage__head">1. Verstehen</div>
+      <div class="stage__body">Prozess + SQL dokumentieren</div>
+    </div>
+    <div class="stage-arrow" style="padding-top:8px; font-size:1.3em;">→</div>
+    <div class="stage">
+      <div class="stage__head">2. Abstrahieren</div>
+      <div class="stage__body">Als Record Linkage framen</div>
+    </div>
+    <div class="stage-arrow" style="padding-top:8px; font-size:1.3em;">→</div>
+    <div class="stage">
+      <div class="stage__head">3. Recherchieren</div>
+      <div class="stage__body">State-of-the-Art evaluieren</div>
+    </div>
+    <div class="stage-arrow" style="padding-top:8px; font-size:1.3em;">→</div>
+    <div class="stage">
+      <div class="stage__head">4. Implementieren</div>
+      <div class="stage__body">Verfahren implementieren &amp; evaluieren</div>
+    </div>
+  </div>
+
+  <!-- Three contenders -->
+  <div class="section-label">Three Contenders</div>
+  <div class="three-col" style="margin-top:8px; flex:1;">
+    <div class="card">
+      <div class="card__head">1. Current Model</div>
+      <div class="card__body">
+        <div style="font-size:0.8em; color:var(--ink-muted);">Deterministische Kaskade (Baseline)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card__head">2. Hybrid Cascade</div>
+      <div class="card__body">
+        <div style="font-size:0.8em; color:var(--ink-muted);">Fuzzy Fallbacks auf exakten Matches</div>
+      </div>
+    </div>
+    <div class="card card--teal">
+      <div class="card__head">3. FlexRL</div>
+      <div class="card__body">
+        <div style="font-size:0.8em; color:var(--ink-muted);">Probabilistisches Modell (Robach et al. 2024)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout--teal mt-auto">
+    <strong>Lesson:</strong> Fachprozesse an Community Standards ausrichten öffnet die Tür für etablierte Forschung.
+  </div>
+
+  <aside class="notes">
+    [YQ] Unser Vorgehen war bewusst gründlich: erst verstehen, dann abstrahieren, dann State-of-the-Art recherchieren, dann implementieren und evaluieren. Drei Ansätze treten gegeneinander an: unsere bestehende Kaskade als Titelverteidiger, eine Hybrid Cascade mit Fuzzy-Fallbacks, und FlexRL aus der Literatur. Bevor wir vergleichen können, brauchen wir etwas Schwieriges: Wahrheit.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 21 — PROXY-DATASET: WARUM SYNTHETISCHE DATEN?
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Für Record Linkage braucht man <span class="hl">Ground Truth</span> — die existiert in Echtdaten oft nicht.
+  </p>
+
+  <!-- Flow diagram -->
+  <div class="flow flex-1" style="justify-content:center; align-items:center; gap:16px;">
+    <div class="card" style="text-align:center; padding:0; min-width:150px;">
+      <div class="card__head" style="background:linear-gradient(135deg,var(--navy-deep),var(--navy));">🔒 Echtdaten</div>
+      <div class="card__body" style="font-size:0.8em;">
+        <div style="font-size:1.4em; margin:8px 0;">🔐</div>
+        Privacy-Preserving<br>Kein perfekter Wahrheitsdatensatz
+      </div>
+    </div>
+
+    <div class="col" style="align-items:center; gap:4px;">
+      <div class="flow-arrow">→</div>
+      <div style="font-size:0.72em; color:var(--ink-muted); text-align:center;">Nur aggregiert<br>k-Anonymität ≥100</div>
+    </div>
+
+    <div class="card" style="text-align:center; padding:0; min-width:150px;">
+      <div class="card__head">📊 Aggregat-Statistiken</div>
+      <div class="card__body" style="font-size:0.8em;">
+        Verteilungen<br>Gebinnte Counts<br>Fehlerprofile
+      </div>
+    </div>
+
+    <div class="flow-arrow">→</div>
+
+    <div class="card card--good" style="text-align:center; padding:0; min-width:150px;">
+      <div class="card__head" style="background:linear-gradient(135deg,var(--green),#3ab870);">✓ Proxy-Dataset</div>
+      <div class="card__body" style="font-size:0.8em;">
+        <code style="font-size:0.9em; color:var(--green);">entity_id</code> als Ground Truth<br>
+        Realistische Fehler &amp; Varianten<br>
+        Wiederholbar &amp; versioniert
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout--teal mt-auto">
+    <strong>Lakehouse-Enabler:</strong> Das synthetische Testset ist selbst ein <strong>versioniertes, reproduzierbares Datenprodukt</strong> in der Plattform — ohne Plattform-Disziplin kein reproduzierbarer Benchmark.
+  </div>
+
+  <aside class="notes">
+    [YQ] Um zu messen welcher Ansatz besser ist, brauche ich die Wahrheit — in Echtdaten habe ich die nicht. Dazu kommt Datenschutz. Lösung: synthetisches Proxy-Dataset. Gibt mir kontrollierte Ground Truth über entity_id, realistische Fehler, Dubletten, Lücken und historische Varianten. Und jetzt der Bezug zum Leitsatz: Dieses Testset ist selbst ein versioniertes, reproduzierbares Datenprodukt in der Plattform. Ohne Plattform-Disziplin kein reproduzierbarer Benchmark.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 22 — PROXY-DATASET: WIE ES ERZEUGT WURDE
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Das Proxy-Dataset ist nicht frei erfunden, sondern aus <span class="hl">aggregierten, privacy-preserving Statistiken</span> abgeleitet.
+  </p>
+
+  <div class="three-col flex-1">
+    <div class="card">
+      <div class="card__head">📦 Reale Basis</div>
+      <div class="card__body">
+        <div class="card__item">Analyse nur aggregiert</div>
+        <div class="card__item">k-Anonymität k ≥ 100</div>
+        <div class="card__item">Gebinnte Verteilungen</div>
+        <div class="card__item">Keine individuellen Datensätze</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card__head">📈 Extrahierte Merkmale</div>
+      <div class="card__body">
+        <div class="card__item">Vor-/Nachnamen, Namenslängen</div>
+        <div class="card__item">EGK-/KVNR-Muster</div>
+        <div class="card__item">PLZ-Regionen, Geburtsjahr-Bins</div>
+        <div class="card__item">Geschlecht, VSDM-Verifikation</div>
+        <div class="card__item">Fehlerprofile (Tippfehler, Lücken)</div>
+      </div>
+    </div>
+
+    <div class="card card--good">
+      <div class="card__head" style="background:linear-gradient(135deg,var(--green),#3ab870);">✓ Proxy-Dataset</div>
+      <div class="card__body">
+        <div class="card__item">Mehrere Records pro Entität</div>
+        <div class="card__item">Typo- und Missing-Value-Muster</div>
+        <div class="card__item">Adressänderungen über Quartale</div>
+        <div class="card__item">Golden Records für Survivorship</div>
+        <div class="card__item"><code style="font-size:0.85em;">entity_id</code> als Ground Truth</div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="notes">
+    [YQ] Die Daten sind synthetisch, aber nicht aus der Luft gegriffen. Wir haben die echten Daten ausschließlich aggregiert analysiert — k-Anonymität ≥100, gebinnte Verteilungen, gerundete Counts. Daraus dann ein Generator, der realistische Records mit Tippfehlern, fehlenden Werten, Adressänderungen über Quartale erzeugt. Inklusive der Golden Records für Survivorship-Messung.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 23 — VALIDIERUNGSDESIGN
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Die Proxy-Daten machen aus einer fachlichen Diskussion eine <span class="hl">messbare Engineering-Frage</span>.
+  </p>
+
+  <div class="row flex-1" style="gap:20px; align-items:center;">
+    <!-- Confusion matrix -->
+    <div>
+      <div class="section-label" style="margin-bottom:8px; text-align:center;">Confusion Matrix</div>
+      <div class="confusion-matrix">
+        <div class="cm-cell cm-tp">
+          <div class="cm-label">True Positive</div>
+          <div class="cm-sub">Korrekt verknüpft</div>
+        </div>
+        <div class="cm-cell cm-fp">
+          <div class="cm-label" style="color:var(--red);">False Positive</div>
+          <div class="cm-sub" style="color:var(--red); font-weight:700;">= False Merge ⚠</div>
+        </div>
+        <div class="cm-cell cm-fn">
+          <div class="cm-label">False Negative</div>
+          <div class="cm-sub">Übersehener Link = Split</div>
+        </div>
+        <div class="cm-cell cm-tn">
+          <div class="cm-label">True Negative</div>
+          <div class="cm-sub">Korekt als nicht-Link erkannt</div>
+        </div>
+      </div>
+
+      <div style="margin-top:10px; display:flex; flex-direction:column; gap:5px;">
+        <div style="font-size:0.8em; background:var(--panel); border-radius:var(--r-sm); padding:6px 10px;">
+          <strong>Precision</strong> = TP / (TP + FP) — misst False Merges
+        </div>
+        <div style="font-size:0.8em; background:var(--panel); border-radius:var(--r-sm); padding:6px 10px;">
+          <strong>Recall</strong> = TP / (TP + FN) — misst Split Entities
+        </div>
+      </div>
+    </div>
+
+    <div class="col" style="flex:1; gap:10px;">
+      <div class="callout callout--red">
+        <div><strong>Kritische Frage:</strong> Bei Patientendaten ist die Precision die wichtigste Metrik. Falsche Verschmelzungen sind medizinisch gefährlicher als übersehene Historien.</div>
+      </div>
+      <div class="card">
+        <div class="card__head">Ground Truth</div>
+        <div class="card__body">
+          <div class="card__item"><code>entity_id</code> für wahre Personencluster</div>
+          <div class="card__item">Golden-Record-Felder für Survivorship</div>
+        </div>
+      </div>
+      <div class="callout callout--teal">
+        Fehleranalyse: Export von FP und FN zur qualitativen Prüfung typischer Fehlermuster.
+      </div>
+    </div>
+  </div>
+
+  <aside class="notes">
+    [YQ] Die Proxy-Daten machen aus einer fachlichen Diskussion eine messbare Engineering-Frage. Als Ground Truth: entity_id für wahre Personencluster. Der false positive — der false merge — ist rot: bei Patientendaten fachlich riskanter. Das heißt: Schwellen konservativ wählen und begründen. Und wir lassen es nicht bei Zahlen — wir exportieren FP und FN und schauen sie qualitativ an.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 24 — EXKURS: EVALUATIONSMETRIKEN
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Record Linkage wird <span class="hl">paarweise</span> bewertet — Precision, Recall und F1 erlauben einen fairen Vergleich.
+  </p>
+
+  <div class="two-col flex-1">
+    <div class="col" style="gap:8px;">
+      <div class="card">
+        <div class="card__head">Grundidee</div>
+        <div class="card__body">
+          <div class="card__item">Jedes Paar von Records: „gleiche Person" oder nicht?</div>
+          <div class="card__item"><strong>TP:</strong> Korrekt verknüpft (Link)</div>
+          <div class="card__item"><strong style="color:var(--red);">FP:</strong> False Merge — zwei Verschiedene verbunden</div>
+          <div class="card__item"><strong style="color:var(--amber);">FN:</strong> Übersehener Link = Split</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__head">Formeln</div>
+        <div class="card__body" style="font-family:monospace; font-size:0.85em;">
+          <div class="card__item">Precision = TP / (TP + FP)</div>
+          <div class="card__item">Recall = TP / (TP + FN)</div>
+          <div class="card__item">F1 = 2 · (P · R) / (P + R)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col" style="gap:8px;">
+      <div class="callout callout--red">
+        <div><strong>Bei Patientendaten:</strong> Precision ist die kritische Metrik. Falsche Verschmelzungen (FP) sind medizinisch gefährlicher als übersehene Links (FN).</div>
+      </div>
+      <div class="card">
+        <div class="card__head">Clusterebene</div>
+        <div class="card__body">
+          <div class="card__item chip chip--green" style="width:auto;">✓ Perfect Clusters</div>
+          <div class="card__item chip chip--warn" style="width:auto; background:var(--amber-light); color:var(--amber);">⊞ Split Clusters</div>
+          <div class="card__item chip chip--red" style="width:auto; background:var(--red-light); color:var(--red);">⊕ Merged Clusters</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="notes">
+    [YQ] Grundidee: jedes Paar von Records — gleiche Person oder nicht? Drei Fälle: TP = korrekt verknüpft; FP = false merge; FN = übersehener Link = split. Precision misst false merges, Recall misst splits. F1 ist das harmonische Mittel. Ergänzend: Clusterebene. Und für die nächsten Folien: Precision ist die kritische Größe bei Patientendaten.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 25 — BASELINE: AKTUELLES DETERMINISTISCHES MODELL
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Das bestehende Modell ist ein <span class="hl">starker, konservativer Baseline-Ansatz</span> — aber es verliert viele echte Links.
+  </p>
+
+  <div class="zone-map-mini">
+    <div class="zm-zone zm-landing">Landing</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-raw">Raw</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-process active">Process ← hier</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-access">Access</div>
+  </div>
+
+  <div class="row flex-1" style="gap:16px; margin-top:8px; align-items:center;">
+    <div class="col" style="flex:1; gap:8px;">
+      <div class="card">
+        <div class="card__head">Implementierung: Baseline</div>
+        <div class="card__body">
+          <div class="card__item">SQL-Logik als validierbare Python-Variante</div>
+          <div class="card__item">Kaskade: EGK+DOB → EGK+Name → Name+DOB+PLZ</div>
+          <div class="card__item">Transitive Closure für Patientencluster</div>
+        </div>
+      </div>
+
+      <div class="callout callout--teal" style="font-size:0.82em;">
+        Dass alle drei Ansätze gegen exakt denselben Datenstand getestet werden, ermöglicht erst die unveränderliche Raw-Historie.
+      </div>
+    </div>
+
+    <!-- Metrics -->
+    <div style="flex-shrink:0;">
+      <div class="section-label" style="text-align:center; margin-bottom:8px;">F1-Score: 81.90 %</div>
+      <div class="metrics-row">
+        <div class="metric-card good">
+          <div class="metric-value">100%</div>
+          <div class="metric-label">Precision</div>
+        </div>
+        <div class="metric-card warn">
+          <div class="metric-value">69.35%</div>
+          <div class="metric-label">Recall</div>
+        </div>
+      </div>
+      <div class="callout callout--amber" style="margin-top:10px; font-size:0.78em;">
+        Praktisch keine False Merges, aber viele Split Entities — Safety-Baseline.
+      </div>
+    </div>
+  </div>
+
+  <aside class="notes">
+    [YQ] Ansatz eins: bestehendes Modell. SQL-Logik als validierbare Python-Variante. Ergebnis: Precision 100% — kein einziger false merge. Aber Recall nur 69%, F1 knapp 82%. Extrem sicher, verliert aber fast ein Drittel der echten Verknüpfungen in splits. Sehr guter, konservativer Safety-Baseline — aber mit Luft nach oben.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 26 — HYBRID CASCADE
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Ein deterministisch dominierter Ansatz findet durch <span class="hl">Fuzzy Fallbacks</span> deutlich mehr Links, ohne die Precision zu beschädigen.
+  </p>
+
+  <div class="zone-map-mini">
+    <div class="zm-zone zm-landing">Landing</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-raw">Raw</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-process active">Process ← hier</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-access">Access</div>
+  </div>
+
+  <div class="row flex-1" style="gap:16px; margin-top:8px; align-items:center;">
+    <div class="col" style="flex:1; gap:8px;">
+      <div class="card">
+        <div class="card__head">Designprinzipien</div>
+        <div class="card__body">
+          <div class="card__item">Exakte Matches zuerst, fuzzy nur als Fallback</div>
+          <div class="card__item">Adaptive Blocking-Grenzen gegen O(N²)</div>
+          <div class="card__item">Edit Distance (kurze Namen) / Q-Gram Jaccard (lange Namen)</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__head">5-Stufen-Kaskade</div>
+        <div class="card__body" style="font-size:0.78em;">
+          <div class="card__item">EGK exakt → Name+DOB exakt → Name fuzzy+DOB exakt → EGK+Nachname → Name fuzzy+PLZ+Jahr</div>
+        </div>
+      </div>
+      <div style="font-size:0.72em; color:var(--ink-muted);">Quellen: Fellegi &amp; Sunter (1969) · Christen, Data Matching (2012)</div>
+    </div>
+
+    <div style="flex-shrink:0;">
+      <div class="section-label" style="text-align:center; margin-bottom:8px;">F1-Score: 90.04 %</div>
+      <div class="metrics-row">
+        <div class="metric-card good">
+          <div class="metric-value">99.91%</div>
+          <div class="metric-label">Precision</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">81.95%</div>
+          <div class="metric-label">Recall</div>
+        </div>
+      </div>
+      <div class="callout callout--green" style="margin-top:10px; font-size:0.78em; text-align:center;">
+        Recall +12.60 Prozentpunkte ↑<br>Precision nahezu unverändert
+      </div>
+    </div>
+  </div>
+
+  <aside class="notes">
+    [YQ] Ansatz zwei: Hybrid Cascade. Exakte Matches zuerst, fuzzy nur als Fallback. Edit Distance für kurze Namen, Q-Gram-Jaccard für längere. Adaptive Blocking-Grenzen. Fünf Kaskadenstufen. Ergebnis: Recall springt von 69 auf 82% — plus 12,5 Prozentpunkte. Precision: 99,91% — praktisch unverändert. Deutlich mehr echte Links, fast kein Preis. Geht es noch besser?
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 27 — FLEXRL
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    <span class="hl">Probabilistische Linkage</span> macht Unsicherheit explizit und lernt Fehler- und Zufallsmuster aus den Daten.
+  </p>
+
+  <div class="zone-map-mini">
+    <div class="zm-zone zm-landing">Landing</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-raw">Raw</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-process active">Process ← hier</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-access">Access</div>
+  </div>
+
+  <div class="row flex-1" style="gap:16px; margin-top:8px; align-items:center;">
+    <div class="col" style="flex:1; gap:8px;">
+      <div class="card card--teal">
+        <div class="card__head">FlexRL — Latent Variable Model</div>
+        <div class="card__body">
+          <div class="card__item">Partially Identifying Variables: Name, DOB, PLZ, EGK</div>
+          <div class="card__item">EM-Algorithmus lernt: Link-Wahrscheinlichkeit, Fehlerwahrscheinlichkeit je Variable, zufällige Übereinstimmung je Variable</div>
+          <div class="card__item">Blocking: EGK, DOB, PLZ+Jahr, Namenspräfix</div>
+          <div class="card__item">Threshold 0.9 — bewusst konservativ</div>
+        </div>
+      </div>
+      <div style="font-size:0.72em; color:var(--ink-muted);">Quelle: Robach et al. (2024), arXiv · github.com/robachowyk/FlexRL</div>
+    </div>
+
+    <div style="flex-shrink:0;">
+      <div class="section-label" style="text-align:center; margin-bottom:8px;">F1-Score: 95.85 %</div>
+      <div class="metrics-row">
+        <div class="metric-card good">
+          <div class="metric-value">99.89%</div>
+          <div class="metric-label">Precision</div>
+        </div>
+        <div class="metric-card good">
+          <div class="metric-value">92.11%</div>
+          <div class="metric-label">Recall</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="notes">
+    [YQ] Ansatz drei: FlexRL, ein probabilistisches Modell aus einem Paper von Robach et al. 2024. Statt fester Regeln macht es Unsicherheit explizit. Es lernt: wie wahrscheinlich ein Paar überhaupt ein Link ist, wie fehleranfällig jede Variable ist, und wie oft sie rein zufällig übereinstimmt. Threshold 0.9 — bewusst konservativ weil false merges besonders wehtun.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 28 — ERGEBNISVERGLEICH (CLIMAX)
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Mehr echte Patienten korrekt verknüpft — <span class="hl-green">praktisch ohne neue Fehlverschmelzungen</span>.
+  </p>
+
+  <div style="flex:1; display:flex; gap:16px; align-items:center;">
+    <!-- Grouped bar chart -->
+    <div style="flex:1.2;">
+      <div class="bar-chart" style="height:180px; align-items:flex-end; gap:20px;">
+        <!-- Current Model -->
+        <div class="bar-group">
+          <div class="bar-value">81.9%</div>
+          <div class="bar f1" style="height:68%;" title="F1"></div>
+          <div class="bar-value" style="font-size:0.6em; color:var(--amber);">69.4%↓</div>
+          <div class="bar recall" style="height:58%;" title="Recall"></div>
+          <div class="bar precision" style="height:100%;" style="display:none;"></div>
+          <div class="bar-label">Current<br>Model</div>
+        </div>
+        <!-- Hybrid Cascade -->
+        <div class="bar-group">
+          <div class="bar-value">90.0%</div>
+          <div class="bar f1" style="height:80%;" title="F1"></div>
+          <div class="bar-value" style="font-size:0.6em; color:var(--amber);">82.0%</div>
+          <div class="bar recall" style="height:73%;" title="Recall"></div>
+          <div class="bar-label">Hybrid<br>Cascade</div>
+        </div>
+        <!-- FlexRL -->
+        <div class="bar-group">
+          <div class="bar-value" style="color:var(--green); font-weight:800;">95.85%</div>
+          <div class="bar winner" style="height:96%;" title="F1"></div>
+          <div class="bar-value" style="font-size:0.6em; color:var(--green);">92.1%↑</div>
+          <div class="bar recall" style="height:88%; background:var(--green);" title="Recall"></div>
+          <div class="bar-label" style="color:var(--green); font-weight:700;">FlexRL<br>★ Winner</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col" style="flex:1; gap:10px;">
+      <div class="callout callout--green">
+        Recall steigt von 69% → 92% (+23 Pp) — Precision bleibt bei ~100%
+      </div>
+      <div class="card">
+        <div class="card__head">Kernbeobachtung</div>
+        <div class="card__body">
+          <div class="card__item">Alle Precision-Balken: ~100% — false merge bleibt ausgeschlossen</div>
+          <div class="card__item">Recall-Zuwachs: +22.8 Pp gegenüber Baseline</div>
+        </div>
+      </div>
+      <div class="callout callout--amber">
+        <strong>Fachliche Entscheidung:</strong> Ist der Recall-Gewinn die wenigen false merges wert? Welche Schwelle ist produktiv vertretbar?
+      </div>
+    </div>
+  </div>
+
+  <aside class="notes">
+    [YQ, Tempo rausnehmen] Hier ist das Gesamtbild. Precision-Balken — alle drei quasi bei 100%: 100, 99.91, 99.89. Der gefährliche Fehler bleibt über alle Ansätze praktisch ausgeschlossen. Und der Recall: 69% → 82% → 92%. [Pause] Wir verknüpfen deutlich mehr echte Patienten korrekt, praktisch ohne neue Fehlverschmelzungen. Aber die Entscheidung ist trotzdem fachlich: sind uns die wenigen zusätzlichen false merges den großen Recall-Gewinn wert? Nicht der komplexeste Ansatz gewinnt automatisch.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 29 — SURVIVORSHIP: GOLDEN RECORD
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Record Linkage löst nur die Identität — nutzbar wird das Ergebnis erst durch <span class="hl">konsolidierte Patientenstammdaten</span>.
+  </p>
+
+  <div class="zone-map-mini">
+    <div class="zm-zone zm-landing">Landing</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-raw">Raw</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-process">Process</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-access active">Access ← hier</div>
+  </div>
+
+  <div class="row flex-1" style="gap:20px; align-items:center; margin-top:8px;">
+    <!-- Funnel -->
+    <div style="flex:1; text-align:center;">
+      <div class="funnel">
+        <div style="font-size:0.78em; color:var(--ink-muted); margin-bottom:6px;">Cluster mehrerer Records</div>
+        <div class="funnel-stage" style="width:90%;">Tier 1: VSDM-verifizierte Daten (höchstes Vertrauen)</div>
+        <div class="funnel-arrow">↓</div>
+        <div class="funnel-stage" style="width:70%;">Tier 2: Zeitgewichtete Häufigkeit + Vollständigkeit</div>
+        <div class="funnel-arrow">↓</div>
+        <div style="font-size:0.75em; color:var(--ink-muted); margin-bottom:6px;">+ PLZ/Ort-Normalisierung, Umlautnormalisierung</div>
+        <div class="funnel-arrow">↓</div>
+        <div class="golden-record">
+          🏆 Golden Record<br>
+          <span style="font-size:0.8em; font-weight:400;">Person: 123456-STABLE</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col" style="flex:1; gap:8px;">
+      <div class="callout callout--teal">
+        <strong>VSDM</strong> = Versichertenstammdatenmanagement: beim Einlesen der eGK wird online gegen das zentrale Versichertenregister geprüft → bestätigter Abgleich = vertrauenswürdigste Quelle.
+      </div>
+      <div class="card">
+        <div class="card__head">Normalisierung</div>
+        <div class="card__body">
+          <div class="card__item">PLZ- und Ortsnormalisierung</div>
+          <div class="card__item">Umlautnormalisierung</div>
+          <div class="card__item">OKZ-/Regionen-Anreicherung</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="notes">
+    [YQ] Record Linkage sagt uns nur: diese Records gehören zur selben Person. Aber welche Adresse, welche Schreibweise des Namens ist die richtige? Das löst das Survivorship — und damit wandern wir in die Access Zone. Zwei-Stufen-Strategie: Tier 1 VSDM-verifiziert, Tier 2 zeitgewichtete Häufigkeit. Plus Normalisierungen. Proxy-Dataset enthält Golden Records, damit wir auch Survivorship messen können.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 30 — VOM NOTEBOOK IN DIE LAKEHOUSE-PIPELINE
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Der Use Case zeigt den Weg von <span class="hl">akademischer Evaluation</span> zu produktionsnaher Data-Engineering-Arbeit.
+  </p>
+
+  <!-- Full zone map with highlighted path -->
+  <div style="margin-bottom:12px;">
+    <div style="display:flex; gap:0; border-radius:var(--r); overflow:hidden; border:2px solid var(--panel-dark); position:relative;">
+      <div class="zone zone--landing" style="flex:1; padding:12px 14px;">
+        <div class="zone__label">Landing Zone</div>
+        <div style="font-size:0.76em; color:var(--ink-muted);">Unveränderliche, historisierte Quellvarianten</div>
+      </div>
+      <div style="display:flex; align-items:center; padding:0 4px; background:var(--bg-soft);">
+        <span style="color:var(--green); font-weight:900; font-size:1.4em;">→</span>
+      </div>
+      <div class="zone zone--raw" style="flex:1.2; padding:12px 14px; border:2px solid var(--green);">
+        <div class="zone__label">Raw Zone</div>
+        <div style="font-size:0.76em; color:var(--ink-muted);">Standardisierung + Patientenbildung</div>
+      </div>
+      <div style="display:flex; align-items:center; padding:0 4px; background:var(--bg-soft);">
+        <span style="color:var(--green); font-weight:900; font-size:1.4em;">→</span>
+      </div>
+      <div class="zone zone--process" style="flex:1.2; padding:12px 14px; border:2px solid var(--green);">
+        <div class="zone__label">Process Zone ★</div>
+        <div style="font-size:0.76em; color:var(--ink-muted);">Bewertung der versionierten Modelle</div>
+      </div>
+      <div style="display:flex; align-items:center; padding:0 4px; background:var(--bg-soft);">
+        <span style="color:var(--green); font-weight:900; font-size:1.4em;">→</span>
+      </div>
+      <div class="zone zone--access" style="flex:1.2; padding:12px 14px; border:2px solid var(--green);">
+        <div class="zone__label">Access Zone ★</div>
+        <div style="font-size:0.76em; color:var(--ink-muted);">Konsolidiertes Patientenstamm-Datenprodukt</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="three-col" style="flex:1;">
+    <div class="callout callout--green">
+      <strong>Reproduzierbare</strong> Laufparameter &amp; garantierte Qualitätsmetriken
+    </div>
+    <div class="callout callout--teal">
+      <strong>Versionierte</strong> ML-Modelle &amp; Schwellenwerte
+    </div>
+    <div class="callout callout--navy">
+      <strong>Monitoring</strong> von Split-/Merge-Risiken je Lauf
+    </div>
+  </div>
+
+  <aside class="notes">
+    [YQ] Hier schließt sich der Kreis zur Architektur. Was als Exploration begann, wandert als produktiver Pfad durch genau die Zonen, die Sebastian gezeigt hat. Und jetzt sehen Sie, was die Plattform liefert: reproduzierbare Laufparameter, versionierte Schwellen, Qualitätsmetriken bei jedem Lauf, Monitoring der Split- und Merge-Risiken. Das ist unser Leitsatz in Aktion.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 31 — BRÜCKE: ABRECHNUNGSANOMALIEN
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Gleiche Plattform, andere Reifestufe — <span class="hl">Validierbarkeit</span> entscheidet, wann ein Prototyp zur produktiven Lösung wird.
+  </p>
+
+  <div style="flex:1; display:flex; flex-direction:column; gap:12px; justify-content:center;">
+    <div class="two-col" style="align-items:stretch;">
+      <div class="card card--good">
+        <div class="card__head" style="background:linear-gradient(135deg,var(--green),#3ab870);">✓ Patientenbildung</div>
+        <div class="card__body">
+          <div class="card__item">Proxy-Dataset (Ground Truth vorhanden)</div>
+          <div class="card__item">Klare Metrik: Precision/Recall</div>
+          <div class="card__item">Produktiv bereit</div>
+        </div>
+      </div>
+
+      <div class="card card--warn">
+        <div class="card__head" style="background:linear-gradient(135deg,var(--amber),#d99e30);">⚠ Abrechnungsanomalien</div>
+        <div class="card__body">
+          <div class="card__item">Pipeline &amp; ECOD-Modell vorhanden</div>
+          <div class="card__item">Feature Engineering &amp; App vorhanden</div>
+          <div class="card__item">Manuelle Validierung läuft noch — kein automatisiertes Ground-Truth-Dataset</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,var(--teal-deep),var(--teal)); border-radius:var(--r); padding:10px 16px; color:white; text-align:center; font-weight:600; font-size:0.88em;">
+      Lakehouse Plattform — trägt beide Use Cases
+    </div>
+
+    <div class="callout callout--navy">
+      <strong>Die Lesson:</strong> Ohne harte fachliche Validierbarkeit bleibt selbst das beste Modell im Prototyp-Status.
+    </div>
+  </div>
+
+  <aside class="notes">
+    [YQ, zügig] Auf derselben Plattform ein zweiter ML-Use-Case: Anomalieerkennung in Abrechnungsdaten. Technisch alles dran: Feature Engineering, ECOD-Modell, Explainability, Review-App. Aber der Unterschied: noch kein automatisiertes Ground-Truth-Dataset, fachliche Validierung läuft noch. Deshalb steht die Patientenbildung im Mittelpunkt. Die Lesson: Validierbarkeit entscheidet, wann aus einem Prototyp eine tragende Story wird.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 32 — ARCHITEKTUR-LESSONS
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Die wichtigsten Architekturentscheidungen sind die <span class="hl">strikten Verträge zwischen den Layern</span>, nicht die Toolnamen.
+  </p>
+
+  <div class="zone-map-mini">
+    <div class="zm-zone zm-landing active">Landing</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-raw active">Raw</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-process active">Process</div>
+    <div class="zm-arrow">→</div>
+    <div class="zm-zone zm-access active">Access</div>
+  </div>
+
+  <div class="row flex-1" style="gap:14px; margin-top:8px; align-items:stretch;">
+    <div class="col" style="flex:1; gap:8px;">
+      <div class="card" style="border-top:4px solid var(--steel);">
+        <div class="card__head" style="background:var(--steel);">[APPEND-ONLY]</div>
+        <div class="card__body" style="font-size:0.82em;">Raw muss roh bleiben. Fachlogik hier bricht die Reproduzierbarkeit.</div>
+      </div>
+      <div class="card" style="border-top:4px solid var(--teal);">
+        <div class="card__head">[TECH-QUALITY]</div>
+        <div class="card__body" style="font-size:0.82em;">Standardisierung und technische Bereinigung werden zentral gesichert.</div>
+      </div>
+      <div class="card" style="border-top:4px solid var(--navy);">
+        <div class="card__head" style="background:var(--navy);">[SEMANTICS]</div>
+        <div class="card__body" style="font-size:0.82em;">Fachliche Produkte und Data Products leben ausschließlich hier.</div>
+      </div>
+    </div>
+
+    <div class="col" style="flex:1; gap:8px;">
+      <div class="card">
+        <div class="card__head">Technologie-Trennung</div>
+        <div class="card__body">
+          <div class="card__item">PySpark (komplex/ML) und dbt (SQL Analytics/Lineage) ergänzen sich perfekt</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__head">Betrieb</div>
+        <div class="card__body">
+          <div class="card__item">Podman reicht für den Start, Kubernetes folgt</div>
+          <div class="card__item">Saubere Containerisierung macht Migration beherrschbar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="notes">
+    [SG] Die wichtigste Erkenntnis: Entscheidend sind nicht die Toolnamen, sondern die klaren Verträge zwischen den Layern. Raw muss wirklich raw bleiben. Process braucht technische Qualitätsgarantien. Access braucht fachliche Semantik und echte Datenprodukte. PySpark und dbt ergänzen sich — aber nur wenn ihre Rollen klar getrennt sind.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 33 — KI-/ML-LESSONS
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Produktive KI beginnt vor dem Modell: bei <span class="hl">Entitäten, Features, Historie</span> und fachlicher Prüfbarkeit.
+  </p>
+
+  <div class="do-grid flex-1" style="grid-template-columns: repeat(3,1fr); margin-top:8px;">
+    <div class="do-card">
+      <div class="card-title">Stabile Entitäten</div>
+      <p>Patient/Praxis/Quartal sind zentrale ML-Infrastruktur, nicht nur Stammdaten.</p>
+    </div>
+    <div class="do-card" style="border-top-color:var(--red);">
+      <div class="card-title" style="color:var(--red);">False Merges sind kritischer ⚠</div>
+      <p>Asymmetrie muss bewusst in Schwellen und Thresholds eingebaut werden.</p>
+    </div>
+    <div class="do-card">
+      <div class="card-title">Community-Anschluss</div>
+      <p>„Patientenbildung" → Record Linkage: anschlussfähig an Forschung und Standards.</p>
+    </div>
+    <div class="do-card">
+      <div class="card-title">Recherche vor Implementierung</div>
+      <p>Bekannte Problemklassen haben oft gute Lösungs- und Evaluationsmuster.</p>
+    </div>
+    <div class="do-card" style="border-top-color:var(--teal);">
+      <div class="card-title" style="color:var(--teal);">Validierbarkeit vor Hauptstory ★</div>
+      <p>Prototypen brauchen klare Validierungsstrategie bevor sie zur tragenden Story werden.</p>
+    </div>
+    <div class="do-card">
+      <div class="card-title">Explainability</div>
+      <p>Kein Add-on, sondern Teil des Produktdesigns — besonders im Gesundheitsbereich.</p>
+    </div>
+  </div>
+
+  <aside class="notes">
+    [YQ] Produktive KI beginnt vor dem Modell. Stabile Entitäten sind ML-Infrastruktur. Die Patientenbildung hat gelehrt: false merges sind oft kritischer als verpasste Matches. Framing auf Community-Begriffe spart Umwege. Recherche vor Implementierung. Prototyp braucht Validierungsstrategie. Explainability ist Produktdesign. Und: Modellmetriken allein reichen nicht — fachliche Validierung entscheidet.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 34 — DO'S: WAS WIR WIEDER SO MACHEN WÜRDEN
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    <span class="hl-green">Best Practices (Do's)</span> — Was wir bei der nächsten Migration exakt wieder so machen würden.
+  </p>
+
+  <div class="do-grid flex-1" style="grid-template-columns:repeat(3,1fr); margin-top:8px;">
+    <div class="do-card">
+      <div class="card-title">Offene Standards</div>
+      <p>On-Premise Open Source Stack: Spark, Airflow und offene Formate (Delta Lake) für volle Kontrolle.</p>
+    </div>
+    <div class="do-card">
+      <div class="card-title">Strikte Orchestrierung</div>
+      <p>Airflow-DAGs mit expliziten Abhängigkeiten und Lauf-Metadaten von Anfang an.</p>
+    </div>
+    <div class="do-card">
+      <div class="card-title">Frühe Governance</div>
+      <p>DataHub nicht als Nachbau, sondern ab Tag 1 als zentrales Metadaten-Tool nutzen.</p>
+    </div>
+    <div class="do-card">
+      <div class="card-title">Data Products</div>
+      <p>Feature Datasets konsequent als dokumentierte Datenprodukte behandeln.</p>
+    </div>
+    <div class="do-card">
+      <div class="card-title">End-to-End-Denken</div>
+      <p>Prototypen erlauben, aber von Beginn an Pfad in produktive Pipeline einplanen.</p>
+    </div>
+    <div class="do-card">
+      <div class="card-title">Review-Oberflächen</div>
+      <p>Feedback-Loops und Review-Apps früh mitdenken — nicht nachträglich anschrauben.</p>
+    </div>
+  </div>
+
+  <aside class="notes">
+    [SG] Das würden wir sofort wieder so machen. Offene Formate und On-Premise Open Source. Delta-Tabellen für robuste Pipelines. Airflow-DAGs mit expliziten Abhängigkeiten.
+    [YQ] DataHub früh etablieren. Feature-Datasets als Datenprodukte denken. Schnelle Prototypen mit klarem Pfad in Produktion. Review-Oberflächen früh mitdenken.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 35 — DON'TS: ANTI-PATTERNS
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    <span class="hl-red">Anti-Patterns (Don'ts)</span> — Lakehouse-Projekte scheitern meist an impliziter Logik und fehlendem Produktdenken.
+  </p>
+
+  <div class="do-grid flex-1" style="grid-template-columns:repeat(3,1fr); margin-top:8px;">
+    <div class="dont-card">
+      <div class="card-title">Unklare Layer</div>
+      <p>Ohne strikte Verträge degenerieren Zonen zum Data Swamp.</p>
+    </div>
+    <div class="dont-card">
+      <div class="card-title">Schattenarchive</div>
+      <p>Landing Zone, die heimlich als wilde Dateiablage missbraucht wird.</p>
+    </div>
+    <div class="dont-card">
+      <div class="card-title">Isolation</div>
+      <p>ML-Modelle, die niemand versendet, weil der Operationalisierungspfad fehlt.</p>
+    </div>
+    <div class="dont-card">
+      <div class="card-title">Der KI-Hype-Fehler</div>
+      <p>Mit einem großen GenAI-Chatbot starten, bevor fundamentale Datenqualität geklärt ist.</p>
+    </div>
+    <div class="dont-card">
+      <div class="card-title">Blackbox-Modelle</div>
+      <p>Scores in den Raum werfen ohne Erklärbarkeit und fachlichen Review-Prozess.</p>
+    </div>
+    <div class="dont-card">
+      <div class="card-title">Toolfokus</div>
+      <p>Diskussionen über Software-Namen statt Architekturprinzipien — das Tool ist nicht die Architektur.</p>
+    </div>
+  </div>
+
+  <aside class="notes">
+    [SG] Die Anti-Patterns. Layer ohne klare Verträge. Landing-Zonen als Dauerarchiv.
+    [YQ] Notebook-Logik ohne Operationalisierungspfad. KI-Initiativen mit einem großen Chatbot starten, bevor Datenqualität, Ownership und Lineage geklärt sind. Scores ohne Erklärbarkeit. Toolfokus statt Architekturprinzipien.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 36 — SCHLUSSBILD UND Q&A
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Das Lakehouse ist der <span class="hl">Motor für produktives Data Engineering</span> und verlässliche KI.
+  </p>
+
+  <div class="row flex-1" style="gap:16px; align-items:flex-start;">
+    <!-- Full zone map summary -->
+    <div class="col" style="flex:1.3; gap:10px;">
+      <div style="display:flex; gap:0; border-radius:var(--r); overflow:hidden; border:2px solid var(--green);">
+        <div class="zone zone--landing" style="flex:1; padding:10px 12px;">
+          <div class="zone__label">Landing</div>
+          <div style="font-size:0.72em; color:var(--ink-muted);">SSIS-Altslasten</div>
+        </div>
+        <div style="display:flex; align-items:center; padding:0 3px; background:var(--bg-soft);">
+          <span style="color:var(--green); font-weight:900;">→</span>
+        </div>
+        <div class="zone zone--raw" style="flex:1.2; padding:10px 12px; border:2px solid var(--green);">
+          <div class="zone__label">Raw</div>
+          <div style="font-size:0.72em; color:var(--ink-muted);">Append-only Historie</div>
+        </div>
+        <div style="display:flex; align-items:center; padding:0 3px; background:var(--bg-soft);">
+          <span style="color:var(--green); font-weight:900;">→</span>
+        </div>
+        <div class="zone zone--process" style="flex:1.2; padding:10px 12px; border:2px solid var(--green);">
+          <div class="zone__label">Process</div>
+          <div style="font-size:0.72em; color:var(--ink-muted);">Patientenbildung ★</div>
+        </div>
+        <div style="display:flex; align-items:center; padding:0 3px; background:var(--bg-soft);">
+          <span style="color:var(--green); font-weight:900;">→</span>
+        </div>
+        <div class="zone zone--access" style="flex:1.2; padding:10px 12px; border:2px solid var(--green);">
+          <div class="zone__label">Access</div>
+          <div style="font-size:0.72em; color:var(--ink-muted);">Golden Record / ML</div>
+        </div>
+      </div>
+
+      <ul class="bullets" style="margin-top:4px;">
+        <li>Eine Plattform von Rohdaten bis ML-Anwendung</li>
+        <li>Reproduzierbare Datenstände statt Ad-hoc-Extrakte</li>
+        <li>Klare Layer-Verträge statt gewachsener Zonenlogik</li>
+        <li>Datenqualität als Voraussetzung für Modellqualität</li>
+        <li>Systematische KI-Einführung über validierbare Use Cases</li>
+      </ul>
+    </div>
+
+    <div class="col" style="flex:1; gap:10px;">
+      <div class="card">
+        <div class="card__head">Durchgängige Beispiele</div>
+        <div class="card__body">
+          <div class="card__item chip--green" style="background:var(--green-light); color:var(--green); border-radius:var(--r-sm); padding:5px 10px; font-size:0.8em; font-weight:600;">✓ Patientenbildung (Record Linkage) — validiert</div>
+          <div class="card__item chip" style="margin-top:5px; background:var(--amber-light); color:var(--amber); border-radius:var(--r-sm); padding:5px 10px; font-size:0.8em; font-weight:600;">⚠ Abrechnungsanomalien — in Validierung</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="leitsatz mt-auto" style="margin-top:12px;">
+    „Der Engpass für KI im Gesundheitswesen ist nicht das Modell, sondern eine Plattform, die <strong>reproduzierbare, validierbare Datenstände</strong> liefert — gezeigt an einem Problem, das man messen kann."
+  </div>
+
+  <aside class="notes">
+    [YQ] Fassen wir zusammen. Eine Plattform von den Rohdaten bis zur ML-Anwendung. Reproduzierbare Datenstände. Klare Verantwortlichkeiten. Datenqualität als Voraussetzung. KI über konkrete, validierbare Use Cases einführen — nicht als abstraktes Technologieprogramm.
+    [SG] Und damit schließt sich die Klammer zum Anfang.
+    [Pause] Der Engpass für KI im Gesundheitswesen ist nicht das Modell, sondern eine Plattform, die reproduzierbare, validierbare Datenstände liefert — gezeigt an einem Problem, das man messen kann.
+    [YQ] Vielen Dank — wir freuen uns auf Ihre Fragen.
+  </aside>
+</section>
+
+</div><!-- /.slides -->
+</div><!-- /.reveal -->
+
+<script src="assets/vendor/reveal/reveal.js"></script>
+<script src="assets/vendor/reveal/plugin/notes/notes.js"></script>
+<script>
+Reveal.initialize({
+  width: 1376,
+  height: 768,
+  margin: 0.04,
+  controls: true,
+  progress: true,
+  hash: true,
+  slideNumber: 'c/t',
+  transition: 'fade',
+  transitionSpeed: 'fast',
+  plugins: [ RevealNotes ]
+});
+</script>
+</body>
+</html>
