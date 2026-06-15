@@ -374,7 +374,7 @@ Jede Folie ist nach demselben Schema beschrieben, damit daraus direkt ein Slide-
 
 ### Folie 18 - Patientenbildung: Fachliches Problem und was auf dem Spiel steht
 
-**Headline:** Ein false merge heißt: zwei verschiedene Menschen werden zu einer Patientenakte verschmolzen - das ist der Grund, warum dieses Problem präzise gelöst werden muss.
+**Headline:** Ein false merge heißt: zwei verschiedene Menschen werden fälschlich verschmolzen und Abrechnungen verfälscht - das ist der Grund, warum dieses Problem präzise gelöst werden muss.
 
 **Inhalt**
 
@@ -384,11 +384,11 @@ Jede Folie ist nach demselben Schema beschrieben, damit daraus direkt ein Slide-
 * Heterogene Quellen: ABR1, ABR2, bearbeitete/unbearbeitete Daten, KVUEPP
 * Identifikatoren/Attribute: EGK-Versichertennummer, Vorname, Nachname, Geburtsdatum, PLZ
 * Herausforderungen: unvollständige Attribute, Schreibvarianten/Tippfehler, fehlende oder wechselnde Identifikatoren, historische Stände und Quartale
-* **Stakes:** false merge = verschiedene Personen verschmolzen (falsche medizinische Zuordnung); split = eine Person zerfällt in mehrere Akten
+* **Stakes:** false merge = verschiedene Personen verschmolzen (falsche Abrechnungszuordnung); split = eine Person zerfällt in mehrere Datensätze
 
 **Visual:** Zwei Karteikarten verschiedener Personen, die fälschlich zu einer verschmelzen - rotes Warnsymbol. Diese menschliche Konsequenz ist der emotionale Kern des ML-Teils.
 
-**Sprechernotiz (Skript):** [YQ, langsamer werden] Ich möchte, dass Sie eine Sache wirklich mitnehmen. [auf die verschmelzenden Karteikarten zeigen] Wenn wir zwei Datensätze fälschlich zusammenführen, die zu zwei verschiedenen Menschen gehören - das nennen wir einen false merge -, dann werden in der Konsequenz die medizinischen Daten zweier Personen vermischt. Eine falsche Zuordnung in einer Patientenakte. Das ist nicht nur eine Zahl in einer Metrik, das ist ein echtes Risiko. Der umgekehrte Fehler, der split, ist, dass eine Person in mehrere Akten zerfällt - ärgerlich, aber weniger gefährlich. [Tempo wieder normal] Diese Asymmetrie ist der Grund, warum wir das Problem präzise lösen müssen. Konkret: Wir haben heterogene Quellen - ABR1, ABR2, bearbeitete und unbearbeitete Daten, KVUEPP. Wir haben Identifikatoren und Attribute: die EGK-Versichertennummer, Vorname, Nachname, Geburtsdatum, PLZ. Und wir haben jede Menge Realität: unvollständige Attribute, Schreibvarianten und Tippfehler, fehlende oder wechselnde Nummern, historische Stände über viele Quartale. Die gute Nachricht: Indem wir das als Record Linkage abstrahieren, können wir auf Literatur, Standardbegriffe und etablierte Evaluationsmetriken zugreifen. Der erste Schritt war aber nicht, etwas Neues zu bauen.
+**Sprechernotiz (Skript):** [YQ, langsamer werden] Ich möchte, dass Sie eine Sache wirklich mitnehmen. [auf die verschmelzenden Karteikarten zeigen] Wenn wir zwei Datensätze fälschlich zusammenführen, die zu zwei verschiedenen Menschen gehören - das nennen wir einen false merge -, dann verfälschen wir Abrechnungen und Fallberichte. Eine falsche Fallzuordnung in unseren Systemen. Das ist nicht nur eine Zahl in einer Metrik, das ist der kritischste Fehler. Der umgekehrte Fehler, der split, ist, dass eine Person in mehrere Datensätze zerfällt - unschön für Auswertungen, aber deutlich weniger kritisch. [Tempo wieder normal] Diese Asymmetrie ist der Grund, warum wir das Problem präzise lösen müssen. Konkret: Wir haben heterogene Quellen - ABR1, ABR2, bearbeitete und unbearbeitete Daten, KVUEPP. Wir haben Identifikatoren und Attribute: die EGK-Versichertennummer, Vorname, Nachname, Geburtsdatum, PLZ. Und wir haben jede Menge Realität: unvollständige Attribute, Schreibvarianten und Tippfehler, fehlende oder wechselnde Nummern, historische Stände über viele Quartale. Die gute Nachricht: Indem wir das als Record Linkage abstrahieren, können wir auf Literatur, Standardbegriffe und etablierte Evaluationsmetriken zugreifen. Der erste Schritt war aber nicht, etwas Neues zu bauen.
 
 ---
 

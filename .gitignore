@@ -1,3 +1,4 @@
 presentation/reference/
 presentation/assets/generated/
 .claude/
+.playwright-cli/
