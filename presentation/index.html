@@ -18,7 +18,7 @@
 <section class="slide--cover" style="position:relative;">
   <div class="brand-bar">
     <img src="assets/logos/datamart.png" alt="DATA MART Consulting">
-    <img src="assets/logos/kvwl.png" alt="KVWL" style="filter:brightness(0) invert(1);">
+    <img src="assets/logos/kvwl.png" alt="KVWL">
   </div>
 
   <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:16px;">
@@ -26,21 +26,21 @@
       Lakehouse als Enabler für <span class="hl">Machine Learning</span><br>
       im <span class="hl">Gesundheitswesen</span>
     </h1>
-    <p style="font-size:1.05em; color:rgba(255,255,255,0.8); margin:0;">
+    <p style="font-size:1.05em; color:var(--ink-muted); margin:0;">
       Open Source, On-Premise, Data Engineering und ML auf einer Plattform
     </p>
 
     <div class="row" style="gap:12px; margin-top:8px;">
       <div class="cover-info" style="flex:1;">
-        <div style="color:rgba(255,255,255,0.6); font-size:0.75em; margin-bottom:4px;">Sprecher</div>
-        <div style="font-size:0.88em; color:white;">
-          <strong>Sebastian Gobst</strong> <span style="color:rgba(255,255,255,0.55);">(DATA MART Consulting)</span><br>
-          <strong>Yannik Queisler</strong> <span style="color:rgba(255,255,255,0.55);">(KVWL)</span>
+        <div style="color:var(--ink-muted); font-size:0.75em; margin-bottom:4px;">Sprecher</div>
+        <div style="font-size:0.88em; color:var(--ink);">
+          <strong>Sebastian Gobst</strong> <span style="color:var(--ink-light);">(DATA MART Consulting)</span><br>
+          <strong>Yannik Queisler</strong> <span style="color:var(--ink-light);">(KVWL)</span>
         </div>
       </div>
       <div class="cover-info" style="flex:1;">
-        <div style="color:rgba(255,255,255,0.6); font-size:0.75em; margin-bottom:4px;">Leitfrage</div>
-        <div style="font-size:0.82em; color:white;">
+        <div style="color:var(--ink-muted); font-size:0.75em; margin-bottom:4px;">Leitfrage</div>
+        <div style="font-size:0.82em; color:var(--ink);">
           Welche Datenplattform braucht produktives Data Engineering und ML im Gesundheitswesen?
         </div>
       </div>
@@ -152,24 +152,49 @@
   <!-- Iceberg metaphor -->
   <div class="row flex-1" style="align-items:center; gap:24px;">
     <div style="flex:1; position:relative;">
-      <!-- Iceberg SVG -->
-      <svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-height:230px;">
-        <!-- Water line -->
-        <rect x="0" y="130" width="280" height="4" fill="#7ab8cc" rx="2"/>
-        <!-- Tip above water -->
-        <polygon points="140,20 180,130 100,130" fill="#2a7d8f" opacity="0.9"/>
+      <!-- Iceberg SVG — improved -->
+      <svg viewBox="0 0 300 310" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-height:240px;">
+        <defs>
+          <linearGradient id="grad-water" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#3a9ab0" stop-opacity="0.75"/>
+            <stop offset="100%" stop-color="#0f2835" stop-opacity="0.92"/>
+          </linearGradient>
+          <linearGradient id="grad-ice-top" x1="0" y1="0" x2="0.4" y2="1">
+            <stop offset="0%" stop-color="#e8f5fa"/>
+            <stop offset="100%" stop-color="#b0d0e0"/>
+          </linearGradient>
+          <linearGradient id="grad-ice-bot" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1c4f68"/>
+            <stop offset="100%" stop-color="#0d2635"/>
+          </linearGradient>
+        </defs>
+        <!-- Water -->
+        <rect x="0" y="128" width="300" height="182" fill="url(#grad-water)" rx="3"/>
+        <!-- Water shimmer -->
+        <path d="M10 136 Q75 131 150 136 Q225 141 290 136" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" fill="none"/>
+        <path d="M10 148 Q75 143 150 148 Q225 153 290 148" stroke="rgba(255,255,255,0.12)" stroke-width="1" fill="none"/>
+        <!-- Waterline -->
+        <line x1="0" y1="128" x2="300" y2="128" stroke="#7ab8cc" stroke-width="2.5" opacity="0.8"/>
+        <!-- Tip above water — faceted ice -->
+        <polygon points="150,12 202,128 98,128" fill="url(#grad-ice-top)"/>
+        <polygon points="150,12 178,82 150,128" fill="rgba(255,255,255,0.35)"/>
+        <polygon points="150,12 125,80 98,128"  fill="rgba(22,56,72,0.10)"/>
+        <polygon points="150,12 202,128 98,128" fill="none" stroke="#7ab8cc" stroke-width="1.5" opacity="0.5"/>
         <!-- Underwater body -->
-        <polygon points="100,134 180,134 220,290 60,290" fill="#163848" opacity="0.85"/>
-        <!-- Labels on underwater section -->
-        <text x="140" y="175" text-anchor="middle" fill="white" font-size="11" font-weight="600">Datenhistorie</text>
-        <text x="140" y="197" text-anchor="middle" fill="white" font-size="11" font-weight="600">Verantwortlichkeiten</text>
-        <text x="140" y="219" text-anchor="middle" fill="white" font-size="11" font-weight="600">Datenqualität</text>
-        <text x="140" y="241" text-anchor="middle" fill="white" font-size="11" font-weight="600">Governance</text>
-        <text x="140" y="263" text-anchor="middle" fill="white" font-size="11" font-weight="600">Reproduzierbarkeit</text>
+        <polygon points="98,130 202,130 236,305 64,305" fill="url(#grad-ice-bot)"/>
+        <!-- Layer dividers -->
+        <line x1="75"  y1="172" x2="225" y2="172" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+        <line x1="71"  y1="210" x2="229" y2="210" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+        <line x1="68"  y1="248" x2="232" y2="248" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+        <!-- Underwater labels -->
+        <text x="150" y="156" text-anchor="middle" fill="rgba(255,255,255,0.90)" font-size="10" font-weight="600" font-family="Segoe UI,sans-serif">Datenhistorie</text>
+        <text x="150" y="195" text-anchor="middle" fill="rgba(255,255,255,0.90)" font-size="10" font-weight="600" font-family="Segoe UI,sans-serif">Verantwortlichkeiten</text>
+        <text x="150" y="233" text-anchor="middle" fill="rgba(255,255,255,0.90)" font-size="10" font-weight="600" font-family="Segoe UI,sans-serif">Datenqualität</text>
+        <text x="150" y="272" text-anchor="middle" fill="rgba(255,255,255,0.90)" font-size="10" font-weight="600" font-family="Segoe UI,sans-serif">Reproduzierbarkeit</text>
         <!-- Tip label -->
-        <text x="140" y="82" text-anchor="middle" fill="white" font-size="11" font-weight="700">ML Modell</text>
-        <!-- Water label -->
-        <text x="240" y="126" fill="#7ab8cc" font-size="10">≈ Sichtbar</text>
+        <text x="150" y="72"  text-anchor="middle" fill="#163848" font-size="9.5" font-weight="700" font-family="Segoe UI,sans-serif">ML Modell</text>
+        <!-- Sichtbar -->
+        <text x="248" y="124" fill="#3a9ab0" font-size="9.5" font-family="Segoe UI,sans-serif">≈ Sichtbar</text>
       </svg>
     </div>
 
@@ -209,28 +234,76 @@
   </p>
 
   <div class="stage-path flex-1" style="align-items:stretch; gap:8px;">
+    <!-- Stage 1 -->
     <div class="stage">
-      <div class="stage__head">Ausgangslage</div>
+      <div style="text-align:center; padding:10px 0 6px; flex-shrink:0;">
+        <svg viewBox="0 0 48 48" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="10" width="40" height="28" rx="4" fill="#d8e8ef" stroke="#7a9baa" stroke-width="2"/>
+          <line x1="4" y1="18" x2="44" y2="18" stroke="#7a9baa" stroke-width="2"/>
+          <rect x="9"  y="22" width="10" height="4" rx="1" fill="#7a9baa"/>
+          <rect x="22" y="22" width="10" height="4" rx="1" fill="#7a9baa"/>
+          <rect x="9"  y="29" width="22" height="4" rx="1" fill="#7a9baa"/>
+          <circle cx="37" cy="31" r="3" fill="none" stroke="#c94040" stroke-width="2"/>
+          <line x1="39.1" y1="33.1" x2="42" y2="36" stroke="#c94040" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="stage__head">① Ausgangslage</div>
       <div class="stage__body">SSIS-/DWH-Welt und uneinheitliche Lake-Zonen</div>
     </div>
     <div class="stage-arrow">→</div>
+    <!-- Stage 2 -->
     <div class="stage">
-      <div class="stage__head">Zielarchitektur</div>
+      <div style="text-align:center; padding:10px 0 6px; flex-shrink:0;">
+        <svg viewBox="0 0 48 48" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="6" width="36" height="36" rx="5" fill="#d8e8ef" stroke="#2a7d8f" stroke-width="2"/>
+          <rect x="11" y="11" width="11" height="11" rx="2" fill="#2a7d8f" opacity="0.6"/>
+          <rect x="26" y="11" width="11" height="11" rx="2" fill="#2a7d8f" opacity="0.8"/>
+          <rect x="11" y="26" width="11" height="11" rx="2" fill="#2a7d8f" opacity="0.8"/>
+          <rect x="26" y="26" width="11" height="11" rx="2" fill="#2a7d8f"/>
+          <line x1="22" y1="11" x2="26" y2="11" stroke="#163848" stroke-width="1.5"/>
+          <line x1="22" y1="26" x2="26" y2="26" stroke="#163848" stroke-width="1.5"/>
+          <line x1="11" y1="22" x2="11" y2="26" stroke="#163848" stroke-width="1.5"/>
+          <line x1="26" y1="22" x2="26" y2="26" stroke="#163848" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="stage__head">② Zielarchitektur</div>
       <div class="stage__body">Multi-Zone-Functional Lakehouse &amp; Orchestrierung</div>
     </div>
     <div class="stage-arrow">→</div>
+    <!-- Stage 3 -->
     <div class="stage">
-      <div class="stage__head">Leitbeispiel</div>
+      <div style="text-align:center; padding:10px 0 6px; flex-shrink:0;">
+        <svg viewBox="0 0 48 48" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="18" fill="#d8e8ef" stroke="#2a7d8f" stroke-width="2"/>
+          <circle cx="24" cy="18" r="6" fill="#2a7d8f"/>
+          <path d="M12 38 Q12 30 24 30 Q36 30 36 38" fill="#2a7d8f" opacity="0.7"/>
+          <circle cx="24" cy="18" r="3" fill="white"/>
+          <path d="M21 18 L23 20 L27 15" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="stage__head">③ Leitbeispiel</div>
       <div class="stage__body">Patientenbildung (Record Linkage) &amp; Anomalieerkennung</div>
     </div>
     <div class="stage-arrow">→</div>
+    <!-- Stage 4 -->
     <div class="stage">
-      <div class="stage__head">Lessons Learned</div>
+      <div style="text-align:center; padding:10px 0 6px; flex-shrink:0;">
+        <svg viewBox="0 0 48 48" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="20" r="12" fill="#d8e8ef" stroke="#2a7d8f" stroke-width="2"/>
+          <path d="M17 20 Q17 14 24 14 Q31 14 31 20 Q31 25 26 27 L26 29" stroke="#2a7d8f" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <circle cx="26" cy="32" r="1.5" fill="#2a7d8f"/>
+          <path d="M12 40 L18 36 M24 40 L24 36 M36 40 L30 36" stroke="#2e9e6b" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="42" r="3" fill="#2e9e6b"/>
+          <circle cx="24" cy="42" r="3" fill="#c97d20"/>
+          <circle cx="36" cy="42" r="3" fill="#2a7d8f"/>
+        </svg>
+      </div>
+      <div class="stage__head">④ Lessons Learned</div>
       <div class="stage__body">Was hat sich bewährt, was bleibt schwierig?</div>
     </div>
   </div>
 
-  <div class="callout callout--teal" style="margin-top:16px;">
+  <div class="callout callout--teal" style="margin-top:14px;">
     <strong>Roter Faden:</strong> Nutzen früh greifbar machen, ohne die Datenplattform zu überspringen.
   </div>
 
@@ -387,51 +460,103 @@
     Die neue Architektur definiert Zonen über <span class="hl">Funktionen und Verträge</span>, nicht über historisch gewachsene Namen.
   </p>
 
-  <!-- Canonical Zone Map -->
-  <div style="flex:1; display:flex; flex-direction:column; gap:10px; justify-content:center;">
-    <div style="font-size:0.8em; font-weight:700; color:var(--ink-muted); margin-bottom:4px;">Zone Map</div>
+  <!-- Canonical Zone Map — architectural layout -->
+  <div style="flex:1; display:flex; gap:14px; align-items:stretch;">
 
-    <div style="display:flex; gap:0; border-radius:var(--r); overflow:hidden; border:2px solid var(--panel-dark);">
-      <div class="zone zone--landing" style="flex:1; padding:14px 16px;">
-        <div class="zone__label">Landing Zone</div>
-        <div style="font-size:0.78em; color:var(--ink-muted);">Optional und transient</div>
+    <!-- Left: governance vertical bar (Airflow) -->
+    <div style="width:48px; display:flex; flex-direction:column; align-items:center; background:linear-gradient(180deg,#2a7d8f 0%,#1f6070 100%); border-radius:8px; padding:10px 0; gap:6px;">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="white" xmlns="http://www.w3.org/2000/svg" style="opacity:0.9;">
+        <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span style="writing-mode:vertical-rl; transform:rotate(180deg); color:white; font-size:0.65em; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; opacity:0.9;">Orchestrierung · Airflow</span>
+    </div>
+
+    <!-- Center: zone strip + callout -->
+    <div style="flex:1; display:flex; flex-direction:column; gap:10px;">
+
+      <!-- Zone cards row -->
+      <div style="display:flex; align-items:stretch; gap:0; border-radius:10px; overflow:hidden; box-shadow:0 4px 18px rgba(22,56,72,0.12), 0 1px 4px rgba(22,56,72,0.07);">
+
+        <!-- Landing -->
+        <div class="zone zone--landing" style="flex:1; padding:16px 14px 14px; display:flex; flex-direction:column; gap:6px;">
+          <svg viewBox="0 0 32 32" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="16" width="28" height="14" rx="3" fill="#7a9baa" opacity="0.4"/>
+            <path d="M16 4 L28 16 L4 16 Z" fill="#7a9baa"/>
+            <line x1="16" y1="16" x2="16" y2="22" stroke="white" stroke-width="2"/>
+          </svg>
+          <div class="zone__label" style="font-size:0.85em;">Landing</div>
+          <div style="font-size:0.72em; color:var(--ink-muted); line-height:1.4;">Optional &amp; transient<br>Rohdaten-Eingang</div>
+        </div>
+
+        <!-- Arrow -->
+        <div style="display:flex; align-items:center; background:var(--bg-soft); padding:0 2px; z-index:1;">
+          <svg viewBox="0 0 18 32" width="14" height="32"><polygon points="2,4 14,16 2,28" fill="#2a7d8f" opacity="0.6"/></svg>
+        </div>
+
+        <!-- Raw -->
+        <div class="zone zone--raw" style="flex:1.2; padding:16px 14px 14px; display:flex; flex-direction:column; gap:6px;">
+          <svg viewBox="0 0 32 32" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="6" width="24" height="4" rx="2" fill="#3a9ab0" opacity="0.8"/>
+            <rect x="4" y="13" width="24" height="4" rx="2" fill="#3a9ab0" opacity="0.6"/>
+            <rect x="4" y="20" width="24" height="4" rx="2" fill="#3a9ab0" opacity="0.4"/>
+            <path d="M28 27 L28 4" stroke="#3a9ab0" stroke-width="2" stroke-dasharray="2,2"/>
+          </svg>
+          <div class="zone__label" style="font-size:0.85em;">Raw Zone</div>
+          <div style="font-size:0.72em; color:var(--ink-muted); line-height:1.4;">Unveränderl. Historie<br>Audit &amp; Reprocessing</div>
+        </div>
+
+        <!-- Arrow -->
+        <div style="display:flex; align-items:center; background:var(--bg-soft); padding:0 2px; z-index:1;">
+          <svg viewBox="0 0 18 32" width="14" height="32"><polygon points="2,4 14,16 2,28" fill="#2a7d8f" opacity="0.6"/></svg>
+        </div>
+
+        <!-- Process -->
+        <div class="zone zone--process" style="flex:1.2; padding:16px 14px 14px; display:flex; flex-direction:column; gap:6px;">
+          <svg viewBox="0 0 32 32" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="10" fill="none" stroke="#2a7d8f" stroke-width="2.5"/>
+            <path d="M11 16 L14 19 L21 12" stroke="#2a7d8f" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <circle cx="16" cy="16" r="3" fill="#2a7d8f" opacity="0.2"/>
+          </svg>
+          <div class="zone__label" style="font-size:0.85em;">Process Zone</div>
+          <div style="font-size:0.72em; color:var(--ink-muted); line-height:1.4;">Qualität &amp; Standard.<br>Technische Konsolidierung</div>
+        </div>
+
+        <!-- Arrow -->
+        <div style="display:flex; align-items:center; background:var(--bg-soft); padding:0 2px; z-index:1;">
+          <svg viewBox="0 0 18 32" width="14" height="32"><polygon points="2,4 14,16 2,28" fill="#2a7d8f" opacity="0.6"/></svg>
+        </div>
+
+        <!-- Access -->
+        <div class="zone zone--access" style="flex:1.2; padding:16px 14px 14px; display:flex; flex-direction:column; gap:6px;">
+          <svg viewBox="0 0 32 32" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="20" width="6" height="8" rx="1" fill="#163848"/>
+            <rect x="13" y="14" width="6" height="14" rx="1" fill="#2a7d8f"/>
+            <rect x="23" y="8" width="6" height="20" rx="1" fill="#3a9ab0"/>
+            <path d="M6 16 L16 10 L26 4" stroke="#c97d20" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </svg>
+          <div class="zone__label" style="font-size:0.85em;">Access Zone</div>
+          <div style="font-size:0.72em; color:var(--ink-muted); line-height:1.4;">Datenprodukte für<br>BI, Analytics &amp; ML</div>
+        </div>
       </div>
-      <div style="display:flex; align-items:center; padding:0 4px; background:var(--bg-soft);">
-        <span style="color:var(--navy); font-weight:900; font-size:1.2em;">→</span>
-      </div>
-      <div class="zone zone--raw" style="flex:1.2; padding:14px 16px;">
-        <div class="zone__label">Raw Zone</div>
-        <div style="font-size:0.78em; color:var(--ink-muted);">Unveränderliche Rohdatenhistorie</div>
-      </div>
-      <div style="display:flex; align-items:center; padding:0 4px; background:var(--bg-soft);">
-        <span style="color:var(--navy); font-weight:900; font-size:1.2em;">→</span>
-      </div>
-      <div class="zone zone--process" style="flex:1.2; padding:14px 16px;">
-        <div class="zone__label">Process Zone</div>
-        <div style="font-size:0.78em; color:var(--ink-muted);">Technische Qualität &amp; Standardisierung</div>
-      </div>
-      <div style="display:flex; align-items:center; padding:0 4px; background:var(--bg-soft);">
-        <span style="color:var(--navy); font-weight:900; font-size:1.2em;">→</span>
-      </div>
-      <div class="zone zone--access" style="flex:1.2; padding:14px 16px;">
-        <div class="zone__label">Access Zone</div>
-        <div style="font-size:0.78em; color:var(--ink-muted);">Fachliche Datenprodukte für BI, Analytics &amp; ML</div>
+
+      <div class="callout callout--teal" style="margin-top:2px;">
+        <strong>Prinzip:</strong> Jede Zone hat eine klar definierte Aufgabe und ein unverhandelbares <strong>Versprechen</strong> an die nächste Schicht.
       </div>
     </div>
 
-    <!-- Vertical governance bars below -->
-    <div style="display:flex; gap:6px; margin-top:4px;">
-      <div style="flex:1; background:linear-gradient(90deg, var(--teal), var(--teal-light)); border-radius:var(--r-sm); padding:8px 12px; color:white; font-size:0.78em; font-weight:600; text-align:center;">
-        ⚙ Orchestrierung (Airflow)
-      </div>
-      <div style="flex:1; background:linear-gradient(90deg, var(--navy), var(--teal-deep)); border-radius:var(--r-sm); padding:8px 12px; color:white; font-size:0.78em; font-weight:600; text-align:center;">
-        🔒 Governance / Lineage (DataHub)
-      </div>
+    <!-- Right: governance vertical bar (DataHub) -->
+    <div style="width:48px; display:flex; flex-direction:column; align-items:center; background:linear-gradient(180deg,#163848 0%,#1f6070 100%); border-radius:8px; padding:10px 0; gap:6px;">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.9;">
+        <rect x="3" y="3" width="18" height="18" rx="3" stroke="white" stroke-width="2"/>
+        <circle cx="12" cy="12" r="3" fill="white" opacity="0.8"/>
+        <line x1="12" y1="3" x2="12" y2="9" stroke="white" stroke-width="1.5"/>
+        <line x1="12" y1="15" x2="12" y2="21" stroke="white" stroke-width="1.5"/>
+        <line x1="3" y1="12" x2="9" y2="12" stroke="white" stroke-width="1.5"/>
+        <line x1="15" y1="12" x2="21" y2="12" stroke="white" stroke-width="1.5"/>
+      </svg>
+      <span style="writing-mode:vertical-rl; transform:rotate(180deg); color:white; font-size:0.65em; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; opacity:0.9;">Governance · DataHub</span>
     </div>
 
-    <div class="callout callout--teal">
-      <strong>Prinzip:</strong> Jede Zone hat eine klar definierte Aufgabe und ein unverhandelbares <strong>Versprechen</strong> an die nächste Schicht.
-    </div>
   </div>
 
   <aside class="notes">
@@ -501,7 +626,7 @@
     <div class="zm-arrow">→</div>
     <div class="zm-zone zm-raw">Raw</div>
     <div class="zm-arrow">→</div>
-    <div class="zm-zone zm-process active">Process</div>
+    <div class="zm-zone zm-process active zm-here">Process</div>
     <div class="zm-arrow">→</div>
     <div class="zm-zone zm-access">Access</div>
   </div>
@@ -552,7 +677,7 @@
     <div class="zm-arrow">→</div>
     <div class="zm-zone zm-process">Process</div>
     <div class="zm-arrow">→</div>
-    <div class="zm-zone zm-access active">Access</div>
+    <div class="zm-zone zm-access active zm-here">Access</div>
   </div>
 
   <div class="three-col flex-1" style="margin-top:8px;">
@@ -830,42 +955,63 @@
   <div class="zone-map-mini">
     <div class="zm-zone zm-landing">Landing</div>
     <div class="zm-arrow">→</div>
-    <div class="zm-zone zm-raw active">Raw</div>
+    <div class="zm-zone zm-raw active zm-here">Raw</div>
     <div class="zm-arrow">→</div>
     <div class="zm-zone zm-process">Process</div>
     <div class="zm-arrow">→</div>
     <div class="zm-zone zm-access">Access</div>
   </div>
 
-  <div class="row flex-1" style="align-items:center; gap:20px; margin-top:8px;">
-    <!-- Source records flowing to person -->
-    <div style="flex:1.2;">
-      <div style="display:flex; flex-direction:column; gap:6px;">
-        <div class="card" style="border-left:3px solid var(--steel);">
-          <div class="card__body" style="padding:7px 12px;">
-            <div style="font-size:0.78em;"><strong>ABR1:</strong> Müller, Hans, 1980-03-12, EGK 123456</div>
-          </div>
-        </div>
-        <div class="card" style="border-left:3px solid var(--steel);">
-          <div class="card__body" style="padding:7px 12px;">
-            <div style="font-size:0.78em;"><strong>ABR2:</strong> Mueller, H., 1980-03-12, PLZ 44139</div>
-          </div>
-        </div>
-        <div class="card" style="border-left:3px solid var(--steel);">
-          <div class="card__body" style="padding:7px 12px;">
-            <div style="font-size:0.78em;"><strong>KVUEPP:</strong> Müller, Hans-Peter, geb. 12.03.1980</div>
-          </div>
-        </div>
+  <!-- Circuit-flow diagram: sources → linkage → person -->
+  <div class="row flex-1" style="align-items:center; gap:0; margin-top:8px;">
+
+    <!-- Source records -->
+    <div style="flex:1.1; display:flex; flex-direction:column; gap:7px;">
+      <div class="card" style="border-left:4px solid #7a9baa; padding:9px 12px;">
+        <div style="font-size:0.68em; font-weight:700; color:#7a9baa; letter-spacing:.06em; margin-bottom:2px;">ABR1 / Abrechnung</div>
+        <div style="font-size:0.75em; color:var(--ink);">Müller, Hans · 1980-03-12<br><span style="color:var(--ink-muted);">EGK 123456</span></div>
+      </div>
+      <div class="card" style="border-left:4px solid #3a9ab0; padding:9px 12px;">
+        <div style="font-size:0.68em; font-weight:700; color:#3a9ab0; letter-spacing:.06em; margin-bottom:2px;">ABR2 / Abrechnung</div>
+        <div style="font-size:0.75em; color:var(--ink);">Mueller, H. · 1980-03-12<br><span style="color:var(--ink-muted);">PLZ 44139</span></div>
+      </div>
+      <div class="card" style="border-left:4px solid #2a7d8f; padding:9px 12px;">
+        <div style="font-size:0.68em; font-weight:700; color:#2a7d8f; letter-spacing:.06em; margin-bottom:2px;">KVUEPP / KV-Daten</div>
+        <div style="font-size:0.75em; color:var(--ink);">Müller, Hans-Peter · 12.03.1980<br><span style="color:var(--ink-muted);">Versicherungsnr. 9X1234</span></div>
       </div>
     </div>
 
-    <div style="text-align:center; font-size:2em; color:var(--teal); font-weight:900;">→</div>
+    <!-- Circuit SVG connector -->
+    <div style="width:100px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+      <svg viewBox="0 0 90 120" width="90" height="120" xmlns="http://www.w3.org/2000/svg">
+        <!-- Three wires converging -->
+        <path d="M0 20 Q45 20 45 60" stroke="#7a9baa" stroke-width="2" fill="none"/>
+        <path d="M0 60 L45 60" stroke="#3a9ab0" stroke-width="2" fill="none"/>
+        <path d="M0 100 Q45 100 45 60" stroke="#2a7d8f" stroke-width="2" fill="none"/>
+        <!-- Merge node -->
+        <circle cx="45" cy="60" r="9" fill="var(--teal)" stroke="white" stroke-width="2"/>
+        <text x="45" y="64" text-anchor="middle" fill="white" font-size="9" font-weight="bold">ML</text>
+        <!-- Output wire -->
+        <path d="M54 60 L88 60" stroke="#163848" stroke-width="2.5"/>
+        <polygon points="84,55 92,60 84,65" fill="#163848"/>
+        <!-- Dots at input -->
+        <circle cx="0" cy="20" r="3" fill="#7a9baa"/>
+        <circle cx="0" cy="60" r="3" fill="#3a9ab0"/>
+        <circle cx="0" cy="100" r="3" fill="#2a7d8f"/>
+      </svg>
+    </div>
 
-    <div style="flex:1; text-align:center;">
-      <div style="background:linear-gradient(135deg,var(--teal-deep),var(--teal)); color:white; border-radius:50%; width:110px; height:110px; display:flex; flex-direction:column; align-items:center; justify-content:center; margin:0 auto 8px; font-size:2.2em; border:4px solid var(--teal-light);">👤</div>
-      <div style="font-weight:700; color:var(--navy);">Person</div>
-      <div style="font-size:0.78em; color:var(--teal); font-family:monospace; margin-top:4px;">ID: 12456-STABLE</div>
-      <div class="chip chip--green" style="margin-top:6px;">Status: Validiert</div>
+    <!-- Person result -->
+    <div style="flex:0.85; text-align:center; display:flex; flex-direction:column; align-items:center; gap:8px;">
+      <div style="background:linear-gradient(145deg,var(--teal-deep),var(--teal)); border-radius:50%; width:86px; height:86px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 18px rgba(42,125,143,0.35); border:3px solid var(--teal-light);">
+        <svg viewBox="0 0 40 40" width="44" height="44" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="14" r="8" fill="white" opacity="0.9"/>
+          <path d="M5 36 Q5 26 20 26 Q35 26 35 36" fill="white" opacity="0.85"/>
+        </svg>
+      </div>
+      <div style="font-weight:700; color:var(--navy); font-size:0.88em;">Patient Person</div>
+      <div style="font-size:0.72em; color:var(--teal); font-family:monospace; background:var(--bg-soft); padding:3px 8px; border-radius:4px; border:1px solid var(--border);">ID: 12456‑STABLE</div>
+      <div class="chip chip--green">✓ Validiert</div>
     </div>
   </div>
 
@@ -886,59 +1032,90 @@
     <span class="hl-red">Fehlverschmelzungen (False Merges)</span> bergen reale medizinische Risiken.
   </p>
 
-  <div class="two-col flex-1" style="align-items:center;">
-    <!-- False Merge -->
-    <div class="card card--bad" style="padding:0;">
-      <div class="card__head" style="background:linear-gradient(135deg,var(--red),#d65555);">⚠ The Stakes: False Merge</div>
-      <div class="card__body">
-        <div style="display:flex; gap:8px; align-items:center; padding:8px 0;">
-          <div style="text-align:center; font-size:0.8em;">
-            <div style="font-size:1.8em;">👤</div>
-            <div>Müller, geb. 1980</div>
+  <div class="two-col flex-1" style="align-items:stretch; gap:16px;">
+
+    <!-- False Merge card -->
+    <div class="card card--bad" style="padding:0; display:flex; flex-direction:column;">
+      <div class="card__head" style="background:linear-gradient(135deg,#b03030,#d65555); color:white; border-radius:8px 8px 0 0; padding:10px 14px; font-weight:700;">
+        <svg viewBox="0 0 20 20" width="16" height="16" style="vertical-align:-2px; margin-right:4px;" xmlns="http://www.w3.org/2000/svg"><path d="M10 2 L18 17 L2 17 Z" fill="white" opacity="0.9"/><text x="10" y="15" text-anchor="middle" fill="#b03030" font-size="9" font-weight="bold">!</text></svg>
+        Fehler: False Merge
+      </div>
+      <div class="card__body" style="flex:1; display:flex; flex-direction:column; gap:10px; padding:14px;">
+        <!-- SVG diagram: two people merging wrongly into one record -->
+        <div style="display:flex; align-items:center; justify-content:center; gap:10px;">
+          <!-- Person A -->
+          <div style="text-align:center;">
+            <svg viewBox="0 0 40 50" width="44" height="54" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="14" r="9" fill="#4a90b8"/>
+              <path d="M5 46 Q5 32 20 32 Q35 32 35 46" fill="#4a90b8"/>
+              <text x="20" y="68" text-anchor="middle" fill="#4a90b8" font-size="8">A</text>
+            </svg>
+            <div style="font-size:0.68em; color:var(--ink-muted);">Müller,<br>geb. 1975</div>
           </div>
-          <div style="color:var(--red); font-size:1.5em; font-weight:900;">+</div>
-          <div style="text-align:center; font-size:0.8em;">
-            <div style="font-size:1.8em;">👤</div>
-            <div>Müller, geb. 1980</div>
+          <div style="font-size:1.2em; font-weight:900; color:#b03030;">+</div>
+          <!-- Person B -->
+          <div style="text-align:center;">
+            <svg viewBox="0 0 40 50" width="44" height="54" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="14" r="9" fill="#2a7d8f"/>
+              <path d="M5 46 Q5 32 20 32 Q35 32 35 46" fill="#2a7d8f"/>
+            </svg>
+            <div style="font-size:0.68em; color:var(--ink-muted);">Müller,<br>geb. 1975</div>
           </div>
-          <div style="color:var(--red); font-size:1.5em; font-weight:900;">→</div>
-          <div style="text-align:center; font-size:0.8em; color:var(--red);">
-            <div style="font-size:2em;">⚠</div>
-            <div style="font-weight:700;">1 Akte!</div>
+          <div style="font-size:1.4em; font-weight:900; color:#b03030;">→</div>
+          <!-- Wrong merged record -->
+          <div style="text-align:center;">
+            <div style="background:#b03030; border-radius:6px; padding:8px 10px; position:relative;">
+              <svg viewBox="0 0 40 30" width="36" height="26" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="13" cy="10" r="6" fill="white" opacity="0.5"/>
+                <circle cx="27" cy="10" r="6" fill="white" opacity="0.5"/>
+                <path d="M4 26 Q4 18 13 18" fill="white" opacity="0.4"/>
+                <path d="M36 26 Q36 18 27 18" fill="white" opacity="0.4"/>
+                <line x1="13" y1="10" x2="27" y2="10" stroke="white" stroke-width="1.5" stroke-dasharray="2,2"/>
+              </svg>
+              <div style="font-size:0.65em; color:white; font-weight:700; margin-top:2px;">1 AKTE!</div>
+            </div>
           </div>
         </div>
-        <ul class="bullets" style="margin-top:6px;">
+        <ul class="bullets">
           <li>Zwei verschiedene Personen werden fälschlich verschmolzen</li>
-          <li>Falsche medizinische Zuordnung — Hohes Risiko</li>
+          <li style="color:var(--red); font-weight:600;">Falsche medizinische Zuordnung — hohes Risiko</li>
         </ul>
       </div>
     </div>
 
-    <!-- Split -->
-    <div class="card card--warn" style="padding:0;">
-      <div class="card__head" style="background:linear-gradient(135deg,var(--amber),#d99e30);">The Stakes: Split</div>
-      <div class="card__body">
-        <div style="display:flex; gap:8px; align-items:center; padding:8px 0;">
-          <div style="text-align:center; font-size:0.8em;">
-            <div style="font-size:1.8em;">👤</div>
-            <div>Müller, geb. 1980</div>
+    <!-- Split card -->
+    <div class="card card--warn" style="padding:0; display:flex; flex-direction:column;">
+      <div class="card__head" style="background:linear-gradient(135deg,#b07820,#d99e30); color:white; border-radius:8px 8px 0 0; padding:10px 14px; font-weight:700;">
+        Fehler: Split
+      </div>
+      <div class="card__body" style="flex:1; display:flex; flex-direction:column; gap:10px; padding:14px;">
+        <!-- SVG diagram: one person split into two records -->
+        <div style="display:flex; align-items:center; justify-content:center; gap:14px;">
+          <!-- Single real person -->
+          <div style="text-align:center;">
+            <svg viewBox="0 0 40 50" width="44" height="54" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="14" r="9" fill="#2a7d8f"/>
+              <path d="M5 46 Q5 32 20 32 Q35 32 35 46" fill="#2a7d8f"/>
+            </svg>
+            <div style="font-size:0.68em; color:var(--ink-muted);">Müller,<br>geb. 1975</div>
           </div>
-          <div style="color:var(--amber); font-size:1.5em; font-weight:900;">→</div>
-          <div style="text-align:center; font-size:0.8em;">
-            <div style="font-size:1em;">👤<br>👤</div>
-            <div>2 Akten</div>
+          <div style="font-size:1.4em; font-weight:900; color:#b07820;">→</div>
+          <!-- Two separate records -->
+          <div style="display:flex; flex-direction:column; gap:5px;">
+            <div style="background:#b07820; border-radius:4px; padding:5px 10px; color:white; font-size:0.68em; font-weight:700;">Akte A</div>
+            <div style="background:#c98d20; border-radius:4px; padding:5px 10px; color:white; font-size:0.68em; font-weight:700;">Akte B</div>
           </div>
         </div>
-        <ul class="bullets" style="margin-top:6px;">
+        <ul class="bullets">
           <li>Eine Person zerfällt in mehrere Akten</li>
-          <li>Medizinisch weniger riskant — Niedrigeres Risiko</li>
+          <li style="color:var(--amber);">Medizinisch weniger riskant — mittleres Risiko</li>
         </ul>
       </div>
     </div>
   </div>
 
   <div class="callout callout--red mt-auto" style="text-align:center;">
-    <strong>Diese Asymmetrie zwingt uns zu extrem hoher Präzision.</strong>
+    <strong>Diese Asymmetrie zwingt uns zu extrem hoher Präzision bei False Merges.</strong>
   </div>
 
   <aside class="notes">
@@ -959,7 +1136,7 @@
     <div class="zm-arrow">→</div>
     <div class="zm-zone zm-raw">Raw</div>
     <div class="zm-arrow">→</div>
-    <div class="zm-zone zm-process active">Process</div>
+    <div class="zm-zone zm-process active zm-here">Process</div>
     <div class="zm-arrow">→</div>
     <div class="zm-zone zm-access">Access</div>
   </div>
@@ -1292,7 +1469,7 @@
     <div class="zm-arrow">→</div>
     <div class="zm-zone zm-raw">Raw</div>
     <div class="zm-arrow">→</div>
-    <div class="zm-zone zm-process active">Process ← hier</div>
+    <div class="zm-zone zm-process active zm-here">Process</div>
     <div class="zm-arrow">→</div>
     <div class="zm-zone zm-access">Access</div>
   </div>
@@ -1350,7 +1527,7 @@
     <div class="zm-arrow">→</div>
     <div class="zm-zone zm-raw">Raw</div>
     <div class="zm-arrow">→</div>
-    <div class="zm-zone zm-process active">Process ← hier</div>
+    <div class="zm-zone zm-process active zm-here">Process</div>
     <div class="zm-arrow">→</div>
     <div class="zm-zone zm-access">Access</div>
   </div>
@@ -1410,7 +1587,7 @@
     <div class="zm-arrow">→</div>
     <div class="zm-zone zm-raw">Raw</div>
     <div class="zm-arrow">→</div>
-    <div class="zm-zone zm-process active">Process ← hier</div>
+    <div class="zm-zone zm-process active zm-here">Process</div>
     <div class="zm-arrow">→</div>
     <div class="zm-zone zm-access">Access</div>
   </div>
@@ -1457,51 +1634,101 @@
     Mehr echte Patienten korrekt verknüpft — <span class="hl-green">praktisch ohne neue Fehlverschmelzungen</span>.
   </p>
 
-  <div style="flex:1; display:flex; gap:16px; align-items:center;">
-    <!-- Grouped bar chart -->
-    <div style="flex:1.2;">
-      <div class="bar-chart" style="height:180px; align-items:flex-end; gap:20px;">
-        <!-- Current Model -->
-        <div class="bar-group">
-          <div class="bar-value">81.9%</div>
-          <div class="bar f1" style="height:68%;" title="F1"></div>
-          <div class="bar-value" style="font-size:0.6em; color:var(--amber);">69.4%↓</div>
-          <div class="bar recall" style="height:58%;" title="Recall"></div>
-          <div class="bar precision" style="height:100%;" style="display:none;"></div>
-          <div class="bar-label">Current<br>Model</div>
-        </div>
-        <!-- Hybrid Cascade -->
-        <div class="bar-group">
-          <div class="bar-value">90.0%</div>
-          <div class="bar f1" style="height:80%;" title="F1"></div>
-          <div class="bar-value" style="font-size:0.6em; color:var(--amber);">82.0%</div>
-          <div class="bar recall" style="height:73%;" title="Recall"></div>
-          <div class="bar-label">Hybrid<br>Cascade</div>
-        </div>
-        <!-- FlexRL -->
-        <div class="bar-group">
-          <div class="bar-value" style="color:var(--green); font-weight:800;">95.85%</div>
-          <div class="bar winner" style="height:96%;" title="F1"></div>
-          <div class="bar-value" style="font-size:0.6em; color:var(--green);">92.1%↑</div>
-          <div class="bar recall" style="height:88%; background:var(--green);" title="Recall"></div>
-          <div class="bar-label" style="color:var(--green); font-weight:700;">FlexRL<br>★ Winner</div>
-        </div>
-      </div>
+  <div style="flex:1; display:flex; gap:20px; align-items:center;">
+
+    <!-- SVG bar chart -->
+    <div style="flex:1.3;">
+      <svg viewBox="0 0 400 210" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-height:210px; overflow:visible;">
+        <defs>
+          <linearGradient id="grad-prec" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#3a9ab0"/>
+            <stop offset="100%" stop-color="#2a7d8f"/>
+          </linearGradient>
+          <linearGradient id="grad-recall-base" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#c97d20"/>
+            <stop offset="100%" stop-color="#a06010"/>
+          </linearGradient>
+          <linearGradient id="grad-recall-mid" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#e09030"/>
+            <stop offset="100%" stop-color="#c07820"/>
+          </linearGradient>
+          <linearGradient id="grad-recall-win" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#38c070"/>
+            <stop offset="100%" stop-color="#2a9e58"/>
+          </linearGradient>
+          <linearGradient id="grad-f1-win" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#4ad080"/>
+            <stop offset="100%" stop-color="#2eb864"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Y-axis labels -->
+        <text x="28" y="165" text-anchor="end" fill="#7a9baa" font-size="9">0%</text>
+        <text x="28" y="115" text-anchor="end" fill="#7a9baa" font-size="9">50%</text>
+        <text x="28" y="65"  text-anchor="end" fill="#7a9baa" font-size="9">100%</text>
+        <!-- Gridlines -->
+        <line x1="32" y1="163" x2="390" y2="163" stroke="#d8e4ea" stroke-width="1"/>
+        <line x1="32" y1="113" x2="390" y2="113" stroke="#d8e4ea" stroke-width="1" stroke-dasharray="4,3"/>
+        <line x1="32" y1="63"  x2="390" y2="63"  stroke="#d8e4ea" stroke-width="1" stroke-dasharray="4,3"/>
+
+        <!-- GROUP 1: Current Model (bars at x≈55, 80) -->
+        <!-- Precision bar: 100% → height=100 from y=63 to y=163 -->
+        <rect x="50" y="63" width="22" height="100" rx="3" fill="url(#grad-prec)" opacity="0.85"/>
+        <text x="61" y="58" text-anchor="middle" fill="#2a7d8f" font-size="8.5" font-weight="700">100%</text>
+        <!-- Recall bar: 69.4% → height=69 -->
+        <rect x="76" y="94" width="22" height="69" rx="3" fill="url(#grad-recall-base)"/>
+        <text x="87" y="89" text-anchor="middle" fill="#a06010" font-size="8.5" font-weight="700">69.4%</text>
+        <!-- F1 label -->
+        <text x="74" y="185" text-anchor="middle" fill="#163848" font-size="9" font-weight="600">Current</text>
+        <text x="74" y="196" text-anchor="middle" fill="#163848" font-size="9">Model</text>
+        <text x="74" y="207" text-anchor="middle" fill="#7a9baa" font-size="8">F1: 81.9%</text>
+
+        <!-- GROUP 2: Hybrid Cascade (bars at x≈145, 170) -->
+        <rect x="140" y="63" width="22" height="100" rx="3" fill="url(#grad-prec)" opacity="0.85"/>
+        <text x="151" y="58" text-anchor="middle" fill="#2a7d8f" font-size="8.5" font-weight="700">100%</text>
+        <rect x="166" y="81" width="22" height="82" rx="3" fill="url(#grad-recall-mid)"/>
+        <text x="177" y="76" text-anchor="middle" fill="#c07820" font-size="8.5" font-weight="700">82.0%</text>
+        <text x="164" y="185" text-anchor="middle" fill="#163848" font-size="9" font-weight="600">Hybrid</text>
+        <text x="164" y="196" text-anchor="middle" fill="#163848" font-size="9">Cascade</text>
+        <text x="164" y="207" text-anchor="middle" fill="#7a9baa" font-size="8">F1: 90.0%</text>
+
+        <!-- GROUP 3: FlexRL Winner — highlight box -->
+        <rect x="232" y="46" width="140" height="128" rx="6" fill="#f0fbf5" stroke="#2e9e6b" stroke-width="1.5" stroke-dasharray="5,3"/>
+        <text x="302" y="38" text-anchor="middle" fill="#2e9e6b" font-size="8.5" font-weight="800">★ Winner</text>
+        <!-- Precision bar -->
+        <rect x="248" y="63" width="24" height="100" rx="3" fill="url(#grad-prec)" opacity="0.85"/>
+        <text x="260" y="57" text-anchor="middle" fill="#2a7d8f" font-size="8.5" font-weight="700">100%</text>
+        <!-- Recall bar: 92.1% → height=92 -->
+        <rect x="278" y="71" width="24" height="92" rx="3" fill="url(#grad-f1-win)"/>
+        <text x="290" y="65" text-anchor="middle" fill="#2a9e58" font-size="9" font-weight="800">92.1%</text>
+        <!-- F1 score big label -->
+        <text x="302" y="185" text-anchor="middle" fill="#2e9e6b" font-size="9" font-weight="800">FlexRL</text>
+        <text x="302" y="207" text-anchor="middle" fill="#2e9e6b" font-size="9" font-weight="700">F1: 95.85%</text>
+
+        <!-- Legend -->
+        <rect x="34" y="14" width="10" height="8" rx="2" fill="url(#grad-prec)" opacity="0.85"/>
+        <text x="47" y="21" fill="#7a9baa" font-size="8">Precision</text>
+        <rect x="90" y="14" width="10" height="8" rx="2" fill="#c97d20"/>
+        <text x="103" y="21" fill="#7a9baa" font-size="8">Recall</text>
+
+        <!-- X-axis -->
+        <line x1="32" y1="163" x2="390" y2="163" stroke="#7a9baa" stroke-width="1.5"/>
+      </svg>
     </div>
 
     <div class="col" style="flex:1; gap:10px;">
       <div class="callout callout--green">
-        Recall steigt von 69% → 92% (+23 Pp) — Precision bleibt bei ~100%
+        <strong>+23 Pp Recall</strong>: 69% → 92%, Precision bleibt bei ~100%
       </div>
       <div class="card">
         <div class="card__head">Kernbeobachtung</div>
         <div class="card__body">
-          <div class="card__item">Alle Precision-Balken: ~100% — false merge bleibt ausgeschlossen</div>
-          <div class="card__item">Recall-Zuwachs: +22.8 Pp gegenüber Baseline</div>
+          <div class="card__item">Alle Precision-Balken ~100% — false merge ausgeschlossen</div>
+          <div class="card__item">Recall-Zuwachs: <strong>+22.8 Pp</strong> ggü. Baseline</div>
         </div>
       </div>
       <div class="callout callout--amber">
-        <strong>Fachliche Entscheidung:</strong> Ist der Recall-Gewinn die wenigen false merges wert? Welche Schwelle ist produktiv vertretbar?
+        <strong>Fachliche Entscheidung:</strong> Ist der Recall-Gewinn die wenigen false merges wert?
       </div>
     </div>
   </div>
@@ -1526,7 +1753,7 @@
     <div class="zm-arrow">→</div>
     <div class="zm-zone zm-process">Process</div>
     <div class="zm-arrow">→</div>
-    <div class="zm-zone zm-access active">Access ← hier</div>
+    <div class="zm-zone zm-access active zm-here">Access</div>
   </div>
 
   <div class="row flex-1" style="gap:20px; align-items:center; margin-top:8px;">
@@ -1852,59 +2079,64 @@
     Das Lakehouse ist der <span class="hl">Motor für produktives Data Engineering</span> und verlässliche KI.
   </p>
 
-  <div class="row flex-1" style="gap:16px; align-items:flex-start;">
-    <!-- Full zone map summary -->
-    <div class="col" style="flex:1.3; gap:10px;">
-      <div style="display:flex; gap:0; border-radius:var(--r); overflow:hidden; border:2px solid var(--green);">
-        <div class="zone zone--landing" style="flex:1; padding:10px 12px;">
-          <div class="zone__label">Landing</div>
-          <div style="font-size:0.72em; color:var(--ink-muted);">SSIS-Altslasten</div>
-        </div>
-        <div style="display:flex; align-items:center; padding:0 3px; background:var(--bg-soft);">
-          <span style="color:var(--green); font-weight:900;">→</span>
-        </div>
-        <div class="zone zone--raw" style="flex:1.2; padding:10px 12px; border:2px solid var(--green);">
-          <div class="zone__label">Raw</div>
-          <div style="font-size:0.72em; color:var(--ink-muted);">Append-only Historie</div>
-        </div>
-        <div style="display:flex; align-items:center; padding:0 3px; background:var(--bg-soft);">
-          <span style="color:var(--green); font-weight:900;">→</span>
-        </div>
-        <div class="zone zone--process" style="flex:1.2; padding:10px 12px; border:2px solid var(--green);">
-          <div class="zone__label">Process</div>
-          <div style="font-size:0.72em; color:var(--ink-muted);">Patientenbildung ★</div>
-        </div>
-        <div style="display:flex; align-items:center; padding:0 3px; background:var(--bg-soft);">
-          <span style="color:var(--green); font-weight:900;">→</span>
-        </div>
-        <div class="zone zone--access" style="flex:1.2; padding:10px 12px; border:2px solid var(--green);">
-          <div class="zone__label">Access</div>
-          <div style="font-size:0.72em; color:var(--ink-muted);">Golden Record / ML</div>
-        </div>
-      </div>
-
-      <ul class="bullets" style="margin-top:4px;">
-        <li>Eine Plattform von Rohdaten bis ML-Anwendung</li>
-        <li>Reproduzierbare Datenstände statt Ad-hoc-Extrakte</li>
-        <li>Klare Layer-Verträge statt gewachsener Zonenlogik</li>
-        <li>Datenqualität als Voraussetzung für Modellqualität</li>
-        <li>Systematische KI-Einführung über validierbare Use Cases</li>
-      </ul>
+  <!-- Full-width zone map with result annotations -->
+  <div style="flex:0 0 auto; display:flex; align-items:stretch; gap:0; border-radius:10px; overflow:hidden; box-shadow:0 4px 20px rgba(22,56,72,0.13), 0 1px 4px rgba(22,56,72,0.07); border:2px solid #2e9e6b;">
+    <div class="zone zone--landing" style="flex:1; padding:14px 16px 10px; display:flex; flex-direction:column; gap:4px;">
+      <div class="zone__label" style="font-size:0.82em;">Landing Zone</div>
+      <div style="font-size:0.7em; color:var(--ink-muted); line-height:1.3;">SSIS-Altlasten<br>Rohdaten-Eingang</div>
     </div>
-
-    <div class="col" style="flex:1; gap:10px;">
-      <div class="card">
-        <div class="card__head">Durchgängige Beispiele</div>
-        <div class="card__body">
-          <div class="card__item chip--green" style="background:var(--green-light); color:var(--green); border-radius:var(--r-sm); padding:5px 10px; font-size:0.8em; font-weight:600;">✓ Patientenbildung (Record Linkage) — validiert</div>
-          <div class="card__item chip" style="margin-top:5px; background:var(--amber-light); color:var(--amber); border-radius:var(--r-sm); padding:5px 10px; font-size:0.8em; font-weight:600;">⚠ Abrechnungsanomalien — in Validierung</div>
-        </div>
-      </div>
+    <div style="display:flex;align-items:center;padding:0 4px;background:var(--bg-soft);">
+      <svg viewBox="0 0 14 24" width="11" height="24"><polygon points="2,2 12,12 2,22" fill="#2e9e6b" opacity="0.7"/></svg>
+    </div>
+    <div class="zone zone--raw" style="flex:1.2; padding:14px 16px 10px; display:flex; flex-direction:column; gap:4px;">
+      <div class="zone__label" style="font-size:0.82em;">Raw Zone</div>
+      <div style="font-size:0.7em; color:var(--ink-muted); line-height:1.3;">Append-only<br>Historie &amp; Audit</div>
+    </div>
+    <div style="display:flex;align-items:center;padding:0 4px;background:var(--bg-soft);">
+      <svg viewBox="0 0 14 24" width="11" height="24"><polygon points="2,2 12,12 2,22" fill="#2e9e6b" opacity="0.7"/></svg>
+    </div>
+    <div class="zone zone--process" style="flex:1.2; padding:14px 16px 10px; display:flex; flex-direction:column; gap:4px;">
+      <div class="zone__label" style="font-size:0.82em;">Process Zone</div>
+      <div style="font-size:0.7em; color:var(--ink-muted); line-height:1.3;">Patientenbildung ★<br>Record Linkage</div>
+    </div>
+    <div style="display:flex;align-items:center;padding:0 4px;background:var(--bg-soft);">
+      <svg viewBox="0 0 14 24" width="11" height="24"><polygon points="2,2 12,12 2,22" fill="#2e9e6b" opacity="0.7"/></svg>
+    </div>
+    <div class="zone zone--access" style="flex:1.2; padding:14px 16px 10px; display:flex; flex-direction:column; gap:4px;">
+      <div class="zone__label" style="font-size:0.82em;">Access Zone</div>
+      <div style="font-size:0.7em; color:var(--ink-muted); line-height:1.3;">Golden Record / ML<br>Analytics &amp; BI</div>
     </div>
   </div>
 
-  <div class="leitsatz mt-auto" style="margin-top:12px;">
-    „Der Engpass für KI im Gesundheitswesen ist nicht das Modell, sondern eine Plattform, die <strong>reproduzierbare, validierbare Datenstände</strong> liefert — gezeigt an einem Problem, das man messen kann."
+  <!-- Summary grid -->
+  <div class="row flex-1" style="gap:10px; margin-top:10px; align-items:stretch;">
+    <div class="card" style="flex:1; padding:12px 14px;">
+      <div style="font-size:0.7em; font-weight:700; color:var(--teal); letter-spacing:.07em; text-transform:uppercase; margin-bottom:6px;">Plattform</div>
+      <ul class="bullets" style="gap:4px; font-size:0.8em;">
+        <li>Eine Plattform von Rohdaten bis ML</li>
+        <li>Reproduzierbare Datenstände</li>
+        <li>Klare Layer-Verträge</li>
+      </ul>
+    </div>
+    <div class="card" style="flex:1; padding:12px 14px;">
+      <div style="font-size:0.7em; font-weight:700; color:var(--teal); letter-spacing:.07em; text-transform:uppercase; margin-bottom:6px;">Leitbeispiel</div>
+      <div style="display:flex; flex-direction:column; gap:5px;">
+        <div style="background:#e8f8ef; color:#2a9e58; border-radius:5px; padding:5px 9px; font-size:0.77em; font-weight:600; border-left:3px solid #2a9e58;">✓ Patientenbildung (Record Linkage) — validiert</div>
+        <div style="background:#fef7ea; color:#b07820; border-radius:5px; padding:5px 9px; font-size:0.77em; font-weight:600; border-left:3px solid #c97d20;">⚠ Abrechnungsanomalien — in Validierung</div>
+      </div>
+    </div>
+    <div class="card" style="flex:1; padding:12px 14px;">
+      <div style="font-size:0.7em; font-weight:700; color:var(--teal); letter-spacing:.07em; text-transform:uppercase; margin-bottom:6px;">Ergebnis</div>
+      <ul class="bullets" style="gap:4px; font-size:0.8em;">
+        <li>Datenqualität → Modellqualität</li>
+        <li>Validierbare KI-Use-Cases</li>
+        <li>F1 von 81.9% → <strong>95.85%</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="leitsatz mt-auto" style="margin-top:10px;">
+    „Der Engpass für KI im Gesundheitswesen ist nicht das Modell — sondern eine Plattform, die <strong>reproduzierbare, validierbare Datenstände</strong> liefert."
   </div>
 
   <aside class="notes">
@@ -1921,10 +2153,67 @@
 <script src="assets/vendor/reveal/reveal.js"></script>
 <script src="assets/vendor/reveal/plugin/notes/notes.js"></script>
 <script>
+// Pre-process slides to insert header, footer and wrap body content dynamically
+document.querySelectorAll('.reveal .slides > section').forEach((section, index) => {
+  // Skip the first slide (cover slide)
+  if (index === 0 || section.classList.contains('slide--cover')) return;
+
+  // Extract the slide headline
+  const headline = section.querySelector('.slide-headline');
+  // Extract note aside so it doesn't get wrapped in content or header/footer
+  const notes = section.querySelectorAll('aside.notes');
+  
+  // Create header
+  const header = document.createElement('div');
+  header.className = 'slide-header';
+  header.innerHTML = `
+    <div class="brand-bar">
+      <img src="assets/logos/datamart.png" alt="DATA MART Consulting">
+      <img src="assets/logos/kvwl.png" alt="KVWL">
+    </div>
+  `;
+  
+  // Create footer
+  const footer = document.createElement('div');
+  footer.className = 'slide-footer';
+  footer.innerHTML = `
+    <div class="footer-content">
+      <span class="footer-title">Lakehouse als Enabler für Machine Learning im Gesundheitswesen</span>
+    </div>
+  `;
+
+  // Create content wrapper for everything else
+  const contentWrapper = document.createElement('div');
+  contentWrapper.className = 'slide-content';
+  
+  // Move all child nodes (except notes, headline, header, footer) into contentWrapper
+  const children = Array.from(section.childNodes);
+  children.forEach(child => {
+    const isNote = child.nodeName === 'ASIDE' || child.classList?.contains('notes');
+    if (child !== headline && !isNote && child !== header && child !== footer) {
+      contentWrapper.appendChild(child);
+    }
+  });
+
+  // Clear section and append in order:
+  section.innerHTML = '';
+  section.appendChild(header);
+  if (headline) {
+    section.appendChild(headline);
+  }
+  section.appendChild(contentWrapper);
+  section.appendChild(footer);
+  
+  // Re-append note nodes
+  notes.forEach(note => section.appendChild(note));
+});
+
+// Initialize Reveal.js
 Reveal.initialize({
   width: 1376,
   height: 768,
   margin: 0.04,
+  display: 'flex',       /* reveal.js will set display:flex via JS on active slide */
   controls: true,
   progress: true,
   hash: true,
@@ -1932,6 +2221,23 @@ Reveal.initialize({
   transition: 'fade',
   transitionSpeed: 'fast',
   plugins: [ RevealNotes ]
+});
+
+// Hide slide number on cover slide
+const updateSlideNumberVisibility = (currentSlide) => {
+  const isCover = currentSlide && (currentSlide.classList.contains('slide--cover') || currentSlide.querySelector('.slide--cover'));
+  const slideNumEl = document.querySelector('.reveal .slide-number');
+  if (slideNumEl) {
+    slideNumEl.style.display = isCover ? 'none' : 'block';
+  }
+};
+
+Reveal.on('ready', event => {
+  updateSlideNumberVisibility(event.currentSlide);
+});
+
+Reveal.on('slidechanged', event => {
+  updateSlideNumberVisibility(event.currentSlide);
 });
 </script>
 </body>
