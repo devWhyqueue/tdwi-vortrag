@@ -104,6 +104,19 @@ To ensure a cohesive, high-end look across all slides, adhere strictly to the fo
   ```
   *Avoid CSS linear gradients inside SVGs (`stroke="url(#id)"`) because Reveal.js transformations break gradient references.*
 
+### Inline SVG Sizing (Critical — read before embedding any SVG)
+- **Always use `height:auto; width:100%`**, never `height:Npx` where N equals the viewBox height. When the explicit height matches the viewBox height, the SVG renders at exactly 1:1 scale regardless of how wide the flex container is — the content will look tiny.
+- **Keep the viewBox compact** (height ≤ ~220 units for a 400-wide viewBox). A ratio of roughly 2:1 (width:height) means that when the SVG scales up to fill a ~600px-wide column, the rendered height stays around 300px — within the available slide space.
+- **Pattern for inline diagram SVGs:**
+  ```html
+  <div style="flex:1.4; overflow:hidden;">
+    <svg viewBox="0 0 400 210" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto;">
+      ...
+    </svg>
+  </div>
+  ```
+- If the SVG overflows the slide vertically after using `height:auto`, tighten the viewBox height (compact coordinates) rather than re-adding a fixed pixel height.
+
 ### Zone Minimap (zone-map-mini)
 - **Active States:** For slides demonstrating a specific zone, include the minimap. Highlight current zones with `active zm-here` (which adds the active green color and the ▼ indicator pin above it):
   ```html
@@ -148,6 +161,8 @@ To see the exact mapping of Reveal.js index vs. Reference mockup filename, alway
 python .agents/skills/slide-optimization/scripts/check_slide_mapping.py
 ```
 This prints a clean mapping table to prevent you from aligning the wrong slides.
+
+> **Warning — Reference images can be misaligned:** The reference PNGs were generated from an early NotebookLM draft and may not match the current slide order if slides were added or reordered since then. Always **visually confirm** that the reference PNG content matches the actual slide content before using it as the optimization target. If they don't match, check adjacent reference files (±1 or ±2) to find the correct one.
  
 ### 2. Running Verification Screenshots
 Use the automated, parameter-driven script at `.agents/skills/slide-optimization/scripts/verify_slide.py` to capture screenshots of your modified slide.
@@ -167,6 +182,8 @@ python .agents/skills/slide-optimization/scripts/check_overflow.py --index <inde
 ```
 *(e.g., to inspect slide 24 at index 25: `python .agents/skills/slide-optimization/scripts/check_overflow.py --index 25`)*
 This script will output SUCCESS if no overflow is detected or warnings identifying specific elements with scrollbars or overflow issues.
+
+**Known false positives:** The script reports warnings for inner elements where `scrollHeight > clientHeight` by a few pixels even when the parent container already has `overflow:hidden`. These 2–5px discrepancies are caused by browser font line-height rounding (e.g., text inside a card's metric row) and do not produce visible scrollbars. They are safe to ignore **if and only if** the parent card or column div already has `overflow:hidden` set. Always cross-check against the visual screenshot — if no scrollbar is visible in the rendered slide, the warning is a false positive.
 
 ### 4. Automated Layout Scanning (Tesseract OCR)
 If Tesseract OCR is available on the system, you can run Tesseract directly on the reference images to extract text layout, headers, and bounding boxes, providing immediate structural insights without manually parsing the images.
