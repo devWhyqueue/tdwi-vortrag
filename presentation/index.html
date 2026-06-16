@@ -679,8 +679,8 @@
     <div class="zm-zone zm-access">Access</div>
   </div>
 
-  <div class="flex-1" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; margin-top:8px;">
-    <div style="width:1060px; height:425px; display:flex; flex-direction:column; gap:12px; justify-content:space-between; margin:0 auto; box-sizing:border-box;">
+  <div class="flex-1" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; margin-top:4px;">
+    <div style="width:1060px; height:345px; display:flex; flex-direction:column; gap:7px; justify-content:space-between; margin:0 auto; box-sizing:border-box; overflow:hidden;">
       
       <!-- Top Section: Data Contract -->
       <div style="display:flex; flex-direction:column; gap:6px;">
@@ -691,34 +691,34 @@
         <!-- Cards Container -->
         <div style="display:flex; gap:20px; align-items:stretch;">
           <!-- Left Card: Erlaubt -->
-          <div class="card card--good" style="flex:1; margin:0; display:flex; flex-direction:column;">
+          <div class="card card--good fragment fade-in" data-fragment-index="1" style="flex:1; margin:0; display:flex; flex-direction:column;">
             <div class="card__head" style="background:linear-gradient(135deg, var(--green), #3ab870); padding:6px 12px; font-size:0.8em;">✓ Erlaubt (Technische Qualität)</div>
-            <div class="card__body" style="padding:10px 14px; flex:1; display:flex; align-items:center; background:#ffffff;">
+            <div class="card__body" style="padding:8px 12px; flex:1; display:flex; align-items:center; background:#ffffff;">
               <!-- Checkmark SVG -->
-              <svg style="width:36px; height:36px; fill:#22c55e; flex-shrink:0; margin-right:12px;" viewBox="0 0 24 24">
+              <svg style="width:30px; height:30px; fill:#22c55e; flex-shrink:0; margin-right:10px;" viewBox="0 0 24 24">
                 <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
               </svg>
               <div style="display:flex; flex-direction:column; gap:4px; text-align:left;">
-                <div class="card__item" style="margin:0; font-size:0.8em; line-height:1.2;">Standardisierung von Formaten &amp; Datentypen</div>
-                <div class="card__item" style="margin:0; font-size:0.8em; line-height:1.2;">Delta Lake als robustes Zielformat</div>
-                <div class="card__item" style="margin:0; font-size:0.8em; line-height:1.2;">Bereinigung fehlender Werte &amp; Inkonsistenzen</div>
-                <div class="card__item" style="margin:0; font-size:0.8em; line-height:1.2;">Deduplikation &amp; Schema-Evolution</div>
+                <div class="card__item" style="margin:0; font-size:0.72em; line-height:1.1; padding:4px 8px;">Standardisierung von Formaten &amp; Datentypen</div>
+                <div class="card__item" style="margin:0; font-size:0.72em; line-height:1.1; padding:4px 8px;">Delta Lake als robustes Zielformat</div>
+                <div class="card__item" style="margin:0; font-size:0.72em; line-height:1.1; padding:4px 8px;">Bereinigung fehlender Werte &amp; Inkonsistenzen</div>
+                <div class="card__item" style="margin:0; font-size:0.72em; line-height:1.1; padding:4px 8px;">Deduplikation &amp; Schema-Evolution</div>
               </div>
             </div>
           </div>
           
           <!-- Right Card: Verboten -->
-          <div class="card card--bad" style="flex:1; margin:0; display:flex; flex-direction:column;">
+          <div class="card card--bad fragment fade-in" data-fragment-index="2" style="flex:1; margin:0; display:flex; flex-direction:column;">
             <div class="card__head" style="background:linear-gradient(135deg, var(--red), #d65555); padding:6px 12px; font-size:0.8em;">✗ Verboten (Fachlichkeit)</div>
-            <div class="card__body" style="padding:10px 14px; flex:1; display:flex; align-items:center; background:#ffffff;">
+            <div class="card__body" style="padding:8px 12px; flex:1; display:flex; align-items:center; background:#ffffff;">
               <!-- Cross SVG -->
-              <svg style="width:36px; height:36px; fill:#ef4444; flex-shrink:0; margin-right:12px;" viewBox="0 0 24 24">
+              <svg style="width:30px; height:30px; fill:#ef4444; flex-shrink:0; margin-right:10px;" viewBox="0 0 24 24">
                 <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
               </svg>
               <div style="display:flex; flex-direction:column; gap:4px; text-align:left;">
-                <div class="card__item" style="margin:0; font-size:0.8em; line-height:1.2;">Verbraucherspezifische Denormalisierung</div>
-                <div class="card__item" style="margin:0; font-size:0.8em; line-height:1.2;">Fachliche Marts &amp; Geschäftslogik</div>
-                <div class="card__item" style="margin:0; font-size:0.8em; line-height:1.2;">Zerstörung der Quell-Granularität</div>
+                <div class="card__item" style="margin:0; font-size:0.72em; line-height:1.1; padding:4px 8px;">Verbraucherspezifische Denormalisierung</div>
+                <div class="card__item" style="margin:0; font-size:0.72em; line-height:1.1; padding:4px 8px;">Fachliche Marts &amp; Geschäftslogik</div>
+                <div class="card__item" style="margin:0; font-size:0.72em; line-height:1.1; padding:4px 8px;">Zerstörung der Quell-Granularität</div>
               </div>
             </div>
           </div>
@@ -726,20 +726,20 @@
       </div>
 
       <!-- Bottom Section: Output Structure -->
-      <div style="display:flex; flex-direction:column; gap:6px; align-items:center;">
+      <div class="fragment fade-in" data-fragment-index="3" style="display:flex; flex-direction:column; gap:5px; align-items:center;">
         <!-- Section Header -->
         <div style="width:680px; background:linear-gradient(135deg, #475569, #64748b); color:white; font-weight:bold; text-align:center; padding:5px 12px; border-radius:6px; font-size:0.75em; text-transform:uppercase; letter-spacing:0.8px; box-sizing:border-box;">
           Process Zone Output (Delta Lake Structure)
         </div>
         <!-- Directory Tree Box — single column proper tree -->
-        <div style="width:680px; background:#f4f6f7; border:1.5px solid var(--panel-dark); border-radius:8px; padding:10px 18px; font-family:var(--font-mono, monospace); font-size:0.68em; text-align:left; color:#334155; line-height:1.5; box-shadow:inset 0 1px 3px rgba(0,0,0,0.05); overflow:hidden; box-sizing:border-box;">
+        <div style="width:680px; height:112px; background:#f4f6f7; border:1.5px solid var(--panel-dark); border-radius:8px; padding:7px 16px; font-family:var(--font-mono, monospace); font-size:0.54em; text-align:left; color:#334155; line-height:1.2; box-shadow:inset 0 1px 3px rgba(0,0,0,0.05); overflow:hidden; box-sizing:border-box;">
           <div style="white-space:pre; margin:0;">s3://process-zone/controlling/voucher/
 ├── _delta_log/
 │   ├── 00000000000000000000.json
 │   └── 00000000000000000001.json
-├── part-00000-8b1e42a0-4c12-4217-910f-cf8a4e1d6c81.snappy.parquet
-├── part-00001-8b1e42a0-4c12-4217-910f-cf8a4e1d6c81.snappy.parquet
-└── part-00002-8b1e42a0-4c12-4217-910f-cf8a4e1d6c81.snappy.parquet</div>
+├── part-00000.snappy.parquet
+├── part-00001.snappy.parquet
+└── part-00002.snappy.parquet</div>
         </div>
       </div>
       
@@ -747,13 +747,13 @@
   </div>
 
   <div class="mt-auto" style="display:flex; justify-content:center;">
-    <div class="callout callout--amber" style="width:fit-content; white-space:nowrap;">
+    <div class="callout callout--amber fragment fade-in" data-fragment-index="3" style="width:fit-content; white-space:nowrap;">
       <strong>Architect's Note:</strong> Prinzip: Jede Zone hat eine klar definierte Aufgabe und ein unverhandelbares Versprechen an die nächste Schicht.
     </div>
   </div>
 
   <aside class="notes">
-    [SG] Die Process Zone: Standardisierung von Formaten und Datentypen, Delta Lake als Tabellenformat, technische Bereinigung. Was erlaubt ist und was verboten ist, steht im Data Contract. Sobald man Fachlogik in die Process Zone schmuggelt, hat man wieder den Mischmasch von vorhin.
+    [SG] Eine Zone weiter: die Process Zone. Hier wird aus der historisierten Rohmasse eine technisch verlässliche Grundlage. Wir standardisieren Formate und Datentypen, nutzen Delta Lake als robustes Tabellenformat, und wir bereinigen technisch — fehlende Werte, Inkonsistenzen, Deduplikation, Schema-Evolution. Provenienz und Laufmetadaten laufen mit. Entscheidend sind aber die Verträge: Was ist hier erlaubt, was nicht? Erlaubt ist dataset-unabhängige Standardisierung und Integration. Verboten ist verbraucherspezifische Denormalisierung und das Bauen fachlicher Marts. Denn sobald man Fachlogik in die Process Zone schmuggelt, hat man wieder den Mischmasch von vorhin. Fachlichkeit gehört eine Zone weiter.
   </aside>
 </section>
 
@@ -779,7 +779,7 @@
     <div style="width:1060px; height:430px; display:flex; gap:24px; align-items:stretch; margin:0 auto; box-sizing:border-box;">
 
       <!-- Left Column: S3 Directory Tree -->
-      <div style="flex:0 0 360px; display:flex; flex-direction:column; gap:6px;">
+      <div class="fragment fade-in" data-fragment-index="1" style="flex:0 0 360px; display:flex; flex-direction:column; gap:6px;">
         <div style="background:linear-gradient(135deg, #475569, #64748b); color:white; font-weight:bold; text-align:center; padding:5px 12px; border-radius:6px; font-size:0.75em; text-transform:uppercase; letter-spacing:0.8px; box-sizing:border-box;">
           S3 Bucket Directory
         </div>
@@ -813,7 +813,7 @@ dim/
       <div style="flex:1; display:flex; flex-direction:column; gap:20px; justify-content:center;">
 
         <!-- Datenprodukt section -->
-        <div style="display:flex; flex-direction:column; gap:6px;">
+        <div class="fragment fade-in" data-fragment-index="2" style="display:flex; flex-direction:column; gap:6px;">
           <div style="background:linear-gradient(135deg, var(--teal-deep), var(--teal)); color:white; font-weight:bold; text-align:center; padding:5px 12px; border-radius:6px; font-size:0.75em; text-transform:uppercase; letter-spacing:0.8px; box-sizing:border-box;">
             Datenprodukt
           </div>
@@ -840,7 +840,7 @@ dim/
         </div>
 
         <!-- Strict Rules -->
-        <div style="display:flex; flex-direction:column; gap:6px;">
+        <div class="fragment fade-in" data-fragment-index="3" style="display:flex; flex-direction:column; gap:6px;">
           <div style="font-weight:700; font-size:0.82em; color:var(--navy);">Strikte Regeln der Access Zone</div>
           <ul style="margin:0; padding-left:18px; font-size:0.78em; color:var(--ink); line-height:1.6;">
             <li>Dokumentierte Metrikdefinitionen und SLOs</li>
@@ -854,7 +854,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [SG] Die Access Zone: fachliche Transformationen, Aggregationen, Star Schemas, Wide Tables, Feature Engineering und serving-nahe Tabellen für ML. Echte Datenprodukte mit SLOs und Metrikdefinitionen. Versionierung bei Breaking Changes. Klare Regel: keine Rückkopplung zurück in Raw oder Process.
+    [SG] Und damit die Access Zone — der Ort, an dem Fachlichkeit lebt. Hier entstehen fachliche Transformationen, Aggregationen, Star Schemas, Wide Tables. Hier passiert Feature Engineering und es entstehen serving-nahe Tabellen für ML. Wichtig ist, dass das echte Datenprodukte sind: mit dokumentierten Metrikdefinitionen, fachlicher Granularität und Service-Level-Objectives. Bei Breaking Changes versionieren wir und lassen alte Stände parallel auslaufen. Wir testen auf Metrikkonsistenz, dimensionale Integrität und Freshness. Und eine klare Regel: keine Rückkopplung zurück in Raw oder Process — außer über dokumentierte Backfill- und Reconciliation-Verfahren. Damit das in der Praxis funktioniert, braucht es die richtigen Werkzeuge je Zone.
   </aside>
 </section>
 
@@ -885,7 +885,7 @@ dim/
           <div style="flex:1; display:flex; flex-direction:column; gap:14px; justify-content:space-evenly;">
 
             <!-- Top tool row: PySpark (spans L→R→P) + dbt (spans Access) -->
-            <div style="display:flex; gap:8px;">
+            <div class="fragment fade-in" data-fragment-index="1" style="display:flex; gap:8px;">
               <div style="flex:3; background:#dbeafe; border:1.5px solid #93c5fd; border-radius:8px; padding:14px 12px; text-align:center;">
                 <div style="font-size:0.9em; font-weight:700; color:#1d4ed8;">⚙ PySpark</div>
                 <div style="font-size:0.72em; color:#1e40af; margin-top:4px;">(Ingestion, Standardisierung, komplexe ML-Algorithmen)</div>
@@ -897,7 +897,7 @@ dim/
             </div>
 
             <!-- Zone flow row -->
-            <div style="display:flex; gap:8px; align-items:center;">
+            <div class="fragment fade-in" data-fragment-index="2" style="display:flex; gap:8px; align-items:center;">
               <div style="flex:1; background:var(--steel); color:white; border-radius:8px; padding:16px 8px; text-align:center; font-weight:700; font-size:1em;">Landing</div>
               <div style="color:var(--teal); font-size:1.6em; font-weight:900; flex-shrink:0;">→</div>
               <div style="flex:1; background:var(--teal-deep); color:white; border-radius:8px; padding:16px 8px; text-align:center; font-weight:700; font-size:1em;">Raw</div>
@@ -908,7 +908,7 @@ dim/
             </div>
 
             <!-- Delta Lake banner -->
-            <div style="background:linear-gradient(135deg,#cffafe,#a5f3fc); border:1.5px solid var(--teal); border-radius:8px; padding:12px 12px; text-align:center;">
+            <div class="fragment fade-in" data-fragment-index="3" style="background:linear-gradient(135deg,#cffafe,#a5f3fc); border:1.5px solid var(--teal); border-radius:8px; padding:12px 12px; text-align:center;">
               <div style="font-size:0.9em; font-weight:700; color:var(--teal-deep);">▲ Delta Lake</div>
               <div style="font-size:0.72em; color:var(--teal-deep); margin-top:3px;">(ACID, Schema Enforcement, Time Travel)</div>
             </div>
@@ -916,7 +916,7 @@ dim/
           </div>
 
           <!-- RIGHT: Governance pillar + DataHub -->
-          <div style="display:flex; gap:8px; align-items:stretch; flex-shrink:0;">
+          <div class="fragment fade-in" data-fragment-index="4" style="display:flex; gap:8px; align-items:stretch; flex-shrink:0;">
 
             <!-- Governance pillar -->
             <div style="width:36px; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg,#64748b,#475569); border-radius:6px;">
@@ -937,7 +937,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [SG] PySpark für Ingestion, Standardisierung, große Datenmengen und komplexe Algorithmen. dbt für fachliche Modelle in der Access Zone — Tests, Dokumentation, Lineage. Delta Lake als Tabellenformat durch alle Zonen. Hive Metastore für zentralen Tabellenzugriff. DataHub als Brücke zwischen technischen Tabellen und fachlicher Nutzbarkeit. Prinzip: erst einfache, containerisierte Services — und Architektur so schneiden, dass spätere Migration Richtung Kubernetes möglich bleibt.
+    [SG] Jetzt zu den Werkzeugen — und Sie sehen, sie ordnen sich sauber den Zonen zu. PySpark nutzen wir für Ingestion, technische Standardisierung, große Datenmengen und für komplexe Algorithmen, die man in SQL nicht sinnvoll abbildet — das wird im ML-Teil wichtig. dbt setzen wir für die fachlichen Modelle in der Access Zone ein, inklusive Tests, Dokumentation und Lineage. Delta Lake zieht sich als Tabellenformat durch alle Zonen — ACID, Schema Enforcement, MERGE-Upserts, Time Travel. Der Hive Metastore gibt uns zentralen Tabellen- und Metadatenzugriff. Und DataHub ist die Brücke zwischen technischen Tabellen und fachlicher Nutzbarkeit — Katalog, Ownership, Lineage, Data Contracts. Ein Prinzip dabei, das uns viel gespart hat: erst einfache, containerisierte Services — und die Architektur trotzdem so schneiden, dass eine spätere Migration Richtung Kubernetes möglich bleibt. Wie wir das orchestrieren, sehen Sie als Nächstes.
   </aside>
 </section>
 
@@ -960,7 +960,7 @@ dim/
       <div class="orchestration-zone orchestration-zone--access">Access</div>
     </div>
 
-    <div class="dag-field">
+    <div class="dag-field fragment fade-in" data-fragment-index="1">
       <div class="dag-label">
         <span class="dag-label__icon">⚙</span>
         <span>Airflow DAG</span>
@@ -988,7 +988,7 @@ dim/
         <path class="dag-arrow-head" d="M858 174 l-32 -20 v40 z"/>
       </svg>
 
-      <div class="quality-gate quality-gate--one">
+      <div class="quality-gate quality-gate--one fragment fade-in" data-fragment-index="3">
         <div class="quality-gate__lock">
           <svg viewBox="0 0 44 44" aria-hidden="true">
             <rect x="10" y="19" width="24" height="18" rx="4" fill="currentColor"/>
@@ -999,7 +999,7 @@ dim/
         <div class="quality-gate__label">Gate 1</div>
       </div>
 
-      <div class="quality-gate quality-gate--two">
+      <div class="quality-gate quality-gate--two fragment fade-in" data-fragment-index="3">
         <div class="quality-gate__lock">
           <svg viewBox="0 0 44 44" aria-hidden="true">
             <rect x="10" y="19" width="24" height="18" rx="4" fill="currentColor"/>
@@ -1010,13 +1010,13 @@ dim/
         <div class="quality-gate__label">Gate 2</div>
       </div>
 
-      <div class="orchestration-note orchestration-note--meta">
+      <div class="orchestration-note orchestration-note--meta fragment fade-in" data-fragment-index="2">
         <div class="orchestration-note__kicker">Pipeline-Metadaten pro Lauf</div>
         <div>Quelle · Zeitraum · Extraktzeitpunkt</div>
         <div>Row Counts · Checksummen · Status</div>
       </div>
 
-      <div class="orchestration-note orchestration-note--gates">
+      <div class="orchestration-note orchestration-note--gates fragment fade-in" data-fragment-index="3">
         <div class="orchestration-note__kicker">Quality Gates</div>
         <div>Kontrollieren Übergänge, bevor Transformationen in die nächste Zone rutschen.</div>
       </div>
@@ -1024,7 +1024,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [SG] Airflow als Steuerungsschicht über Ingestion, Processing und Access-Produkte. DAGs machen Abhängigkeiten, Wiederanläufe und Scheduling explizit. Pro Lauf: Pipeline-Metadaten. DataHub bleibt der sichtbare Governance-Layer. Zwischen den Layern sitzen Quality Gates — [auf die Schlösser zeigen] — sodass keine Transformation unkontrolliert von einer Zone in die nächste rutscht.
+    [SG] Eine Architektur allein macht noch keine Reproduzierbarkeit. Die entsteht erst, wenn man Datenstände, Jobs, Abhängigkeiten, Qualitätschecks und Metadaten zusammenführt. Dafür nutzen wir Airflow als Steuerungsschicht über Ingestion, Processing und Access-Produkte. Die DAGs machen Abhängigkeiten, Wiederanläufe und Scheduling explizit — nichts läuft mehr im Verborgenen. Pro Lauf schreiben wir Pipeline-Metadaten mit: Quelle, Zeitraum, Extraktzeitpunkt, Row Counts, Checksummen, Status. DataHub bleibt der sichtbare Governance-Layer. Und zwischen den Layern sitzen Quality Gates — [auf die Schlösser zeigen] —, sodass keine Transformation unkontrolliert von einer Zone in die nächste rutscht. Das gibt uns kontrollierte Übergänge von explorativer Logik hin zu produktiven Pipelines. Bevor Yannik übernimmt, eine Frage, die uns oft gestellt wird: Braucht man dafür nicht riesige Infrastruktur?
   </aside>
 </section>
 
@@ -1059,7 +1059,7 @@ dim/
       <path class="ops-migration__arrow-head" d="M896 128 l-34 -22 v44 z"/>
     </svg>
 
-    <div class="ops-node ops-node--start">
+    <div class="ops-node ops-node--start fragment fade-in" data-fragment-index="1">
       <div class="ops-node__icon" aria-hidden="true">
         <svg viewBox="0 0 64 64">
           <rect x="12" y="13" width="40" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="4"/>
@@ -1078,13 +1078,13 @@ dim/
       </ul>
     </div>
 
-    <div class="ops-bridge">
+    <div class="ops-bridge fragment fade-in" data-fragment-index="2">
       <div class="ops-bridge__eyebrow">Betriebsmodell</div>
       <div class="ops-bridge__title">Schrittweiser Umzug ohne Architekturbruch</div>
       <div class="ops-bridge__subtitle">Konsequente Containerisierung von Tag 1</div>
     </div>
 
-    <div class="ops-node ops-node--target">
+    <div class="ops-node ops-node--target fragment fade-in" data-fragment-index="3">
       <div class="ops-node__icon" aria-hidden="true">
         <svg viewBox="0 0 64 64">
           <circle cx="32" cy="32" r="12" fill="none" stroke="currentColor" stroke-width="4"/>
@@ -1100,20 +1100,20 @@ dim/
       </ul>
     </div>
 
-    <div class="ops-result">
+    <div class="ops-result fragment fade-in" data-fragment-index="3">
       <span class="ops-result__mark">✓</span>
       <span>Terabyte-Verarbeitung bereits mit einfachem Setup möglich</span>
     </div>
   </div>
 
   <div class="mt-auto" style="display:flex; justify-content:center;">
-    <div class="callout callout--teal ops-lesson">
+    <div class="callout callout--teal ops-lesson fragment fade-in" data-fragment-index="4">
       <strong>Lesson:</strong> So simpel wie möglich starten und die technische Reife gezielt ausbauen.
     </div>
   </div>
 
   <aside class="notes">
-    [SG] Enterprise-grade Lakehouse heißt nicht, dass man am ersten Tag ein Kubernetes-Cluster braucht. Wir sind mit drei Red-Hat-Umgebungen gestartet, mit Podman und systemctl, kleinem Admin-Footprint. Inzwischen gibt es unternehmensweites Kubernetes — schrittweiser Umzug ohne großen Architekturbruch, weil alles sauber containerisiert war. Die Plattform steht. Yannik, was lässt sich darauf bauen?
+    [SG] Die klare Antwort ist: nein. Enterprise-grade Lakehouse heißt nicht, dass man am ersten Tag ein Kubernetes-Cluster oder einen großen Cloud-Anbieter braucht. Wir sind bei der KVWL mit drei Red-Hat-Umgebungen gestartet — dev, test, prod —, mit Podman und systemctl für Containerisierung und Betrieb, und das mit einem sehr kleinen Admin-Footprint. Das Ergebnis: Wir verarbeiten bereits mit diesem einfachen Setup Daten im Terabyte-Maßstab, mit klaren Umgebungen und reproduzierbaren Containern. Und die Weiterentwicklung gibt uns recht — inzwischen gibt es ein unternehmensweites Kubernetes, und wir ziehen Schritt für Schritt um, ohne großen Architekturbruch, weil eben alles sauber containerisiert war. Die Lesson, die wir Ihnen mitgeben: so simpel wie möglich starten und die technische Reife gezielt ausbauen. [kurze Pause] Damit steht die Plattform. Und jetzt wird es spannend — Yannik, was lässt sich darauf bauen?
   </aside>
 </section>
 
@@ -1141,7 +1141,7 @@ dim/
      ============================================================ -->
 <section>
   <p class="slide-headline">
-    Der Engpass ist selten der Modellaufruf, sondern <span class="hl">fachlich verstandene, governancefähige Datenstände</span>.
+    Der Engpass ist selten der Modellaufruf, sondern <span class="hl">reproduzierbare, fachlich verstandene, governancefähige Datenstände</span>.
   </p>
 
   <div class="ml-readiness">
@@ -1160,33 +1160,33 @@ dim/
 
     <div class="ml-readiness__left">
       <div class="ml-readiness__label">Was Machine Learning zwingend braucht</div>
-      <div class="ml-need ml-need--raw">
+      <div class="ml-need ml-need--raw fragment fade-in" data-fragment-index="1">
         <span class="ml-need__check">✓</span>
         <span>Konsistente Trainings- und Scoring-Daten</span>
       </div>
-      <div class="ml-need ml-need--process ml-need--primary">
+      <div class="ml-need ml-need--process ml-need--primary fragment fade-in" data-fragment-index="1">
         <span class="ml-need__check">✓</span>
         <span>Stabile Entitäten <small>Patient · Praxis · Honorargruppe · Quartal</small></span>
       </div>
-      <div class="ml-need ml-need--access">
+      <div class="ml-need ml-need--access fragment fade-in" data-fragment-index="2">
         <span class="ml-need__check">✓</span>
         <span>Nachvollziehbare Feature-Definitionen</span>
       </div>
-      <div class="ml-need ml-need--governance">
+      <div class="ml-need ml-need--governance fragment fade-in" data-fragment-index="3">
         <span class="ml-need__check">✓</span>
         <span>Auditierbarkeit &amp; Data Lineage</span>
       </div>
-      <div class="ml-need ml-need--process">
+      <div class="ml-need ml-need--process fragment fade-in" data-fragment-index="3">
         <span class="ml-need__check">✓</span>
         <span>Datenqualitätschecks vor Modelltraining</span>
       </div>
-      <div class="ml-need ml-need--governance">
+      <div class="ml-need ml-need--governance fragment fade-in" data-fragment-index="3">
         <span class="ml-need__check">✓</span>
         <span>Daten- und Code-Versionierung</span>
       </div>
     </div>
 
-    <div class="ml-readiness__map" aria-label="Zuordnung der ML-Anforderungen zu Lakehouse-Zonen">
+    <div class="ml-readiness__map fragment fade-in" data-fragment-index="4" aria-label="Zuordnung der ML-Anforderungen zu Lakehouse-Zonen">
       <div class="ml-zone-row">
         <div class="ml-zone ml-zone--landing">Landing</div>
         <div class="ml-zone-arrow">→</div>
@@ -1201,7 +1201,7 @@ dim/
         <span>Governance / DataHub</span>
       </div>
 
-      <div class="ml-entity-focus">
+      <div class="ml-entity-focus fragment fade-in" data-fragment-index="5">
         <div class="ml-entity-focus__kicker">Stabiles Element</div>
         <div class="ml-entity-focus__title">Entitäten</div>
         <div>Stabile Patient-IDs sind die Grundlage für alle folgenden ML Use Cases.</div>
@@ -1210,7 +1210,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ] Danke, Sebastian. Die Plattform steht — jetzt zeigen wir an einem echten Fachproblem, was sie ermöglicht. Was Machine Learning wirklich braucht: konsistente Daten, stabile Entitäten, nachvollziehbare Features, Auditierbarkeit, Qualitätschecks, Versionierung und Lineage. Und das stabilste Element ganz oben — stabile Entitäten — ist unser Einstieg.
+    [YQ] Danke, Sebastian. Die Plattform steht — jetzt zeigen wir an einem echten Fachproblem, was sie ermöglicht. Und ich will direkt an unseren Leitsatz von vorhin anknüpfen: Der Engpass ist selten der Modellaufruf. Was Machine Learning wirklich braucht, ist all das hier — und Sie sehen, jede Anforderung hängt an einer Zone der Architektur, die Sebastian gerade gezeigt hat. Wir brauchen konsistente Trainings-, Validierungs- und Scoring-Daten. Wir brauchen nachvollziehbare Feature-Definitionen. Wir brauchen stabile Entitäten — Patient, Praxis, Honorargruppe, Quartal. Wir brauchen Datenqualitätschecks vor dem Training, Daten- und Code-Versionierung, Auditierbarkeit der Ergebnisse. Und wir brauchen Katalog und Lineage, damit Teams Daten nicht nur finden, sondern verantwortbar nutzen. Genau diese Liste lösen wir jetzt an einem konkreten Beispiel ein — und das stabilste Element ganz oben, „stabile Entitäten", ist unser Einstieg.
   </aside>
 </section>
 
@@ -1236,7 +1236,7 @@ dim/
   <div class="row flex-1" style="align-items:center; justify-content:center; gap:20px; margin-top:24px; min-height:260px;">
     
     <!-- Source records (vertically closer) -->
-    <div style="width:17em; display:flex; flex-direction:column; gap:8px;">
+    <div class="fragment fade-in" data-fragment-index="1" style="width:17em; display:flex; flex-direction:column; gap:8px;">
       <div class="card" style="border-left:4px solid #7a9baa; padding:8px 12px; background:linear-gradient(135deg, #ffffff 0%, #f4f7f9 100%); box-shadow:0 4px 10px rgba(22,56,72,0.03); border-radius:6px;">
         <div style="font-size:0.62em; font-weight:800; color:#7a9baa; letter-spacing:.08em; text-transform:uppercase; margin-bottom:2px;">Quelle ABR1 (Abrechnung)</div>
         <div style="font-size:0.75em; color:var(--ink); font-weight:600;">
@@ -1263,7 +1263,7 @@ dim/
     </div>
 
     <!-- Sleeker SVG connector -->
-    <div style="width:5.5em; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+    <div class="fragment fade-in" data-fragment-index="2" style="width:5.5em; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
       <svg viewBox="0 0 120 180" style="width:5.5em; height:8.25em; overflow:visible;" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="wire-grad-1" gradientUnits="userSpaceOnUse" x1="0" y1="30" x2="60" y2="90">
@@ -1304,7 +1304,7 @@ dim/
     </div>
 
     <!-- Golden Record MPI profile card (smaller, compact) -->
-    <div class="card" style="width:15.5em; background:linear-gradient(135deg, #ffffff 0%, #f4fbf8 100%); border:2px solid var(--teal); box-shadow:0 10px 24px rgba(42,125,143,0.1); display:flex; flex-direction:column; align-items:center; padding:16px 16px 14px; position:relative; min-height:12.2em; justify-content:space-between; border-radius:8px; overflow:visible !important;">
+    <div class="card fragment fade-in" data-fragment-index="3" style="width:15.5em; background:linear-gradient(135deg, #ffffff 0%, #f4fbf8 100%); border:2px solid var(--teal); box-shadow:0 10px 24px rgba(42,125,143,0.1); display:flex; flex-direction:column; align-items:center; padding:16px 16px 14px; position:relative; min-height:12.2em; justify-content:space-between; border-radius:8px; overflow:visible !important;">
       
       <!-- Golden Record Badge -->
       <div style="position:absolute; top:-10px; background:linear-gradient(135deg, var(--gold), #cf9f2d); color:white; font-size:0.55em; font-weight:800; padding:2px 10px; border-radius:8px; text-transform:uppercase; letter-spacing:0.06em; box-shadow:0 3px 8px rgba(207,159,45,0.25); border:1px solid rgba(255,255,255,0.25);">
@@ -1343,12 +1343,12 @@ dim/
   </div>
 
   <!-- Prominent teal callout at the bottom -->
-  <div class="callout callout--teal mt-auto" style="width: fit-content; max-width: 85%; margin: 0 auto; box-sizing:border-box; justify-content:center; text-align:center; font-size:0.95em; line-height:1.4;">
-    <span>🎯 <strong>Ziel:</strong> Stabile Patient-IDs als Grundlage für Analysen und nachgelagerte ML Use Cases. Klassisches ML ist oft der kürzeste Weg to messbarem Nutzen auf strukturierten Daten.</span>
+  <div class="callout callout--teal mt-auto fragment fade-in" data-fragment-index="4" style="width: fit-content; max-width: 85%; margin: 0 auto; box-sizing:border-box; justify-content:center; text-align:center; font-size:0.95em; line-height:1.4;">
+    <span><strong>Ziel:</strong> Stabile Patient-IDs als Grundlage für Analysen und nachgelagerte ML Use Cases. Klassisches ML ist oft der kürzeste Weg zu messbarem Nutzen auf strukturierten Daten.</span>
   </div>
 
   <aside class="notes">
-    [YQ] Unser Leitbeispiel: Patientenbildung. Der entscheidende Schritt war zu erkennen — das ist kein KVWL-Sonderfall, sondern ein bekanntes Forschungsproblem: Patient Record Linkage. Dieselbe Person in mehreren Quellen mit leicht abweichenden Schreibweisen, zusammenführen zu stabilen Patient-Pseudo-IDs. Das Problem ist messbar — über ein synthetisches Dataset mit echter Ground Truth.
+    [YQ] Unser Leitbeispiel heißt intern „Patientenbildung". Der entscheidende Schritt war zu erkennen: Das ist kein KVWL-Sonderfall, sondern ein bekanntes Problem aus der Forschung — „Patient Record Linkage". [auf das Visual zeigen] Wir haben dieselbe Person in mehreren Quellen, mit leicht abweichenden Schreibweisen, und wollen sie sicher zu einer Person zusammenführen. Das Ziel sind stabile Patient-Pseudo-IDs — die Grundlage für Analysen und für jeden nachgelagerten ML-Use-Case. Anschließend bauen wir über Survivorship einen Golden Record. Das Schöne daran: Dieses Problem ist messbar — über ein synthetisches Dataset mit echter Ground Truth, einer `entity_id`. Ein zweites Beispiel, Anomalieerkennung in Abrechnungsdaten, zeige ich später kurz auf derselben Plattform. Der gemeinsame Nenner bleibt: Datenqualität vor Modellqualität. Und ein bewusstes Framing: Das hier ist klassisches ML, kein Deep-Learning-Hype — und genau das ist oft der kürzeste Weg zu messbarem Nutzen auf strukturierten Unternehmensdaten. Bevor wir technisch werden, müssen Sie verstehen, warum dieses Problem so heikel ist.
   </aside>
 </section>
 
@@ -1363,7 +1363,7 @@ dim/
   <div class="row flex-1" style="align-items:center; justify-content:center; gap:24px; margin: auto; max-width:54em; width:100%;">
 
     <!-- Column 1: False Merge Card -->
-    <div class="card card--bad" style="width: 15.5em; height: 11.5em; display:flex; flex-direction:column; padding:0; flex-shrink:0; box-sizing:border-box;">
+    <div class="card card--bad fragment fade-in" data-fragment-index="2" style="width: 15.5em; height: 11.5em; display:flex; flex-direction:column; padding:0; flex-shrink:0; box-sizing:border-box;">
       <div class="card__head" style="background:linear-gradient(135deg,#b03030,#d65555); color:white; border-radius:8px 8px 0 0; padding:10px 14px; font-weight:700; font-size:0.88em; box-sizing:border-box;">
         <svg viewBox="0 0 20 20" width="14" height="14" style="vertical-align:-2px; margin-right:4px;" xmlns="http://www.w3.org/2000/svg">
           <polygon points="10,2 18,17 2,17" fill="white" />
@@ -1380,7 +1380,7 @@ dim/
     </div>
 
     <!-- Column 2: Center Diagram (False Merge flow) -->
-    <div style="display:flex; align-items:center; justify-content:center; gap:10px; flex:1;">
+    <div class="fragment fade-in" data-fragment-index="1" style="display:flex; align-items:center; justify-content:center; gap:10px; flex:1;">
       <!-- Person A (Blue Folder) -->
       <div style="position:relative; width:4.8em; height:5.3em; flex-shrink:0;">
         <svg viewBox="0 0 90 100" style="width:4.8em; height:5.3em; overflow:visible; filter:drop-shadow(0 4px 10px rgba(0,0,0,0.08));">
@@ -1460,7 +1460,7 @@ dim/
     </div>
 
     <!-- Column 3: Split Card -->
-    <div class="card card--warn" style="width: 15.5em; height: 11.5em; display:flex; flex-direction:column; padding:0; flex-shrink:0; box-sizing:border-box;">
+    <div class="card card--warn fragment fade-in" data-fragment-index="3" style="width: 15.5em; height: 11.5em; display:flex; flex-direction:column; padding:0; flex-shrink:0; box-sizing:border-box;">
       <div class="card__head" style="background:linear-gradient(135deg,#b07820,#d99e30); color:white; border-radius:8px 8px 0 0; padding:10px 14px; font-weight:700; font-size:0.85em;">
         <svg viewBox="0 0 20 20" width="14" height="14" style="vertical-align:-2px; margin-right:4px;" xmlns="http://www.w3.org/2000/svg">
           <circle cx="10" cy="10" r="8" fill="white" />
@@ -1478,12 +1478,12 @@ dim/
   </div>
 
   <!-- Prominent red callout at the bottom -->
-  <div class="callout callout--red mt-auto" style="width: fit-content; max-width: 80%; margin: 0 auto; box-sizing:border-box; justify-content:center; text-align:center; font-size:0.95em; line-height:1.4;">
-    <span>⚠️ <strong>Diese Asymmetrie zwingt uns zu extrem hoher Präzision bei False Merges.</strong></span>
+  <div class="callout callout--red mt-auto fragment fade-in" data-fragment-index="4" style="width: fit-content; max-width: 80%; margin: 0 auto; box-sizing:border-box; justify-content:center; text-align:center; font-size:0.95em; line-height:1.4;">
+    <span><strong>Diese Asymmetrie zwingt uns zu extrem hoher Präzision bei False Merges.</strong></span>
   </div>
 
   <aside class="notes">
-    [YQ, langsamer] Wenn wir zwei Datensätze fälschlich zusammenführen, die zu zwei verschiedenen Menschen gehören — false merge —, verfälschen wir Abrechnungen und Fallberichte. Das ist der schwerwiegendere Fehler. Der split ist umgekehrt: eine Person zerfällt in mehrere Datensätze. Das ist zwar unschön für Auswertungen, aber deutlich weniger kritisch. Diese Asymmetrie bestimmt unsere Präzisionsvorgaben.
+    [YQ, langsamer werden] Ich möchte, dass Sie eine Sache wirklich mitnehmen. [auf die verschmelzenden Karteikarten zeigen] Wenn wir zwei Datensätze fälschlich zusammenführen, die zu zwei verschiedenen Menschen gehören — das nennen wir einen false merge —, dann verfälschen wir Abrechnungen und Fallberichte. Eine falsche Fallzuordnung in unseren Systemen. Das ist nicht nur eine Zahl in einer Metrik, das ist der kritischste Fehler. Der umgekehrte Fehler, der split, ist, dass eine Person in mehrere Datensätze zerfällt — unschön für Auswertungen, aber deutlich weniger kritisch. [Tempo wieder normal] Diese Asymmetrie ist der Grund, warum wir das Problem präzise lösen müssen. Konkret: Wir haben heterogene Quellen — ABR1, ABR2, bearbeitete und unbearbeitete Daten, KVUEPP. Wir haben Identifikatoren und Attribute: die EGK-Versichertennummer, Vorname, Nachname, Geburtsdatum, PLZ. Und wir haben jede Menge Realität: unvollständige Attribute, Schreibvarianten und Tippfehler, fehlende oder wechselnde Nummern, historische Stände über viele Quartale. Die gute Nachricht: Indem wir das als Record Linkage abstrahieren, können wir auf Literatur, Standardbegriffe und etablierte Evaluationsmetriken zugreifen. Der erste Schritt war aber nicht, etwas Neues zu bauen.
   </aside>
 </section>
 
@@ -1512,7 +1512,7 @@ dim/
       
       <div style="display: flex; flex-direction: column; gap: 0;">
         <!-- Step 1 -->
-        <div style="display:flex; align-items:center; gap:12px; position:relative;">
+        <div class="fragment fade-in" data-fragment-index="1" style="display:flex; align-items:center; gap:12px; position:relative;">
           <div style="background:var(--teal); color:white; font-weight:800; border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; font-size:0.8em; flex-shrink:0; box-shadow: 0 2px 6px rgba(42,125,143,0.2);">1</div>
           <div class="card" style="background:white; border:1.5px solid var(--panel-dark); border-radius:6px; padding:8px 12px; flex:1; box-shadow:0 3px 8px rgba(22,56,72,0.04); font-weight:600; font-size:0.8em; display:flex; justify-content:space-between; align-items:center; margin:0;">
             <span style="color:var(--navy);">EGK + Geburtsdatum</span>
@@ -1521,7 +1521,7 @@ dim/
         </div>
         
         <!-- Connector 1 -->
-        <div style="display:flex; align-items:center; padding-left:13px; height:22px;">
+        <div class="fragment fade-in" data-fragment-index="2" style="display:flex; align-items:center; padding-left:13px; height:22px;">
           <div style="width:2px; height:22px; background:var(--steel-light); position:relative;">
             <div style="position:absolute; bottom:-2px; left:-3px; border-left:4px solid transparent; border-right:4px solid transparent; border-top:6px solid var(--steel-light);"></div>
           </div>
@@ -1529,7 +1529,7 @@ dim/
         </div>
 
         <!-- Step 2 -->
-        <div style="display:flex; align-items:center; gap:12px; position:relative;">
+        <div class="fragment fade-in" data-fragment-index="2" style="display:flex; align-items:center; gap:12px; position:relative;">
           <div style="background:var(--teal); color:white; font-weight:800; border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; font-size:0.8em; flex-shrink:0; box-shadow: 0 2px 6px rgba(42,125,143,0.2);">2</div>
           <div class="card" style="background:white; border:1.5px solid var(--panel-dark); border-radius:6px; padding:8px 12px; flex:1; box-shadow:0 3px 8px rgba(22,56,72,0.04); font-weight:600; font-size:0.8em; display:flex; justify-content:space-between; align-items:center; margin:0;">
             <span style="color:var(--navy);">EGK + Vorname + Nachname</span>
@@ -1538,7 +1538,7 @@ dim/
         </div>
 
         <!-- Connector 2 -->
-        <div style="display:flex; align-items:center; padding-left:13px; height:22px;">
+        <div class="fragment fade-in" data-fragment-index="3" style="display:flex; align-items:center; padding-left:13px; height:22px;">
           <div style="width:2px; height:22px; background:var(--steel-light); position:relative;">
             <div style="position:absolute; bottom:-2px; left:-3px; border-left:4px solid transparent; border-right:4px solid transparent; border-top:6px solid var(--steel-light);"></div>
           </div>
@@ -1546,7 +1546,7 @@ dim/
         </div>
 
         <!-- Step 3 -->
-        <div style="display:flex; align-items:center; gap:12px; position:relative;">
+        <div class="fragment fade-in" data-fragment-index="3" style="display:flex; align-items:center; gap:12px; position:relative;">
           <div style="background:var(--teal); color:white; font-weight:800; border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; font-size:0.8em; flex-shrink:0; box-shadow: 0 2px 6px rgba(42,125,143,0.2);">3</div>
           <div class="card" style="background:white; border:1.5px solid var(--panel-dark); border-radius:6px; padding:8px 12px; flex:1; box-shadow:0 3px 8px rgba(22,56,72,0.04); font-weight:600; font-size:0.8em; display:flex; justify-content:space-between; align-items:center; margin:0;">
             <span style="color:var(--navy);">Vorname + Nachname + Geburtsdatum + PLZ</span>
@@ -1555,7 +1555,7 @@ dim/
         </div>
 
         <!-- Connector 3 -->
-        <div style="display:flex; align-items:center; padding-left:13px; height:22px;">
+        <div class="fragment fade-in" data-fragment-index="4" style="display:flex; align-items:center; padding-left:13px; height:22px;">
           <div style="width:2px; height:22px; background:var(--steel-light); position:relative;">
             <div style="position:absolute; bottom:-2px; left:-3px; border-left:4px solid transparent; border-right:4px solid transparent; border-top:6px solid var(--steel-light);"></div>
           </div>
@@ -1563,7 +1563,7 @@ dim/
         </div>
 
         <!-- Step 4 (Fallback) -->
-        <div style="display:flex; align-items:center; gap:12px; position:relative;">
+        <div class="fragment fade-in" data-fragment-index="4" style="display:flex; align-items:center; gap:12px; position:relative;">
           <div style="background:var(--navy); color:white; font-weight:800; border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; font-size:0.8em; flex-shrink:0; box-shadow: 0 2px 6px rgba(15,40,53,0.2);">+</div>
           <div class="card" style="background:var(--bg-soft); border:1.5px solid var(--panel-dark); border-radius:6px; padding:8px 12px; flex:1; box-shadow:0 3px 8px rgba(22,56,72,0.04); font-weight:700; font-size:0.8em; display:flex; justify-content:space-between; align-items:center; margin:0;">
             <span style="color:var(--navy-deep);">Neuer Patient (neue Patient-ID)</span>
@@ -1574,7 +1574,7 @@ dim/
     </div>
 
     <!-- Right Column: Card -->
-    <div class="card card--teal" style="flex: 0.8; margin: 0; display:flex; flex-direction:column; max-width: 17.5em; box-shadow:0 6px 18px rgba(22,56,72,0.08);">
+    <div class="card card--teal fragment fade-in" data-fragment-index="5" style="flex: 0.8; margin: 0; display:flex; flex-direction:column; max-width: 17.5em; box-shadow:0 6px 18px rgba(22,56,72,0.08);">
       <div class="card__head" style="background:linear-gradient(135deg, var(--teal-deep), var(--teal)); color:white; border-radius:8px 8px 0 0; padding:6px 12px; font-weight:700; font-size:0.8em;">Eigenschaften der Baseline</div>
       <div class="card__body" style="padding:10px; display:flex; flex-direction:column; gap:6px;">
         <div class="card__item" style="margin:0; font-size:0.75em; padding:4px 8px;"><span class="icon-tile" style="width:18px; height:18px; font-size:0.7em; background:var(--teal);">⚡</span> Sequentielle Matching-Kaskade</div>
@@ -1586,12 +1586,12 @@ dim/
   </div>
 
   <!-- Prominent navy callout at the bottom -->
-  <div class="callout callout--navy mt-auto" style="width: fit-content; max-width: 85%; margin: 0 auto; box-sizing: border-box; justify-content: center; text-align: center; font-size: 0.95em; line-height: 1.4;">
+  <div class="callout callout--navy mt-auto fragment fade-in" data-fragment-index="6" style="width: fit-content; max-width: 85%; margin: 0 auto; box-sizing: border-box; justify-content: center; text-align: center; font-size: 0.95em; line-height: 1.4;">
     <span><code>M20_HIS_P_01AB000_PATIENTENBILDUNG</code> — sauberes Dokumentieren machte Stärken und Grenzen präzise benennbar.</span>
   </div>
 
   <aside class="notes">
-    [YQ] Der erste Schritt war nicht Modellbau, sondern Verstehen. Eine Stored Procedure — sequentielle Matching-Kaskade mit drei Regeln. Wer einmal gematcht ist, wird nicht erneut bewertet. Neue Cluster über transitive Closure. Diese drei Regeln kommen gleich als Baseline zurück — merken Sie sie sich kurz.
+    [YQ] Der erste Schritt war also nicht Modellbau, sondern Verstehen. Es gab bereits einen Prozess — eine Stored Procedure mit dem schönen Namen `M20_HIS_P_01AB000_PATIENTENBILDUNG`. [auf die Treppe zeigen] Im Kern ist das eine sequentielle Matching-Kaskade mit drei Regeln: Erst EGK plus Geburtsdatum. Dann EGK plus Vor- und Nachname. Und schließlich Vorname, Nachname, Geburtsdatum und PLZ. Wer einmal gematcht ist, wird in späteren Phasen nicht erneut bewertet. Neue Patientencluster entstehen über transitive Closure — wenn A zu B passt und B zu C, dann gehören alle drei zusammen. Und eine Lookup-Tabelle merkt sich neue Attributkombinationen für künftige Läufe. Diese drei Regeln sind wichtig, merken Sie sie sich kurz — sie kommen gleich als unsere Baseline zurück. Indem wir den bestehenden Prozess sauber dokumentiert haben, wurden seine Stärken sichtbar, aber auch seine Grenzen präzise benennbar — und damit der Vergleich mit wissenschaftlichen Ansätzen überhaupt erst möglich. Wie wir bei diesem Vergleich vorgegangen sind, zeige ich jetzt.
   </aside>
 </section>
 
@@ -1604,7 +1604,7 @@ dim/
   </p>
 
   <!-- Premium Chevron Timeline (SVG base with HTML overlays) -->
-  <div style="position: relative; width: 100%; max-width: 54em; margin: 0 auto 24px; box-sizing: border-box;">
+  <div class="fragment fade-in" data-fragment-index="1" style="position: relative; width: 100%; max-width: 54em; margin: 0 auto 24px; box-sizing: border-box;">
     <svg viewBox="0 0 960 80" style="width: 100%; height: auto; display: block;" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <!-- Glow filter for active state -->
@@ -1646,7 +1646,7 @@ dim/
   </div>
 
   <!-- Three Contenders Panel -->
-  <div style="border: 1.5px solid rgba(74,168,222,0.25); border-radius: 8px; padding: 14px 22px; background: rgba(22,56,72,0.02); margin: 0 auto 20px; box-shadow: 0 4px 15px rgba(22,56,72,0.03); text-align: left; width: 100%; max-width: 54em; box-sizing: border-box; display: flex; flex-direction: column;">
+  <div class="fragment fade-in" data-fragment-index="2" style="border: 1.5px solid rgba(74,168,222,0.25); border-radius: 8px; padding: 14px 22px; background: rgba(22,56,72,0.02); margin: 0 auto 20px; box-shadow: 0 4px 15px rgba(22,56,72,0.03); text-align: left; width: 100%; max-width: 54em; box-sizing: border-box; display: flex; flex-direction: column;">
     <div style="font-weight: 700; color: var(--navy); font-size: 0.8em; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; border-bottom: 1.5px solid rgba(74,168,222,0.12); padding-bottom: 6px;">
       <span style="display:inline-block; width:4px; height:12px; background:var(--teal); border-radius:2px;"></span>
       Three Contenders
@@ -1702,12 +1702,12 @@ dim/
   </div>
 
   <!-- Centered, compact callout at the bottom -->
-  <div class="callout callout--teal mt-auto" style="width: fit-content; max-width: 85%; margin: 0 auto; box-sizing: border-box; justify-content: center; text-align: center; font-size: 0.95em; line-height: 1.4;">
+  <div class="callout callout--teal mt-auto fragment fade-in" data-fragment-index="3" style="width: fit-content; max-width: 85%; margin: 0 auto; box-sizing: border-box; justify-content: center; text-align: center; font-size: 0.95em; line-height: 1.4;">
     <span><strong>Lesson:</strong> Fachprozesse an Community Standards ausrichten öffnet die Tür für etablierte Forschung.</span>
   </div>
 
   <aside class="notes">
-    [YQ] Unser Vorgehen war bewusst gründlich, bevor wir einen produktiven Fachprozess anfassen. Drei Ansätze treten gegeneinander an: unsere bestehende Kaskade als Titelverteidiger, eine Hybrid Cascade mit Fuzzy-Fallbacks, und FlexRL aus der Literatur. Bevor wir vergleichen können, brauchen wir etwas Schwieriges: Wahrheit.
+    [YQ] Unser Vorgehen war bewusst gründlich, bevor wir einen produktiven Fachprozess anfassen. Vier Schritte: erst Prozess und SQL verstehen, dann das Problem als Record Linkage abstrahieren, dann den State-of-the-Art recherchieren, und schließlich mehrere Verfahren implementieren und gegen den Bestand evaluieren. [auf die drei „Verdächtigen" zeigen] Drei Ansätze treten gleich gegeneinander an: unsere bestehende deterministische Kaskade als Titelverteidiger, eine Hybrid Cascade mit Fuzzy-Fallbacks, und ein probabilistisches Modell aus der Literatur namens FlexRL. Bewertet haben wir nicht nur nach einer Zahl, sondern nach Precision und false merges, Recall und split entities, F1, Clusterqualität, Laufzeit und Erklärbarkeit. Eine Lesson schon hier: Wer sein Problem früh auf die Begriffe der Community ausrichtet, sieht viel schneller, was bereits gut erforscht ist. Aber bevor wir vergleichen können, brauchen wir etwas, das überraschend schwierig ist: Wahrheit.
   </aside>
 </section>
 

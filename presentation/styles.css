@@ -372,6 +372,13 @@
 .zm-zone.zm-access  { background: var(--navy); }
 .zone-map-mini .zm-arrow { color: var(--steel); font-size: 0.8em; }
 
+.zone-map-mini .zm-arrow,
+.orchestration-arrow,
+.ml-zone-arrow {
+  overflow: hidden;
+  line-height: 1;
+}
+
 /* ===== STAGE PATH ===== */
 .stage-path {
   display: flex;
@@ -695,8 +702,8 @@
 }
 
 .quality-gate--two {
-  left: 77%;
-  top: 56%;
+  left: 73%;
+  top: 36%;
 }
 
 .quality-gate__lock {
@@ -753,8 +760,9 @@
 }
 
 .orchestration-note--gates {
-  right: 74px;
-  bottom: 28px;
+  right: 46px;
+  bottom: 18px;
+  max-width: 286px;
   border-left-color: var(--green);
 }
 
@@ -996,9 +1004,10 @@
   flex: 1;
   display: grid;
   grid-template-columns: 0.92fr 1.08fr;
-  gap: 22px;
+  gap: 18px;
   align-items: stretch;
   min-height: 0;
+  max-height: 396px;
 }
 
 .ml-readiness__connectors {
@@ -1040,38 +1049,40 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 18px 18px 16px;
+  gap: 5px;
+  padding: 12px 15px 11px;
+  overflow: hidden;
 }
 
 .ml-readiness__label {
-  margin-bottom: 4px;
+  margin-bottom: 2px;
   color: var(--navy);
   font-weight: 800;
-  font-size: 1.02em;
+  font-size: 0.96em;
+  line-height: 1.2;
 }
 
 .ml-need {
   position: relative;
   z-index: 6;
   display: grid;
-  grid-template-columns: 38px 1fr;
+  grid-template-columns: 34px 1fr;
   align-items: center;
   gap: 10px;
-  min-height: 46px;
-  padding: 8px 12px;
+  min-height: 36px;
+  padding: 5px 9px;
   border-radius: var(--r);
   background: #ffffff;
   border: 1.5px solid rgba(42,125,143,0.14);
   color: var(--ink);
-  font-size: 0.82em;
+  font-size: 0.74em;
   line-height: 1.25;
   box-shadow: 0 4px 12px rgba(22,56,72,0.05);
 }
 
 .ml-need__check {
-  width: 32px;
-  height: 32px;
+  width: 27px;
+  height: 27px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1087,7 +1098,7 @@
   display: block;
   margin-top: 2px;
   color: var(--ink-muted);
-  font-size: 0.84em;
+  font-size: 0.82em;
   font-weight: 600;
 }
 
@@ -1100,7 +1111,7 @@
 .ml-readiness__map {
   position: relative;
   overflow: hidden;
-  padding: 24px 24px 20px;
+  padding: 20px 22px 18px;
 }
 
 .ml-zone-row {
@@ -1115,7 +1126,7 @@
 }
 
 .ml-zone {
-  height: 58px;
+  height: 52px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1142,8 +1153,8 @@
   position: absolute;
   z-index: 6;
   right: 20px;
-  top: 88px;
-  bottom: 58px;
+  top: 78px;
+  bottom: 52px;
   width: 46px;
   display: flex;
   align-items: center;
@@ -1166,9 +1177,9 @@
   position: absolute;
   z-index: 6;
   left: 112px;
-  bottom: 22px;
+  bottom: 18px;
   width: 350px;
-  padding: 13px 16px;
+  padding: 11px 15px;
   border-radius: var(--r);
   background: #ffffff;
   border: 1.5px solid rgba(46,158,107,0.34);
