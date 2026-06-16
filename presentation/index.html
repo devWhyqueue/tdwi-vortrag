@@ -1857,36 +1857,136 @@ dim/
     Das Proxy-Dataset ist nicht frei erfunden, sondern aus <span class="hl">aggregierten, privacy-preserving Statistiken</span> abgeleitet.
   </p>
 
-  <div class="three-col flex-1">
-    <div class="card">
-      <div class="card__head">📦 Reale Basis</div>
-      <div class="card__body">
-        <div class="card__item">Analyse nur aggregiert</div>
-        <div class="card__item">k-Anonymität k ≥ 100</div>
-        <div class="card__item">Gebinnte Verteilungen</div>
-        <div class="card__item">Keine individuellen Datensätze</div>
+  <div style="width:1060px; height:400px; margin:0 auto; box-sizing:border-box; overflow:hidden; display:flex; align-items:center; justify-content:center; gap:16px; margin-top:20px;">
+    <!-- Column 1: Reale Basis -->
+    <div style="display:flex; flex-direction:column; width:300px; height:380px; border-radius:8px; border:1.5px solid var(--panel-dark); background:var(--bg-soft); overflow:hidden; box-sizing:border-box; box-shadow:0 4px 10px rgba(0,0,0,0.03);">
+      <div style="background:var(--navy); color:white; font-weight:700; padding:10px 0; font-size:0.82em; text-align:center; text-transform:uppercase; letter-spacing:0.5px; border-bottom:1.5px solid var(--panel-dark);">
+        Reale Basis
+      </div>
+      <div style="height:150px; background:white; display:flex; align-items:center; justify-content:center; border-bottom:1.5px solid var(--panel-dark); padding:10px; box-sizing:border-box;">
+        <svg viewBox="0 0 120 120" width="90" height="90" xmlns="http://www.w3.org/2000/svg">
+          <!-- Database cylinder 1 (top) -->
+          <ellipse cx="60" cy="30" rx="35" ry="11" fill="#f8fafc" stroke="var(--steel)" stroke-width="2" />
+          <path d="M 25 30 L 25 52 A 35 11 0 0 0 95 52 L 95 30" fill="none" stroke="var(--steel)" stroke-width="2" />
+          <ellipse cx="60" cy="52" rx="35" ry="11" fill="#edf2f7" stroke="var(--steel)" stroke-width="2" />
+          <!-- Database cylinder 2 (middle) -->
+          <path d="M 25 52 L 25 74 A 35 11 0 0 0 95 74 L 95 52" fill="none" stroke="var(--steel)" stroke-width="2" />
+          <ellipse cx="60" cy="74" rx="35" ry="11" fill="#e2e8f0" stroke="var(--steel)" stroke-width="2" />
+          <!-- Database cylinder 3 (bottom) -->
+          <path d="M 25 74 L 25 96 A 35 11 0 0 0 95 96 L 95 74" fill="none" stroke="var(--steel)" stroke-width="2" />
+          <ellipse cx="60" cy="96" rx="35" ry="11" fill="#cbd5e1" stroke="var(--steel)" stroke-width="2" />
+          <!-- Lock icon in front -->
+          <rect x="50" y="55" width="20" height="15" rx="3" fill="var(--teal)" />
+          <path d="M 54 55 L 54 48 A 6 6 0 0 1 66 48 L 66 55" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" />
+          <circle cx="60" cy="62" r="2" fill="white" />
+        </svg>
+      </div>
+      <div style="padding:14px; display:flex; flex-direction:column; gap:8px; font-size:0.75em; line-height:1.35; color:var(--ink); box-sizing:border-box; flex:1; justify-content:center;">
+        <div style="display:flex; align-items:flex-start; gap:6px;">
+          <span style="color:var(--teal); font-weight:bold; flex-shrink:0;">▪</span>
+          <span>Analyse realer Daten nur aggregiert</span>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:6px;">
+          <span style="color:var(--teal); font-weight:bold; flex-shrink:0;">▪</span>
+          <span>k-Anonymität (k &ge; 100) &amp; Bins</span>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:6px;">
+          <span style="color:var(--teal); font-weight:bold; flex-shrink:0;">▪</span>
+          <span>Keine individuellen Datensätze</span>
+        </div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card__head">📈 Extrahierte Merkmale</div>
-      <div class="card__body">
-        <div class="card__item">Vor-/Nachnamen, Namenslängen</div>
-        <div class="card__item">EGK-/KVNR-Muster</div>
-        <div class="card__item">PLZ-Regionen, Geburtsjahr-Bins</div>
-        <div class="card__item">Geschlecht, VSDM-Verifikation</div>
-        <div class="card__item">Fehlerprofile (Tippfehler, Lücken)</div>
+    <!-- Arrow 1 -->
+    <div style="display:flex; align-items:center; justify-content:center; color:var(--teal); width:32px; flex-shrink:0;">
+      <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor">
+        <path d="M4 10h11v-4l6 6-6 6v-4H4z"/>
+      </svg>
+    </div>
+
+    <!-- Column 2: Extrahierte Merkmale -->
+    <div style="display:flex; flex-direction:column; width:300px; height:380px; border-radius:8px; border:1.5px solid var(--panel-dark); background:var(--bg-soft); overflow:hidden; box-sizing:border-box; box-shadow:0 4px 10px rgba(0,0,0,0.03);">
+      <div style="background:var(--navy); color:white; font-weight:700; padding:10px 0; font-size:0.82em; text-align:center; text-transform:uppercase; letter-spacing:0.5px; border-bottom:1.5px solid var(--panel-dark);">
+        Extrahierte Merkmale
+      </div>
+      <div style="height:150px; background:white; display:flex; flex-direction:column; gap:8px; align-items:center; justify-content:center; border-bottom:1.5px solid var(--panel-dark); padding:10px; box-sizing:border-box;">
+        <div style="display:flex; flex-wrap:wrap; gap:6px; justify-content:center; align-items:center; width:100%;">
+          <div style="font-family:var(--font-mono); font-size:0.55em; background:var(--bg-soft); border:1px solid var(--panel-dark); border-radius:4px; padding:3px 6px; color:var(--teal-deep); font-weight:600; box-shadow:0 1px 2px rgba(0,0,0,0.03);">Vor-/Nachname</div>
+          <div style="font-family:var(--font-mono); font-size:0.55em; background:var(--bg-soft); border:1px solid var(--panel-dark); border-radius:4px; padding:3px 6px; color:var(--teal-deep); font-weight:600; box-shadow:0 1px 2px rgba(0,0,0,0.03);">EGK-Muster</div>
+          <div style="font-family:var(--font-mono); font-size:0.55em; background:var(--bg-soft); border:1px solid var(--panel-dark); border-radius:4px; padding:3px 6px; color:var(--teal-deep); font-weight:600; box-shadow:0 1px 2px rgba(0,0,0,0.03);">PLZ-Regionen</div>
+          <div style="font-family:var(--font-mono); font-size:0.55em; background:var(--bg-soft); border:1px solid var(--panel-dark); border-radius:4px; padding:3px 6px; color:var(--teal-deep); font-weight:600; box-shadow:0 1px 2px rgba(0,0,0,0.03);">Geburtsjahr-Bins</div>
+          <div style="font-family:var(--font-mono); font-size:0.55em; background:var(--bg-soft); border:1px solid var(--panel-dark); border-radius:4px; padding:3px 6px; color:var(--teal-deep); font-weight:600; box-shadow:0 1px 2px rgba(0,0,0,0.03);">VSDM Verifikation</div>
+        </div>
+      </div>
+      <div style="padding:14px; display:flex; flex-direction:column; gap:8px; font-size:0.75em; line-height:1.35; color:var(--ink); box-sizing:border-box; flex:1; justify-content:center;">
+        <div style="display:flex; align-items:flex-start; gap:6px;">
+          <span style="color:var(--teal); font-weight:bold; flex-shrink:0;">▪</span>
+          <span>Vor-/Nachnamen &amp; Namenslängen</span>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:6px;">
+          <span style="color:var(--teal); font-weight:bold; flex-shrink:0;">▪</span>
+          <span>EGK-/KVNR-Muster &amp; PLZ-Regionen</span>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:6px;">
+          <span style="color:var(--teal); font-weight:bold; flex-shrink:0;">▪</span>
+          <span>Fehlerprofile (Tippfehler, Lücken)</span>
+        </div>
       </div>
     </div>
 
-    <div class="card card--good">
-      <div class="card__head" style="background:linear-gradient(135deg,var(--green),#3ab870);">✓ Proxy-Dataset</div>
-      <div class="card__body">
-        <div class="card__item">Mehrere Records pro Entität</div>
-        <div class="card__item">Typo- und Missing-Value-Muster</div>
-        <div class="card__item">Adressänderungen über Quartale</div>
-        <div class="card__item">Golden Records für Survivorship</div>
-        <div class="card__item"><code style="font-size:0.85em;">entity_id</code> als Ground Truth</div>
+    <!-- Arrow 2 -->
+    <div style="display:flex; align-items:center; justify-content:center; color:var(--teal); width:32px; flex-shrink:0;">
+      <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor">
+        <path d="M4 10h11v-4l6 6-6 6v-4H4z"/>
+      </svg>
+    </div>
+
+    <!-- Column 3: Proxy-Dataset -->
+    <div style="display:flex; flex-direction:column; width:300px; height:380px; border-radius:8px; border:1.5px solid var(--panel-dark); background:var(--bg-soft); overflow:hidden; box-sizing:border-box; box-shadow:0 4px 10px rgba(0,0,0,0.03);">
+      <div style="background:linear-gradient(135deg,var(--green),#16a34a); color:white; font-weight:700; padding:10px 0; font-size:0.82em; text-align:center; text-transform:uppercase; letter-spacing:0.5px; border-bottom:1.5px solid var(--panel-dark);">
+        Proxy-Dataset
+      </div>
+      <div style="height:150px; background:white; display:flex; align-items:center; justify-content:center; border-bottom:1.5px solid var(--panel-dark); padding:10px; box-sizing:border-box;">
+        <table style="width:100%; border-collapse:collapse; font-family:var(--font-mono); font-size:0.42em; line-height:1.2; border:1px solid var(--panel-dark); border-radius:4px; overflow:hidden;">
+          <thead>
+            <tr style="background:#edf2f7; border-bottom:1px solid var(--panel-dark); color:var(--navy-deep);">
+              <th style="padding:2px 4px; text-align:left; border-right:1px solid var(--panel-dark); font-weight:700;">True_Entity_ID</th>
+              <th style="padding:2px 4px; text-align:left; border-right:1px solid var(--panel-dark); font-weight:700;">Name</th>
+              <th style="padding:2px 4px; text-align:left; font-weight:700;">EGK</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--panel-dark); background:white;">
+              <td style="padding:2px 4px; border-right:1px solid var(--panel-dark); color:var(--green); font-weight:700;">E101</td>
+              <td style="padding:2px 4px; border-right:1px solid var(--panel-dark);">Queisler</td>
+              <td style="padding:2px 4px;">A12345678</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--panel-dark); background:#f7fafc;">
+              <td style="padding:2px 4px; border-right:1px solid var(--panel-dark); color:var(--green); font-weight:700;">E101</td>
+              <td style="padding:2px 4px; border-right:1px solid var(--panel-dark); color:var(--red); font-weight:600;">Queislr ⚠️</td>
+              <td style="padding:2px 4px; color:var(--ink-muted);">[null]</td>
+            </tr>
+            <tr style="background:white;">
+              <td style="padding:2px 4px; border-right:1px solid var(--panel-dark); color:var(--green); font-weight:700;">E102</td>
+              <td style="padding:2px 4px; border-right:1px solid var(--panel-dark);">Gobst</td>
+              <td style="padding:2px 4px;">B98765432</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="padding:14px; display:flex; flex-direction:column; gap:8px; font-size:0.75em; line-height:1.35; color:var(--ink); box-sizing:border-box; flex:1; justify-content:center;">
+        <div style="display:flex; align-items:flex-start; gap:6px;">
+          <span style="color:var(--green); font-weight:bold; flex-shrink:0;">✓</span>
+          <span>Mehrere Records pro Entität</span>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:6px;">
+          <span style="color:var(--green); font-weight:bold; flex-shrink:0;">✓</span>
+          <span>Tippfehler- &amp; Missing-Value-Muster</span>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:6px;">
+          <span style="color:var(--green); font-weight:bold; flex-shrink:0;">✓</span>
+          <span><code>entity_id</code> als Ground Truth</span>
+        </div>
       </div>
     </div>
   </div>
@@ -1897,167 +1997,215 @@ dim/
 </section>
 
 <!-- ============================================================
-     SLIDE 23 — VALIDIERUNGSDESIGN
-     ============================================================ -->
-<section>
-  <p class="slide-headline">
-    Die Proxy-Daten machen aus einer fachlichen Diskussion eine <span class="hl">messbare Engineering-Frage</span>.
-  </p>
-
-  <div class="row flex-1" style="gap:20px; align-items:center;">
-    <!-- Confusion matrix -->
-    <div>
-      <div class="section-label" style="margin-bottom:8px; text-align:center;">Confusion Matrix</div>
-      <div class="confusion-matrix">
-        <div class="cm-cell cm-tp">
-          <div class="cm-label">True Positive</div>
-          <div class="cm-sub">Korrekt verknüpft</div>
-        </div>
-        <div class="cm-cell cm-fp">
-          <div class="cm-label" style="color:var(--red);">False Positive</div>
-          <div class="cm-sub" style="color:var(--red); font-weight:700;">= False Merge ⚠</div>
-        </div>
-        <div class="cm-cell cm-fn">
-          <div class="cm-label">False Negative</div>
-          <div class="cm-sub">Übersehener Link = Split</div>
-        </div>
-        <div class="cm-cell cm-tn">
-          <div class="cm-label">True Negative</div>
-          <div class="cm-sub">Korekt als nicht-Link erkannt</div>
-        </div>
-      </div>
-
-      <div style="margin-top:10px; display:flex; flex-direction:column; gap:5px;">
-        <div style="font-size:0.8em; background:var(--panel); border-radius:var(--r-sm); padding:6px 10px;">
-          <strong>Precision</strong> = TP / (TP + FP) — misst False Merges
-        </div>
-        <div style="font-size:0.8em; background:var(--panel); border-radius:var(--r-sm); padding:6px 10px;">
-          <strong>Recall</strong> = TP / (TP + FN) — misst Split Entities
-        </div>
-      </div>
-    </div>
-
-    <div class="col" style="flex:1; gap:10px;">
-      <div class="callout callout--red">
-        <div><strong>Kritische Frage:</strong> Bei Patientendaten ist die Precision die wichtigste Metrik. Falsche Verschmelzungen sind medizinisch gefährlicher als übersehene Historien.</div>
-      </div>
-      <div class="card">
-        <div class="card__head">Ground Truth</div>
-        <div class="card__body">
-          <div class="card__item"><code>entity_id</code> für wahre Personencluster</div>
-          <div class="card__item">Golden-Record-Felder für Survivorship</div>
-        </div>
-      </div>
-      <div class="callout callout--teal">
-        Fehleranalyse: Export von FP und FN zur qualitativen Prüfung typischer Fehlermuster.
-      </div>
-    </div>
-  </div>
-
-  <aside class="notes">
-    [YQ] Die Proxy-Daten machen aus einer fachlichen Diskussion eine messbare Engineering-Frage. Als Ground Truth: entity_id für wahre Personencluster. Der false positive — der false merge — ist rot: bei Patientendaten fachlich riskanter. Das heißt: Schwellen konservativ wählen und begründen. Und wir lassen es nicht bei Zahlen — wir exportieren FP und FN und schauen sie qualitativ an.
-  </aside>
-</section>
-
-<!-- ============================================================
-     SLIDE 24 — EXKURS: EVALUATIONSMETRIKEN
+     SLIDE 23 — EXKURS: EVALUATIONSMETRIKEN
      ============================================================ -->
 <section>
   <p class="slide-headline">
     Record Linkage wird <span class="hl">paarweise</span> bewertet — Precision, Recall und F1 erlauben einen fairen Vergleich.
   </p>
 
-  <div class="two-col flex-1">
-    <div class="col" style="gap:8px;">
-      <div class="card">
-        <div class="card__head">Grundidee</div>
-        <div class="card__body">
-          <div class="card__item">Jedes Paar von Records: „gleiche Person" oder nicht?</div>
-          <div class="card__item"><strong>TP:</strong> Korrekt verknüpft (Link)</div>
-          <div class="card__item"><strong style="color:var(--red);">FP:</strong> False Merge — zwei Verschiedene verbunden</div>
-          <div class="card__item"><strong style="color:var(--amber);">FN:</strong> Übersehener Link = Split</div>
+  <div style="width:1060px; height:395px; margin:0 auto; box-sizing:border-box; overflow:hidden; display:flex; flex-direction:column; gap:10px; margin-top:15px;">
+    <!-- Top Row: Confusion Matrix & Metrics Cards -->
+    <div style="display:flex; gap:16px; flex:1; align-items:stretch; width:100%;">
+      <!-- Left Column: Confusion Matrix Card -->
+      <div style="display:flex; flex-direction:column; width:500px; border:1.5px solid var(--panel-dark); background:var(--bg-soft); border-radius:8px; overflow:hidden; box-sizing:border-box; box-shadow:0 4px 10px rgba(0,0,0,0.03);">
+        <div style="background:var(--navy); color:white; font-weight:700; padding:8px 0; font-size:0.8em; text-align:center; text-transform:uppercase; letter-spacing:0.5px; border-bottom:1.5px solid var(--panel-dark);">
+          Confusion Matrix
+        </div>
+        <div style="padding:10px; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:6px; flex:1; box-sizing:border-box;">
+          <!-- TP -->
+          <div style="background:var(--green-light); border:1.5px solid var(--green); border-radius:6px; padding:8px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; box-sizing:border-box;">
+            <div style="font-weight:800; font-size:0.75em; color:var(--navy);">True Positive (Link)</div>
+            <div style="font-size:0.68em; color:var(--ink-muted); margin-top:2px;">Korrekt verknüpft</div>
+          </div>
+          <!-- FP -->
+          <div style="background:var(--red-light); border:1.5px solid var(--red); border-radius:6px; padding:8px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; box-sizing:border-box;">
+            <div style="font-weight:800; font-size:0.75em; color:var(--red);">False Positive (False Merge)</div>
+            <div style="font-size:0.68em; color:var(--red); font-weight:700; margin-top:2px;">Fälschlich verschmolzen ⚠️</div>
+          </div>
+          <!-- FN -->
+          <div style="background:var(--amber-light); border:1.5px solid var(--amber); border-radius:6px; padding:8px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; box-sizing:border-box;">
+            <div style="font-weight:800; font-size:0.75em; color:var(--amber);">False Negative (Split)</div>
+            <div style="font-size:0.68em; color:var(--amber); font-weight:700; margin-top:2px;">Echte Verbindung übersehen</div>
+          </div>
+          <!-- TN -->
+          <div style="background:var(--panel); border:1.5px solid var(--panel-dark); border-radius:6px; padding:8px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; box-sizing:border-box;">
+            <div style="font-weight:800; font-size:0.75em; color:var(--steel);">True Negative</div>
+            <div style="font-size:0.68em; color:var(--ink-muted); margin-top:2px;">Korrekt nicht verknüpft</div>
+          </div>
         </div>
       </div>
-      <div class="card">
-        <div class="card__head">Formeln</div>
-        <div class="card__body" style="font-family:monospace; font-size:0.85em;">
-          <div class="card__item">Precision = TP / (TP + FP)</div>
-          <div class="card__item">Recall = TP / (TP + FN)</div>
-          <div class="card__item">F1 = 2 · (P · R) / (P + R)</div>
+
+      <!-- Right Column: Metrics explanation -->
+      <div style="display:flex; gap:12px; flex:1; align-items:stretch;">
+        <!-- Precision Card -->
+        <div style="display:flex; flex-direction:column; flex:1; border:1.5px solid var(--panel-dark); background:var(--bg-soft); border-radius:8px; overflow:hidden; box-sizing:border-box; box-shadow:0 4px 10px rgba(0,0,0,0.03);">
+          <div style="background:var(--navy); color:white; font-weight:700; padding:8px 0; font-size:0.8em; text-align:center; text-transform:uppercase; letter-spacing:0.5px; border-bottom:1.5px solid var(--panel-dark);">
+            Sicherheit (Precision)
+          </div>
+          <div style="padding:12px; display:flex; flex-direction:column; gap:10px; flex:1; box-sizing:border-box; justify-content:center; background:white;">
+            <div style="font-size:0.72em; color:var(--ink-muted); font-weight:600; text-align:center;">Anteil korrekter Links.</div>
+            <div style="background:var(--bg-soft); border:1px solid var(--panel-dark); border-radius:6px; padding:8px; text-align:center; font-family:var(--font-mono); font-size:0.78em; font-weight:700; color:var(--teal-deep); margin:4px 0; display:flex; align-items:center; justify-content:center; gap:4px; box-sizing:border-box;">
+              Precision = <div style="display:inline-block; text-align:center; vertical-align:middle; line-height:1;"><span style="display:block; border-bottom:1.5px solid var(--teal-deep); padding:0 4px; line-height:1; font-weight:800;">TP</span><span style="display:block; padding:0 4px; line-height:1.2; font-weight:800;">TP + FP</span></div>
+            </div>
+            <div style="font-size:0.68em; line-height:1.35; color:var(--ink); text-align:center;">
+              Misst die gefährlichen <strong>False Merges</strong> (falsche Verschmelzungen).
+            </div>
+          </div>
+        </div>
+
+        <!-- Recall Card -->
+        <div style="display:flex; flex-direction:column; flex:1; border:1.5px solid var(--panel-dark); background:var(--bg-soft); border-radius:8px; overflow:hidden; box-sizing:border-box; box-shadow:0 4px 10px rgba(0,0,0,0.03);">
+          <div style="background:var(--navy); color:white; font-weight:700; padding:8px 0; font-size:0.8em; text-align:center; text-transform:uppercase; letter-spacing:0.5px; border-bottom:1.5px solid var(--panel-dark);">
+            Trefferquote (Recall)
+          </div>
+          <div style="padding:12px; display:flex; flex-direction:column; gap:10px; flex:1; box-sizing:border-box; justify-content:center; background:white;">
+            <div style="font-size:0.72em; color:var(--ink-muted); font-weight:600; text-align:center;">Anteil gefundener Links.</div>
+            <div style="background:var(--bg-soft); border:1px solid var(--panel-dark); border-radius:6px; padding:8px; text-align:center; font-family:var(--font-mono); font-size:0.78em; font-weight:700; color:var(--teal-deep); margin:4px 0; display:flex; align-items:center; justify-content:center; gap:4px; box-sizing:border-box;">
+              Recall = <div style="display:inline-block; text-align:center; vertical-align:middle; line-height:1;"><span style="display:block; border-bottom:1.5px solid var(--teal-deep); padding:0 4px; line-height:1; font-weight:800;">TP</span><span style="display:block; padding:0 4px; line-height:1.2; font-weight:800;">TP + FN</span></div>
+            </div>
+            <div style="font-size:0.68em; line-height:1.35; color:var(--ink); text-align:center;">
+              Misst die übersehenen Links (<strong>Split Entities</strong>).
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="col" style="gap:8px;">
-      <div class="callout callout--red">
-        <div><strong>Bei Patientendaten:</strong> Precision ist die kritische Metrik. Falsche Verschmelzungen (FP) sind medizinisch gefährlicher als übersehene Links (FN).</div>
-      </div>
-      <div class="card">
-        <div class="card__head">Clusterebene</div>
-        <div class="card__body">
-          <div class="card__item chip chip--green" style="width:auto;">✓ Perfect Clusters</div>
-          <div class="card__item chip chip--warn" style="width:auto; background:var(--amber-light); color:var(--amber);">⊞ Split Clusters</div>
-          <div class="card__item chip chip--red" style="width:auto; background:var(--red-light); color:var(--red);">⊕ Merged Clusters</div>
-        </div>
-      </div>
+    <!-- Bottom Red Banner Callout -->
+    <div class="callout callout--red" style="width:100%; box-sizing:border-box; margin:0; font-size:0.78em; line-height:1.35; text-align:center; padding:10px 16px; box-shadow:0 4px 10px rgba(220,38,38,0.08); flex-shrink:0;">
+      <strong>Kritische Fachregel:</strong> Bei Patientendaten ist die Precision die wichtigste Metrik. Falsche Verschmelzungen (FP) sind medizinisch gefährlicher als übersehene Historien (FN = Splits).
     </div>
   </div>
 
   <aside class="notes">
-    [YQ] Grundidee: jedes Paar von Records — gleiche Person oder nicht? Drei Fälle: TP = korrekt verknüpft; FP = false merge; FN = übersehener Link = split. Precision misst false merges, Recall misst splits. F1 ist das harmonische Mittel. Ergänzend: Clusterebene. Und für die nächsten Folien: Precision ist die kritische Größe bei Patientendaten.
+    [YQ] Grundidee: jedes Paar von Records — gleiche Person oder nicht? Drei Fälle: TP = korrekt verknüpft; FP = false merge; FN = übersehener Link = split. Precision misst false merges, Recall misst splits. F1 ist das harmonische Mittel. Ergänzend: Clusterebene. Und für die nächsten Folien: Precision is die kritische Größe bei Patientendaten.
   </aside>
 </section>
 
 <!-- ============================================================
-     SLIDE 25 — BASELINE: AKTUELLES DETERMINISTISCHES MODELL
+     SLIDE 24 — BASELINE: AKTUELLES DETERMINISTISCHES MODELL
      ============================================================ -->
 <section>
-  <p class="slide-headline">
+  <p class="slide-headline" style="margin-bottom: 2px;">
     Das bestehende Modell ist ein <span class="hl">starker, konservativer Baseline-Ansatz</span> — aber es verliert viele echte Links.
   </p>
 
-  <div class="zone-map-mini">
+  <div class="zone-map-mini" style="margin: 0 auto 18px;">
     <div class="zm-zone zm-landing">Landing</div>
-    <div class="zm-arrow">→</div>
+    <span class="zm-arrow">→</span>
     <div class="zm-zone zm-raw">Raw</div>
-    <div class="zm-arrow">→</div>
+    <span class="zm-arrow">→</span>
     <div class="zm-zone zm-process active zm-here">Process</div>
-    <div class="zm-arrow">→</div>
+    <span class="zm-arrow">→</span>
     <div class="zm-zone zm-access">Access</div>
   </div>
+  <div style="width: 1060px; height: 425px; margin: 0 auto; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; box-sizing: border-box;">
+    <div class="row" style="display: flex; gap: 20px; flex: 1; min-height: 0; align-items: stretch; justify-content: center; margin-top: 10px;">
+      <!-- Left Column: Flowchart & Notes -->
+      <div class="col" style="flex: 1.45; display: flex; flex-direction: column; justify-content: flex-start; gap: 12px; min-height: 0;">
+        <!-- Flowchart Container -->
+        <div class="flowchart-container" style="position: relative; height: 270px; width: 100%; border: 1.5px solid var(--panel-dark); background: var(--bg-soft); border-radius: 8px; box-sizing: border-box; overflow: hidden;">
+          
+          <!-- Card 1: Block 1 -->
+          <div style="position: absolute; left: 10px; top: 15px; width: 200px; height: 62px; background: white; border: 1.5px solid var(--panel-dark); border-radius: 6px; padding: 4px 10px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.05); color: var(--navy); z-index: 10; overflow: hidden; display: flex; flex-direction: column; justify-content: center;">
+            <p style="font-size: 0.58em; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--steel); line-height: 1.1; margin: 0;">Block 1</p>
+            <p style="font-size: 0.65em; font-weight: 700; margin: 2px 0 0; white-space: nowrap; line-height: 1.25; color: var(--navy);">EGK + Geburtsdatum</p>
+          </div>
 
-  <div class="row flex-1" style="gap:16px; margin-top:8px; align-items:center;">
-    <div class="col" style="flex:1; gap:8px;">
-      <div class="card">
-        <div class="card__head">Implementierung: Baseline</div>
-        <div class="card__body">
-          <div class="card__item">SQL-Logik als validierbare Python-Variante</div>
-          <div class="card__item">Kaskade: EGK+DOB → EGK+Name → Name+DOB+PLZ</div>
-          <div class="card__item">Transitive Closure für Patientencluster</div>
+          <!-- Card 2: Block 2 -->
+          <div style="position: absolute; left: 255px; top: 94px; width: 200px; height: 62px; background: white; border: 1.5px solid var(--panel-dark); border-radius: 6px; padding: 4px 10px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.05); color: var(--navy); z-index: 10; overflow: hidden; display: flex; flex-direction: column; justify-content: center;">
+            <p style="font-size: 0.58em; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--steel); line-height: 1.1; margin: 0;">Block 2</p>
+            <p style="font-size: 0.65em; font-weight: 700; margin: 2px 0 0; line-height: 1.25; color: var(--navy);">EGK + Vorname<br>+ Nachname</p>
+          </div>
+
+          <!-- Card 3: Block 3 -->
+          <div style="position: absolute; left: 500px; top: 173px; width: 200px; height: 62px; background: white; border: 1.5px solid var(--panel-dark); border-radius: 6px; padding: 4px 10px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.05); color: var(--navy); z-index: 10; overflow: hidden; display: flex; flex-direction: column; justify-content: center;">
+            <p style="font-size: 0.58em; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--steel); line-height: 1.1; margin: 0;">Block 3</p>
+            <p style="font-size: 0.65em; font-weight: 700; margin: 2px 0 0; line-height: 1.25; color: var(--navy);">Name + Geburtsdatum<br>+ PLZ</p>
+          </div>
+
+          <!-- Terminal Node: Cluster -->
+          <div style="position: absolute; left: 730px; top: 15px; bottom: 15px; width: 20px; background: rgba(22,163,74,0.08); border: 1.5px solid var(--green); border-radius: 6px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: var(--green); font-weight: 800; font-size: 0.65em; letter-spacing: 0.08em; text-align: center; box-sizing: border-box; z-index: 10; overflow: hidden; line-height: 1.15;">
+            <p style="margin: 0; line-height: 1.15; text-transform: uppercase;">C<br>L<br>U<br>S<br>T<br>E<br>R</p>
+          </div>
+
+          <!-- SVGs for arrows -->
+          <svg style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; z-index: 15;">
+            <!-- Match arrow 1 -->
+            <path d="M 210 46 L 725 46" stroke="var(--green)" stroke-width="3.5" stroke-dasharray="6,4" fill="none" />
+            <polygon points="717,41 727,46 717,51" fill="var(--green)" />
+            <text x="220" y="36" fill="var(--green)" font-size="11" font-weight="800">Match</text>
+
+            <!-- Match arrow 2 -->
+            <path d="M 455 125 L 725 125" stroke="var(--green)" stroke-width="3.5" stroke-dasharray="6,4" fill="none" />
+            <polygon points="717,120 727,125 717,130" fill="var(--green)" />
+            <text x="465" y="115" fill="var(--green)" font-size="11" font-weight="800">Match</text>
+
+            <!-- Match arrow 3 -->
+            <path d="M 700 204 L 725 204" stroke="var(--green)" stroke-width="3.5" stroke-dasharray="6,4" fill="none" />
+            <polygon points="717,199 727,204 717,209" fill="var(--green)" />
+            <text x="712" y="194" text-anchor="middle" fill="var(--green)" font-size="9" font-weight="800">Match</text>
+
+            <!-- No Match arrow 1 to 2 -->
+            <path d="M 110 77 L 110 89 L 355 89 L 355 90" stroke="var(--red)" stroke-width="3.5" fill="none" />
+            <polygon points="351,86 355,94 359,86" fill="var(--red)" />
+
+            <!-- No Match arrow 2 to 3 -->
+            <path d="M 355 156 L 355 168 L 600 168 L 600 169" stroke="var(--red)" stroke-width="3.5" fill="none" />
+            <polygon points="596,165 600,173 604,165" fill="var(--red)" />
+          </svg>
+
+          <!-- No Match HTML Labels (for perfect z-index overlays) -->
+          <span style="display: block; position: absolute; left: 210px; width: 45px; top: 76px; text-align: center; color: var(--red); font-size: 0.58em; font-weight: 700; z-index: 20; pointer-events: none; line-height: 1.1;">
+            No Match
+          </span>
+          <span style="display: block; position: absolute; left: 455px; width: 45px; top: 155px; text-align: center; color: var(--red); font-size: 0.58em; font-weight: 700; z-index: 20; pointer-events: none; line-height: 1.1;">
+            No Match
+          </span>
+        </div>
+
+        <!-- Implementierung Note Callout -->
+        <div class="callout callout--teal" style="font-size: 0.76em; padding: 8px 12px; margin: 0; box-sizing: border-box; line-height: 1.35; width: 100%;">
+          <p style="margin: 0; line-height: 1.3; color: var(--teal-deep);"><strong>Implementierung:</strong> Bestehende SQL-Logik als validierbare Python-Variante nachgebaut.</p>
         </div>
       </div>
 
-      <div class="callout callout--teal" style="font-size:0.82em;">
-        Dass alle drei Ansätze gegen exakt denselben Datenstand getestet werden, ermöglicht erst die unveränderliche Raw-Historie.
+      <!-- Right Column: F1 Score & Bar Chart -->
+      <div class="col" style="flex: 0.55; display: flex; flex-direction: column; justify-content: flex-start; gap: 12px; min-height: 0;">
+        <!-- F1 Score Badge -->
+        <p style="background: var(--navy); color: white; padding: 6px 12px; border-radius: 6px; font-weight: 700; font-size: 0.85em; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin: 0; flex-shrink: 0; overflow: hidden; line-height: 1.2;">
+          F1-Score: 81.90 %
+        </p>
+
+        <!-- Bar Chart Container -->
+        <div style="height: 276px; border: 1.5px solid var(--panel-dark); background: var(--bg-soft); border-radius: 8px; padding: 10px 18px 8px; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; min-height: 0; overflow: hidden; width: 100%;">
+          <p style="font-size: 0.72em; font-weight: 700; color: var(--steel); text-align: center; line-height: 1.2; overflow: hidden; margin: 0 0 6px;">Cluster-Ebene</p>
+          
+          <!-- Bars -->
+          <span style="display: flex; justify-content: space-around; align-items: flex-end; flex: 1; height: 200px; margin: 4px 0 0; padding: 0; overflow: visible;">
+            <!-- Precision Bar -->
+            <span style="display: flex; flex-direction: column; align-items: center; width: 100px; overflow: visible;">
+              <p style="font-size: 0.78em; font-weight: 700; color: var(--green); margin: 0 0 4px; line-height: 1.2; text-align: center; width: 100%;">100%</p>
+              <span style="display: block; width: 60px; height: 160px; background: var(--green); border-radius: 4px 4px 0 0; box-shadow: 0 2px 5px rgba(46,158,107,0.2);"></span>
+              <p style="font-size: 0.72em; font-weight: 700; color: var(--navy); margin: 6px 0 0; line-height: 1.2; text-align: center; width: 100%;">Precision</p>
+            </span>
+            
+            <!-- Recall Bar -->
+            <span style="display: flex; flex-direction: column; align-items: center; width: 100px; overflow: visible;">
+              <p style="font-size: 0.78em; font-weight: 700; color: var(--amber); margin: 0 0 4px; line-height: 1.2; text-align: center; width: 100%;">69.35%</p>
+              <!-- 69.35% of 160px height = 111px -->
+              <span style="display: block; width: 60px; height: 111px; background: var(--amber); border-radius: 4px 4px 0 0; box-shadow: 0 2px 5px rgba(201,125,32,0.2);"></span>
+              <p style="font-size: 0.72em; font-weight: 700; color: var(--navy); margin: 6px 0 0; line-height: 1.2; text-align: center; width: 100%;">Recall</p>
+            </span>
+          </span>
+        </div>
       </div>
     </div>
 
-    <!-- Metrics -->
-    <div style="flex-shrink:0;">
-      <div class="section-label" style="text-align:center; margin-bottom:8px;">F1-Score: 81.90 %</div>
-      <div class="metrics-row">
-        <div class="metric-card good">
-          <div class="metric-value">100%</div>
-          <div class="metric-label">Precision</div>
-        </div>
-        <div class="metric-card warn">
-          <div class="metric-value">69.35%</div>
-          <div class="metric-label">Recall</div>
-        </div>
-      </div>
-      <div class="callout callout--amber" style="margin-top:10px; font-size:0.78em;">
-        Praktisch keine False Merges, aber viele Split Entities — Safety-Baseline.
-      </div>
+    <!-- Bottom Interpretation Banner -->
+    <div class="callout callout--amber" style="font-size: 0.78em; padding: 8px 12px; margin-top: 10px; text-align: center; box-sizing: border-box; line-height: 1.35; flex-shrink: 0; overflow: hidden; width: 100%;">
+      <p style="margin: 0; line-height: 1.3; color: var(--amber-deep);"><strong>Interpretation:</strong> Praktisch keine False Merges, aber hoher Verlust echter Verknüpfungen (Splits). Ein idealer Safety-Baseline.</p>
     </div>
   </div>
 
@@ -2067,7 +2215,7 @@ dim/
 </section>
 
 <!-- ============================================================
-     SLIDE 26 — HYBRID CASCADE
+     SLIDE 25 — HYBRID CASCADE
      ============================================================ -->
 <section>
   <p class="slide-headline">
@@ -2127,7 +2275,7 @@ dim/
 </section>
 
 <!-- ============================================================
-     SLIDE 27 — FLEXRL
+     SLIDE 26 — FLEXRL
      ============================================================ -->
 <section>
   <p class="slide-headline">
@@ -2179,7 +2327,7 @@ dim/
 </section>
 
 <!-- ============================================================
-     SLIDE 28 — ERGEBNISVERGLEICH (CLIMAX)
+     SLIDE 27 — ERGEBNISVERGLEICH (CLIMAX)
      ============================================================ -->
 <section>
   <p class="slide-headline">
@@ -2291,7 +2439,7 @@ dim/
 </section>
 
 <!-- ============================================================
-     SLIDE 29 — SURVIVORSHIP: GOLDEN RECORD
+     SLIDE 28 — SURVIVORSHIP: GOLDEN RECORD
      ============================================================ -->
 <section>
   <p class="slide-headline">
@@ -2347,7 +2495,7 @@ dim/
 </section>
 
 <!-- ============================================================
-     SLIDE 30 — VOM NOTEBOOK IN DIE LAKEHOUSE-PIPELINE
+     SLIDE 29 — VOM NOTEBOOK IN DIE LAKEHOUSE-PIPELINE
      ============================================================ -->
 <section>
   <p class="slide-headline">
@@ -2403,7 +2551,7 @@ dim/
 </section>
 
 <!-- ============================================================
-     SLIDE 31 — BRÜCKE: ABRECHNUNGSANOMALIEN
+     SLIDE 30 — BRÜCKE: ABRECHNUNGSANOMALIEN
      ============================================================ -->
 <section>
   <p class="slide-headline">
@@ -2465,7 +2613,7 @@ dim/
 </section>
 
 <!-- ============================================================
-     SLIDE 32 — ARCHITEKTUR-LESSONS
+     SLIDE 31 — ARCHITEKTUR-LESSONS
      ============================================================ -->
 <section>
   <p class="slide-headline">
@@ -2521,7 +2669,7 @@ dim/
 </section>
 
 <!-- ============================================================
-     SLIDE 33 — KI-/ML-LESSONS
+     SLIDE 32 — KI-/ML-LESSONS
      ============================================================ -->
 <section>
   <p class="slide-headline">
@@ -2561,7 +2709,7 @@ dim/
 </section>
 
 <!-- ============================================================
-     SLIDE 34 — DO'S: WAS WIR WIEDER SO MACHEN WÜRDEN
+     SLIDE 33 — DO'S: WAS WIR WIEDER SO MACHEN WÜRDEN
      ============================================================ -->
 <section>
   <p class="slide-headline">
@@ -2602,7 +2750,7 @@ dim/
 </section>
 
 <!-- ============================================================
-     SLIDE 35 — DON'TS: ANTI-PATTERNS
+     SLIDE 34 — DON'TS: ANTI-PATTERNS
      ============================================================ -->
 <section>
   <p class="slide-headline">
@@ -2643,7 +2791,7 @@ dim/
 </section>
 
 <!-- ============================================================
-     SLIDE 36 — SCHLUSSBILD UND Q&A
+     SLIDE 35 — SCHLUSSBILD UND Q&A
      ============================================================ -->
 <section>
   <p class="slide-headline">
