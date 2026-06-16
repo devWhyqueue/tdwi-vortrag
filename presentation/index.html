@@ -61,8 +61,7 @@
   </div>
 
   <aside class="notes">
-    [SG] Herzlich willkommen. Unser Titel klingt nach einem großen Plattform-Versprechen — wir halten es konkret. Eine Implementierung, die bei der KVWL produktiv läuft: Open Source, On-Premise, von den Rohdaten bis zum ML-Modell.
-    [YQ] Wir nehmen Sie an einem echten Fachproblem mit, an dem man messen kann, ob sich der Aufwand gelohnt hat. Die Leitfrage: Welche Datenplattform braucht man, damit Data Engineering und ML im Gesundheitswesen produktiv funktionieren?
+    [SG] Herzlich willkommen, schön, dass Sie da sind. Unser Titel klingt erst einmal nach einem dieser großen Plattform-Versprechen — „Lakehouse als Enabler für Machine Learning". Genau das wollen wir aber nicht abstrakt halten. Wir zeigen Ihnen heute eine konkrete Implementierung, die bei der Kassenärztlichen Vereinigung Westfalen-Lippe produktiv läuft — Open Source, On-Premise, von den Rohdaten bis zum ML-Modell. [YQ] Und wir nehmen Sie an einem echten Fachproblem mit, an dem man am Ende sogar messen kann, ob sich der ganze Aufwand gelohnt hat. Die Leitfrage über allem: Welche Datenplattform braucht man eigentlich, damit Data Engineering und Machine Learning im Gesundheitswesen produktiv funktionieren? Dazu stellen wir uns kurz vor.
   </aside>
 </section>
 
@@ -83,7 +82,7 @@
       <div class="speaker-title">Principal Consultant<br>Systemarchitektur</div>
     </div>
 
-    <div class="col flex-1">
+    <div class="col flex-1 fragment fade-in">
       <div class="card card--teal">
         <div class="card__head"><span class="icon-tile">⚙</span> Schwerpunkt</div>
         <div class="card__body">
@@ -107,7 +106,7 @@
   </div>
 
   <aside class="notes">
-    [SG] Mein Name ist Sebastian Gobst, Principal Consultant für Systemarchitektur bei DATA MART Consulting. Wir kommen klassisch aus der Welt der Data Warehouses und begleiten Kunden bei der Modernisierung in Richtung Open-Source-Lakehouse. Meine Rolle heute ist die Architekturperspektive: Zielbild, Migrationslogik, Abgrenzung von klassischen DWH-Mustern.
+    [SG] Mein Name ist Sebastian Gobst, ich bin Principal Consultant für Systemarchitektur bei der DATA MART Consulting. Wir kommen klassisch aus der Welt der Data Warehouses und Business Intelligence und begleiten Kunden dabei, ihre Datenlandschaften zu optimieren — und zunehmend eben auch in Richtung Open-Source-Lakehouse zu modernisieren. Meine Rolle heute ist die Architekturperspektive: Wie sieht das Zielbild aus, welche Migrationslogik steckt dahinter, und wie grenzt sich das Ganze von klassischen DWH-Mustern ab. Den zweiten Teil, das Machine Learning, übernimmt mein Kollege — stell dich gern vor.
   </aside>
 </section>
 
@@ -128,7 +127,7 @@
       <div class="speaker-title">Data Engineer, KVWL</div>
     </div>
 
-    <div class="col flex-1">
+    <div class="col flex-1 fragment fade-in">
       <div class="card card--teal">
         <div class="card__head"><span class="icon-tile">⚙</span> Schwerpunkt</div>
         <div class="card__body">
@@ -150,7 +149,7 @@
   </div>
 
   <aside class="notes">
-    [YQ] Ich bin Yannik Queisler, Data Engineer bei der KVWL. Spark, Airflow, Delta Lake — und zunehmend ML Engineering. KI ist bei uns ein neues Handlungsfeld: wir führen es bewusst über greifbare Fachprozesse ein, nicht mit einem großen Chatbot auf wackeliger Datenbasis. Erst Datenqualität, dann Plattform, dann konkrete Nutzenfälle.
+    [YQ] Sehr gerne. Ich bin Yannik Queisler, Data Engineer bei der Kassenärztlichen Vereinigung Westfalen-Lippe. Mein Alltag ist Spark, Airflow, Delta Lake — und zunehmend ML Engineering. Ich bringe heute die konkrete On-Premise-Umsetzung mit, unser durchgängiges KI-Beispiel und die Lessons Learned aus dem Aufbau. Wichtig zum Kontext: KI ist bei uns ein neues Handlungsfeld. Wir führen das bewusst über greifbare Fachprozesse ein — nicht mit einem großen unternehmensweiten Chatbot, der auf einer wackeligen Datenbasis steht, sondern entlang der Reihenfolge erst Datenqualität, dann Plattform, dann konkrete Nutzenfälle. Warum diese Reihenfolge so entscheidend ist, dazu kommen wir direkt.
   </aside>
 </section>
 
@@ -162,7 +161,7 @@
     Produktive KI scheitert selten am Modell — sondern an <span class="hl">Datenhistorie, Datenqualität</span> und <span class="hl">Reproduzierbarkeit</span>.
   </p>
 
-  <div class="row flex-1" style="align-items:center; gap:30px; width:100%; justify-content:center;">
+  <div class="row flex-1 fragment fade-in" style="align-items:center; gap:30px; width:100%; justify-content:center;">
     <!-- Left Column: Governance Scale -->
     <div style="flex:1; text-align:center; display:flex; flex-direction:column; align-items:center; gap:16px; max-width:320px;">
       <div style="font-size:1.0em; font-weight:700; color:var(--navy); line-height:1.35; min-height:48px;">
@@ -196,12 +195,12 @@
     </div>
   </div>
 
-  <div class="leitsatz--dark" style="margin-top:20px; width:100%; box-sizing:border-box; font-size:1.1em; padding:16px 24px; line-height:1.45;">
+  <div class="leitsatz--dark fragment fade-in" style="margin-top:20px; width:100%; box-sizing:border-box; font-size:1.1em; padding:16px 24px; line-height:1.45;">
     „Der Engpass für KI im Gesundheitswesen ist <strong>nicht das Modell</strong>,<br>sondern eine Plattform, die <strong>reproduzierbare, validierbare Datenstände</strong> liefert.“
   </div>
 
   <aside class="notes">
-    [YQ] Wenn heute über KI gesprochen wird, geht es fast immer ums Modell. Unsere Erfahrung ist eine andere: Produktive KI scheitert selten am Modell. Sie scheitert an der Datenhistorie, der Datenqualität, unklaren Verantwortlichkeiten und fehlender Reproduzierbarkeit. [auf den Eisberg zeigen] Das Modell ist die sichtbare Spitze; der große Teil unter Wasser sind Daten, Historie, Governance. Deshalb unser Leitsatz: Der Engpass nicht das Modell — auf diesen Satz kommen wir am Ende zurück.
+    [YQ] Wenn heute über KI gesprochen wird, geht es fast immer ums Modell. Unsere Erfahrung — und das deckt sich mit der Forschung zu Data-centric AI und Technical Debt in ML-Systemen — ist eine andere: Produktive KI scheitert selten am Modell. Sie scheitert an der Datenhistorie, an der Datenqualität, an unklaren Verantwortlichkeiten und an fehlender Reproduzierbarkeit. [auf den Eisberg zeigen] Das Modell ist die sichtbare Spitze; der große Teil unter Wasser sind die Daten, die Historie, die Governance. Robuste Data Warehouses liefern stabile Berichte — aber Machine Learning stellt neue Anforderungen, und es entstehen Spannungen: Governance gegen Iterationsgeschwindigkeit, Reporting-Stabilität gegen Feature-Engineering, kuratierte Datenprodukte gegen die rohe Historie. Bei Gesundheitsdaten kommt verschärfte Nachvollziehbarkeit dazu. [langsamer, das ist das Versprechen] Deshalb unser Leitsatz für die nächsten 40 Minuten: Der Engpass ist nicht das Modell, sondern eine Plattform, die reproduzierbare, validierbare Datenstände liefert — und das zeigen wir an einem Problem, das man tatsächlich messen kann. Auf genau diesen Satz kommen wir am Ende zurück.
   </aside>
 </section>
 
@@ -215,7 +214,7 @@
 
   <div class="row" style="align-items:center; gap:12px; width:100%; justify-content:center; margin-top:40px;">
     <!-- Column 1 -->
-    <div style="display:flex; flex-direction:column; align-items:center; width:100%; max-width:240px; height:310px; box-sizing:border-box;">
+    <div class="fragment fade-in" data-fragment-index="1" style="display:flex; flex-direction:column; align-items:center; width:100%; max-width:240px; height:310px; box-sizing:border-box;">
       <div style="background:var(--navy); color:white; font-weight:700; border-radius:8px 8px 0 0; padding:10px 0; font-size:0.85em; text-align:center; width:100%; border:1px solid rgba(255,255,255,0.1); border-bottom:none; box-shadow:0 -2px 4px rgba(0,0,0,0.05); text-transform:uppercase; letter-spacing:0.5px;">
         Ausgangslage
       </div>
@@ -230,14 +229,14 @@
     </div>
 
     <!-- Arrow 1 -->
-    <div style="display:flex; align-items:center; justify-content:center; color:var(--teal); width:40px; flex-shrink:0;">
+    <div class="fragment fade-in" data-fragment-index="1" style="display:flex; align-items:center; justify-content:center; color:var(--teal); width:40px; flex-shrink:0;">
       <svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor">
         <path d="M4 10h11v-4l6 6-6 6v-4H4z"/>
       </svg>
     </div>
 
     <!-- Column 2 -->
-    <div style="display:flex; flex-direction:column; align-items:center; width:100%; max-width:245px; height:310px; box-sizing:border-box;">
+    <div class="fragment fade-in" data-fragment-index="1" style="display:flex; flex-direction:column; align-items:center; width:100%; max-width:245px; height:310px; box-sizing:border-box;">
       <div style="background:var(--navy); color:white; font-weight:700; border-radius:8px 8px 0 0; padding:10px 0; font-size:0.85em; text-align:center; width:100%; border:1px solid rgba(255,255,255,0.1); border-bottom:none; box-shadow:0 -2px 4px rgba(0,0,0,0.05); text-transform:uppercase; letter-spacing:0.5px;">
         Zielarchitektur
       </div>
@@ -252,14 +251,14 @@
     </div>
 
     <!-- Arrow 2 -->
-    <div style="display:flex; align-items:center; justify-content:center; color:var(--teal); width:40px; flex-shrink:0;">
+    <div class="fragment fade-in" data-fragment-index="2" style="display:flex; align-items:center; justify-content:center; color:var(--teal); width:40px; flex-shrink:0;">
       <svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor">
         <path d="M4 10h11v-4l6 6-6 6v-4H4z"/>
       </svg>
     </div>
 
     <!-- Column 3 -->
-    <div style="display:flex; flex-direction:column; align-items:center; width:100%; max-width:240px; height:310px; box-sizing:border-box;">
+    <div class="fragment fade-in" data-fragment-index="2" style="display:flex; flex-direction:column; align-items:center; width:100%; max-width:240px; height:310px; box-sizing:border-box;">
       <div style="background:var(--navy); color:white; font-weight:700; border-radius:8px 8px 0 0; padding:10px 0; font-size:0.85em; text-align:center; width:100%; border:1px solid rgba(255,255,255,0.1); border-bottom:none; box-shadow:0 -2px 4px rgba(0,0,0,0.05); text-transform:uppercase; letter-spacing:0.5px;">
         Leitbeispiel
       </div>
@@ -274,14 +273,14 @@
     </div>
 
     <!-- Arrow 3 -->
-    <div style="display:flex; align-items:center; justify-content:center; color:var(--teal); width:40px; flex-shrink:0;">
+    <div class="fragment fade-in" data-fragment-index="2" style="display:flex; align-items:center; justify-content:center; color:var(--teal); width:40px; flex-shrink:0;">
       <svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor">
         <path d="M4 10h11v-4l6 6-6 6v-4H4z"/>
       </svg>
     </div>
 
     <!-- Column 4 -->
-    <div style="display:flex; flex-direction:column; align-items:center; width:100%; max-width:240px; height:310px; box-sizing:border-box;">
+    <div class="fragment fade-in" data-fragment-index="2" style="display:flex; flex-direction:column; align-items:center; width:100%; max-width:240px; height:310px; box-sizing:border-box;">
       <div style="background:var(--navy); color:white; font-weight:700; border-radius:8px 8px 0 0; padding:10px 0; font-size:0.85em; text-align:center; width:100%; border:1px solid rgba(255,255,255,0.1); border-bottom:none; box-shadow:0 -2px 4px rgba(0,0,0,0.05); text-transform:uppercase; letter-spacing:0.5px;">
         Lessons Learned
       </div>
@@ -297,7 +296,7 @@
   </div>
 
   <aside class="notes">
-    [YQ] Unser Weg: Wir starten bei der Ausgangslage — klassische SSIS- und DWH-Welt. Dann zeigt Sebastian die Zielarchitektur, das Multi-Zone-Functional Lakehouse. Danach übernehme ich mit dem Leitbeispiel: Patientenbildung als Record-Linkage- und Survivorship-Problem. Ein zweites Beispiel — Anomalieerkennung — streifen wir kürzer. Der rote Faden: Nutzen früh greifbar machen, ohne die Plattform zu überspringen.
+    [YQ] Unser Weg durch den Vortrag folgt genau dieser Logik. Wir starten bei der Ausgangslage — einer klassischen SSIS- und DWH-Welt mit uneinheitlichen Lake-Zonen. Dann zeigt Sebastian die Zielarchitektur, das Multi-Zone-Functional Lakehouse, samt Orchestrierung und Technologieentscheidungen. Danach übernehme ich mit unserem Leitbeispiel: der Patientenbildung, die im Kern ein Record-Linkage- und Survivorship-Problem ist. Ein zweites Beispiel — Anomalieerkennung in Abrechnungsdaten — streifen wir bewusst kürzer, und ich sage Ihnen später auch, warum. Der rote Faden ist dabei immer: Nutzen früh greifbar machen, ohne die Datenplattform zu überspringen. Und ganz am Ende stehen die Lessons Learned — was sich bewährt hat und was schwierig bleibt. Sebastian, fang gern mit der Ausgangslage an.
   </aside>
 </section>
 
@@ -327,36 +326,36 @@
     Der Umbau startet nicht bei Tools, sondern bei der Frage, <span class="hl">wo welche Logik verantwortlich liegt</span>.
   </p>
 
-  <div style="display: grid; grid-template-columns: auto 480px; gap: 0; width: 100%; justify-content: center; align-items: center; margin-top: 25px;">
+  <div style="display: grid; grid-template-columns: auto 480px; gap: 0; width: 100%; justify-content: center; align-items: center; margin-top: 15px;">
     <!-- Left Column: Visual Assembly (Legacy Block, Arrow, Connecting Lines) -->
-    <div style="height: 450px; display: flex; align-items: center; justify-content: flex-end; padding-right: 0;">
-      <img src="assets/gen/slide6_graphic.png" alt="SSIS Legacy System & questions" style="height: 450px; width: auto; display: block; margin-right: 0;">
+    <div style="height: 400px; display: flex; align-items: center; justify-content: flex-end; padding-right: 0;">
+      <img src="assets/gen/slide6_graphic.png" alt="SSIS Legacy System & questions" style="height: 400px; width: auto; display: block; margin-right: 0;">
     </div>
 
     <!-- Right Column: Question Boxes & Goal Banner -->
-    <div style="height: 450px; position: relative; width: 480px; margin-left: 0;">
+    <div style="height: 400px; position: relative; width: 480px; margin-left: 0;">
       <!-- Box 1 -->
-      <div style="position: absolute; top: 75px; transform: translateY(-50%); width: 100%; background: white; border: 1.5px solid var(--panel); border-radius: 8px; padding: 12px 20px; font-weight: 600; font-size: 0.86em; color: var(--navy); line-height: 1.45; box-shadow: 0 4px 10px rgba(22,56,72,0.05); box-sizing: border-box;">
+      <div class="fragment fade-in" data-fragment-index="1" style="position: absolute; top: 60px; transform: translateY(-50%); width: 100%; background: white; border: 1.5px solid var(--panel); border-radius: 8px; padding: 12px 20px; font-weight: 600; font-size: 0.86em; color: var(--navy); line-height: 1.45; box-shadow: 0 4px 10px rgba(22,56,72,0.05); box-sizing: border-box;">
         Wo wird Logik implementiert — im Projekt und im Layer?
       </div>
       <!-- Box 2 -->
-      <div style="position: absolute; top: 183px; transform: translateY(-50%); width: 100%; background: white; border: 1.5px solid var(--panel); border-radius: 8px; padding: 12px 20px; font-weight: 600; font-size: 0.86em; color: var(--navy); line-height: 1.45; box-shadow: 0 4px 10px rgba(22,56,72,0.05); box-sizing: border-box;">
+      <div class="fragment fade-in" data-fragment-index="1" style="position: absolute; top: 155px; transform: translateY(-50%); width: 100%; background: white; border: 1.5px solid var(--panel); border-radius: 8px; padding: 12px 20px; font-weight: 600; font-size: 0.86em; color: var(--navy); line-height: 1.45; box-shadow: 0 4px 10px rgba(22,56,72,0.05); box-sizing: border-box;">
         Welche Technologie passt für welchen Schritt — PySpark, dbt, SQL?
       </div>
       <!-- Box 3 -->
-      <div style="position: absolute; top: 294px; transform: translateY(-50%); width: 100%; background: white; border: 1.5px solid var(--panel); border-radius: 8px; padding: 12px 20px; font-weight: 600; font-size: 0.86em; color: var(--navy); line-height: 1.45; box-shadow: 0 4px 10px rgba(22,56,72,0.05); box-sizing: border-box;">
+      <div class="fragment fade-in" data-fragment-index="1" style="position: absolute; top: 252px; transform: translateY(-50%); width: 100%; background: white; border: 1.5px solid var(--panel); border-radius: 8px; padding: 12px 20px; font-weight: 600; font-size: 0.86em; color: var(--navy); line-height: 1.45; box-shadow: 0 4px 10px rgba(22,56,72,0.05); box-sizing: border-box;">
         Welche Garantien darf ein Downstream-Consumer von einem Dataset erwarten?
       </div>
 
       <!-- Dark Navy Goal Banner -->
-      <div class="leitsatz--dark" style="position: absolute; top: 390px; transform: translateY(-50%); width: 100%; padding: 12px 20px; font-size: 0.9em; text-align: left; line-height: 1.4; border-radius: 8px; box-sizing: border-box;">
+      <div class="leitsatz--dark fragment fade-in" data-fragment-index="2" style="position: absolute; top: 345px; transform: translateY(-50%); width: 100%; padding: 12px 20px; font-size: 0.9em; text-align: left; line-height: 1.4; border-radius: 8px; box-sizing: border-box;">
         <strong>Übergeordnetes Ziel:</strong> Datentransformationen aus der alten SSIS-Welt ablösen.
       </div>
     </div>
   </div>
 
   <aside class="notes">
-    [SG] Der Ausgangspunkt war eine gewachsene SSIS- und DWH-Welt. Ziel: Transformationen ablösen. Aber der Umbau beginnt nicht bei Tools, sondern bei drei Leitfragen: Wo liegt welche Logik? Welche Technologie passt? Welche Garantien darf ein Consumer erwarten? Wenn man diese Fragen nicht beantwortet, bekommt man genau die Probleme, die wir hatten.
+    [SG] Danke, Yannik. Der Ausgangspunkt war eine gewachsene SSIS- und Data-Warehouse-Welt. Das übergeordnete Ziel war klar: Die Transformationen aus dieser alten Welt ablösen. Spannend ist aber, dass der Umbau gar nicht bei den Tools beginnt, sondern bei einer scheinbar simplen Frage — wo liegt welche Logik eigentlich verantwortlich? Drei Leitfragen haben uns durch das ganze Projekt begleitet: Erstens, wo wird Logik implementiert — in welchem Projekt und in welchem Layer? Zweitens, welche Technologie passt für welchen Schritt — PySpark, dbt oder einfaches SQL? Und drittens, eine oft unterschätzte Frage: Welche Garantien darf ein nachgelagerter Consumer von einem Datensatz überhaupt erwarten? Wenn man diese Fragen nicht beantwortet, bekommt man genau die Probleme, die wir vorher hatten.
   </aside>
 </section>
 
@@ -370,7 +369,7 @@
 
   <div class="flex-1" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%;">
     <!-- Chaos zone diagram with relative container -->
-    <div style="position:relative; width:460px; height:430px; margin:0 auto; box-sizing:border-box;">
+    <div style="position:relative; width:410px; height:360px; margin:0 auto; box-sizing:border-box;">
       <!-- Central spaghetti graphic -->
       <img src="assets/gen/slide7_graphic.png" alt="Chaotic zone logik diagram" style="width:100%; height:100%; object-fit:contain; display:block;">
       
@@ -389,7 +388,7 @@
       </div>
 
       <!-- Top-Left Warning Card -->
-      <div style="position:absolute; top:12px; left:-215px; width:225px; background:white; border:1.5px solid var(--red); border-radius:8px; padding:10px 14px; box-shadow:0 4px 10px rgba(201,64,64,0.08); display:flex; align-items:flex-start; gap:8px; box-sizing:border-box; z-index:10;">
+      <div class="fragment fade-in" data-fragment-index="1" style="position:absolute; top:12px; left:-215px; width:225px; background:white; border:1.5px solid var(--red); border-radius:8px; padding:10px 14px; box-shadow:0 4px 10px rgba(201,64,64,0.08); display:flex; align-items:flex-start; gap:8px; box-sizing:border-box; z-index:10;">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="var(--red)" style="vertical-align:middle; margin-top:2px; flex-shrink:0;">
           <path d="M12 2L1 21h22L12 2zm1 14h-2v-2h2v2zm0-4h-2V8h2v4z"/>
         </svg>
@@ -399,7 +398,7 @@
       </div>
 
       <!-- Top-Right Warning Card -->
-      <div style="position:absolute; top:12px; right:-215px; width:225px; background:white; border:1.5px solid var(--red); border-radius:8px; padding:10px 14px; box-shadow:0 4px 10px rgba(201,64,64,0.08); display:flex; align-items:flex-start; gap:8px; box-sizing:border-box; z-index:10;">
+      <div class="fragment fade-in" data-fragment-index="1" style="position:absolute; top:12px; right:-215px; width:225px; background:white; border:1.5px solid var(--red); border-radius:8px; padding:10px 14px; box-shadow:0 4px 10px rgba(201,64,64,0.08); display:flex; align-items:flex-start; gap:8px; box-sizing:border-box; z-index:10;">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="var(--red)" style="vertical-align:middle; margin-top:2px; flex-shrink:0;">
           <path d="M12 2L1 21h22L12 2zm1 14h-2v-2h2v2zm0-4h-2V8h2v4z"/>
         </svg>
@@ -409,7 +408,7 @@
       </div>
 
       <!-- Bottom-Left Warning Card -->
-      <div style="position:absolute; bottom:12px; left:-215px; width:225px; background:white; border:1.5px solid var(--red); border-radius:8px; padding:10px 14px; box-shadow:0 4px 10px rgba(201,64,64,0.08); display:flex; align-items:flex-start; gap:8px; box-sizing:border-box; z-index:10;">
+      <div class="fragment fade-in" data-fragment-index="1" style="position:absolute; bottom:12px; left:-215px; width:225px; background:white; border:1.5px solid var(--red); border-radius:8px; padding:10px 14px; box-shadow:0 4px 10px rgba(201,64,64,0.08); display:flex; align-items:flex-start; gap:8px; box-sizing:border-box; z-index:10;">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="var(--red)" style="vertical-align:middle; margin-top:2px; flex-shrink:0;">
           <path d="M12 2L1 21h22L12 2zm1 14h-2v-2h2v2zm0-4h-2V8h2v4z"/>
         </svg>
@@ -419,7 +418,7 @@
       </div>
 
       <!-- Bottom-Right Warning Card -->
-      <div style="position:absolute; bottom:12px; right:-215px; width:225px; background:white; border:1.5px solid var(--red); border-radius:8px; padding:10px 14px; box-shadow:0 4px 10px rgba(201,64,64,0.08); display:flex; align-items:flex-start; gap:8px; box-sizing:border-box; z-index:10;">
+      <div class="fragment fade-in" data-fragment-index="1" style="position:absolute; bottom:12px; right:-215px; width:225px; background:white; border:1.5px solid var(--red); border-radius:8px; padding:10px 14px; box-shadow:0 4px 10px rgba(201,64,64,0.08); display:flex; align-items:flex-start; gap:8px; box-sizing:border-box; z-index:10;">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="var(--red)" style="vertical-align:middle; margin-top:2px; flex-shrink:0;">
           <path d="M12 2L1 21h22L12 2zm1 14h-2v-2h2v2zm0-4h-2V8h2v4z"/>
         </svg>
@@ -430,13 +429,13 @@
     </div>
 
     <!-- Bottom Red Banner Callout -->
-    <div style="background:#a82020; color:white; font-size:0.88em; font-weight:600; padding:12px 20px; border-radius:8px; width:100%; max-width:960px; text-align:center; box-sizing:border-box; box-shadow:0 4px 12px rgba(168,32,32,0.12); margin-top:20px;">
+    <div class="fragment fade-in" data-fragment-index="2" style="background:#a82020; color:white; font-size:0.88em; font-weight:600; padding:12px 20px; border-radius:8px; width:100%; max-width:960px; text-align:center; box-sizing:border-box; box-shadow:0 4px 12px rgba(168,32,32,0.12); margin-top:12px;">
       <strong>Konsequenz:</strong> Unklare Codelokalisierung, extrem aufwendiges Reprocessing und hoher Bus-Faktor.
     </div>
   </div>
 
   <aside class="notes">
-    [SG] Auf dem Papier gab es Zonen — aber ihre Verantwortlichkeiten waren unscharf. [auf die chaotischen Pfeile zeigen] Man wusste nicht, wo eine Logik liegt, Reprocessing wurde zur Qual, und der Bus-Faktor war hoch. Genau das wollten wir auflösen.
+    [SG] Schauen wir auf die alte Zonenlogik. Auf dem Papier gab es Zonen — aber ihre Verantwortlichkeiten waren unscharf. Die Landing Zone war gleichzeitig temporäre Ablage und Archiv. Die Staging Zone wurde nur sporadisch genutzt, in unterschiedlichsten Formaten. Die History Zone war ein Mischmasch: teils Rohhistorie, teils Standardisierung, teils schon Fachlogik. Und die Analysis Zone war noch stark von den alten SSIS-Prozessen geprägt. [auf die chaotischen Pfeile zeigen] Die Konsequenz sehen Sie an diesen Pfeilen: Man weiß nicht, wo eine bestimmte Logik liegt, Reprocessing wird zur Qual, und der Bus-Faktor ist hoch — es hängt zu viel an einzelnen Köpfen. Genau das wollten wir auflösen. Bevor ich zeige, wie, kurz das Prinzip dahinter.
   </aside>
 </section>
 
@@ -445,7 +444,7 @@
      ============================================================ -->
 <section>
   <p class="slide-headline">
-    Lakehouse heißt hier: <span class="hl">offene Speicherung</span> plus <span class="hl">Warehouse-Garantien</span> für BI und ML.
+    Lakehouse heißt hier: <span class="hl">offene Speicherung</span> plus <span class="hl">Warehouse-Garantien</span> für Data Engineering, Analytics und ML.
   </p>
 
   <div class="flex-1" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%;">
@@ -455,7 +454,7 @@
   </div>
 
   <aside class="notes">
-    [SG] Lakehouse bedeutet bei uns: Offenheit eines Data Lake, kombiniert mit Warehouse-Garantien. ACID-Tabellen und Lese-/Schreibzugriff über Delta Lake, Schema-Validierung, Metadatenkatalog, Lineage und Zugriffskontrolle. DataHub als Governance-Brücke. Der entscheidende Effekt: BI, Analytics und ML auf derselben Plattform, ohne Schatten-ETL.
+    [SG] Der Begriff Lakehouse wird viel benutzt, deshalb sage ich, was wir konkret darunter verstehen. Auf der einen Seite die Offenheit eines Data Lake — ein einheitlicher Speicher für strukturierte, semi-strukturierte und perspektivisch weitere Datenformen. Auf der anderen Seite die Garantien eines Warehouse. Konkret heißt das bei uns: ACID-Tabellen und paralleler Lese- und Schreibzugriff über Delta Lake, Schema-Validierung, ein Metadatenkatalog, Lineage und Zugriffskontrolle. Für die Governance setzen wir DataHub ein — als Katalog, für Discovery, Ownership, Lineage und Data Contracts. Performance holen wir über optimierte Dateiformate, Statistiken und Compaction. Und der entscheidende Effekt: BI, Analytics und ML laufen auf derselben Plattform — ohne dass jeder sich seine eigene Schatten-ETL nebenbei baut. Wie das räumlich aussieht, zeigt das Zielbild.
   </aside>
 </section>
 
@@ -471,7 +470,7 @@
   <div style="width:1040px; height:420px; display:flex; gap:18px; align-items:stretch; margin:0 auto; box-sizing:border-box;">
 
     <!-- Left: governance vertical bar (Airflow) -->
-    <div style="width:60px; display:flex; flex-direction:column; align-items:center; justify-content:center; background:linear-gradient(180deg,#2a7d8f 0%,#1f6070 100%); border-radius:8px; padding:15px 0; gap:12px; box-sizing:border-box;">
+    <div class="fragment fade-in" data-fragment-index="2" style="width:60px; display:flex; flex-direction:column; align-items:center; justify-content:center; background:linear-gradient(180deg,#2a7d8f 0%,#1f6070 100%); border-radius:8px; padding:15px 0; gap:12px; box-sizing:border-box;">
       <svg viewBox="0 0 24 24" width="24" height="24" fill="white" xmlns="http://www.w3.org/2000/svg" style="opacity:0.9;">
         <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
       </svg>
@@ -482,7 +481,7 @@
     <div style="flex:1; display:flex; flex-direction:column; gap:16px;">
 
       <!-- Zone cards row -->
-      <div style="flex:1; display:flex; align-items:stretch; gap:0; border-radius:12px; overflow:hidden; box-shadow:0 8px 30px rgba(22,56,72,0.12), 0 2px 8px rgba(22,56,72,0.06);">
+      <div class="fragment fade-in" data-fragment-index="1" style="flex:1; display:flex; align-items:stretch; gap:0; border-radius:12px; overflow:hidden; box-shadow:0 8px 30px rgba(22,56,72,0.12), 0 2px 8px rgba(22,56,72,0.06);">
 
         <!-- Landing -->
         <div class="zone zone--landing" style="flex:1; padding:24px 18px 18px; display:flex; flex-direction:column; justify-content:center; gap:12px; box-sizing:border-box;">
@@ -546,13 +545,13 @@
         </div>
       </div>
 
-      <div class="callout callout--teal" style="font-size:0.95em; padding:14px 24px; border-radius:10px; margin-top:4px; margin-bottom:0; box-sizing:border-box; width:100%; display:block;">
+      <div class="callout callout--teal fragment fade-in" data-fragment-index="2" style="font-size:0.95em; padding:14px 24px; border-radius:10px; margin-top:4px; margin-bottom:0; box-sizing:border-box; width:100%; display:block;">
         <strong>Prinzip:</strong> Jede Zone hat eine klar definierte Aufgabe und ein unverhandelbares <strong>Versprechen</strong> an die nächste Schicht.
       </div>
     </div>
 
     <!-- Right: governance vertical bar (DataHub) -->
-    <div style="width:60px; display:flex; flex-direction:column; align-items:center; justify-content:center; background:linear-gradient(180deg,#163848 0%,#1f6070 100%); border-radius:8px; padding:15px 0; gap:12px; box-sizing:border-box;">
+    <div class="fragment fade-in" data-fragment-index="2" style="width:60px; display:flex; flex-direction:column; align-items:center; justify-content:center; background:linear-gradient(180deg,#163848 0%,#1f6070 100%); border-radius:8px; padding:15px 0; gap:12px; box-sizing:border-box;">
       <svg viewBox="0 0 24 24" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.9;">
         <rect x="3" y="3" width="18" height="18" rx="3" stroke="white" stroke-width="2"/>
         <circle cx="12" cy="12" r="3" fill="white" opacity="0.8"/>
@@ -567,7 +566,7 @@
   </div>
 
   <aside class="notes">
-    [SG] Das hier ist das zentrale Bild des Vortrags — merken Sie es sich, es kommt später im ML-Teil immer wieder. Landing: optional und transient. Raw: unveränderliche Rohdatenhistorie. Process: technische Qualität und Standardisierung. Access: fachliche Datenprodukte. Horizontal die Zonen mit klaren Verträgen, vertikal Orchestrierung und Governance durch alle Schichten.
+    [SG] Das hier ist das zentrale Bild des Vortrags — merken Sie es sich, es kommt später im ML-Teil immer wieder. Wir definieren Zonen jetzt über ihre Funktion und über klare Verträge, nicht mehr über historisch gewachsene Namen. Von links nach rechts: Die Landing Zone ist optional und transient. Die Raw Zone ist die unveränderliche Rohdatenhistorie. Die Process Zone sorgt für technische Qualität und Standardisierung. Und die Access Zone enthält die fachlichen Datenprodukte — für BI, Analytics und eben auch für ML. Horizontal also die Zonen mit klaren Verträgen, und vertikal ziehen sich Orchestrierung und Governance durch alle Schichten. [kurze Pause] Der Trick ist: Jede Zone hat eine klar definierte Aufgabe und ein Versprechen an die nächste. Gehen wir die wichtigen Zonen einzeln durch.
   </aside>
 </section>
 
@@ -582,16 +581,16 @@
   <!-- Mini zone map -->
   <div class="zone-map-mini">
     <div class="zm-zone zm-landing active zm-here">Landing</div>
-    <div class="zm-arrow">→</div>
+    <div class="zm-arrow" style="line-height:1; min-height:14px;">→</div>
     <div class="zm-zone zm-raw active zm-here">Raw</div>
-    <div class="zm-arrow">→</div>
+    <div class="zm-arrow" style="line-height:1; min-height:14px;">→</div>
     <div class="zm-zone zm-process">Process</div>
-    <div class="zm-arrow">→</div>
+    <div class="zm-arrow" style="line-height:1; min-height:14px;">→</div>
     <div class="zm-zone zm-access">Access</div>
   </div>
 
   <div class="flex-1" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; margin-top:8px;">
-    <div style="width:1060px; height:425px; display:flex; gap:20px; align-items:stretch; margin:0 auto; box-sizing:border-box;">
+    <div class="fragment fade-in" data-fragment-index="1" style="width:1060px; height:390px; display:flex; gap:20px; align-items:stretch; margin:0 auto; box-sizing:border-box;">
       
       <!-- Left Column: Landing Zone -->
       <div style="flex:1; display:flex; flex-direction:column; gap:12px;">
@@ -606,19 +605,15 @@
         
         <!-- Directory Tree -->
         <div style="flex:1; background:#f4f6f7; border:1.5px solid var(--panel-dark); border-radius:8px; padding:10px 12px; font-family:var(--font-mono, monospace); font-size:0.55em; text-align:left; color:#334155; line-height:1.3; box-shadow:inset 0 1px 3px rgba(0,0,0,0.05); overflow:hidden; white-space:pre; box-sizing:border-box;">s3://raw-zone/controlling/voucher/
-├── data/
-│   ├── load_date=2025-11-14/
-│   │   ├── voucher_20251114T103015Z_part-00001.jsonl.gz
-│   │   ├── voucher_20251114T103015Z_part-00002.jsonl.gz
-│   │   └── voucher_20251114T103015Z_part-00003.jsonl.gz
-│   └── load_date=2025-11-15/
-│       ├── voucher_20251115T101200Z_part-00001.jsonl.gz
-│       └── voucher_20251115T101200Z_part-00002.jsonl.gz
-└── metadata/
-    ├── load_date=2025-11-14/
-    │   └── metadata.json
-    └── load_date=2025-11-15/
-        └── metadata.json</div>
+├── load_date=2025-11-14/
+│   ├── voucher_part-00001.jsonl.gz
+│   ├── voucher_part-00002.jsonl.gz
+│   └── metadata.json
+├── load_date=2025-11-15/
+│   ├── voucher_part-00001.jsonl.gz
+│   └── metadata.json
+└── append-only:
+    neuer Lauf = neuer Ordner</div>
       </div>
 
       <!-- Connecting Arrow -->
@@ -641,19 +636,13 @@
         
         <!-- JSON Metadata Code Block -->
         <div style="flex:1; background:#f4f6f7; border:1.5px solid var(--panel-dark); border-radius:8px; padding:10px 12px; font-family:var(--font-mono, monospace); font-size:0.55em; text-align:left; color:#334155; line-height:1.3; box-shadow:inset 0 1px 3px rgba(0,0,0,0.05); overflow:hidden; white-space:pre; box-sizing:border-box;"><span style="color:#475569;">{</span>
-  <span style="color:#0369a1;">"ingest_timestamp"</span>: <span style="color:#15803d;">"2025-08-29T08:15:04Z"</span>,
+  <span style="color:#0369a1;">"source"</span>: <span style="color:#15803d;">"controlling.voucher"</span>,
+  <span style="color:#0369a1;">"path"</span>: <span style="color:#15803d;">"load_date=2025-11-15/..."</span>,
+  <span style="color:#0369a1;">"ingest_timestamp"</span>: <span style="color:#15803d;">"2025-11-15T10:12:00Z"</span>,
   <span style="color:#0369a1;">"file_count"</span>: <span style="color:#b91c1c;">2</span>,
   <span style="color:#0369a1;">"total_bytes"</span>: <span style="color:#b91c1c;">14580213</span>,
-  <span style="color:#0369a1;">"tables"</span>: <span style="color:#475569;">[</span>
-    <span style="color:#475569;">{</span>
-      <span style="color:#0369a1;">"name"</span>: <span style="color:#15803d;">"table1.json"</span>, <span style="color:#0369a1;">"bytes"</span>: <span style="color:#b91c1c;">7340021</span>, <span style="color:#0369a1;">"sha256"</span>: <span style="color:#15803d;">"..."</span>, <span style="color:#0369a1;">"check_parsable"</span>: <span style="color:#2563eb;">true</span>,
-      <span style="color:#0369a1;">"schema"</span>: <span style="color:#475569;">{</span> <span style="color:#0369a1;">"columns"</span>: <span style="color:#475569;">[{</span><span style="color:#0369a1;">"name"</span>: <span style="color:#15803d;">"&lt;col1&gt;"</span>, <span style="color:#0369a1;">"type"</span>: <span style="color:#15803d;">"&lt;type&gt;"</span><span style="color:#475569;">}] }</span>
-    <span style="color:#475569;">},</span>
-    <span style="color:#475569;">{</span>
-      <span style="color:#0369a1;">"name"</span>: <span style="color:#15803d;">"table2.json"</span>, <span style="color:#0369a1;">"bytes"</span>: <span style="color:#b91c1c;">7168192</span>, <span style="color:#0369a1;">"sha256"</span>: <span style="color:#15803d;">"..."</span>, <span style="color:#0369a1;">"check_parsable"</span>: <span style="color:#2563eb;">true</span>,
-      <span style="color:#0369a1;">"schema"</span>: <span style="color:#475569;">{</span> <span style="color:#0369a1;">"columns"</span>: <span style="color:#475569;">[{</span><span style="color:#0369a1;">"name"</span>: <span style="color:#15803d;">"&lt;col1&gt;"</span>, <span style="color:#0369a1;">"type"</span>: <span style="color:#15803d;">"&lt;type&gt;"</span><span style="color:#475569;">}] }</span>
-    <span style="color:#475569;">}</span>
-  <span style="color:#475569;">],</span>
+  <span style="color:#0369a1;">"sha256"</span>: <span style="color:#15803d;">"7f9c...e31a"</span>,
+  <span style="color:#0369a1;">"check_parsable"</span>: <span style="color:#2563eb;">true</span>,
   <span style="color:#0369a1;">"checks_passed"</span>: <span style="color:#2563eb;">true</span>
 <span style="color:#475569;">}</span></div>
       </div>
@@ -661,14 +650,14 @@
     </div>
   </div>
 
-  <div class="mt-auto" style="display:flex; justify-content:center;">
-    <div class="callout callout--green" style="width:fit-content; white-space:nowrap;">
+  <div class="mt-auto" style="display:flex; justify-content:center; margin-top:12px;">
+    <div class="callout callout--green fragment fade-in" data-fragment-index="2" style="width:fit-content; white-space:nowrap;">
       Eine <strong>unveränderliche Append-Only-Historie</strong> garantiert, dass jeder ML-Trainingsstand exakt reproduziert werden kann.
     </div>
   </div>
 
   <aside class="notes">
-    [SG] Die Landing Zone ist bewusst kurzlebig. Die Raw Zone ist unser System of Record — langfristig historisiert, append-only, quellnah. Wir schreiben technische Metadaten mit und validieren nur minimal. Warum so streng? Weil eine unveränderliche, append-only Historie bedeutet: Wir können jederzeit exakt denselben Datenstand wiederherstellen. Das ist die Grundlage für reproduzierbare Datenstände — Yannik wird drei Algorithmen gegen exakt denselben Raw-Stand testen.
+    [SG] Beginnen wir links. Die Landing Zone ist bewusst kurzlebig: keine Transformationen, nur Anlieferung, und nach kurzer Aufbewahrung automatisch bereinigt. Das eigentlich Wichtige ist die Raw Zone. Sie ist unser System of Record — langfristig historisiert, append-only, quellnah, mit Schema-on-Read. Wir schreiben technische Metadaten mit: Quelle, Pfad, Ladezeitpunkt, Dateigröße, Checksumme. Und wir validieren hier nur minimal — Parsbarkeit, Existenz, Größe, technische Integrität, mehr nicht. [auf den Callout zeigen] Warum ist das so streng? Weil eine unveränderliche, append-only Historie bedeutet: Wir können jederzeit exakt denselben Datenstand wiederherstellen. Das ist die Grundlage für Audits, für Reprocessing — und, das wird im ML-Teil entscheidend, für reproduzierbare Datenstände. Yannik wird später drei verschiedene Algorithmen gegen exakt denselben Raw-Stand testen. Das geht nur, weil Raw wirklich raw bleibt.
   </aside>
 </section>
 
