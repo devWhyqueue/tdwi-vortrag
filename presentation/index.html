@@ -1722,7 +1722,7 @@ dim/
   <!-- Flow diagram with premium SVGs -->
   <div style="display: flex; align-items: stretch; justify-content: center; gap: 28px; width: 100%; max-width: 54em; margin: 24px auto 28px; box-sizing: border-box;">
     <!-- Step 1: Echtdaten -->
-    <div class="card" style="flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 14px 16px 16px; border-top: 4px solid var(--navy-deep); background: white; box-shadow: 0 4px 15px rgba(22,56,72,0.03); border-radius: 8px;">
+    <div class="card fragment fade-in" data-fragment-index="1" style="flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 14px 16px 16px; border-top: 4px solid var(--navy-deep); background: white; box-shadow: 0 4px 15px rgba(22,56,72,0.03); border-radius: 8px;">
       <div style="height: 70px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px;">
         <svg viewBox="0 0 64 64" width="64" height="64" style="filter: drop-shadow(0 4px 10px rgba(22,56,72,0.15));">
           <defs>
@@ -1753,7 +1753,7 @@ dim/
     </div>
     
     <!-- Arrow 1 -->
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; width: 4.5em; flex-shrink: 0;">
+    <div class="fragment fade-in" data-fragment-index="2" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; width: 4.5em; flex-shrink: 0;">
       <svg viewBox="0 0 40 40" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
         <path d="M 5 20 L 32 20" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round" />
         <polygon points="28,15 37,20 28,25" fill="var(--teal)" />
@@ -1764,7 +1764,7 @@ dim/
     </div>
 
     <!-- Step 2: Aggregierte Statistiken -->
-    <div class="card" style="flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 14px 16px 16px; border-top: 4px solid var(--teal); background: white; box-shadow: 0 4px 15px rgba(22,56,72,0.03); border-radius: 8px;">
+    <div class="card fragment fade-in" data-fragment-index="2" style="flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 14px 16px 16px; border-top: 4px solid var(--teal); background: white; box-shadow: 0 4px 15px rgba(22,56,72,0.03); border-radius: 8px;">
       <div style="height: 70px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px;">
         <svg viewBox="0 0 76 64" width="76" height="64" style="filter: drop-shadow(0 4px 10px rgba(42,125,143,0.15));">
           <g transform="translate(14, 28) scale(0.6)">
@@ -1791,7 +1791,7 @@ dim/
     </div>
 
     <!-- Arrow 2 -->
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; width: 4.5em; flex-shrink: 0;">
+    <div class="fragment fade-in" data-fragment-index="3" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; width: 4.5em; flex-shrink: 0;">
       <svg viewBox="0 0 40 40" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
         <path d="M 5 20 L 32 20" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" />
         <polygon points="28,15 37,20 28,25" fill="var(--green)" />
@@ -1802,7 +1802,7 @@ dim/
     </div>
 
     <!-- Step 3: Proxy-Dataset -->
-    <div class="card" style="flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 14px 16px 16px; border-top: 4px solid var(--green); background: white; box-shadow: 0 4px 15px rgba(22,56,72,0.03); border-radius: 8px;">
+    <div class="card fragment fade-in" data-fragment-index="3" style="flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 14px 16px 16px; border-top: 4px solid var(--green); background: white; box-shadow: 0 4px 15px rgba(22,56,72,0.03); border-radius: 8px;">
       <div style="height: 70px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px;">
         <svg viewBox="0 0 64 64" width="64" height="64" style="filter: drop-shadow(0 4px 10px rgba(46,198,107,0.2));">
           <defs>
@@ -1829,12 +1829,12 @@ dim/
   </div>
 
   <!-- Centered, compact callout at the bottom -->
-  <div class="callout callout--teal mt-auto" style="width: fit-content; max-width: 85%; margin: 0 auto; box-sizing: border-box; justify-content: center; text-align: center; font-size: 0.95em; line-height: 1.4;">
+  <div class="callout callout--teal mt-auto fragment fade-in" data-fragment-index="4" style="width: fit-content; max-width: 85%; margin: 0 auto; box-sizing: border-box; justify-content: center; text-align: center; font-size: 0.95em; line-height: 1.4;">
     <span><strong>Lakehouse-Enabler:</strong> Das synthetische Testset ist selbst ein <strong>versioniertes, reproduzierbares Datenprodukt</strong> in der Plattform — ohne Plattform-Disziplin kein reproduzierbarer Benchmark.</span>
   </div>
 
   <aside class="notes">
-    [YQ] Um zu messen welcher Ansatz besser ist, brauche ich die Wahrheit — in Echtdaten habe ich die nicht. Dazu kommt Datenschutz. Lösung: synthetisches Proxy-Dataset. Gibt mir kontrollierte Ground Truth über entity_id, realistische Fehler, Dubletten, Lücken und historische Varianten. Und jetzt der Bezug zum Leitsatz: Dieses Testset ist selbst ein versioniertes, reproduzierbares Datenprodukt in der Plattform. Ohne Plattform-Disziplin kein reproduzierbarer Benchmark.
+    [YQ] Um zu messen, welcher Ansatz besser ist, brauche ich die Wahrheit - ich muss wissen, welche Records wirklich zur selben Person gehören. Und genau die habe ich in den Echtdaten nicht: Es gibt keinen perfekten, unabhängigen Wahrheitsdatensatz für alle Verknüpfungen. Dazu kommt der Datenschutz - echte Patientendaten kann ich nicht als Entwicklungs- oder Benchmark-Dataset frei verwenden. Die Lösung ist ein synthetisches Proxy-Dataset. [auf den Ablauf zeigen] Das gibt mir kontrollierte Ground Truth über eine `entity_id`, dazu realistische Fehler, Dubletten, Lücken und historische Varianten - und damit eine wiederholbare, vergleichbare Evaluation für alle drei Ansätze. Und jetzt der Bezug zu unserem Leitsatz: Dieses Testset ist selbst ein versioniertes, reproduzierbares Datenprodukt in der Plattform. Ohne die Plattform-Disziplin - Versionierung, klare Datenprodukte - wäre mein Benchmark nicht reproduzierbar. Genau das meinen wir mit „die Plattform ist der Enabler". Wie dieses Dataset entsteht, ohne dass es frei erfunden ist, zeige ich kurz.
   </aside>
 </section>
 
@@ -1848,7 +1848,7 @@ dim/
 
   <div style="width:1060px; height:400px; margin:0 auto; box-sizing:border-box; overflow:hidden; display:flex; align-items:center; justify-content:center; gap:16px; margin-top:20px;">
     <!-- Column 1: Reale Basis -->
-    <div style="display:flex; flex-direction:column; width:300px; height:380px; border-radius:8px; border:1.5px solid var(--panel-dark); background:var(--bg-soft); overflow:hidden; box-sizing:border-box; box-shadow:0 4px 10px rgba(0,0,0,0.03);">
+    <div class="fragment fade-in" data-fragment-index="1" style="display:flex; flex-direction:column; width:300px; height:380px; border-radius:8px; border:1.5px solid var(--panel-dark); background:var(--bg-soft); overflow:hidden; box-sizing:border-box; box-shadow:0 4px 10px rgba(0,0,0,0.03);">
       <div style="background:var(--navy); color:white; font-weight:700; padding:10px 0; font-size:0.82em; text-align:center; text-transform:uppercase; letter-spacing:0.5px; border-bottom:1.5px solid var(--panel-dark);">
         Reale Basis
       </div>
@@ -1887,14 +1887,14 @@ dim/
     </div>
 
     <!-- Arrow 1 -->
-    <div style="display:flex; align-items:center; justify-content:center; color:var(--teal); width:32px; flex-shrink:0;">
+    <div class="fragment fade-in" data-fragment-index="2" style="display:flex; align-items:center; justify-content:center; color:var(--teal); width:32px; flex-shrink:0;">
       <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor">
         <path d="M4 10h11v-4l6 6-6 6v-4H4z"/>
       </svg>
     </div>
 
     <!-- Column 2: Extrahierte Merkmale -->
-    <div style="display:flex; flex-direction:column; width:300px; height:380px; border-radius:8px; border:1.5px solid var(--panel-dark); background:var(--bg-soft); overflow:hidden; box-sizing:border-box; box-shadow:0 4px 10px rgba(0,0,0,0.03);">
+    <div class="fragment fade-in" data-fragment-index="2" style="display:flex; flex-direction:column; width:300px; height:380px; border-radius:8px; border:1.5px solid var(--panel-dark); background:var(--bg-soft); overflow:hidden; box-sizing:border-box; box-shadow:0 4px 10px rgba(0,0,0,0.03);">
       <div style="background:var(--navy); color:white; font-weight:700; padding:10px 0; font-size:0.82em; text-align:center; text-transform:uppercase; letter-spacing:0.5px; border-bottom:1.5px solid var(--panel-dark);">
         Extrahierte Merkmale
       </div>
@@ -1924,14 +1924,14 @@ dim/
     </div>
 
     <!-- Arrow 2 -->
-    <div style="display:flex; align-items:center; justify-content:center; color:var(--teal); width:32px; flex-shrink:0;">
+    <div class="fragment fade-in" data-fragment-index="3" style="display:flex; align-items:center; justify-content:center; color:var(--teal); width:32px; flex-shrink:0;">
       <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor">
         <path d="M4 10h11v-4l6 6-6 6v-4H4z"/>
       </svg>
     </div>
 
     <!-- Column 3: Proxy-Dataset -->
-    <div style="display:flex; flex-direction:column; width:300px; height:380px; border-radius:8px; border:1.5px solid var(--panel-dark); background:var(--bg-soft); overflow:hidden; box-sizing:border-box; box-shadow:0 4px 10px rgba(0,0,0,0.03);">
+    <div class="fragment fade-in" data-fragment-index="3" style="display:flex; flex-direction:column; width:300px; height:380px; border-radius:8px; border:1.5px solid var(--panel-dark); background:var(--bg-soft); overflow:hidden; box-sizing:border-box; box-shadow:0 4px 10px rgba(0,0,0,0.03);">
       <div style="background:linear-gradient(135deg,var(--green),#16a34a); color:white; font-weight:700; padding:10px 0; font-size:0.82em; text-align:center; text-transform:uppercase; letter-spacing:0.5px; border-bottom:1.5px solid var(--panel-dark);">
         Proxy-Dataset
       </div>
@@ -1981,12 +1981,76 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ] Die Daten sind synthetisch, aber nicht aus der Luft gegriffen. Wir haben die echten Daten ausschließlich aggregiert analysiert — k-Anonymität ≥100, gebinnte Verteilungen, gerundete Counts. Daraus dann ein Generator, der realistische Records mit Tippfehlern, fehlenden Werten, Adressänderungen über Quartale erzeugt. Inklusive der Golden Records für Survivorship-Messung.
+    [YQ] Wichtig ist mir: Die Daten sind synthetisch, aber nicht aus der Luft gegriffen. Wir haben die echten Daten ausschließlich aggregiert analysiert - mit k-Anonymität von mindestens 100, gebinnten Verteilungen, gerundeten Counts, und niemals einzelne Datensätze ausgegeben. Aus diesen Aggregaten haben wir Verteilungen extrahiert: Vor- und Nachnamen, Namenslängen und Zeichenmuster, die Muster der Versichertennummern, PLZ-Regionen, Geburtsjahr, Monat und Tag, Geschlecht, die VSDM-Verifikation und typische Fehlerprofile. Der Generator baut daraus dann mehrere Records pro Person - mit realistischen Tippfehlern, fehlenden Werten, Adressänderungen über Quartale hinweg. Und er erzeugt gleich die Golden Records mit, damit wir später auch das Survivorship messen können. So bekommen wir realistische Daten mit bekannter Wahrheit. Damit ist die Bühne bereit - aber vorher müssen wir uns einigen, woran wir „besser" eigentlich festmachen.
   </aside>
 </section>
 
 <!-- ============================================================
-     SLIDE 23 — EXKURS: EVALUATIONSMETRIKEN
+     SLIDE 23 — VALIDIERUNGSDESIGN
+     ============================================================ -->
+<section>
+  <p class="slide-headline">
+    Die Proxy-Daten machen aus einer fachlichen Diskussion eine <span class="hl">messbare Engineering-Frage</span>.
+  </p>
+
+  <div style="width:1060px; height:425px; margin:0 auto; box-sizing:border-box; overflow:hidden; display:flex; flex-direction:column; gap:14px;">
+    <div style="display:grid; grid-template-columns: 0.92fr 1.25fr 0.92fr; gap:16px; align-items:stretch; flex:1; min-height:0;">
+      <div class="card fragment fade-in" data-fragment-index="1" style="display:flex; flex-direction:column; overflow:hidden;">
+        <div class="card__head">Ground Truth</div>
+        <div class="card__body" style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:10px;">
+          <div class="card__item" style="align-items:flex-start;"><strong style="color:var(--green); min-width:82px;">entity_id</strong><span>wahre Personencluster</span></div>
+          <div class="card__item" style="align-items:flex-start;"><strong style="color:var(--teal); min-width:82px;">Golden</strong><span>Referenzfelder für Survivorship</span></div>
+          <div class="card__item" style="align-items:flex-start;"><strong style="color:var(--navy); min-width:82px;">Version</strong><span>gleicher Datenstand für alle Ansätze</span></div>
+        </div>
+      </div>
+
+      <div class="fragment fade-in" data-fragment-index="2" style="display:flex; flex-direction:column; border:1.5px solid var(--panel-dark); border-radius:8px; background:var(--bg-soft); overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,0.03);">
+        <div style="display:grid; grid-template-columns:104px 1fr 1fr; grid-template-rows:46px 1fr 1fr; gap:6px; padding:12px; flex:1; min-height:0;">
+          <div></div>
+          <div style="display:flex; align-items:center; justify-content:center; font-size:0.68em; font-weight:800; color:var(--navy); text-transform:uppercase; letter-spacing:0.04em;">Ground Truth: Link</div>
+          <div style="display:flex; align-items:center; justify-content:center; font-size:0.68em; font-weight:800; color:var(--navy); text-transform:uppercase; letter-spacing:0.04em;">Ground Truth: Kein Link</div>
+          <div style="display:flex; align-items:center; justify-content:center; text-align:center; font-size:0.68em; font-weight:800; color:var(--navy); text-transform:uppercase; letter-spacing:0.04em;">Vorhersage:<br>Link</div>
+          <div style="background:var(--green-light); border:1.5px solid var(--green); border-radius:6px; padding:12px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
+            <strong style="font-size:0.92em; color:var(--green);">True Positive</strong>
+            <span style="font-size:0.68em; color:var(--ink-muted); margin-top:4px;">korrekt verknüpft</span>
+          </div>
+          <div class="fragment fade-in" data-fragment-index="3" style="background:var(--red-light); border:2.5px solid var(--red); border-radius:6px; padding:12px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; box-shadow:0 0 0 4px rgba(201,64,64,0.10);">
+            <strong style="font-size:0.92em; color:var(--red);">False Positive</strong>
+            <span style="font-size:0.68em; color:var(--red); font-weight:800; margin-top:4px;">False Merge</span>
+          </div>
+          <div style="display:flex; align-items:center; justify-content:center; text-align:center; font-size:0.68em; font-weight:800; color:var(--navy); text-transform:uppercase; letter-spacing:0.04em;">Vorhersage:<br>Kein Link</div>
+          <div style="background:var(--amber-light); border:1.5px solid var(--amber); border-radius:6px; padding:12px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
+            <strong style="font-size:0.92em; color:var(--amber);">False Negative</strong>
+            <span style="font-size:0.68em; color:var(--amber); font-weight:700; margin-top:4px;">Split</span>
+          </div>
+          <div style="background:white; border:1.5px solid var(--panel-dark); border-radius:6px; padding:12px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
+            <strong style="font-size:0.92em; color:var(--steel);">True Negative</strong>
+            <span style="font-size:0.68em; color:var(--ink-muted); margin-top:4px;">korrekt getrennt</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:10px; min-height:0;">
+        <div class="callout callout--red fragment fade-in" data-fragment-index="3" style="flex:1; overflow:hidden; font-size:0.72em; line-height:1.18; padding:8px 12px; display:flex; align-items:center;">
+          <strong>Stakes:</strong> False merges betreffen Billing-Genauigkeit, Datenschutz und Compliance.
+        </div>
+        <div class="callout callout--amber fragment fade-in" data-fragment-index="4" style="flex:1; overflow:hidden; font-size:0.72em; line-height:1.18; padding:8px 12px; display:flex; align-items:center;">
+          <strong>Schwellen:</strong> konservativ wählen und begründen.
+        </div>
+        <div class="callout callout--teal fragment fade-in" data-fragment-index="5" style="flex:1; overflow:hidden; font-size:0.72em; line-height:1.18; padding:8px 12px; display:flex; align-items:center;">
+          <strong>Fehleranalyse:</strong> FP/FN exportieren und Fehlermuster qualitativ prüfen.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="notes">
+    [YQ] Genau das leisten die Proxy-Daten: Sie machen aus einer fachlichen Diskussion - „welcher Ansatz ist besser?" - eine messbare Engineering-Frage. Als Ground Truth haben wir die `entity_id` für die wahren Personencluster und die Golden-Record-Felder für das Survivorship. [auf den rot markierten Quadranten zeigen] Und hier sehen Sie die Stakes von eben wieder: Der false positive, der false merge, ist rot - er ist bei Patientendaten fachlich riskanter als ein verpasster Match. Das heißt für uns: Schwellen konservativ wählen und diese Wahl begründen. Und wir lassen es nicht bei Zahlen - wir exportieren false positives und false negatives und schauen sie uns qualitativ an, um typische Fehlermuster zu verstehen. Für alle, die nicht täglich mit Record Linkage zu tun haben, lohnt sich an dieser Stelle ein kurzer Exkurs, was diese Metriken eigentlich bedeuten.
+  </aside>
+</section>
+
+<!-- ============================================================
+     SLIDE 24 — EXKURS: EVALUATIONSMETRIKEN
      ============================================================ -->
 <section>
   <p class="slide-headline">
@@ -1997,7 +2061,7 @@ dim/
     <!-- Top Row: Confusion Matrix & Metrics Cards -->
     <div style="display:flex; gap:16px; flex:1; align-items:stretch; width:100%;">
       <!-- Left Column: Confusion Matrix Card -->
-      <div style="display:flex; flex-direction:column; width:500px; border:1.5px solid var(--panel-dark); background:var(--bg-soft); border-radius:8px; overflow:hidden; box-sizing:border-box; box-shadow:0 4px 10px rgba(0,0,0,0.03);">
+      <div class="fragment fade-in" data-fragment-index="1" style="display:flex; flex-direction:column; width:500px; border:1.5px solid var(--panel-dark); background:var(--bg-soft); border-radius:8px; overflow:hidden; box-sizing:border-box; box-shadow:0 4px 10px rgba(0,0,0,0.03);">
         <div style="background:var(--navy); color:white; font-weight:700; padding:8px 0; font-size:0.8em; text-align:center; text-transform:uppercase; letter-spacing:0.5px; border-bottom:1.5px solid var(--panel-dark);">
           Confusion Matrix
         </div>
@@ -2026,7 +2090,7 @@ dim/
       </div>
 
       <!-- Right Column: Metrics explanation -->
-      <div style="display:flex; gap:12px; flex:1; align-items:stretch;">
+      <div class="fragment fade-in" data-fragment-index="2" style="display:flex; gap:12px; flex:1; align-items:stretch;">
         <!-- Precision Card -->
         <div style="display:flex; flex-direction:column; flex:1; border:1.5px solid var(--panel-dark); background:var(--bg-soft); border-radius:8px; overflow:hidden; box-sizing:border-box; box-shadow:0 4px 10px rgba(0,0,0,0.03);">
           <div style="background:var(--navy); color:white; font-weight:700; padding:8px 0; font-size:0.8em; text-align:center; text-transform:uppercase; letter-spacing:0.5px; border-bottom:1.5px solid var(--panel-dark);">
@@ -2038,7 +2102,7 @@ dim/
               Precision = <div style="display:inline-block; text-align:center; vertical-align:middle; line-height:1;"><span style="display:block; border-bottom:1.5px solid var(--teal-deep); padding:0 4px; line-height:1; font-weight:800;">TP</span><span style="display:block; padding:0 4px; line-height:1.2; font-weight:800;">TP + FP</span></div>
             </div>
             <div style="font-size:0.68em; line-height:1.35; color:var(--ink); text-align:center;">
-              Misst die gefährlichen <strong>False Merges</strong> (falsche Verschmelzungen).
+              Misst die fachlich kritischen <strong>False Merges</strong> (falsche Verschmelzungen).
             </div>
           </div>
         </div>
@@ -2062,25 +2126,25 @@ dim/
     </div>
 
     <!-- Bottom Red Banner Callout -->
-    <div class="callout callout--red" style="width:100%; box-sizing:border-box; margin:0; font-size:0.78em; line-height:1.35; text-align:center; padding:10px 16px; box-shadow:0 4px 10px rgba(220,38,38,0.08); flex-shrink:0;">
-      <strong>Kritische Fachregel:</strong> Bei Patientendaten ist die Precision die wichtigste Metrik. Falsche Verschmelzungen (FP) sind medizinisch gefährlicher als übersehene Historien (FN = Splits).
+    <div class="callout callout--red fragment fade-in" data-fragment-index="3" style="width:100%; box-sizing:border-box; margin:0; font-size:0.78em; line-height:1.35; text-align:center; padding:10px 16px; box-shadow:0 4px 10px rgba(220,38,38,0.08); flex-shrink:0;">
+      <strong>Kritische Fachregel:</strong> Bei Patientendaten ist Precision besonders wichtig. Falsche Verschmelzungen (FP) sind für Billing-Genauigkeit, Datenschutz und Compliance kritischer als übersehene Historien (FN = Splits).
     </div>
   </div>
 
   <aside class="notes">
-    [YQ] Grundidee: jedes Paar von Records — gleiche Person oder nicht? Drei Fälle: TP = korrekt verknüpft; FP = false merge; FN = übersehener Link = split. Precision misst false merges, Recall misst splits. F1 ist das harmonische Mittel. Ergänzend: Clusterebene. Und für die nächsten Folien: Precision is die kritische Größe bei Patientendaten.
+    [YQ] Ganz kurz und konkret, damit gleich alle die Zahlen lesen können. Die Grundidee: Wir betrachten jedes Paar von Records und fragen - gleiche Person oder nicht? Daraus ergeben sich drei Fälle. Ein True Positive ist ein korrekt verknüpftes Paar. Ein False Positive ist ein false merge - zwei verschiedene Personen fälschlich verbunden. Ein False Negative ist ein übersehener Link - ein split. Daraus zwei Kennzahlen: Precision ist der Anteil korrekter unter den von uns vorhergesagten Links - sie misst also unsere false merges. Recall ist der Anteil gefundener unter den echten Links - sie misst die splits. F1 ist einfach das harmonische Mittel aus beiden. Ergänzend schauen wir auf Clusterebene - perfekte, gesplittete, verschmolzene Cluster. Und merken Sie sich für die nächsten Folien: Bei Patientendaten ist die Precision die kritische Größe, weil sie die fachlich kritischen false merges abbildet. Mit diesem Rüstzeug schauen wir uns die drei Ansätze an - und starten mit dem amtierenden Modell.
   </aside>
 </section>
 
 <!-- ============================================================
-     SLIDE 24 — BASELINE: AKTUELLES DETERMINISTISCHES MODELL
+     SLIDE 25 — BASELINE: AKTUELLES DETERMINISTISCHES MODELL
      ============================================================ -->
 <section>
   <p class="slide-headline" style="margin-bottom: 2px;">
     Das bestehende Modell ist ein <span class="hl">starker, konservativer Baseline-Ansatz</span> — aber es verliert viele echte Links.
   </p>
 
-  <div class="zone-map-mini" style="margin: 0 auto 18px;">
+  <div class="zone-map-mini fragment fade-in" data-fragment-index="1" style="margin: 0 auto 18px;">
     <div class="zm-zone zm-landing">Landing</div>
     <span class="zm-arrow">→</span>
     <div class="zm-zone zm-raw">Raw</div>
@@ -2092,7 +2156,7 @@ dim/
   <div style="width: 1060px; height: 425px; margin: 0 auto; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; box-sizing: border-box;">
     <div class="row" style="display: flex; gap: 20px; flex: 1; min-height: 0; align-items: stretch; justify-content: center; margin-top: 10px;">
       <!-- Left Column: Flowchart & Notes -->
-      <div class="col" style="flex: 1.45; display: flex; flex-direction: column; justify-content: flex-start; gap: 12px; min-height: 0;">
+      <div class="col fragment fade-in" data-fragment-index="2" style="flex: 1.45; display: flex; flex-direction: column; justify-content: flex-start; gap: 12px; min-height: 0;">
         <!-- Flowchart Container -->
         <div class="flowchart-container" style="position: relative; height: 270px; width: 100%; border: 1.5px solid var(--panel-dark); background: var(--bg-soft); border-radius: 8px; box-sizing: border-box; overflow: hidden;">
           
@@ -2161,7 +2225,7 @@ dim/
       </div>
 
       <!-- Right Column: F1 Score & Bar Chart -->
-      <div class="col" style="flex: 0.55; display: flex; flex-direction: column; justify-content: flex-start; gap: 12px; min-height: 0;">
+      <div class="col fragment fade-in" data-fragment-index="3" style="flex: 0.55; display: flex; flex-direction: column; justify-content: flex-start; gap: 12px; min-height: 0;">
         <!-- F1 Score Badge -->
         <p style="background: var(--navy); color: white; padding: 6px 12px; border-radius: 6px; font-weight: 700; font-size: 0.85em; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin: 0; flex-shrink: 0; overflow: hidden; line-height: 1.2;">
           F1-Score: 81.90 %
@@ -2193,25 +2257,25 @@ dim/
     </div>
 
     <!-- Bottom Interpretation Banner -->
-    <div class="callout callout--amber" style="font-size: 0.78em; padding: 8px 12px; margin-top: 10px; text-align: center; box-sizing: border-box; line-height: 1.35; flex-shrink: 0; overflow: hidden; width: 100%;">
+    <div class="callout callout--amber fragment fade-in" data-fragment-index="4" style="font-size: 0.78em; padding: 8px 12px; margin-top: 10px; text-align: center; box-sizing: border-box; line-height: 1.35; flex-shrink: 0; overflow: hidden; width: 100%;">
       <p style="margin: 0; line-height: 1.3; color: var(--amber-deep);"><strong>Interpretation:</strong> Praktisch keine False Merges, aber hoher Verlust echter Verknüpfungen (Splits). Ein idealer Safety-Baseline.</p>
     </div>
   </div>
 
   <aside class="notes">
-    [YQ] Ansatz eins: bestehendes Modell. SQL-Logik als validierbare Python-Variante. Ergebnis: Precision 100% — kein einziger false merge. Aber Recall nur 69%, F1 knapp 82%. Extrem sicher, verliert aber fast ein Drittel der echten Verknüpfungen in splits. Sehr guter, konservativer Safety-Baseline — aber mit Luft nach oben.
+    [YQ] Ansatz eins ist unser bestehendes Modell. [auf die Zonen-Map zeigen] Kurz zur Orientierung: Wir sind jetzt in der Process Zone - hier läuft die Patientenbildung. Wir haben die SQL-Logik als validierbare Python-Variante nachgebaut, die deterministische Kaskade mit den drei Regeln von eben. Und das Ergebnis auf dem Proxy-Dataset ist bemerkenswert: Precision 100 Prozent. Kein einziger false merge. Aber - und das ist die Kehrseite - der Recall liegt nur bei 69 Prozent, der F1 bei knapp 82. Das heißt: Das Modell ist extrem sicher, macht praktisch keine kritischen Fehler, aber es verliert fast ein Drittel der echten Verknüpfungen in splits. Ein sehr guter, konservativer Safety-Baseline - aber mit Luft nach oben. [Enabler-Callback] Übrigens: Dass ich alle drei Ansätze gleich gegen exakt denselben Datenstand teste, ermöglicht erst die unveränderliche Raw-Historie, die Sebastian gezeigt hat. Können wir mehr Links finden, ohne diese perfekte Precision zu opfern? Das war die Frage für Ansatz zwei.
   </aside>
 </section>
 
 <!-- ============================================================
-     SLIDE 25 — HYBRID CASCADE
+     SLIDE 26 — HYBRID CASCADE
      ============================================================ -->
 <section>
   <p class="slide-headline" style="margin-bottom:2px;">
     Ein deterministisch dominierter Ansatz findet durch <span class="hl">Fuzzy Fallbacks</span> deutlich mehr Links, ohne die Precision zu beschädigen.
   </p>
 
-  <div class="zone-map-mini" style="margin: 0 auto 10px;">
+  <div class="zone-map-mini fragment fade-in" data-fragment-index="1" style="margin: 0 auto 10px;">
     <div class="zm-zone zm-landing">Landing</div>
     <div class="zm-arrow">→</div>
     <div class="zm-zone zm-raw">Raw</div>
@@ -2225,7 +2289,7 @@ dim/
     <div class="row" style="display:flex; gap:16px; flex:1; min-height:0; align-items:stretch;">
 
       <!-- LEFT: Staircase Cascade Flowchart + Info card -->
-      <div style="flex-shrink:0; width:590px; display:flex; flex-direction:column; gap:10px; min-height:0;">
+      <div class="fragment fade-in" data-fragment-index="2" style="flex-shrink:0; width:590px; display:flex; flex-direction:column; gap:10px; min-height:0;">
 
         <!-- Flowchart container -->
         <div style="position:relative; height:305px; width:100%; border:1.5px solid var(--panel-dark); background:var(--bg-soft); border-radius:8px; box-sizing:border-box; overflow:hidden; flex-shrink:0;">
@@ -2344,7 +2408,7 @@ dim/
       </div>
 
       <!-- RIGHT: Comparison Bar Chart -->
-      <div style="flex:1; height:373px; display:flex; flex-direction:column; justify-content:flex-start; gap:8px; min-height:0; min-width:0; align-self:flex-start;">
+      <div class="fragment fade-in" data-fragment-index="3" style="flex:1; height:373px; display:flex; flex-direction:column; justify-content:flex-start; gap:8px; min-height:0; min-width:0; align-self:flex-start;">
         <!-- F1 Score Badge -->
         <p style="background:var(--navy); color:white; padding:6px 12px; border-radius:6px; font-weight:700; font-size:0.82em; text-align:center; box-shadow:0 2px 4px rgba(0,0,0,0.1); margin:0; flex-shrink:0; overflow:hidden; line-height:1.2;">
           F1-Score: 90.04 %
@@ -2403,7 +2467,7 @@ dim/
         </div>
 
         <!-- Recall gain callout -->
-        <div class="callout callout--green" style="font-size:0.76em; text-align:center; padding:8px 10px; flex-shrink:0; overflow:hidden; box-sizing:border-box;">
+        <div class="callout callout--green fragment fade-in" data-fragment-index="4" style="font-size:0.76em; text-align:center; padding:8px 10px; flex-shrink:0; overflow:hidden; box-sizing:border-box;">
           <strong>+12.60 Pp</strong> Recall ↑ &nbsp;·&nbsp; Precision nahezu unverändert
         </div>
       </div>
@@ -2411,19 +2475,19 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ] Ansatz zwei: Hybrid Cascade. Exakte Matches zuerst, fuzzy nur als Fallback. Edit Distance für kurze Namen, Q-Gram-Jaccard für längere. Adaptive Blocking-Grenzen. Fünf Kaskadenstufen. Ergebnis: Recall springt von 69 auf 82% — plus 12,5 Prozentpunkte. Precision: 99,91% — praktisch unverändert. Deutlich mehr echte Links, fast kein Preis. Geht es noch besser?
+    [YQ] Ansatz zwei nennen wir Hybrid Cascade. Die Idee: exakte Matches zuerst, so wie bisher - aber dort, wo das Modell vorher aufgegeben hat, ein fuzzy Fallback. Damit fangen wir Tippfehler und Schreibvarianten ab. Methodisch ist das eine Kombination etablierter Bausteine - die klassische Linkage-Grundlogik von Fellegi und Sunter aus 1969 und, für Blocking und String-Ähnlichkeit, Christens Standardwerk „Data Matching". Konkret: Wir nutzen Edit Distance für kurze Namen und Q-Gram-Jaccard für längere, und adaptive Blocking-Grenzen, damit uns die Paarvergleiche nicht explodieren. Die Kaskade hat jetzt fünf Stufen, von EGK exakt bis hin zu fuzzy Name plus PLZ plus Geburtsjahr. [auf den Pfeil nach oben zeigen] Und das Ergebnis: Der Recall springt von 69 auf fast 82 Prozent - plus zwölfeinhalb Prozentpunkte. Und die Precision? Bleibt bei 99,91 Prozent - praktisch unverändert. Wir finden also deutlich mehr echte Links und bezahlen kaum etwas dafür. Geht es noch besser - mit einem grundlegend anderen Ansatz?
   </aside>
 </section>
 
 <!-- ============================================================
-     SLIDE 26 — FLEXRL
+     SLIDE 27 — FLEXRL
      ============================================================ -->
 <section>
   <p class="slide-headline">
-    <span class="hl">Probabilistische Linkage</span> fragt nicht „stimmt das Attribut überein?" — sondern „was bedeutet diese Übereinstimmung?"
+    <span class="hl">Probabilistische Linkage</span> macht Unsicherheit explizit und lernt Fehler- und Zufallsmuster aus den Daten.
   </p>
 
-  <div class="zone-map-mini">
+  <div class="zone-map-mini fragment fade-in" data-fragment-index="1">
     <div class="zm-zone zm-landing">Landing</div>
     <div class="zm-arrow">→</div>
     <div class="zm-zone zm-raw">Raw</div>
@@ -2439,7 +2503,7 @@ dim/
     <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:14px; align-items:stretch;">
 
       <!-- Col 1: The insight / intuition -->
-      <div style="background:var(--card); border:1.5px solid var(--panel-dark); border-radius:10px; padding:16px; box-shadow:0 3px 12px rgba(22,56,72,0.07);">
+      <div class="fragment fade-in" data-fragment-index="2" style="background:var(--card); border:1.5px solid var(--panel-dark); border-radius:10px; padding:16px; box-shadow:0 3px 12px rgba(22,56,72,0.07);">
         <div class="section-label" style="margin-bottom:12px;">① Die Kernbeobachtung</div>
         <p style="font-size:0.76em; color:var(--ink); font-weight:700; margin:0 0 12px; line-height:1.4;">
           Nicht alle Attribute sagen gleich viel über einen Link aus.
@@ -2478,7 +2542,7 @@ dim/
       </div>
 
       <!-- Col 2: What FlexRL learns (EM) — intuition only -->
-      <div style="background:var(--navy); border-radius:10px; padding:16px; box-shadow:0 4px 16px rgba(22,56,72,0.18); color:white;">
+      <div class="fragment fade-in" data-fragment-index="3" style="background:var(--navy); border-radius:10px; padding:16px; box-shadow:0 4px 16px rgba(22,56,72,0.18); color:white;">
         <div class="section-label" style="color:rgba(255,255,255,0.65); margin-bottom:12px;">② Was FlexRL lernt — automatisch</div>
         <div style="display:flex; flex-direction:column; gap:10px; margin-top:4px;">
           <div style="display:flex; align-items:flex-start; gap:10px;">
@@ -2510,7 +2574,7 @@ dim/
       </div>
 
       <!-- Col 3: Score → decision + results -->
-      <div style="display:flex; flex-direction:column; gap:10px;">
+      <div class="fragment fade-in" data-fragment-index="4" style="display:flex; flex-direction:column; gap:10px;">
         <div style="background:var(--card); border:1.5px solid var(--panel-dark); border-radius:10px; padding:14px; box-shadow:0 3px 12px rgba(22,56,72,0.07); flex:1;">
           <div class="section-label" style="margin-bottom:10px;">③ Score pro Paar → Entscheidung</div>
           <!-- Score bar 0→1 -->
@@ -2548,18 +2612,18 @@ dim/
     </div>
 
     <!-- Bottom callout: the one sentence that matters -->
-    <div class="callout callout--teal" style="padding:9px 16px; font-size:0.74em; text-align:center;">
+    <div class="callout callout--teal fragment fade-in" data-fragment-index="5" style="padding:9px 16px; font-size:0.74em; text-align:center;">
       FlexRL setzt keine festen Regeln — es <strong>lernt aus den Daten selbst</strong>, wie viel jedes Attribut in diesem Datensatz wert ist.
     </div>
   </div>
 
   <aside class="notes">
-    [YQ] Ansatz drei: FlexRL, ein probabilistisches Modell aus einem Paper von Robach et al. 2024. Die Kernfrage ist nicht „stimmt das Attribut überein?", sondern „was bedeutet diese Übereinstimmung?" Ein Geburtsdatum kann zufällig bei zwei verschiedenen Personen gleich sein — eine EGK-Nummer fast nie. FlexRL lernt diese Unterschiede automatisch: wie wahrscheinlich ein Paar überhaupt ein Link ist, wie oft jedes Attribut Tippfehler enthält, und wie oft es rein zufällig übereinstimmt. Das Ergebnis ist ein Score zwischen 0 und 1. Threshold 0.9 — bewusst konservativ weil false merges besonders wehtun.
+    [YQ] Ansatz drei ist methodisch der spannendste: FlexRL, ein probabilistisches Modell aus einem Paper von Robach und Kollegen aus 2024. Statt fester Regeln macht es Unsicherheit explizit. Vereinfacht gesagt: Es betrachtet unsere Attribute - Vorname, Nachname, Geburtsdatum, PLZ, EGK - als teilweise identifizierende Variablen und lernt mit einem EM-Algorithmus aus den Daten selbst drei Dinge: wie wahrscheinlich ein Paar überhaupt ein Link ist, wie fehleranfällig jede einzelne Variable ist, und wie oft sie rein zufällig übereinstimmt. [optional kürzen, falls Zeit knapp: einfach sagen „es lernt Wahrscheinlichkeiten, statt feste Schwellen zu setzen" und weiter] Ein Beispiel: Ein Geburtsdatum stimmt auch mal zufällig überein, eine Versichertennummer fast nie - genau das lernt das Modell. Wir setzen einen bewusst konservativen Schwellenwert von 0,9, weil false merges bei Patientendaten besonders kritisch sind. Wie schlägt sich dieser dritte Ansatz im direkten Vergleich? Das ist der Moment, auf den alles zugelaufen ist.
   </aside>
 </section>
 
 <!-- ============================================================
-     SLIDE 27 — ERGEBNISVERGLEICH (CLIMAX)
+     SLIDE 28 — ERGEBNISVERGLEICH (CLIMAX)
      ============================================================ -->
 <section>
   <p class="slide-headline">
@@ -2572,7 +2636,7 @@ dim/
     <div style="flex:1; display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; overflow:hidden;">
 
       <!-- Card 1: Current Model -->
-      <div class="card" style="display:flex; flex-direction:column; overflow:hidden;">
+      <div class="card fragment fade-in" data-fragment-index="1" style="display:flex; flex-direction:column; overflow:hidden;">
         <div class="card__head">Current Model <span style="font-weight:400; opacity:0.85; font-size:0.9em;">(Baseline)</span></div>
         <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:14px 16px; gap:10px; overflow:hidden;">
           <svg viewBox="0 0 56 56" width="48" height="48" xmlns="http://www.w3.org/2000/svg">
@@ -2596,7 +2660,7 @@ dim/
       </div>
 
       <!-- Card 2: Hybrid Cascade -->
-      <div class="card" style="display:flex; flex-direction:column; overflow:hidden;">
+      <div class="card fragment fade-in" data-fragment-index="2" style="display:flex; flex-direction:column; overflow:hidden;">
         <div class="card__head">Hybrid Cascade <span style="font-weight:400; opacity:0.85; font-size:0.9em;">(Fuzzy Fallbacks)</span></div>
         <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:14px 16px; gap:10px; overflow:hidden;">
           <svg viewBox="0 0 56 56" width="48" height="48" xmlns="http://www.w3.org/2000/svg">
@@ -2620,7 +2684,7 @@ dim/
       </div>
 
       <!-- Card 3: FlexRL WINNER -->
-      <div class="card" style="display:flex; flex-direction:column; overflow:hidden; border:2px solid var(--green); box-shadow:0 4px 20px rgba(22,163,74,0.18);">
+      <div class="card fragment fade-in" data-fragment-index="3" style="display:flex; flex-direction:column; overflow:hidden; border:2px solid var(--green); box-shadow:0 4px 20px rgba(22,163,74,0.18);">
         <div class="card__head" style="background:linear-gradient(135deg, #15803d, #16a34a);">
           ★ FlexRL <span style="font-weight:400; opacity:0.85; font-size:0.9em;">(State-of-the-Art)</span>
         </div>
@@ -2665,7 +2729,7 @@ dim/
     </div>
 
     <!-- Bottom row -->
-    <div style="display:flex; gap:14px;">
+    <div class="fragment fade-in" data-fragment-index="4" style="display:flex; gap:14px;">
       <div class="callout callout--teal" style="flex:1;">
         <strong>Kernbeobachtung:</strong> Recall steigt 69% → 92%, Precision bleibt nahe 100% — false merges bleiben ausgeschlossen.
       </div>
@@ -2676,19 +2740,19 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ, Tempo rausnehmen] Hier ist das Gesamtbild. Precision-Balken — alle drei quasi bei 100%: 100, 99.91, 99.89. Der gefährliche Fehler bleibt über alle Ansätze praktisch ausgeschlossen. Und der Recall: 69% → 82% → 92%. [Pause] Wir verknüpfen deutlich mehr echte Patienten korrekt, praktisch ohne neue Fehlverschmelzungen. Aber die Entscheidung ist trotzdem fachlich: sind uns die wenigen zusätzlichen false merges den großen Recall-Gewinn wert? Nicht der komplexeste Ansatz gewinnt automatisch.
+    [YQ, das ist der Höhepunkt - Tempo rausnehmen] Hier ist das Gesamtbild. [auf die Balken zeigen] Schauen Sie auf die Precision-Balken - alle drei stehen quasi bei 100 Prozent: 100, 99,91, 99,89. Der kritische Fehler bleibt über alle Ansätze hinweg praktisch ausgeschlossen. Und jetzt der Recall: 69 Prozent beim bestehenden Modell, 82 bei der Hybrid Cascade, und 92 Prozent bei FlexRL. [Pause] Lassen Sie das kurz wirken. Wir verknüpfen deutlich mehr echte Patienten korrekt zusammen - der Recall steigt um über zwanzig Prozentpunkte - und das praktisch ohne neue Fehlverschmelzungen. Der F1 geht von 82 auf fast 96. Aber - und das ist die eigentliche Botschaft - die Entscheidung ist trotzdem keine rein technische. Sie ist fachlich: Sind uns die wenigen zusätzlichen false merges den großen Recall-Gewinn wert? Welche unsicheren Fälle schicken wir ins manuelle Review? Welche Schwelle ist im Produktivbetrieb vertretbar? Nicht der komplexeste Ansatz gewinnt automatisch, sondern der mit dem fachlich akzeptablen Trade-off. Doch eine gefundene Verknüpfung allein reicht noch nicht.
   </aside>
 </section>
 
 <!-- ============================================================
-     SLIDE 28 — SURVIVORSHIP: GOLDEN RECORD
+     SLIDE 29 — SURVIVORSHIP: GOLDEN RECORD
      ============================================================ -->
 <section>
   <p class="slide-headline">
     Record Linkage löst nur die Identität — nutzbar wird das Ergebnis erst durch <span class="hl">konsolidierte Patientenstammdaten</span>.
   </p>
 
-  <div class="zone-map-mini">
+  <div class="zone-map-mini fragment fade-in" data-fragment-index="1">
     <div class="zm-zone zm-landing">Landing</div>
     <div class="zm-arrow">→</div>
     <div class="zm-zone zm-raw">Raw</div>
@@ -2701,7 +2765,7 @@ dim/
   <div style="flex:1; display:flex; gap:22px; overflow:hidden; margin-top:6px;">
 
     <!-- Left: SVG trapezoid funnel (compact viewBox so height:auto scales up nicely) -->
-    <div style="flex:1.4; overflow:hidden;">
+    <div class="fragment fade-in" data-fragment-index="2" style="flex:1.4; overflow:hidden;">
       <svg viewBox="0 0 400 212" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto;">
         <defs>
           <linearGradient id="sv-t1" x1="0" y1="0" x2="0" y2="1">
@@ -2775,11 +2839,11 @@ dim/
 
     <!-- Right: VSDM + Normalisierung + Herausforderung -->
     <div style="flex:0.7; display:flex; flex-direction:column; gap:9px; overflow:hidden; justify-content:center;">
-      <div class="callout callout--teal" style="overflow:hidden;">
+      <div class="callout callout--teal fragment fade-in" data-fragment-index="3" style="overflow:hidden;">
         <div><strong>VSDM</strong> — Versichertenstammdatenmanagement<br>
         <span style="font-size:0.88em;">eGK-Abgleich gegen das zentrale Versichertenregister → bestätigter Abgleich = vertrauenswürdigste Quelle.</span></div>
       </div>
-      <div class="card" style="overflow:hidden;">
+      <div class="card fragment fade-in" data-fragment-index="4" style="overflow:hidden;">
         <div class="card__head">Normalisierung</div>
         <div class="card__body">
           <div class="card__item">PLZ- und Ortsnormalisierung</div>
@@ -2787,34 +2851,41 @@ dim/
           <div class="card__item">OKZ-/Regionen-Anreicherung</div>
         </div>
       </div>
-      <div class="callout callout--amber" style="overflow:hidden;">
+      <div class="callout callout--amber fragment fade-in" data-fragment-index="5" style="overflow:hidden;">
         <strong>Herausforderung:</strong> Welche Attribute gewinnen beim Merge? Proxy-Dataset enthält Golden Records — Survivorship ist mitgemessen.
       </div>
     </div>
   </div>
 
   <aside class="notes">
-    [YQ] Record Linkage sagt uns nur: diese Records gehören zur selben Person. Aber welche Adresse, welche Schreibweise des Namens ist die richtige? Das löst das Survivorship — und damit wandern wir in die Access Zone. Zwei-Stufen-Strategie: Tier 1 VSDM-verifiziert, Tier 2 zeitgewichtete Häufigkeit. Plus Normalisierungen. Proxy-Dataset enthält Golden Records, damit wir auch Survivorship messen können.
+    [YQ] Record Linkage sagt uns nur: Diese Records gehören zur selben Person. Aber welche Adresse, welche Schreibweise des Namens ist jetzt die richtige? Das löst das Survivorship - und damit wandern wir in der Architektur eine Zone weiter, in die Access Zone. [auf die Zonen-Map zeigen] Wir bauen pro Person einen konsolidierten Patientenstamm, einen Golden Record. Dafür nutzen wir eine zweistufige Strategie. Tier 1 stützt sich auf VSDM-verifizierte Daten. Kurz erklärt, weil die Abkürzung nicht jedem geläufig ist: VSDM steht für Versichertenstammdatenmanagement. Wenn die elektronische Gesundheitskarte beim Arzt eingelesen wird, prüft das System online gegen das zentrale Versichertenregister, ob die Kartendaten korrekt sind. Dieser bestätigte Abgleich ist unsere vertrauenswürdigste Quelle. Wo es keine VSDM-Bestätigung gibt, kommt Tier 2 - eine zeitgewichtete Häufigkeit kombiniert mit Vollständigkeit. Dazu normalisieren wir PLZ und Ort, Umlaute, und reichern Regionen an. Und weil unser Proxy-Dataset die echten Golden Records mitbringt, können wir sogar diesen Survivorship-Schritt messen. Das Ergebnis: ein sauberer Patientenstamm pro Pseudo-ID. So weit die Evaluation - aber ein Notebook ist noch keine Produktion.
   </aside>
 </section>
 
 <!-- ============================================================
-     SLIDE 29 — VOM NOTEBOOK IN DIE LAKEHOUSE-PIPELINE
+     SLIDE 30 — VOM NOTEBOOK IN DIE LAKEHOUSE-PIPELINE
      ============================================================ -->
 <section>
   <p class="slide-headline">
     Der Use Case zeigt den Weg von <span class="hl">akademischer Evaluation</span> zu produktionsnaher Data-Engineering-Arbeit.
   </p>
 
-  <div style="display:flex; flex-direction:column; flex:1; gap:24px; overflow:hidden; justify-content:center;">
+  <div style="display:flex; flex-direction:column; flex:1; gap:12px; overflow:hidden; justify-content:center;">
+
+    <div class="fragment fade-in" data-fragment-index="1" style="display:grid; grid-template-columns:repeat(4,1fr); gap:8px; width:1060px; margin:0 auto; flex-shrink:0;">
+      <div class="card__item" style="margin:0; justify-content:center; text-align:center; font-size:0.72em; font-weight:700;">Prozess verstehen</div>
+      <div class="card__item" style="margin:0; justify-content:center; text-align:center; font-size:0.72em; font-weight:700;">Proxy-Dataset erzeugen</div>
+      <div class="card__item" style="margin:0; justify-content:center; text-align:center; font-size:0.72em; font-weight:700;">Ansätze evaluieren</div>
+      <div class="card__item" style="margin:0; justify-content:center; text-align:center; font-size:0.72em; font-weight:700;">Fehlermuster analysieren</div>
+    </div>
 
     <!-- Zone map with right sidebar -->
-    <div style="display:flex; gap:10px; align-items:stretch; min-height:160px;">
+    <div class="fragment fade-in" data-fragment-index="2" style="display:flex; gap:10px; align-items:stretch; min-height:150px;">
 
       <div class="zone-map" style="flex:1;">
         <div class="zone zone--landing" style="justify-content:center;">
           <div class="zone__label">Landing Zone</div>
-          <p>Unveränderliche, historisierte Quellvarianten</p>
+          <p>Eingang und unveränderte Ablage</p>
         </div>
         <div style="display:flex; align-items:center; justify-content:center; flex-shrink:0; width:36px; background:var(--bg-soft);">
           <svg viewBox="0 0 40 40" width="30" height="30" xmlns="http://www.w3.org/2000/svg">
@@ -2824,7 +2895,7 @@ dim/
         </div>
         <div class="zone zone--raw" style="flex:1.1; border:2px solid var(--green); justify-content:center;">
           <div class="zone__label">Raw Zone</div>
-          <p>Standardisierung + Patientenbildung</p>
+          <p>Historisierte Quellvarianten</p>
         </div>
         <div style="display:flex; align-items:center; justify-content:center; flex-shrink:0; width:36px; background:var(--bg-soft);">
           <svg viewBox="0 0 40 40" width="30" height="30" xmlns="http://www.w3.org/2000/svg">
@@ -2834,7 +2905,7 @@ dim/
         </div>
         <div class="zone zone--process" style="flex:1.1; border:2px solid var(--green); justify-content:center;">
           <div class="zone__label">Process Zone ★</div>
-          <p>Bewertung der versionierten Modelle</p>
+          <p>Standardisierung + Patientenbildung</p>
         </div>
         <div style="display:flex; align-items:center; justify-content:center; flex-shrink:0; width:36px; background:var(--bg-soft);">
           <svg viewBox="0 0 40 40" width="30" height="30" xmlns="http://www.w3.org/2000/svg">
@@ -2860,7 +2931,7 @@ dim/
     </div>
 
     <!-- Lakehouse-Enabler section -->
-    <div style="background:var(--bg-soft); border:1.5px solid var(--panel-dark); border-radius:var(--r); padding:12px 18px; overflow:hidden; flex-shrink:0;">
+    <div class="fragment fade-in" data-fragment-index="3" style="background:var(--bg-soft); border:1.5px solid var(--panel-dark); border-radius:var(--r); padding:12px 18px; overflow:hidden; flex-shrink:0;">
       <div style="font-size:0.78em; font-weight:700; color:var(--navy); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.04em;">Lakehouse-Enabler</div>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:7px 28px;">
         <div style="display:flex; align-items:flex-start; gap:7px; font-size:0.8em; color:var(--ink);">
@@ -2885,12 +2956,12 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ] Hier schließt sich der Kreis zur Architektur. Was als Exploration begann, wandert als produktiver Pfad durch genau die Zonen, die Sebastian gezeigt hat. Und jetzt sehen Sie, was die Plattform liefert: reproduzierbare Laufparameter, versionierte Schwellen, Qualitätsmetriken bei jedem Lauf, Monitoring der Split- und Merge-Risiken. Das ist unser Leitsatz in Aktion.
+    [YQ] Und hier schließt sich der Kreis zur Architektur. [auf die durchgehende Linie zeigen] Was als Exploration im Notebook begann - Prozess verstehen, Proxy-Dataset bauen, Ansätze evaluieren, Fehler analysieren -, wandert jetzt als produktiver Pfad durch genau die Zonen, die Sebastian zu Beginn gezeigt hat: In Raw liegen die historisierten Quellvarianten. In Process passiert Standardisierung und die eigentliche Patientenbildung. Und in Access entsteht der konsolidierte Patientenstamm als konsumierbares Datenprodukt. Und jetzt sehen Sie, was die Plattform liefert, das ein Notebook allein nie könnte: reproduzierbare Laufparameter, versionierte Schwellen und Algorithmusversionen, Qualitätsmetriken bei jedem Lauf, und ein Monitoring der Split- und Merge-Risiken. Das ist unser Leitsatz in Aktion - die Plattform macht aus einem klugen Modell einen verantwortbaren, wiederholbaren Prozess. So viel zu unserem Leitbeispiel. Wir haben aber noch ein zweites - und das erzählt eine andere, ebenso lehrreiche Geschichte.
   </aside>
 </section>
 
 <!-- ============================================================
-     SLIDE 30 — BRÜCKE: ABRECHNUNGSANOMALIEN
+     SLIDE 31 — BRÜCKE: ZWEITES BEISPIEL ABRECHNUNGSANOMALIEN
      ============================================================ -->
 <section>
   <p class="slide-headline">
@@ -2956,7 +3027,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ, zügig] Auf derselben Plattform ein zweiter ML-Use-Case: Anomalieerkennung in Abrechnungsdaten. Technisch alles dran: Feature Engineering, ECOD-Modell, Explainability, Review-App. Aber der Unterschied: noch kein automatisiertes Ground-Truth-Dataset, fachliche Validierung läuft noch. Deshalb steht die Patientenbildung im Mittelpunkt. Die Lesson: Validierbarkeit entscheidet, wann aus einem Prototyp eine tragende Story wird.
+    [YQ, bewusst zügig - nur ein kurzer Beat] Ganz kurz, weil es eine wichtige Pointe hat: Wir haben auf derselben Plattform einen zweiten ML-Use-Case gebaut - Anomalieerkennung in Abrechnungsdaten. Technisch alles dran: Feature Engineering, ein Anomaliemodell namens ECOD, Explainability und sogar eine Review-App. Als Demonstration der Pipeline von Process bis zur fertigen ML-Anwendung ist das richtig schön. [auf die gelbe Kachel zeigen] Der Unterschied zur Patientenbildung ist aber entscheidend: Hier haben wir noch kein automatisiertes Ground-Truth-Dataset, die fachliche Validierung der Treffer läuft noch, und aktuell treiben wir es nicht aktiv weiter. Genau deshalb steht die Patientenbildung im Mittelpunkt und nicht dieser Fall. Und das führt uns direkt zu unserer wichtigsten Lesson: Validierbarkeit entscheidet, wann aus einem interessanten Prototyp eine tragende Story wird. Damit zu dem, was wir insgesamt gelernt haben.
   </aside>
 </section>
 
@@ -2980,7 +3051,7 @@ dim/
 </section>
 
 <!-- ============================================================
-     SLIDE 31 — ARCHITEKTUR-LESSONS
+     SLIDE 32 — ARCHITEKTUR-LESSONS
      ============================================================ -->
 <section>
   <p class="slide-headline">
@@ -3045,7 +3116,7 @@ dim/
 </section>
 
 <!-- ============================================================
-     SLIDE 32 — KI-/ML-LESSONS
+     SLIDE 33 — KI-/ML-LESSONS
      ============================================================ -->
 <section>
   <p class="slide-headline">
@@ -3139,7 +3210,7 @@ dim/
 </section>
 
 <!-- ============================================================
-     SLIDE 33 — DO'S: WAS WIR WIEDER SO MACHEN WÜRDEN
+     SLIDE 34 — DO'S: WAS WIR WIEDER SO MACHEN WÜRDEN
      ============================================================ -->
 <section>
   <p class="slide-headline" style="margin-bottom:12px;">
@@ -3201,7 +3272,7 @@ dim/
 </section>
 
 <!-- ============================================================
-     SLIDE 34 — DON'TS: ANTI-PATTERNS
+     SLIDE 35 — DON'TS: ANTI-PATTERNS
      ============================================================ -->
 <section>
   <p class="slide-headline" style="margin-bottom:12px;">
@@ -3267,7 +3338,7 @@ dim/
 </section>
 
 <!-- ============================================================
-     SLIDE 35 — SCHLUSSBILD UND Q&A
+     SLIDE 36 — SCHLUSSBILD UND Q&A
      ============================================================ -->
 <section>
   <p class="slide-headline" style="margin-bottom:10px;">
@@ -3325,7 +3396,7 @@ dim/
 </section>
 
 <!-- ============================================================
-     SLIDE 36 — FINAL MESSAGE
+     SLIDE 37 — FINAL MESSAGE
      ============================================================ -->
 <section class="slide--chapter slide--final" data-background-gradient="linear-gradient(135deg, #0b1f2e 0%, #163848 100%)">
   <div class="chapter-content final-content">

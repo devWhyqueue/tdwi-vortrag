@@ -82,16 +82,20 @@ def main():
             ref_mapping = f"slide-{idx:02d}.png"
         elif idx == 16:
             ref_mapping = "N/A (Chapter 2 Title Slide)"
-        elif idx >= 17 and idx <= 31:
-            # Slides 16 to 30 map directly to slide-16.png to slide-30.png
+        elif idx >= 17 and idx <= 32:
+            # Slides 16 to 31 map directly to slide-16.png to slide-31.png
             ref_mapping = f"slide-{idx-1:02d}.png"
-        elif idx == 32:
+        elif idx == 33:
             ref_mapping = "N/A (Chapter 3 Title Slide)"
-        elif idx >= 33 and idx <= 36:
-            # Slides 31 to 34 map to slide-31.png to slide-34.png
+        elif idx >= 34 and idx <= 36:
+            # Slides 32 to 34 map to slide-32.png to slide-34.png
             ref_mapping = f"slide-{idx-2:02d}.png"
         elif idx == 37:
-            ref_mapping = "N/A (Slide 35 - Schlussbild Q&A)"
+            ref_mapping = "N/A (Slide 35 - Don'ts)"
+        elif idx == 38:
+            ref_mapping = "N/A (Slide 36 - Schlussbild Q&A)"
+        elif idx == 39:
+            ref_mapping = "N/A (Slide 37 - Final Message)"
             
         url_index = f"#/{idx}"
         physical_order = f"{idx + 1}"
