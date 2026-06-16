@@ -21,8 +21,8 @@
     <!-- Title & Subtitle Section -->
     <div style="text-align:left;">
       <h1 class="cover-title" style="font-size:2.4em;">
-        Lakehouse als Enabler für <span class="hl-teal">Machine Learning</span><br>
-        im <span class="hl-teal">Gesundheitswesen</span>
+        Lakehouse als Enabler für<br>
+        <span class="hl-teal">Machine Learning</span> im <span class="hl-teal">Gesundheitswesen</span>
       </h1>
       <p class="cover-subtitle" style="margin-top: 10px; font-size:1.25em;">
         Open Source, On-Premise, Data Engineering und ML auf einer Plattform
@@ -3406,12 +3406,7 @@ document.querySelectorAll('.reveal .slides > section').forEach((section) => {
 
   const footer = createSpeakerFooter(section);
 
-  if (isCover) {
-    notes.forEach(note => note.remove());
-    section.appendChild(footer);
-    notes.forEach(note => section.appendChild(note));
-    return;
-  }
+  if (isCover) return;
 
   // Extract the slide headline
   const headline = section.querySelector('.slide-headline');
