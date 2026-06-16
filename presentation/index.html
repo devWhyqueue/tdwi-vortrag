@@ -2972,7 +2972,7 @@ dim/
     <div style="display:grid; grid-template-columns:1.3fr 44px 1fr; flex:1; overflow:hidden; align-items:stretch;">
 
       <!-- LEFT: Patientenbildung (abgeschlossen) — full weight -->
-      <div class="card card--good" style="display:flex; flex-direction:column; overflow:hidden;">
+      <div class="card card--good fragment fade-in" data-fragment-index="1" style="display:flex; flex-direction:column; overflow:hidden;">
         <div class="card__head" style="background:linear-gradient(135deg,var(--green),#3ab870); justify-content:space-between;">
           <span>✓ Patientenbildung</span>
           <span style="background:rgba(255,255,255,0.22); border-radius:10px; padding:2px 9px; font-size:0.78em; font-weight:700; letter-spacing:0.03em; white-space:nowrap;">Abgeschlossen</span>
@@ -2990,7 +2990,7 @@ dim/
       </div>
 
       <!-- ARROW: now → future -->
-      <div style="display:flex; align-items:center; justify-content:center;">
+      <div class="fragment fade-in" data-fragment-index="2" style="display:flex; align-items:center; justify-content:center;">
         <svg viewBox="0 0 40 40" width="36" height="36" xmlns="http://www.w3.org/2000/svg">
           <path d="M 3 20 L 28 20" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round" />
           <polygon points="24,14 37,20 24,26" fill="var(--teal)" />
@@ -2998,7 +2998,7 @@ dim/
       </div>
 
       <!-- RIGHT: Abrechnungsanomalien (next project) — smaller/horizon -->
-      <div class="card card--warn" style="display:flex; flex-direction:column; overflow:hidden; border:1.5px dashed rgba(217,119,6,0.4); border-left:4px solid var(--amber);">
+      <div class="card card--warn fragment fade-in" data-fragment-index="2" style="display:flex; flex-direction:column; overflow:hidden; border:1.5px dashed rgba(217,119,6,0.4); border-left:4px solid var(--amber);">
         <div class="card__head" style="background:linear-gradient(135deg,rgba(217,119,6,0.75),rgba(217,158,48,0.75)); justify-content:space-between;">
           <span style="font-size:0.9em;">⚠ Abrechnungsanomalien</span>
           <span style="background:rgba(255,255,255,0.22); border-radius:10px; padding:2px 8px; font-size:0.73em; font-weight:700; letter-spacing:0.03em; white-space:nowrap;">→ Nächstes Projekt</span>
@@ -3015,19 +3015,19 @@ dim/
       </div>
     </div>
 
-    <div style="display:flex; justify-content:center;">
+    <div class="fragment fade-in" data-fragment-index="3" style="display:flex; justify-content:center;">
       <div style="background:linear-gradient(135deg,var(--teal-deep),var(--teal)); border-radius:var(--r); padding:10px 28px; color:white; text-align:center; font-weight:600; font-size:0.88em; width:fit-content; white-space:nowrap;">
         Lakehouse Plattform — trägt beide Use Cases
       </div>
     </div>
 
-    <div class="callout callout--navy">
+    <div class="callout callout--navy fragment fade-in" data-fragment-index="4">
       <strong>Die Lesson:</strong> Ohne harte fachliche Validierbarkeit bleibt selbst das beste Modell im Prototyp-Status.
     </div>
   </div>
 
   <aside class="notes">
-    [YQ, bewusst zügig - nur ein kurzer Beat] Ganz kurz, weil es eine wichtige Pointe hat: Wir haben auf derselben Plattform einen zweiten ML-Use-Case gebaut - Anomalieerkennung in Abrechnungsdaten. Technisch alles dran: Feature Engineering, ein Anomaliemodell namens ECOD, Explainability und sogar eine Review-App. Als Demonstration der Pipeline von Process bis zur fertigen ML-Anwendung ist das richtig schön. [auf die gelbe Kachel zeigen] Der Unterschied zur Patientenbildung ist aber entscheidend: Hier haben wir noch kein automatisiertes Ground-Truth-Dataset, die fachliche Validierung der Treffer läuft noch, und aktuell treiben wir es nicht aktiv weiter. Genau deshalb steht die Patientenbildung im Mittelpunkt und nicht dieser Fall. Und das führt uns direkt zu unserer wichtigsten Lesson: Validierbarkeit entscheidet, wann aus einem interessanten Prototyp eine tragende Story wird. Damit zu dem, was wir insgesamt gelernt haben.
+    [YQ, bewusst zügig - nur ein kurzer Beat] Ganz kurz, weil es eine wichtige Pointe hat: Wir haben auf derselben Plattform einen zweiten ML-Use-Case gebaut - Anomalieerkennung in Abrechnungsdaten. Technisch alles dran: Feature Engineering, ein Anomaliemodell namens ECOD, Explainability und sogar eine Review-App. Als Demonstration der Pipeline von Process bis zur fertigen ML-Anwendung ist das richtig schön. [auf die gelbe Kachel zeigen] Der Unterschied zur Patientenbildung ist aber entscheidend: Hier haben wir noch kein automatisiertes Ground-Truth-Dataset, die fachliche Validierung der Treffer läuft noch, und genau das macht es zum nächsten Projekt statt zur heutigen Hauptstory. Deshalb steht die Patientenbildung im Mittelpunkt und dieser Fall zeigt, was als Nächstes validierbar gemacht werden muss. Und das führt uns direkt zu unserer wichtigsten Lesson: Validierbarkeit entscheidet, wann aus einem interessanten Prototyp eine tragende Story wird. Damit zu dem, was wir insgesamt gelernt haben.
   </aside>
 </section>
 
@@ -3064,7 +3064,7 @@ dim/
 
       <!-- Left: Zone contracts -->
       <div style="flex:1; display:flex; flex-direction:column; gap:8px;">
-        <div class="card" style="flex:1; display:flex; flex-direction:column; border-top:4px solid var(--steel); overflow:hidden;">
+        <div class="card fragment fade-in" data-fragment-index="1" style="flex:1; display:flex; flex-direction:column; border-top:4px solid var(--steel); overflow:hidden;">
           <div class="card__head" style="background:var(--steel); display:flex; align-items:center; gap:8px;">
             <span style="opacity:0.75; font-size:0.72em; font-weight:400; letter-spacing:0.04em;">Raw</span>
             <span style="opacity:0.5;">·</span>
@@ -3072,7 +3072,7 @@ dim/
           </div>
           <div class="card__body" style="font-size:0.82em; flex:1; display:flex; align-items:center;">Raw muss roh bleiben. Fachlogik hier bricht die Reproduzierbarkeit.</div>
         </div>
-        <div class="card" style="flex:1; display:flex; flex-direction:column; border-top:4px solid var(--teal); overflow:hidden;">
+        <div class="card fragment fade-in" data-fragment-index="2" style="flex:1; display:flex; flex-direction:column; border-top:4px solid var(--teal); overflow:hidden;">
           <div class="card__head" style="display:flex; align-items:center; gap:8px;">
             <span style="opacity:0.75; font-size:0.72em; font-weight:400; letter-spacing:0.04em;">Process</span>
             <span style="opacity:0.5;">·</span>
@@ -3080,7 +3080,7 @@ dim/
           </div>
           <div class="card__body" style="font-size:0.82em; flex:1; display:flex; align-items:center;">Standardisierung und technische Bereinigung werden zentral gesichert.</div>
         </div>
-        <div class="card" style="flex:1; display:flex; flex-direction:column; border-top:4px solid var(--navy); overflow:hidden;">
+        <div class="card fragment fade-in" data-fragment-index="3" style="flex:1; display:flex; flex-direction:column; border-top:4px solid var(--navy); overflow:hidden;">
           <div class="card__head" style="background:var(--navy); display:flex; align-items:center; gap:8px;">
             <span style="opacity:0.65; font-size:0.72em; font-weight:400; letter-spacing:0.04em;">Access</span>
             <span style="opacity:0.5;">·</span>
@@ -3092,13 +3092,13 @@ dim/
 
       <!-- Right: Tech & Ops lessons -->
       <div style="flex:1; display:flex; flex-direction:column; gap:8px;">
-        <div class="card" style="flex:1; display:flex; flex-direction:column; border-top:4px solid var(--teal); overflow:hidden;">
+        <div class="card fragment fade-in" data-fragment-index="4" style="flex:1; display:flex; flex-direction:column; border-top:4px solid var(--teal); overflow:hidden;">
           <div class="card__head">Technologie-Trennung</div>
           <div class="card__body" style="flex:1; display:flex; flex-direction:column; justify-content:center;">
             <div class="card__item">PySpark (komplex/ML) und dbt (SQL Analytics/Lineage) ergänzen sich perfekt</div>
           </div>
         </div>
-        <div class="card" style="flex:1.3; display:flex; flex-direction:column; border-top:4px solid var(--teal); overflow:hidden;">
+        <div class="card fragment fade-in" data-fragment-index="5" style="flex:1.3; display:flex; flex-direction:column; border-top:4px solid var(--teal); overflow:hidden;">
           <div class="card__head">Betrieb</div>
           <div class="card__body" style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:6px;">
             <div class="card__item">Podman reicht für den Start, Kubernetes folgt</div>
@@ -3111,7 +3111,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [SG] Die wichtigste Erkenntnis: Entscheidend sind nicht die Toolnamen, sondern die klaren Verträge zwischen den Layern. Raw muss wirklich raw bleiben. Process braucht technische Qualitätsgarantien. Access braucht fachliche Semantik und echte Datenprodukte. PySpark und dbt ergänzen sich — aber nur wenn ihre Rollen klar getrennt sind.
+    [SG] Lassen Sie uns das Gelernte verdichten, erst auf der Architekturseite. Die wichtigste Erkenntnis: Entscheidend sind nicht die Toolnamen, sondern die klaren Verträge zwischen den Layern. [auf die Zonen-Map zeigen] Raw muss wirklich raw bleiben - in dem Moment, wo Sie dort Fachlogik einschmuggeln, wird Reprocessing schwach, und genau das hat uns Yanniks Benchmark erst ermöglicht. Process braucht technische Qualitätsgarantien. Access braucht fachliche Semantik und echte Datenprodukte. PySpark und dbt ergänzen sich hervorragend - aber nur, wenn ihre Rollen klar getrennt sind. Und der Betrieb: Ein einfaches Modell reicht für den Start völlig, solange Containerisierung und Umgebungen sauber geschnitten sind. Kubernetes kann später kommen. Yannik, deine Seite.
   </aside>
 </section>
 
@@ -3124,9 +3124,9 @@ dim/
   </p>
 
   <div style="width:1060px; margin:0 auto; box-sizing:border-box; flex:1; display:flex; flex-direction:column; justify-content:flex-start; overflow:hidden;">
-    <div class="do-grid" style="grid-template-columns:repeat(3,1fr); grid-auto-rows:minmax(155px,auto); margin-top:10px; flex:none; gap:12px;">
+    <div class="do-grid" style="grid-template-columns:repeat(4,1fr); grid-auto-rows:minmax(132px,auto); margin-top:10px; flex:none; gap:12px;">
 
-      <div class="do-card">
+      <div class="do-card fragment fade-in" data-fragment-index="1">
         <div class="card-title" style="display:flex; align-items:center; gap:5px;">
           <svg viewBox="0 0 14 14" width="13" height="13" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
             <rect x="1" y="1.5" width="12" height="2.5" rx="1" fill="var(--green)" opacity="0.9"/>
@@ -3138,7 +3138,7 @@ dim/
         <p>Patient/Praxis/Quartal sind zentrale ML-Infrastruktur, nicht nur Stammdaten.</p>
       </div>
 
-      <div class="do-card" style="border-top-color:var(--red);">
+      <div class="do-card fragment fade-in" data-fragment-index="2" style="border-top-color:var(--red);">
         <div class="card-title" style="color:var(--red); display:flex; align-items:center; gap:5px;">
           <svg viewBox="0 0 14 14" width="13" height="13" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
             <path d="M7 1.5 L13 12 H1 Z" stroke="var(--red)" stroke-width="1.2" stroke-linejoin="round" fill="rgba(220,38,38,0.08)"/>
@@ -3150,7 +3150,7 @@ dim/
         <p>Asymmetrie muss bewusst in Schwellen und Thresholds eingebaut werden.</p>
       </div>
 
-      <div class="do-card">
+      <div class="do-card fragment fade-in" data-fragment-index="3">
         <div class="card-title" style="display:flex; align-items:center; gap:5px;">
           <svg viewBox="0 0 14 14" width="13" height="13" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
             <circle cx="4.5" cy="7" r="2.8" stroke="var(--green)" stroke-width="1.3" fill="none"/>
@@ -3163,7 +3163,7 @@ dim/
         <p>„Patientenbildung" → Record Linkage: anschlussfähig an Forschung und Standards.</p>
       </div>
 
-      <div class="do-card">
+      <div class="do-card fragment fade-in" data-fragment-index="3">
         <div class="card-title" style="display:flex; align-items:center; gap:5px;">
           <svg viewBox="0 0 14 14" width="13" height="13" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
             <circle cx="5.5" cy="5.5" r="3.5" stroke="var(--green)" stroke-width="1.3" fill="none"/>
@@ -3174,7 +3174,7 @@ dim/
         <p>Bekannte Problemklassen haben oft gute Lösungs- und Evaluationsmuster.</p>
       </div>
 
-      <div class="do-card" style="border-top-color:var(--teal);">
+      <div class="do-card fragment fade-in" data-fragment-index="4" style="border-top-color:var(--teal);">
         <div class="card-title" style="color:var(--teal); display:flex; align-items:center; gap:5px;">
           <svg viewBox="0 0 14 14" width="13" height="13" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
             <path d="M7 1 L8.3 5 H12.5 L9.2 7.5 L10.5 11.5 L7 9 L3.5 11.5 L4.8 7.5 L1.5 5 H5.7 Z" fill="var(--teal)" opacity="0.9"/>
@@ -3184,7 +3184,7 @@ dim/
         <p>Prototypen brauchen klare Validierungsstrategie bevor sie zur tragenden Story werden.</p>
       </div>
 
-      <div class="do-card">
+      <div class="do-card fragment fade-in" data-fragment-index="4">
         <div class="card-title" style="display:flex; align-items:center; gap:5px;">
           <svg viewBox="0 0 14 14" width="13" height="13" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
             <path d="M7 3 C3.5 3 1 7 1 7 C1 7 3.5 11 7 11 C10.5 11 13 7 13 7 C13 7 10.5 3 7 3 Z" stroke="var(--green)" stroke-width="1.2" fill="none"/>
@@ -3195,17 +3195,30 @@ dim/
         <p>Kein Add-on, sondern Teil des Produktdesigns — besonders im Gesundheitsbereich.</p>
       </div>
 
+      <div class="do-card fragment fade-in" data-fragment-index="5" style="border-top-color:var(--teal);">
+        <div class="card-title" style="color:var(--teal); display:flex; align-items:center; gap:5px;">
+          <svg viewBox="0 0 14 14" width="13" height="13" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+            <path d="M2 11 L6 7 L8.5 9.5 L12.5 3" stroke="var(--teal)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="2" cy="11" r="1.1" fill="var(--teal)"/>
+            <circle cx="6" cy="7" r="1.1" fill="var(--teal)"/>
+            <circle cx="12.5" cy="3" r="1.1" fill="var(--teal)"/>
+          </svg>
+          Systematisch skalieren
+        </div>
+        <p>Konkrete Fachprozesse verbessern, Feedback aufnehmen, dann skalieren.</p>
+      </div>
+
     </div>
 
     <div class="mt-auto" style="display:flex; justify-content:center; padding-top:16px; padding-bottom:8px;">
-      <div class="callout callout--teal" style="width:fit-content;">
+      <div class="callout callout--teal fragment fade-in" data-fragment-index="6" style="width:fit-content;">
         <strong>Fazit:</strong> Der Engpass ist nicht das Modell — Entitäten, Features und Validierbarkeit entscheiden.
       </div>
     </div>
   </div>
 
   <aside class="notes">
-    [YQ] Produktive KI beginnt vor dem Modell. Stabile Entitäten sind ML-Infrastruktur. Die Patientenbildung hat gelehrt: false merges sind oft kritischer als verpasste Matches. Framing auf Community-Begriffe spart Umwege. Recherche vor Implementierung. Prototyp braucht Validierungsstrategie. Explainability ist Produktdesign. Und: Modellmetriken allein reichen nicht — fachliche Validierung entscheidet.
+    [YQ] Und auf der KI-Seite. Die Kernlesson deckt sich genau mit unserem Leitsatz: Produktive KI beginnt vor dem Modell - bei Entitäten, Features, Historie, Governance und fachlicher Prüfbarkeit. Stabile Entitäten sind nicht nur Stammdaten, sie sind zentrale ML-Infrastruktur. Die Patientenbildung hat uns gelehrt, dass nicht alle Fehler gleich sind - false merges sind oft kritischer als verpasste Matches, und das muss man bewusst in die Schwellen einbauen. Es hat sich extrem gelohnt, den Fachprozess früh auf Community-Begriffe zu mappen - aus „Patientenbildung" wurde Record Linkage und damit anschlussfähig an Forschung und Standards. Recherche vor der Implementierung spart Umwege. Explainability ist kein Add-on, sondern Teil des Produktdesigns. Modellmetriken allein reichen nicht - die fachliche Validierung entscheidet. Und genau deshalb sind die Abrechnungsanomalien das nächste Projekt: Ein Prototyp braucht eine klare Validierungsstrategie, bevor er zur Hauptstory wird. Was davon würden wir wieder so machen?
   </aside>
 </section>
 
@@ -3219,7 +3232,7 @@ dim/
 
   <div class="practice-stage">
     <div class="practice-grid">
-      <div class="practice-card">
+      <div class="practice-card fragment fade-in" data-fragment-index="1">
         <div class="practice-card__top">
           <span class="practice-card__title">Offene Standards</span>
           <span class="practice-card__icon">✓</span>
@@ -3227,7 +3240,7 @@ dim/
         <p>On-Premise Open Source Stack: Spark, Airflow und offene Formate (Delta Lake) für volle Kontrolle.</p>
       </div>
 
-      <div class="practice-card">
+      <div class="practice-card fragment fade-in" data-fragment-index="1">
         <div class="practice-card__top">
           <span class="practice-card__title">Strikte Orchestrierung</span>
           <span class="practice-card__icon">✓</span>
@@ -3235,7 +3248,7 @@ dim/
         <p>Airflow-DAGs mit expliziten Abhängigkeiten und Lauf-Metadaten von Anfang an.</p>
       </div>
 
-      <div class="practice-card">
+      <div class="practice-card fragment fade-in" data-fragment-index="2">
         <div class="practice-card__top">
           <span class="practice-card__title">Frühe Governance</span>
           <span class="practice-card__icon">✓</span>
@@ -3243,7 +3256,7 @@ dim/
         <p>DataHub nicht als Nachbau, sondern ab Tag 1 als zentrales Metadaten-Tool nutzen.</p>
       </div>
 
-      <div class="practice-card">
+      <div class="practice-card fragment fade-in" data-fragment-index="2">
         <div class="practice-card__top">
           <span class="practice-card__title">Data Products</span>
           <span class="practice-card__icon">✓</span>
@@ -3251,7 +3264,7 @@ dim/
         <p>Feature Datasets konsequent als dokumentierte Datenprodukte behandeln.</p>
       </div>
 
-      <div class="practice-card practice-card--wide">
+      <div class="practice-card practice-card--wide fragment fade-in" data-fragment-index="3">
         <div class="practice-card__top">
           <span class="practice-card__title">End-to-End-Denken</span>
           <span class="practice-card__icon">✓</span>
@@ -3260,14 +3273,13 @@ dim/
       </div>
     </div>
 
-    <div class="practice-callout">
+    <div class="practice-callout fragment fade-in" data-fragment-index="4">
       <strong>Review-Oberflächen:</strong> Feedback-Loops und Review-Apps früh mitdenken, nicht nachträglich anschrauben.
     </div>
   </div>
 
   <aside class="notes">
-    [SG] Das würden wir sofort wieder so machen. Offene Formate und On-Premise Open Source. Delta-Tabellen für robuste Pipelines. Airflow-DAGs mit expliziten Abhängigkeiten.
-    [YQ] DataHub früh etablieren. Feature-Datasets als Datenprodukte denken. Schnelle Prototypen mit klarem Pfad in Produktion. Review-Oberflächen früh mitdenken.
+    [SG] Ganz pragmatisch - das hier würden wir sofort wieder so machen. Offene Formate und einen On-Premise-Open-Source-Stack, das hat uns Unabhängigkeit und volle Kontrolle gegeben. Delta-Tabellen für robuste Pipelines. Airflow-DAGs mit expliziten Abhängigkeiten und Metadaten. [YQ] Und aus der ML-Sicht: DataHub früh als Katalog- und Governance-Komponente etablieren, nicht erst nachträglich. Feature-Datasets konsequent als Datenprodukte denken. Schnelle Prototypen erlauben - aber immer mit einem klaren Pfad in produktive Pipelines. Und Review- und Feedback-Oberflächen früh mitdenken, nicht am Ende drangeschraubt. Genauso ehrlich ist die andere Seite.
   </aside>
 </section>
 
@@ -3281,7 +3293,7 @@ dim/
 
   <div class="practice-stage anti-stage">
     <div class="practice-grid">
-      <div class="practice-card anti-card anti-card--stop">
+      <div class="practice-card anti-card anti-card--stop fragment fade-in" data-fragment-index="1">
         <div class="practice-card__top">
           <span class="practice-card__title">Unklare Layer</span>
           <span class="practice-card__icon">!</span>
@@ -3289,7 +3301,7 @@ dim/
         <p>Ohne strikte Verträge degenerieren Zonen zum Data Swamp.</p>
       </div>
 
-      <div class="practice-card anti-card">
+      <div class="practice-card anti-card fragment fade-in" data-fragment-index="1">
         <div class="practice-card__top">
           <span class="practice-card__title">Schattenarchive</span>
           <span class="practice-card__icon">!</span>
@@ -3297,7 +3309,7 @@ dim/
         <p>Landing Zone, die heimlich als wilde Dateiablage missbraucht wird.</p>
       </div>
 
-      <div class="practice-card anti-card anti-card--stop">
+      <div class="practice-card anti-card anti-card--stop fragment fade-in" data-fragment-index="2">
         <div class="practice-card__top">
           <span class="practice-card__title">Isolation</span>
           <span class="practice-card__icon">!</span>
@@ -3305,7 +3317,23 @@ dim/
         <p>ML-Modelle, die als Notebook-Logik stecken bleiben, weil der Operationalisierungspfad fehlt.</p>
       </div>
 
-      <div class="practice-card anti-card anti-card--stop">
+      <div class="practice-card anti-card fragment fade-in" data-fragment-index="2">
+        <div class="practice-card__top">
+          <span class="practice-card__title">Leere Datenprodukte</span>
+          <span class="practice-card__icon">!</span>
+        </div>
+        <p>Datenprodukte ohne fachliche Semantik bleiben technische Tabellen.</p>
+      </div>
+
+      <div class="practice-card anti-card fragment fade-in" data-fragment-index="2">
+        <div class="practice-card__top">
+          <span class="practice-card__title">Keine Datenqualität</span>
+          <span class="practice-card__icon">!</span>
+        </div>
+        <p>ML ohne Datenqualitätsstrategie macht Modellqualität nicht belastbar.</p>
+      </div>
+
+      <div class="practice-card anti-card anti-card--stop fragment fade-in" data-fragment-index="3">
         <div class="practice-card__top">
           <span class="practice-card__title">Der KI-Hype-Fehler</span>
           <span class="practice-card__icon">!</span>
@@ -3313,7 +3341,7 @@ dim/
         <p>Mit einem großen GenAI-Chatbot starten, bevor fundamentale Datenqualität geklärt ist.</p>
       </div>
 
-      <div class="practice-card anti-card">
+      <div class="practice-card anti-card fragment fade-in" data-fragment-index="4">
         <div class="practice-card__top">
           <span class="practice-card__title">Blackbox-Modelle</span>
           <span class="practice-card__icon">!</span>
@@ -3321,7 +3349,7 @@ dim/
         <p>Scores in den Raum werfen ohne Erklärbarkeit und fachlichen Review-Prozess.</p>
       </div>
 
-      <div class="practice-card anti-card">
+      <div class="practice-card anti-card fragment fade-in" data-fragment-index="5">
         <div class="practice-card__top">
           <span class="practice-card__title">Toolfokus</span>
           <span class="practice-card__icon">!</span>
@@ -3332,8 +3360,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [SG] Die Anti-Patterns. Layer ohne klare Verträge. Landing-Zonen als Dauerarchiv.
-    [YQ] Notebook-Logik ohne Operationalisierungspfad. KI-Initiativen mit einem großen Chatbot starten, bevor Datenqualität, Ownership und Lineage geklärt sind. Scores ohne Erklärbarkeit. Toolfokus statt Architekturprinzipien.
+    [SG] Und die Anti-Patterns - das, was wir gesehen haben und was wir Ihnen ersparen wollen. Layer ohne klare Verträge - das war unser Ausgangsproblem. Landing-Zonen, die heimlich zum Dauerarchiv werden. [YQ] Notebook-Logik ohne Pfad in die Produktion. Datenprodukte ohne fachliche Semantik. ML ohne Datenqualitätsstrategie. KI-Initiativen, die mit einem großen Chatbot starten, bevor Datenqualität, Ownership und Lineage überhaupt geklärt sind - das ist genau die Reihenfolge, vor der wir am Anfang gewarnt haben. Scores ohne Erklärbarkeit und ohne fachlichen Review. Und der Klassiker: Toolfokus statt Architekturprinzipien. Damit sind wir am Ende - und kommen zurück zum Anfang.
   </aside>
 </section>
 
@@ -3346,7 +3373,7 @@ dim/
   </p>
 
   <div class="closing-summary">
-    <div class="closing-zone-map">
+    <div class="closing-zone-map fragment fade-in" data-fragment-index="1">
       <div class="closing-zone closing-zone--landing">
         <div class="closing-zone__label">Landing</div>
         <p>Rohdaten-Eingang</p>
@@ -3369,29 +3396,31 @@ dim/
     </div>
 
     <div class="closing-grid">
-      <div class="closing-card">
+      <div class="closing-card fragment fade-in" data-fragment-index="2">
         <div class="closing-card__kicker">Plattform</div>
         <p>Eine gemeinsame Plattform von Rohdaten bis ML-Anwendung.</p>
         <span>Statt Ad-hoc-Extrakten: reproduzierbare Datenstände.</span>
       </div>
-      <div class="closing-card">
+      <div class="closing-card fragment fade-in" data-fragment-index="2">
         <div class="closing-card__kicker">Verträge</div>
         <p>Klare Layer-Verantwortung ersetzt gewachsene Zonenlogik.</p>
         <span>Raw bleibt roh, Process standardisiert, Access trägt Semantik.</span>
       </div>
-      <div class="closing-card closing-card--proof">
+      <div class="closing-card closing-card--proof fragment fade-in" data-fragment-index="3">
         <div class="closing-card__kicker">Praxisbeweis</div>
         <p>Patientenbildung als validierbarer Record-Linkage-Use-Case.</p>
-        <span>Abrechnungsanomalien bleiben ehrlich in Validierung.</span>
+        <span>Abrechnungsanomalien sind das nächste Projekt auf derselben Plattform.</span>
       </div>
+    </div>
+
+    <div class="closing-thesis fragment fade-in" data-fragment-index="4">
+      Der Engpass für KI im Gesundheitswesen ist nicht das Modell, sondern eine Plattform,
+      die reproduzierbare, validierbare Datenstände liefert - gezeigt an einem Problem, das man messen kann.
     </div>
   </div>
 
   <aside class="notes">
-    [YQ] Fassen wir zusammen. Eine Plattform von den Rohdaten bis zur ML-Anwendung. Reproduzierbare Datenstände. Klare Verantwortlichkeiten. Datenqualität als Voraussetzung. KI über konkrete, validierbare Use Cases einführen — nicht als abstraktes Technologieprogramm.
-    [SG] Und damit schließt sich die Klammer zum Anfang.
-    [Pause] Der Engpass für KI im Gesundheitswesen ist nicht das Modell, sondern eine Plattform, die reproduzierbare, validierbare Datenstände liefert — gezeigt an einem Problem, das man messen kann.
-    [YQ] Vielen Dank — wir freuen uns auf Ihre Fragen.
+    [YQ] Fassen wir zusammen. Wir haben Ihnen eine Plattform gezeigt, die von den Rohdaten bis zur ML-Anwendung trägt - mit reproduzierbaren Datenständen statt Ad-hoc-Extrakten, mit klaren Verantwortlichkeiten statt gewachsener Zonenlogik, und mit Datenqualität als Voraussetzung für Modellqualität. Wir haben KI nicht als abstraktes Technologieprogramm eingeführt, sondern über konkrete, validierbare Use Cases - die Patientenbildung als Record Linkage im Zentrum, die Abrechnungsanomalien als nächstes Projekt auf derselben Plattform. [SG] Und damit schließt sich die Klammer zum Anfang. [Pause, den Leitsatz langsam und betont] Der Engpass für KI im Gesundheitswesen ist nicht das Modell, sondern eine Plattform, die reproduzierbare, validierbare Datenstände liefert - gezeigt an einem Problem, das man messen kann. [YQ] Vielen Dank für Ihre Aufmerksamkeit - wir freuen uns jetzt auf Ihre Fragen und die Diskussion.
   </aside>
 </section>
 
@@ -3413,8 +3442,8 @@ dim/
   </div>
   <aside class="notes">
     [SG] Und damit schließt sich die Klammer zum Anfang.
-    [Pause, den Leitsatz langsam und betont] Der Engpass für KI im Gesundheitswesen ist nicht das Modell, sondern eine Plattform, die reproduzierbare, validierbare Datenstände liefert — gezeigt an einem Problem, das man messen kann.
-    [YQ] Vielen Dank für Ihre Aufmerksamkeit — wir freuen uns jetzt auf Ihre Fragen und die Diskussion.
+    [Pause, den Leitsatz langsam und betont] Der Engpass für KI im Gesundheitswesen ist nicht das Modell, sondern eine Plattform, die reproduzierbare, validierbare Datenstände liefert - gezeigt an einem Problem, das man messen kann.
+    [YQ] Vielen Dank für Ihre Aufmerksamkeit - wir freuen uns jetzt auf Ihre Fragen und die Diskussion.
   </aside>
 </section>
 
