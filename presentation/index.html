@@ -143,13 +143,13 @@
         </div>
       </div>
       <div class="callout callout--teal" style="margin-top:4px;">
-        <div><strong>Leitmotiv:</strong> Erst Datenqualität und Plattform, dann konkrete ML-Nutzenfälle — kein unternehmensweiter Chatbot ohne belastbare Datenbasis.</div>
+        <div><strong>Leitmotiv:</strong> Erst Datenqualität und Plattform, dann konkrete ML Use Cases — kein unternehmensweiter Chatbot ohne belastbare Datenbasis.</div>
       </div>
     </div>
   </div>
 
   <aside class="notes">
-    [YQ] Sehr gerne. Ich bin Yannik Queisler, Data Engineer bei der Kassenärztlichen Vereinigung Westfalen-Lippe. Mein Alltag ist Spark, Airflow, Delta Lake — und zunehmend ML Engineering. Ich bringe heute die konkrete On-Premise-Umsetzung mit, unser durchgängiges KI-Beispiel und die Lessons Learned aus dem Aufbau. Wichtig zum Kontext: KI ist bei uns ein neues Handlungsfeld. Wir führen das bewusst über greifbare Fachprozesse ein — nicht mit einem großen unternehmensweiten Chatbot, der auf einer wackeligen Datenbasis steht, sondern entlang der Reihenfolge erst Datenqualität, dann Plattform, dann konkrete Nutzenfälle. Warum diese Reihenfolge so entscheidend ist, dazu kommen wir direkt.
+    [YQ] Sehr gerne. Ich bin Yannik Queisler, Data Engineer bei der Kassenärztlichen Vereinigung Westfalen-Lippe. Mein Alltag ist Spark, Airflow, Delta Lake — und zunehmend ML Engineering. Ich bringe heute die konkrete On-Premise-Umsetzung mit, unser durchgängiges KI-Beispiel und die Lessons Learned aus dem Aufbau. Wichtig zum Kontext: KI ist bei uns ein neues Handlungsfeld. Wir führen das bewusst über greifbare Fachprozesse ein — nicht mit einem großen unternehmensweiten Chatbot, der auf einer wackeligen Datenbasis steht, sondern entlang der Reihenfolge: erst Datenqualität, dann Plattform, dann konkrete Use Cases. Warum diese Reihenfolge so entscheidend ist, dazu kommen wir direkt.
   </aside>
 </section>
 
@@ -1113,7 +1113,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [SG] Die klare Antwort ist: nein. Enterprise-grade Lakehouse heißt nicht, dass man am ersten Tag ein Kubernetes-Cluster oder einen großen Cloud-Anbieter braucht. Wir sind bei der KVWL mit drei Red-Hat-Umgebungen gestartet — dev, test, prod —, mit Podman und systemctl für Containerisierung und Betrieb, und das mit einem sehr kleinen Admin-Footprint. Das Ergebnis: Wir verarbeiten bereits mit diesem einfachen Setup Daten im Terabyte-Maßstab, mit klaren Umgebungen und reproduzierbaren Containern. Und die Weiterentwicklung gibt uns recht — inzwischen gibt es ein unternehmensweites Kubernetes, und wir ziehen Schritt für Schritt um, ohne großen Architekturbruch, weil eben alles sauber containerisiert war. Die Lesson, die wir Ihnen mitgeben: so simpel wie möglich starten und die technische Reife gezielt ausbauen. [kurze Pause] Damit steht die Plattform. Und jetzt wird es spannend — Yannik, was lässt sich darauf bauen?
+    [SG] Die klare Antwort ist: nein. Enterprise-grade Lakehouse heißt nicht, dass man am ersten Tag ein Kubernetes-Cluster oder einen großen Cloud-Anbieter braucht. Wir sind bei der KVWL mit drei Red-Hat-Umgebungen gestartet — dev, test, prod —, mit Podman und systemctl für Containerisierung und Betrieb, und das mit einem sehr kleinen Admin-Footprint. Das Ergebnis: Wir verarbeiten bereits mit diesem einfachen Setup Daten im Terabyte-Maßstab, mit klaren Umgebungen und reproduzierbaren Containern. Und die Weiterentwicklung gibt uns recht — inzwischen gibt es ein unternehmensweites Kubernetes, und wir ziehen Schritt für Schritt um, ohne großen Architekturbruch, weil eben alles sauber containerisiert war. Die Lesson, die wir Ihnen mitgeben: so simpel wie möglich starten und die technische Reife gezielt ausbauen.
   </aside>
 </section>
 
@@ -1140,12 +1140,12 @@ dim/
      SLIDE 16 — WAS PRODUKTIVES ML VOM LAKEHOUSE BRAUCHT
      ============================================================ -->
 <section>
-  <p class="slide-headline fragment fade-in" data-fragment-index="1">
+  <p class="slide-headline">
     Der Engpass ist selten der Modellaufruf, sondern <span class="hl">reproduzierbare, fachlich verstandene, governancefähige Datenstände</span>.
   </p>
 
   <div class="ml-readiness">
-    <svg class="ml-readiness__connectors fragment fade-in" data-fragment-index="3" viewBox="0 0 1120 390" preserveAspectRatio="none" aria-hidden="true">
+    <svg class="ml-readiness__connectors fragment fade-in" data-fragment-index="2" viewBox="0 0 1120 390" preserveAspectRatio="none" aria-hidden="true">
       <defs>
         <linearGradient id="slide16-line" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stop-color="#2a7d8f"/>
@@ -1158,7 +1158,7 @@ dim/
       <path d="M490 225 L1061 225.1" />
     </svg>
 
-    <div class="ml-readiness__left fragment fade-in" data-fragment-index="2">
+    <div class="ml-readiness__left fragment fade-in" data-fragment-index="1">
       <div class="ml-readiness__label">Was Machine Learning zwingend braucht</div>
       <div class="ml-need ml-need--raw">
         <span class="ml-need__check">✓</span>
@@ -1186,7 +1186,7 @@ dim/
       </div>
     </div>
 
-    <div class="ml-readiness__map fragment fade-in" data-fragment-index="3" aria-label="Zuordnung der ML-Anforderungen zu Lakehouse-Zonen">
+    <div class="ml-readiness__map fragment fade-in" data-fragment-index="2" aria-label="Zuordnung der ML-Anforderungen zu Lakehouse-Zonen">
       <div class="ml-zone-row">
         <div class="ml-zone ml-zone--landing">Landing</div>
         <div class="ml-zone-arrow">→</div>
@@ -1201,7 +1201,7 @@ dim/
         <span>Governance / DataHub</span>
       </div>
 
-      <div class="ml-entity-focus fragment fade-in" data-fragment-index="4">
+      <div class="ml-entity-focus fragment fade-in" data-fragment-index="3">
         <div class="ml-entity-focus__kicker">Stabiles Element</div>
         <div class="ml-entity-focus__title">Entitäten</div>
         <div>Stabile Patient-IDs sind die Grundlage für alle folgenden ML Use Cases.</div>
@@ -1210,7 +1210,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ] Ich will direkt an unseren Leitsatz von vorhin anknüpfen: Der Engpass ist selten der Modellaufruf. Was Machine Learning wirklich benötigt, ist all das hier — und Sie sehen, jede Anforderung hängt an einer Zone der Architektur, die Sebastian gerade gezeigt hat. Wir brauchen konsistente Trainings-, Validierungs- und Scoring-Daten. Wir brauchen nachvollziehbare Feature-Definitionen. Wir brauchen stabile Entitäten — Patient, Praxis, Honorargruppe, Quartal. Wir brauchen Datenqualitätschecks vor dem Training, Daten- und Code-Versionierung, Auditierbarkeit der Ergebnisse. Und wir brauchen Katalog und Lineage, damit Teams Daten nicht nur finden, sondern verantwortbar nutzen. Genau diese Liste lösen wir jetzt an einem konkreten Beispiel ein — und das stabilste Element ganz oben, „stabile Entitäten", ist unser Einstieg.
+    [YQ] Ich will direkt an unseren Leitsatz von vorhin anknüpfen: Der Engpass ist selten der Modellaufruf. Was Machine Learning wirklich benötigt, ist all das hier — und Sie sehen, jede Anforderung hängt an einer Zone der Architektur, die Sebastian gerade gezeigt hat. Wir brauchen konsistente Trainings- und Validierungs-Daten. Wir brauchen nachvollziehbare Feature-Definitionen. Wir brauchen stabile Entitäten — Patient, Praxis, Honorargruppe, Quartal. Wir brauchen Datenqualitätschecks vor dem Training, Daten- und Code-Versionierung, Auditierbarkeit der Ergebnisse. Und wir brauchen Katalog und Lineage, damit Teams Daten nicht nur finden, sondern verantwortbar nutzen. Genau diese Liste lösen wir jetzt an einem konkreten Beispiel ein — und das stabilste Element ganz oben, „stabile Entitäten", ist unser Einstieg.
   </aside>
 </section>
 
@@ -1348,7 +1348,11 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ] Unser Leitbeispiel heißt intern „Patientenbildung". Der entscheidende Schritt war zu erkennen: Das ist kein KVWL-Sonderfall, sondern ein bekanntes Problem aus der Forschung — „Patient Record Linkage". [auf das Visual zeigen] Wir haben dieselbe Person in mehreren Quellen, mit leicht abweichenden Schreibweisen, und wollen sie sicher zu einer Person zusammenführen. Das Ziel sind stabile Patient-Entitäten — die Grundlage für Analysen und für jeden nachgelagerten ML-Use-Case. Anschließend bauen wir über Survivorship einen Golden Record. Das Schöne daran: Dieses Problem ist messbar — über ein synthetisches Dataset mit echter Ground Truth, einer `entity_id`. Ein zweites Beispiel, Anomalieerkennung in Abrechnungsdaten, zeige ich später kurz auf derselben Plattform. Der gemeinsame Nenner bleibt: Datenqualität vor Modellqualität. Und ein bewusstes Framing: Das hier ist klassisches ML, kein Deep-Learning-Hype — und genau das ist oft der kürzeste Weg zu messbarem Nutzen auf strukturierten Unternehmensdaten. Bevor wir technisch werden, müssen Sie verstehen, warum dieses Problem so heikel ist.
+    [YQ] Unser Leitbeispiel heißt intern „Patientenbildung". Der entscheidende Schritt war zu erkennen: Das ist kein KVWL-Sonderfall, sondern ein bekanntes Problem aus der Forschung — „Patient Record Linkage". [auf das Visual zeigen] Wir haben dieselbe Person in mehreren Quellen, mit leicht abweichenden Schreibweisen, und wollen sie sicher zu einer Person zusammenführen. Das Ziel sind stabile Patient-Entitäten — die Grundlage für Analysen und für jeden nachgelagerten ML-Use-Case. Anschließend bauen wir über Survivorship einen Golden Record.
+    
+    Konkret: Wir haben heterogene Quellen — interne Daten, nachbearbeitete Abrechnungsdaten und Daten aus externen Quellen. Wir haben Identifikatoren und Attribute: die EGK-Versichertennummer, Vorname, Nachname, Geburtsdatum, PLZ. Und wir haben jede Menge Realität: unvollständige Attribute, Schreibvarianten und Tippfehler, fehlende oder wechselnde Nummern, historische Stände über viele Quartale.
+    
+    Eine kleine Randnotiz hierzu: Das ist klassisches ML, kein Deep-Learning-Hype — und genau das ist oft der kürzeste Weg zu messbarem Nutzen auf strukturierten Unternehmensdaten. Bevor wir technisch werden, müssen Sie verstehen, warum dieses Problem so heikel ist.
   </aside>
 </section>
 
@@ -1483,7 +1487,9 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ] Wenn wir zwei Datensätze fälschlich zusammenführen, die zu zwei verschiedenen Menschen gehören — das nennen wir einen false merge —, dann verfälschen wir Abrechnungen und Fallberichte. Eine falsche Fallzuordnung in unseren Systemen. Das ist nicht nur eine Zahl in einer Metrik, das ist der kritischste Fehler. Der umgekehrte Fehler, der split, ist, dass eine Person in mehrere Datensätze zerfällt — unschön für Auswertungen, aber deutlich weniger kritisch. Diese Asymmetrie ist der Grund, warum wir das Problem präzise lösen müssen. Konkret: Wir haben heterogene Quellen — ABR1, ABR2, bearbeitete und unbearbeitete Daten, KVUEPP. Wir haben Identifikatoren und Attribute: die EGK-Versichertennummer, Vorname, Nachname, Geburtsdatum, PLZ. Und wir haben jede Menge Realität: unvollständige Attribute, Schreibvarianten und Tippfehler, fehlende oder wechselnde Nummern, historische Stände über viele Quartale. Die gute Nachricht: Indem wir das als Record Linkage abstrahieren, können wir auf Literatur, Standardbegriffe und etablierte Evaluationsmetriken zugreifen. Der erste Schritt war aber nicht, etwas Neues zu bauen.
+    [YQ] Wenn wir zwei Datensätze fälschlich zusammenführen, die zu zwei verschiedenen Menschen gehören — das nennen wir einen false merge —, dann verfälschen wir Abrechnungen und Fallberichte. Eine falsche Fallzuordnung in unseren Systemen. Das ist nicht nur eine Zahl in einer Metrik, das ist der kritischste Fehler. Der umgekehrte Fehler, der split, ist, dass eine Person in mehrere Datensätze zerfällt — unschön für Auswertungen, aber deutlich weniger kritisch. Diese Asymmetrie ist der Grund, warum wir das Problem präzise lösen müssen.
+    
+    Die gute Nachricht: Indem wir das als Record Linkage abstrahieren, können wir auf Literatur, Standardbegriffe und etablierte Evaluationsmetriken zugreifen. Der erste Schritt war aber nicht, etwas Neues zu bauen.
   </aside>
 </section>
 
@@ -1591,7 +1597,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ] Der erste Schritt war also nicht Modellbau, sondern Verstehen. Es gab bereits einen Prozess — eine Stored Procedure. [auf die Treppe zeigen] Im Kern ist das eine sequentielle Matching-Kaskade mit drei Regeln: Erst Versichertennummer plus Geburtsdatum. Dann Versichertennummer plus Vor- und Nachname. Und schließlich Vorname, Nachname, Geburtsdatum und PLZ. Wer einmal gematcht ist, wird in späteren Phasen nicht erneut bewertet. Neue Patientencluster entstehen über transitive Abschlüsse — wenn A zu B passt und B zu C, dann gehören alle drei zusammen. Und eine Lookup-Tabelle merkt sich neue Attributkombinationen für künftige Läufe. Indem wir den bestehenden Prozess sauber dokumentiert haben, wurden seine Stärken sichtbar, aber auch seine Grenzen präzise benennbar — und damit der Vergleich mit wissenschaftlichen Ansätzen überhaupt erst möglich. Wie wir bei diesem Vergleich vorgegangen sind, zeige ich jetzt.
+    [YQ] Der erste Schritt war Verstehen des Ist-Zustands. Es gab bereits einen Prozess — eine Stored Procedure. [auf die Treppe zeigen] Im Kern ist das eine sequentielle Matching-Kaskade mit drei Regeln: Erst Versichertennummer plus Geburtsdatum. Dann Versichertennummer plus Vor- und Nachname. Und schließlich Vorname, Nachname, Geburtsdatum und PLZ. Wer einmal gematcht ist, wird in späteren Phasen nicht erneut bewertet. Neue Patientencluster entstehen über transitive Abschlüsse — wenn A zu B passt und B zu C, dann gehören alle drei zusammen. Und eine Lookup-Tabelle merkt sich neue Attributkombinationen für künftige Läufe. Indem wir den bestehenden Prozess sauber dokumentiert haben, wurden seine Stärken sichtbar, aber auch seine Grenzen präzise benennbar — und damit der Vergleich mit wissenschaftlichen Ansätzen überhaupt erst möglich. Wie wir bei diesem Vergleich vorgegangen sind, zeige ich jetzt.
   </aside>
 </section>
 
@@ -1707,7 +1713,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ] Unser Vorgehen war bewusst gründlich, bevor wir einen produktiven Fachprozess anfassen. Vier Schritte: erst Prozess und SQL verstehen, dann das Problem als Record Linkage abstrahieren, dann den State-of-the-Art recherchieren, und schließlich mehrere Verfahren implementieren und gegen den Bestand evaluieren. [auf die drei „Verdächtigen" zeigen] Drei Ansätze treten gleich gegeneinander an: unsere bestehende deterministische Kaskade als Titelverteidiger, eine Hybrid Cascade mit Fuzzy-Fallbacks, und ein probabilistisches Modell aus der Literatur namens FlexRL. Bewertet haben wir nicht nur nach einer Zahl, sondern nach Precision und false merges, Recall und split entities, F1, Clusterqualität, Laufzeit und Erklärbarkeit. Eine Lesson schon hier: Wer sein Problem früh auf die Begriffe der Community ausrichtet, sieht viel schneller, was bereits gut erforscht ist. Aber bevor wir vergleichen können, brauchen wir etwas, das überraschend schwierig ist: Wahrheit.
+    [YQ] Unser Vorgehen war bewusst gründlich, bevor wir einen produktiven Fachprozess anfassen. Vier Schritte: erst Prozess und SQL verstehen, dann das Problem als Record Linkage abstrahieren, dann den State-of-the-Art recherchieren, und schließlich mehrere Verfahren implementieren und gegen den Bestand evaluieren. [auf die drei „Verdächtigen" zeigen] Drei Ansätze treten gleich gegeneinander an: unsere bestehende deterministische Kaskade als Titelverteidiger, eine Hybrid Cascade mit Fuzzy-Fallbacks, und ein probabilistisches Modell aus der Literatur namens FlexRL. Bewertet haben wir nicht nur nach einer Zahl, sondern nach Precision, Recall und F1-Score. Eine Lesson schon hier: Wer sein Problem früh auf die Begriffe der Community ausrichtet, sieht viel schneller, was bereits gut erforscht ist. Aber bevor wir vergleichen können, brauchen wir etwas, das überraschend schwierig ist: Wahrheit.
   </aside>
 </section>
 
@@ -1981,7 +1987,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ] Wichtig ist mir: Die Daten sind synthetisch, aber nicht aus der Luft gegriffen. Wir haben die echten Daten ausschließlich aggregiert analysiert - mit k-Anonymität von mindestens 100, gebinnten Verteilungen, gerundeten Counts, und niemals einzelne Datensätze ausgegeben. Aus diesen Aggregaten haben wir Verteilungen extrahiert: Vor- und Nachnamen, Namenslängen und Zeichenmuster, die Muster der Versichertennummern, PLZ-Regionen, Geburtsjahr, Monat und Tag, Geschlecht, die VSDM-Verifikation und typische Fehlerprofile. Der Generator baut daraus dann mehrere Records pro Person - mit realistischen Tippfehlern, fehlenden Werten, Adressänderungen über Quartale hinweg. Und er erzeugt gleich die Golden Records mit, damit wir später auch das Survivorship messen können. So bekommen wir realistische Daten mit bekannter Wahrheit. Damit sind wir für die Evaluation bereit - aber vorher müssen wir uns einigen, woran wir „besser" eigentlich festmachen.
+    [YQ] Wichtig ist mir: Die Daten sind synthetisch, aber nicht aus der Luft gegriffen. Wir haben die echten Daten ausschließlich aggregiert analysiert - mit k-Anonymität von mindestens 100, gebinnten Verteilungen, gerundeten Counts, und niemals einzelne Datensätze ausgegeben. Aus diesen Aggregaten haben wir Verteilungen extrahiert: z.B. Vor- und Nachnamen, die Muster der Versichertennummern und typische Fehlerprofile. Der Generator baut daraus dann mehrere Records pro Person - mit realistischen Tippfehlern, fehlenden Werten, Adressänderungen über Quartale hinweg. Und er erzeugt gleich die Golden Records mit, damit wir später auch das Survivorship messen können. So bekommen wir realistische Daten mit bekannter Wahrheit. Damit sind wir für die Evaluation bereit - aber vorher müssen wir uns einigen, woran eigentlich festmachen, dass ein Modell besser ist als ein anderes.
   </aside>
 </section>
 
@@ -2132,7 +2138,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ] Ganz kurz und konkret, damit gleich alle die Zahlen lesen können. Die Grundidee: Wir betrachten jedes Paar von Records und fragen - gleiche Person oder nicht? Daraus ergeben sich drei Fälle. Ein True Positive ist ein korrekt verknüpftes Paar. Ein False Positive ist ein false merge - zwei verschiedene Personen fälschlich verbunden. Ein False Negative ist ein übersehener Link - ein split. Daraus zwei Kennzahlen: Precision ist der Anteil korrekter unter den von uns vorhergesagten Links - sie misst also unsere false merges. Recall ist der Anteil gefundener unter den echten Links - sie misst die splits. F1 ist einfach das harmonische Mittel aus beiden. Ergänzend schauen wir auf Clusterebene - perfekte, gesplittete, verschmolzene Cluster. Bei Patientendaten ist die Precision die kritische Größe, weil sie die fachlich kritischen false merges abbildet. Mit diesem Vorwissen schauen wir uns die drei Ansätze an - und starten mit dem amtierenden Modell.
+    [YQ] Ganz kurz und konkret, damit gleich alle die Zahlen lesen können. Die Grundidee: Wir betrachten jedes Paar von Records und fragen - gleiche Person oder nicht? Daraus ergeben sich drei Fälle. Ein True Positive ist ein korrekt verknüpftes Paar. Ein False Positive ist ein false merge - zwei verschiedene Personen fälschlich verbunden. Ein False Negative ist ein übersehener Link - ein split. Daraus zwei Kennzahlen: Precision ist der Anteil korrekter unter den von uns vorhergesagten Links - sie misst also unsere false merges. Recall ist der Anteil gefundener unter den echten Links - sie misst die splits. F1 ist einfach das harmonische Mittel aus beiden. Bei Patientendaten ist die Precision die kritische Größe, weil sie die fachlich kritischen false merges abbildet. Mit diesem Vorwissen schauen wir uns die drei Ansätze an - und starten mit dem amtierenden Modell.
   </aside>
 </section>
 
@@ -2263,7 +2269,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ] Ansatz eins ist unser bestehendes Modell. Wir haben die SQL-Logik als validierbare Python-Variante nachgebaut, die deterministische Kaskade mit den drei Regeln von eben. Und das Ergebnis auf dem Proxy-Dataset ist bemerkenswert: Precision 100 Prozent. Kein einziger false merge. Aber - und das ist die Kehrseite - der Recall liegt nur bei 69 Prozent, der F1 bei knapp 82. Das heißt: Das Modell ist extrem sicher, macht praktisch keine kritischen Fehler, aber es verliert fast ein Drittel der echten Verknüpfungen in splits. Ein sehr guter, konservativer Safety-Baseline - aber mit Luft nach oben. [Enabler-Callback] Übrigens: Dass ich alle drei Ansätze gleich gegen exakt denselben Datenstand teste, ermöglicht erst die unveränderliche Raw-Historie, die Sebastian gezeigt hat. Können wir mehr Links finden, ohne diese perfekte Precision zu opfern? Das war die Frage für Ansatz zwei.
+    [YQ] Ansatz eins ist unser bestehendes Modell. Wir haben die SQL-Logik als validierbare Python-Variante nachgebaut, die deterministische Kaskade mit den drei Regeln von eben. Und das Ergebnis auf dem Proxy-Dataset ist bemerkenswert: Precision 100 Prozent. Kein einziger false merge. Aber - und das ist die Kehrseite - der Recall liegt nur bei 69 Prozent, der F1 bei knapp 82. Das heißt: Das Modell ist extrem sicher, macht praktisch keine kritischen Fehler, aber es verliert fast ein Drittel der echten Verknüpfungen in splits. Eine sehr guter, konservativer Safety-Baseline - aber mit Luft nach oben. [Enabler-Callback] Übrigens: Dass ich alle drei Ansätze gleich gegen exakt denselben Datenstand teste, ermöglicht erst die unveränderliche Raw-Historie, die Sebastian gezeigt hat. Können wir mehr Links finden, ohne diese perfekte Precision zu opfern? Das war die Frage für Ansatz zwei.
   </aside>
 </section>
 
@@ -2275,7 +2281,7 @@ dim/
     Ein deterministisch dominierter Ansatz findet durch <span class="hl">Fuzzy Fallbacks</span> deutlich mehr Links, ohne die Precision zu beschädigen.
   </p>
 
-  <div class="zone-map-mini fragment fade-in" data-fragment-index="1" style="margin: 0 auto 10px;">
+  <div class="zone-map-mini" style="margin: 0 auto 10px;">
     <div class="zm-zone zm-landing">Landing</div>
     <div class="zm-arrow">→</div>
     <div class="zm-zone zm-raw">Raw</div>
@@ -2289,7 +2295,7 @@ dim/
     <div class="row" style="display:flex; gap:16px; flex:1; min-height:0; align-items:stretch;">
 
       <!-- LEFT: Staircase Cascade Flowchart + Info card -->
-      <div class="fragment fade-in" data-fragment-index="2" style="flex-shrink:0; width:590px; display:flex; flex-direction:column; gap:10px; min-height:0;">
+      <div class="fragment fade-in" data-fragment-index="1" style="flex-shrink:0; width:590px; display:flex; flex-direction:column; gap:10px; min-height:0;">
 
         <!-- Flowchart container -->
         <div style="position:relative; height:305px; width:100%; border:1.5px solid var(--panel-dark); background:var(--bg-soft); border-radius:8px; box-sizing:border-box; overflow:hidden; flex-shrink:0;">
@@ -2408,7 +2414,7 @@ dim/
       </div>
 
       <!-- RIGHT: Comparison Bar Chart -->
-      <div class="fragment fade-in" data-fragment-index="3" style="flex:1; height:373px; display:flex; flex-direction:column; justify-content:flex-start; gap:8px; min-height:0; min-width:0; align-self:flex-start;">
+      <div class="fragment fade-in" data-fragment-index="2" style="flex:1; height:373px; display:flex; flex-direction:column; justify-content:flex-start; gap:8px; min-height:0; min-width:0; align-self:flex-start;">
         <!-- F1 Score Badge -->
         <p style="background:var(--navy); color:white; padding:6px 12px; border-radius:6px; font-weight:700; font-size:0.82em; text-align:center; box-shadow:0 2px 4px rgba(0,0,0,0.1); margin:0; flex-shrink:0; overflow:hidden; line-height:1.2;">
           F1-Score: 90.04 %
@@ -2467,7 +2473,7 @@ dim/
         </div>
 
         <!-- Recall gain callout -->
-        <div class="callout callout--green fragment fade-in" data-fragment-index="4" style="font-size:0.76em; text-align:center; padding:8px 10px; flex-shrink:0; overflow:hidden; box-sizing:border-box;">
+        <div class="callout callout--green fragment fade-in" data-fragment-index="3" style="font-size:0.76em; text-align:center; padding:8px 10px; flex-shrink:0; overflow:hidden; box-sizing:border-box;">
           <strong>+12.60 Pp</strong> Recall ↑ &nbsp;·&nbsp; Precision nahezu unverändert
         </div>
       </div>
@@ -2487,7 +2493,7 @@ dim/
     <span class="hl">Probabilistische Linkage</span> macht Unsicherheit explizit und lernt Fehler- und Zufallsmuster aus den Daten.
   </p>
 
-  <div class="zone-map-mini fragment fade-in" data-fragment-index="1">
+  <div class="zone-map-mini">
     <div class="zm-zone zm-landing">Landing</div>
     <div class="zm-arrow">→</div>
     <div class="zm-zone zm-raw">Raw</div>
@@ -2503,7 +2509,7 @@ dim/
     <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:14px; align-items:stretch;">
 
       <!-- Col 1: The insight / intuition -->
-      <div class="fragment fade-in" data-fragment-index="2" style="background:var(--card); border:1.5px solid var(--panel-dark); border-radius:10px; padding:16px; box-shadow:0 3px 12px rgba(22,56,72,0.07);">
+      <div class="fragment fade-in" data-fragment-index="1" style="background:var(--card); border:1.5px solid var(--panel-dark); border-radius:10px; padding:16px; box-shadow:0 3px 12px rgba(22,56,72,0.07);">
         <div class="section-label" style="margin-bottom:12px;">① Die Kernbeobachtung</div>
         <p style="font-size:0.76em; color:var(--ink); font-weight:700; margin:0 0 12px; line-height:1.4;">
           Nicht alle Attribute sagen gleich viel über einen Link aus.
@@ -2542,7 +2548,7 @@ dim/
       </div>
 
       <!-- Col 2: What FlexRL learns (EM) — intuition only -->
-      <div class="fragment fade-in" data-fragment-index="3" style="background:var(--navy); border-radius:10px; padding:16px; box-shadow:0 4px 16px rgba(22,56,72,0.18); color:white;">
+      <div class="fragment fade-in" data-fragment-index="2" style="background:var(--navy); border-radius:10px; padding:16px; box-shadow:0 4px 16px rgba(22,56,72,0.18); color:white;">
         <div class="section-label" style="color:rgba(255,255,255,0.65); margin-bottom:12px;">② Was FlexRL lernt — automatisch</div>
         <div style="display:flex; flex-direction:column; gap:10px; margin-top:4px;">
           <div style="display:flex; align-items:flex-start; gap:10px;">
@@ -2574,7 +2580,7 @@ dim/
       </div>
 
       <!-- Col 3: Score → decision -->
-      <div class="fragment fade-in" data-fragment-index="4" style="display:flex; flex-direction:column; gap:10px;">
+      <div class="fragment fade-in" data-fragment-index="3" style="display:flex; flex-direction:column; gap:10px;">
         <div style="background:var(--card); border:1.5px solid var(--panel-dark); border-radius:10px; padding:14px; box-shadow:0 3px 12px rgba(22,56,72,0.07); flex:1;">
           <div class="section-label" style="margin-bottom:10px;">③ Score pro Paar → Entscheidung</div>
           <!-- Score bar 0→1 -->
@@ -2596,13 +2602,13 @@ dim/
     </div>
 
     <!-- Bottom callout: the one sentence that matters -->
-    <div class="callout callout--teal fragment fade-in" data-fragment-index="5" style="padding:9px 16px; font-size:0.74em; text-align:center;">
+    <div class="callout callout--teal fragment fade-in" data-fragment-index="4" style="padding:9px 16px; font-size:0.74em; text-align:center;">
       FlexRL setzt keine festen Regeln — es <strong>lernt aus den Daten selbst,</strong> wie viel jedes Attribut in diesem Datensatz wert ist.
     </div>
   </div>
 
   <aside class="notes">
-    [YQ] Ansatz drei ist methodisch der spannendste: FlexRL, ein probabilistisches Modell aus einem Paper von Robach et al. aus 2024. Statt fester Regeln macht es Unsicherheit explizit. Vereinfacht gesagt: Es betrachtet unsere Attribute - Vorname, Nachname, Geburtsdatum, PLZ, EGK - als teilweise identifizierende Variablen und lernt mit einem EM-Algorithmus aus den Daten selbst drei Dinge: wie wahrscheinlich ein Paar überhaupt ein Link ist, wie fehleranfällig jede einzelne Variable ist, und wie oft sie rein zufällig übereinstimmt. Ein Beispiel: Ein Geburtsdatum stimmt auch mal zufällig überein, eine Versichertennummer fast nie - genau das lernt das Modell. Wir setzen einen bewusst konservativen Schwellenwert von 0,9, weil false merges bei Patientendaten besonders kritisch sind. Wie schlägt sich dieser dritte Ansatz im direkten Vergleich?
+    [YQ] Ansatz drei ist methodisch der spannendste: FlexRL, ein probabilistisches Modell aus einem Paper von Robach et al. aus 2024. Statt fester Regeln macht es Unsicherheit explizit. Vereinfacht gesagt: Es betrachtet unsere Attribute als teilweise identifizierende Variablen und lernt mit einem EM-Algorithmus aus den Daten selbst drei Dinge: wie wahrscheinlich ein Paar überhaupt ein Link ist, wie fehleranfällig jede einzelne Variable ist, und wie oft sie rein zufällig übereinstimmt. Ein Beispiel: Ein Geburtsdatum stimmt auch mal zufällig überein, eine Versichertennummer fast nie - genau das lernt das Modell. Wir setzen einen bewusst konservativen Schwellenwert von 0,9, weil false merges bei Patientendaten besonders kritisch sind. Wie schlägt sich dieser dritte Ansatz im direkten Vergleich?
   </aside>
 </section>
 
@@ -2724,7 +2730,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ, das ist der Höhepunkt - Tempo rausnehmen] Hier ist das Gesamtbild. [auf die Balken zeigen] Schauen Sie auf die Precision - alle drei stehen quasi bei 100 Prozent: 100, 99,91, 99,89. Der kritische Fehler bleibt über alle Ansätze hinweg praktisch ausgeschlossen. Und jetzt der Recall: 69 Prozent beim bestehenden Modell, 82 bei der Hybrid Cascade, und 92 Prozent bei FlexRL. [Pause] Lassen Sie das kurz wirken. Wir verknüpfen deutlich mehr echte Patienten korrekt zusammen - der Recall steigt um über zwanzig Prozentpunkte - und das praktisch ohne neue Fehlverschmelzungen. Der F1 geht von 82 auf fast 96. Aber - und das ist die eigentliche Botschaft - die Entscheidung ist trotzdem keine rein technische. Sie ist fachlich: Sind uns die wenigen zusätzlichen false merges den großen Recall-Gewinn wert? Welche unsicheren Fälle schicken wir ins manuelle Review? Welche Schwelle ist im Produktivbetrieb vertretbar? Nicht der komplexeste Ansatz gewinnt automatisch, sondern der mit dem fachlich akzeptablen Trade-off. Doch eine gefundene Verknüpfung allein reicht noch nicht.
+    [YQ, das ist der Höhepunkt - Tempo rausnehmen] Hier ist das Gesamtbild. [auf die Balken zeigen] Schauen Sie auf die Precision - alle drei stehen quasi bei 100 Prozent: 100, 99,91, 99,89. Der kritische Fehler bleibt über alle Ansätze hinweg praktisch ausgeschlossen. Und jetzt der Recall: 69 Prozent beim bestehenden Modell, 82 bei der Hybrid Cascade, und 92 Prozent bei FlexRL. [Pause] Wir verknüpfen deutlich mehr echte Patienten korrekt zusammen - der Recall steigt um über zwanzig Prozentpunkte - und das praktisch ohne neue Fehlverschmelzungen. Der F1 geht von 82 auf fast 96. Aber - und das ist die eigentliche Botschaft - die Entscheidung ist trotzdem keine rein technische. Sie ist fachlich: Sind uns die wenigen zusätzlichen false merges den großen Recall-Gewinn wert? Welche unsicheren Fälle schicken wir ins manuelle Review? Welche Schwelle ist im Produktivbetrieb vertretbar? Nicht der komplexeste Ansatz gewinnt automatisch, sondern der mit dem fachlich akzeptablen Trade-off. Doch eine gefundene Verknüpfung allein reicht noch nicht.
   </aside>
 </section>
 
@@ -2822,12 +2828,12 @@ dim/
     </div>
 
     <!-- Right: VSDM + Normalisierung + Herausforderung -->
-    <div style="flex:0.7; display:flex; flex-direction:column; gap:9px; overflow:hidden; justify-content:center;">
-      <div class="callout callout--teal fragment fade-in" data-fragment-index="3" style="overflow:hidden;">
+    <div class="fragment fade-in" data-fragment-index="3" style="flex:0.7; display:flex; flex-direction:column; gap:9px; overflow:hidden; justify-content:center;">
+      <div class="callout callout--teal" style="overflow:hidden;">
         <div><strong>VSDM</strong> — Versichertenstammdatenmanagement<br>
         <span style="font-size:0.88em;">eGK-Abgleich gegen das zentrale Versichertenregister → bestätigter Abgleich = vertrauenswürdigste Quelle.</span></div>
       </div>
-      <div class="card fragment fade-in" data-fragment-index="4" style="overflow:hidden;">
+      <div class="card" style="overflow:hidden;">
         <div class="card__head">Normalisierung</div>
         <div class="card__body">
           <div class="card__item">PLZ- und Ortsnormalisierung</div>
@@ -2835,14 +2841,14 @@ dim/
           <div class="card__item">OKZ-/Regionen-Anreicherung</div>
         </div>
       </div>
-      <div class="callout callout--amber fragment fade-in" data-fragment-index="5" style="overflow:hidden;">
+      <div class="callout callout--amber" style="overflow:hidden;">
         <strong>Herausforderung:</strong> Welche Attribute gewinnen beim Merge? Proxy-Dataset enthält Golden Records — Survivorship ist mitgemessen.
       </div>
     </div>
   </div>
 
   <aside class="notes">
-    [YQ] Record Linkage sagt uns nur: Diese Records gehören zur selben Person. Aber welche Adresse, welche Schreibweise des Namens ist jetzt die richtige? Das löst das Survivorship - und damit wandern wir in der Architektur eine Zone weiter, in die Access Zone. [auf die Zonen-Map zeigen] Wir bauen pro Person einen konsolidierten Patientenstamm, einen Golden Record. Dafür nutzen wir eine zweistufige Strategie. Tier 1 stützt sich auf VSDM-verifizierte Daten. Kurz erklärt, weil die Abkürzung nicht jedem geläufig ist: VSDM steht für Versichertenstammdatenmanagement. Wenn die elektronische Gesundheitskarte beim Arzt eingelesen wird, prüft das System online gegen das zentrale Versichertenregister, ob die Kartendaten korrekt sind. Dieser bestätigte Abgleich ist unsere vertrauenswürdigste Quelle. Wo es keine VSDM-Bestätigung gibt, kommt Tier 2 - eine zeitgewichtete Häufigkeit kombiniert mit Vollständigkeit. Dazu normalisieren wir PLZ und Ort, Umlaute, und reichern Regionen an. Und weil unser Proxy-Dataset die echten Golden Records mitbringt, können wir sogar diesen Survivorship-Schritt messen. So weit die Evaluation - aber ein Notebook ist noch keine Produktion.
+    [YQ] Record Linkage sagt uns nur: Diese Records gehören zur selben Person. Aber welche Adresse, welche Schreibweise des Namens ist jetzt die richtige? Das löst das Survivorship - und damit wandern wir in der Architektur eine Zone weiter, in die Access Zone. [auf die Zonen-Map zeigen] Wir bauen pro Person einen konsolidierten Patientenstamm, einen Golden Record. Aus Zeitgründen gehe ich nicht im Detail auf die Strategie ein. Was wichtig ist: Da unser Proxy-Dataset die echten Golden Records mitbringt, können wir sogar diesen Survivorship-Schritt messen. So weit die Evaluation - aber ein Notebook ist noch keine Produktion.
   </aside>
 </section>
 
@@ -3181,7 +3187,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ] Und auf der KI-Seite. Die Kernlesson deckt sich genau mit unserem Leitsatz: Produktive KI beginnt vor dem Modell - bei Entitäten, Features, Historie, Governance und fachlicher Prüfbarkeit. Stabile Entitäten sind nicht nur Stammdaten, sie sind zentrale ML-Infrastruktur. Die Patientenbildung hat uns gelehrt, dass nicht alle Fehler gleich sind - false merges sind oft kritischer als verpasste Matches, und das muss man bewusst in die Schwellen einbauen. Es hat sich extrem gelohnt, den Fachprozess früh auf Community-Begriffe zu mappen - aus „Patientenbildung" wurde Record Linkage und damit anschlussfähig an Forschung und Standards. Recherche vor der Implementierung spart Umwege. Modellmetriken allein reichen nicht - die fachliche Validierung entscheidet. Und genau deshalb sind die Abrechnungsanomalien das nächste Projekt: Ein Prototyp braucht eine klare Validierungsstrategie, bevor er zur Hauptstory wird. Was davon würden wir wieder so machen?
+    [YQ] Und auf der KI-Seite. Die Kernlesson deckt sich genau mit unserem Leitsatz: Produktive KI beginnt vor dem Modell - bei Entitäten, Features, Historie, Governance und fachlicher Prüfbarkeit. Stabile Entitäten sind nicht nur Stammdaten, sie sind zentrale ML-Infrastruktur. Die Patientenbildung hat uns gelehrt, dass nicht alle Fehler gleich sind - false merges sind oft kritischer als verpasste Matches, und das muss man bewusst in die Schwellen einbauen. Es hat sich gelohnt, den Fachprozess früh auf Community-Begriffe zu mappen - aus „Patientenbildung" wurde Record Linkage und damit anschlussfähig an Forschung und Standards. Recherche vor der Implementierung spart Umwege. Modellmetriken allein reichen nicht - die fachliche Validierung entscheidet. Und genau deshalb sind die Abrechnungsanomalien das nächste Projekt: Ein Prototyp braucht eine klare Validierungsstrategie, bevor er zur Hauptstory wird. Was davon würden wir wieder so machen?
   </aside>
 </section>
 
