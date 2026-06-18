@@ -67,9 +67,12 @@
   flex-direction: column;
 }
 
-/* reveal.css: non-present sections are display:none — don't override that.
-   For the active slide: reveal sets display:block on .present; override just that to flex. */
+/* Reveal briefly displays adjacent slides during transitions; keep their layout stable too. */
+.reveal .slides > section.past,
+.reveal .slides > section.future,
 .reveal .slides > section.present,
+.reveal .slides > section > section.past,
+.reveal .slides > section > section.future,
 .reveal .slides > section > section.present {
   display: flex;
   height: 100%;
@@ -87,13 +90,16 @@
   justify-content: center;
   width: 100%;
   box-sizing: border-box;
-  margin-bottom: 16px;
+  margin-bottom: 88px;
 }
 
 .slide-footer {
-  width: 100%;
-  flex-shrink: 0;
-  margin-top: auto;
+  position: absolute;
+  left: 90px;
+  right: 90px;
+  bottom: 18px;
+  width: auto;
+  margin-top: 0;
   padding-top: 8px;
   border-top: 2px solid var(--steel-light);
   box-sizing: border-box;

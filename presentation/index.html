@@ -73,7 +73,7 @@
      ============================================================ -->
 <section>
   <p class="slide-headline">
-    <span class="hl">DATA MART</span> bringt die Perspektive aus DWH-, BI- und Datenarchitekturprojekten ein.
+    Sebastian bringt die <span class="hl">Architekturperspektive</span> ein: vom klassischen DWH zum funktionalen Lakehouse.
   </p>
 
   <div class="speaker-layout flex-1">
@@ -118,7 +118,7 @@
      ============================================================ -->
 <section>
   <p class="slide-headline">
-    Die <span class="hl">KVWL</span> bringt die On-Premise-Implementierung, das durchgängige KI-/ML-Beispiel und die Lessons Learned ein.
+    Yannik zeigt den <span class="hl">ML-Use-Case</span> — ermöglicht durch die Lakehouse-Architektur.
   </p>
 
   <div class="speaker-layout flex-1">
@@ -387,7 +387,7 @@
 
   <div class="flex-1" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%;">
     <!-- Chaos zone diagram with relative container -->
-    <div style="position:relative; width:410px; height:360px; margin:0 auto; box-sizing:border-box;">
+    <div style="position:relative; width:410px; height:330px; margin:0 auto; box-sizing:border-box;">
       <!-- Central spaghetti graphic -->
       <img src="assets/gen/slide7_graphic.png" alt="Chaotic zone logik diagram" style="width:100%; height:100%; object-fit:contain; display:block;">
       
@@ -447,7 +447,7 @@
     </div>
 
     <!-- Bottom Red Banner Callout -->
-    <div class="fragment fade-in" data-fragment-index="2" style="background:#a82020; color:white; font-size:0.88em; font-weight:600; padding:12px 20px; border-radius:8px; width:100%; max-width:960px; text-align:center; box-sizing:border-box; box-shadow:0 4px 12px rgba(168,32,32,0.12); margin-top:12px;">
+    <div class="fragment fade-in" data-fragment-index="2" style="background:#a82020; color:white; font-size:0.88em; font-weight:600; padding:10px 20px; border-radius:8px; width:100%; max-width:960px; text-align:center; box-sizing:border-box; box-shadow:0 4px 12px rgba(168,32,32,0.12); margin-top:8px;">
       <strong>Konsequenz:</strong> Unklare Codelokalisierung, extrem aufwendiges Reprocessing und hoher Bus-Faktor.
     </div>
   </div>
@@ -466,7 +466,7 @@
   </p>
 
   <div class="flex-1" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%;">
-    <div style="position:relative; width:1060px; height:480px; margin:0 auto; box-sizing:border-box;">
+    <div style="position:relative; width:1060px; height:440px; margin:0 auto; box-sizing:border-box;">
       <img src="assets/gen/slide8_graphic.png" alt="Lakehouse architecture diagram" style="width:100%; height:100%; object-fit:contain; display:block;">
     </div>
   </div>
@@ -607,8 +607,8 @@
     <div class="zm-zone zm-access">Access</div>
   </div>
 
-  <div class="flex-1" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; margin-top:8px;">
-    <div class="fragment fade-in" data-fragment-index="1" style="width:1060px; height:390px; display:flex; gap:20px; align-items:stretch; margin:0 auto; box-sizing:border-box;">
+  <div class="flex-1" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; margin-top:4px;">
+    <div class="fragment fade-in" data-fragment-index="1" style="width:1060px; height:360px; display:flex; gap:20px; align-items:stretch; margin:0 auto; box-sizing:border-box;">
       
       <!-- Left Column: Landing Zone -->
       <div style="flex:1; display:flex; flex-direction:column; gap:12px;">
@@ -668,7 +668,7 @@
     </div>
   </div>
 
-  <div class="mt-auto" style="display:flex; justify-content:center; margin-top:12px;">
+  <div class="mt-auto" style="display:flex; justify-content:center; margin-top:6px;">
     <div class="callout callout--green fragment fade-in" data-fragment-index="2" style="width:fit-content; white-space:nowrap;">
       Eine <strong>unveränderliche Append-Only-Historie</strong> garantiert, dass jeder ML-Trainingsstand exakt reproduziert werden kann.
     </div>
@@ -793,15 +793,15 @@
     <div class="zm-zone zm-access active zm-here">Access</div>
   </div>
 
-  <div class="flex-1" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; margin-top:6px;">
-    <div style="width:1060px; height:430px; display:flex; gap:24px; align-items:stretch; margin:0 auto; box-sizing:border-box;">
+  <div class="flex-1" style="display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; margin-top:0;">
+    <div style="width:1060px; height:360px; display:flex; gap:18px; align-items:stretch; margin:0 auto; box-sizing:border-box; overflow:hidden;">
 
       <!-- Left Column: S3 Directory Tree -->
-      <div class="fragment fade-in" data-fragment-index="1" style="flex:0 0 360px; display:flex; flex-direction:column; gap:6px;">
+      <div class="fragment fade-in" data-fragment-index="1" style="flex:0 0 340px; display:flex; flex-direction:column; gap:5px; overflow:hidden;">
         <div style="background:linear-gradient(135deg, #475569, #64748b); color:white; font-weight:bold; text-align:center; padding:5px 12px; border-radius:6px; font-size:0.75em; text-transform:uppercase; letter-spacing:0.8px; box-sizing:border-box;">
           S3 Bucket Directory
         </div>
-        <div style="flex:1; background:#f4f6f7; border:1.5px solid var(--panel-dark); border-radius:8px; padding:10px 14px; font-family:var(--font-mono, monospace); font-size:0.6em; color:#334155; line-height:1.5; box-shadow:inset 0 1px 3px rgba(0,0,0,0.05); overflow:hidden; box-sizing:border-box;">
+        <div style="flex:1; background:#f4f6f7; border:1.5px solid var(--panel-dark); border-radius:8px; padding:8px 12px; font-family:var(--font-mono, monospace); font-size:0.52em; color:#334155; line-height:1.35; box-shadow:inset 0 1px 3px rgba(0,0,0,0.05); overflow:hidden; box-sizing:border-box;">
           <div style="white-space:pre; margin:0;">s3://access-zone/controlling/
 
 fact/
@@ -828,29 +828,29 @@ dim/
       </div>
 
       <!-- Right Column: Datenprodukt boxes + rules -->
-      <div style="flex:1; display:flex; flex-direction:column; gap:20px; justify-content:center;">
+      <div style="flex:1; display:flex; flex-direction:column; gap:10px; justify-content:center; overflow:hidden;">
 
         <!-- Datenprodukt section -->
-        <div class="fragment fade-in" data-fragment-index="2" style="display:flex; flex-direction:column; gap:6px;">
+        <div class="fragment fade-in" data-fragment-index="2" style="display:flex; flex-direction:column; gap:5px; overflow:hidden;">
           <div style="background:linear-gradient(135deg, var(--teal-deep), var(--teal)); color:white; font-weight:bold; text-align:center; padding:5px 12px; border-radius:6px; font-size:0.75em; text-transform:uppercase; letter-spacing:0.8px; box-sizing:border-box;">
             Datenprodukt
           </div>
-          <div style="display:flex; gap:12px; align-items:flex-start;">
+          <div style="display:flex; gap:10px; align-items:flex-start;">
             <div class="card" style="flex:1; margin:0; text-align:center; padding:0;">
-              <div class="card__body" style="padding:14px 10px;">
-                <div style="font-size:1em; font-weight:700; color:var(--navy); margin-bottom:4px;">Star Schemas</div>
+              <div class="card__body" style="padding:11px 8px;">
+                <div style="font-size:0.94em; font-weight:700; color:var(--navy); margin-bottom:3px;">Star Schemas</div>
                 <div style="font-size:0.72em; color:var(--ink-muted);">(For BI &amp; Reporting)</div>
               </div>
             </div>
             <div class="card" style="flex:1; margin:0; text-align:center; padding:0;">
-              <div class="card__body" style="padding:14px 10px;">
-                <div style="font-size:1em; font-weight:700; color:var(--navy); margin-bottom:4px;">Wide Tables</div>
+              <div class="card__body" style="padding:11px 8px;">
+                <div style="font-size:0.94em; font-weight:700; color:var(--navy); margin-bottom:3px;">Wide Tables</div>
                 <div style="font-size:0.72em; color:var(--ink-muted);">(For deep analytics)</div>
               </div>
             </div>
             <div class="card card--teal" style="flex:1; margin:0; text-align:center; padding:0;">
-              <div class="card__body" style="padding:14px 10px;">
-                <div style="font-size:1em; font-weight:700; color:var(--teal-deep); margin-bottom:4px;">ML Feature Sets</div>
+              <div class="card__body" style="padding:11px 8px;">
+                <div style="font-size:0.94em; font-weight:700; color:var(--teal-deep); margin-bottom:3px;">ML Feature Sets</div>
                 <div style="font-size:0.72em; color:var(--ink-muted);">(Serving-nahe Tabellen)</div>
               </div>
             </div>
@@ -858,9 +858,9 @@ dim/
         </div>
 
         <!-- Strict Rules -->
-        <div class="fragment fade-in" data-fragment-index="3" style="display:flex; flex-direction:column; gap:6px;">
+        <div class="fragment fade-in" data-fragment-index="3" style="display:flex; flex-direction:column; gap:5px; overflow:hidden;">
           <div style="font-weight:700; font-size:0.82em; color:var(--navy);">Strikte Regeln der Access Zone</div>
-          <ul style="margin:0; padding-left:18px; font-size:0.78em; color:var(--ink); line-height:1.6;">
+          <ul style="margin:0; padding-left:18px; font-size:0.74em; color:var(--ink); line-height:1.45;">
             <li>Dokumentierte Metrikdefinitionen und SLOs</li>
             <li>Versionierung bei Breaking Changes</li>
             <li>Keine R&#252;ckkopplung in Upstream-Zonen (Reverse Dependencies verboten)</li>
@@ -1257,7 +1257,7 @@ dim/
   </div>
 
   <!-- Circuit-flow diagram: sources → linkage → person -->
-  <div class="row flex-1" style="align-items:center; justify-content:center; gap:20px; margin-top:24px; min-height:260px;">
+  <div class="row flex-1" style="align-items:center; justify-content:center; gap:20px; margin-top:10px; min-height:260px;">
     
     <!-- Source records (vertically closer) -->
     <div class="fragment fade-in" data-fragment-index="1" style="width:17em; display:flex; flex-direction:column; gap:8px;">
@@ -1541,7 +1541,7 @@ dim/
     <div class="zm-zone zm-access">Access</div>
   </div>
 
-  <div style="display:flex; align-items:center; justify-content:center; gap:48px; width:100%; max-width:54em; margin-left:auto; margin-right:auto; margin-top:20px; flex:1;">
+  <div style="display:flex; align-items:center; justify-content:center; gap:48px; width:100%; max-width:54em; margin-left:auto; margin-right:auto; margin-top:8px; flex:1;">
     <!-- Left Column: Cascade Flowchart -->
     <div class="fragment fade-in" data-fragment-index="1" style="flex: 1.2; display: flex; flex-direction: column;">
       <div style="background:linear-gradient(135deg, var(--teal-deep), var(--teal)); color:white; border-radius:6px; padding:8px 14px; font-weight:700; font-size:0.8em; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:24px; text-align:center; box-shadow:0 3px 8px rgba(22,56,72,0.08);">Sequentielle Matching-Kaskade</div>
@@ -2359,7 +2359,7 @@ dim/
     <div class="zm-zone zm-access">Access</div>
   </div>
 
-  <div style="width:1060px; height:425px; margin:0 auto; display:flex; flex-direction:column; justify-content:space-between; overflow:hidden; box-sizing:border-box;">
+  <div style="width:1060px; height:400px; margin:0 auto; display:flex; flex-direction:column; justify-content:space-between; overflow:hidden; box-sizing:border-box;">
     <div class="row" style="display:flex; gap:16px; flex:1; min-height:0; align-items:stretch;">
 
       <!-- LEFT: Staircase Cascade Flowchart + Info card -->
@@ -2482,14 +2482,14 @@ dim/
       </div>
 
       <!-- RIGHT: Comparison Bar Chart -->
-      <div class="fragment fade-in" data-fragment-index="2" style="flex:1; height:373px; display:flex; flex-direction:column; justify-content:flex-start; gap:8px; min-height:0; min-width:0; align-self:flex-start;">
+      <div class="fragment fade-in" data-fragment-index="2" style="flex:1; height:348px; display:flex; flex-direction:column; justify-content:flex-start; gap:7px; min-height:0; min-width:0; align-self:flex-start;">
         <!-- F1 Score Badge -->
         <p style="background:var(--navy); color:white; padding:6px 12px; border-radius:6px; font-weight:700; font-size:0.82em; text-align:center; box-shadow:0 2px 4px rgba(0,0,0,0.1); margin:0; flex-shrink:0; overflow:hidden; line-height:1.2;">
           F1-Score: 90.04 %
         </p>
 
         <!-- Grouped Bar Chart: fixed height, centered vertically -->
-        <div style="height:284px; border:1.5px solid var(--panel-dark); background:var(--bg-soft); border-radius:8px; padding:8px 10px 10px; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; box-sizing:border-box; min-height:0; overflow:hidden;">
+        <div style="height:258px; border:1.5px solid var(--panel-dark); background:var(--bg-soft); border-radius:8px; padding:8px 10px 8px; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; box-sizing:border-box; min-height:0; overflow:hidden;">
           <p style="font-size:0.68em; font-weight:700; color:var(--steel); text-align:center; margin:0 0 26px; line-height:1.2; flex-shrink:0;">Cluster-Ebene – Vergleich</p>
 
           <!-- Bars area (fixed height, centered) -->
@@ -2839,11 +2839,11 @@ dim/
     <div class="zm-zone zm-access active zm-here">Access</div>
   </div>
 
-  <div style="flex:1; display:flex; gap:22px; overflow:hidden; margin-top:6px;">
+  <div style="flex:1; display:flex; gap:16px; overflow:hidden; margin-top:0;">
 
     <!-- Left: SVG trapezoid funnel (compact viewBox so height:auto scales up nicely) -->
-    <div class="fragment fade-in" data-fragment-index="2" style="flex:1.4; overflow:hidden;">
-      <svg viewBox="0 0 400 212" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto;">
+    <div class="fragment fade-in" data-fragment-index="2" style="flex:1.32; overflow:hidden; display:flex; align-items:center;">
+      <svg viewBox="0 0 400 212" xmlns="http://www.w3.org/2000/svg" style="width:90%; height:auto; display:block; margin:0 auto;">
         <defs>
           <linearGradient id="sv-t1" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stop-color="#1c5a69"/>
@@ -2915,7 +2915,7 @@ dim/
     </div>
 
     <!-- Right: VSDM + Normalisierung + Herausforderung -->
-    <div class="fragment fade-in" data-fragment-index="3" style="flex:0.7; display:flex; flex-direction:column; gap:9px; overflow:hidden; justify-content:center;">
+    <div class="fragment fade-in" data-fragment-index="3" style="flex:0.7; display:flex; flex-direction:column; gap:6px; overflow:hidden; justify-content:center;">
       <div class="callout callout--teal" style="overflow:hidden;">
         <div><strong>VSDM</strong> — Versichertenstammdatenmanagement<br>
         <span style="font-size:0.88em;">eGK-Abgleich gegen das zentrale Versichertenregister → bestätigter Abgleich = vertrauenswürdigste Quelle.</span></div>
