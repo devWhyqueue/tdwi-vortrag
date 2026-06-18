@@ -149,7 +149,7 @@
   </div>
 
   <aside class="notes">
-    [YQ] Sehr gerne. Ich bin Yannik Queisler, Data Engineer bei der Kassenärztlichen Vereinigung Westfalen-Lippe. Mein Alltag ist Spark, Airflow, Delta Lake — und zunehmend ML Engineering. Ich bringe heute die konkrete On-Premise-Umsetzung mit, unser durchgängiges KI-Beispiel und die Lessons Learned aus dem Aufbau. Wichtig zum Kontext: KI ist bei uns ein neues Handlungsfeld. Wir führen das bewusst über greifbare Fachprozesse ein — nicht mit einem großen unternehmensweiten Chatbot, der auf einer wackeligen Datenbasis steht, sondern entlang der Reihenfolge: erst Datenqualität, dann Plattform, dann konkrete Use Cases. Warum diese Reihenfolge so entscheidend ist, dazu kommen wir direkt.
+    [YQ] Sehr gerne. Ich bin Yannik Queisler, Data Engineer bei der Kassenärztlichen Vereinigung Westfalen-Lippe. Kurz gesagt organisiert, sichert und steuert die KVWL die ambulante medizinische Versorgung in Westfalen-Lippe und vertritt dabei die niedergelassenen Ärzt:innen und Psychotherapeut:innen. Mein Alltag ist Spark, Airflow, Delta Lake — und zunehmend ML Engineering. Ich bringe heute die konkrete On-Premise-Umsetzung mit, unser durchgängiges KI-Beispiel und die Lessons Learned aus dem Aufbau. Wichtig zum Kontext: KI ist bei uns ein neues Handlungsfeld. Wir führen das über greifbare Fachprozesse ein und zwar bewusst entlang der Reihenfolge: erst Datenqualität, dann Plattform, dann konkrete Use Cases. Warum diese Reihenfolge so entscheidend ist, dazu kommen wir direkt.
   </aside>
 </section>
 
@@ -1210,7 +1210,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ] Ich will direkt an unseren Leitsatz von vorhin anknüpfen: Der Engpass ist selten der Modellaufruf. Was Machine Learning wirklich benötigt, ist all das hier — und Sie sehen, jede Anforderung hängt an einer Zone der Architektur, die Sebastian gerade gezeigt hat. Wir brauchen konsistente Trainings- und Validierungs-Daten. Wir brauchen nachvollziehbare Feature-Definitionen. Wir brauchen stabile Entitäten — Patient, Praxis, Honorargruppe, Quartal. Wir brauchen Datenqualitätschecks vor dem Training, Daten- und Code-Versionierung, Auditierbarkeit der Ergebnisse. Und wir brauchen Katalog und Lineage, damit Teams Daten nicht nur finden, sondern verantwortbar nutzen. Genau diese Liste lösen wir jetzt an einem konkreten Beispiel ein — und das stabilste Element ganz oben, „stabile Entitäten", ist unser Einstieg.
+    [YQ] Ich will direkt an unseren Leitsatz von vorhin anknüpfen: Der Engpass ist selten der Modellaufruf. Was Machine Learning wirklich benötigt, ist all das hier — und Sie sehen, jede Anforderung hängt an einer Zone der Architektur, die Sebastian gerade gezeigt hat. Wir brauchen konsistente Trainings- und Validierungs-Daten. Wir brauchen nachvollziehbare Feature-Definitionen. Wir brauchen stabile Entitäten. Wir brauchen Datenqualitätschecks vor dem Training, Versionierung und Auditierbarkeit der Ergebnisse. Und wir brauchen Katalog und Lineage, damit Teams Daten nicht nur finden, sondern verantwortbar nutzen. Genau diese Liste lösen wir jetzt an einem konkreten Beispiel ein — und das stabilste Element ganz oben, „stabile Entitäten", ist unser Einstieg.
   </aside>
 </section>
 
@@ -1840,7 +1840,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ] Um zu messen, welcher Ansatz besser ist, braucht man die Wahrheit - man muss wissen, welche Records wirklich zur selben Person gehören. Und genau die hat man in den Echtdaten nicht: Es gibt keinen perfekten, unabhängigen Wahrheitsdatensatz für alle Verknüpfungen. Dazu kommt der Datenschutz - echte Patientendaten können nicht als Entwicklungs- oder Benchmark-Dataset frei verwendet werden. Die Lösung ist ein synthetisches Proxy-Dataset. [auf den Ablauf zeigen] Das gibt kontrollierte Ground Truth über eine `entity_id`, dazu realistische Fehler, Dubletten, Lücken und historische Varianten - und damit eine wiederholbare, vergleichbare Evaluation für alle drei Ansätze. Dieses Testset ist selbst ein versioniertes, reproduzierbares Datenprodukt in der Plattform. Ohne die Plattform-Disziplin - Versionierung, klare Datenprodukte - wäre mein Benchmark nicht reproduzierbar. Genau das meinen wir mit „die Plattform ist der Enabler". Wie dieses Dataset entsteht, ohne dass es frei erfunden ist, zeige ich kurz.
+    [YQ] Um zu messen, welcher Ansatz besser ist, braucht man die Wahrheit - man muss wissen, welche Records wirklich zur selben Person gehören. Und genau die hat man in den Echtdaten nicht: Es gibt keinen perfekten, unabhängigen Wahrheitsdatensatz für alle Verknüpfungen. Dazu kommt der Datenschutz - echte Patientendaten können nicht als Entwicklungs- oder Benchmark-Dataset frei verwendet werden. Die Lösung ist ein synthetisches Proxy-Dataset. [auf den Ablauf zeigen] Das gibt kontrollierte Ground Truth über eine `entity_id`, dazu realistische Fehler, Dubletten, Lücken und historische Varianten - und damit eine wiederholbare, vergleichbare Evaluation für alle drei Ansätze. Dieses Testset ist selbst ein versioniertes, reproduzierbares Datenprodukt in der Plattform. Ohne die Plattform-Disziplin wäre mein Benchmark nicht reproduzierbar. Genau das meinen wir mit „die Plattform ist der Enabler". Wie dieses Dataset entsteht, ohne dass es frei erfunden ist, zeige ich kurz.
   </aside>
 </section>
 
@@ -2138,7 +2138,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ] Ganz kurz und konkret, damit gleich alle die Zahlen lesen können. Die Grundidee: Wir betrachten jedes Paar von Records und fragen - gleiche Person oder nicht? Daraus ergeben sich drei Fälle. Ein True Positive ist ein korrekt verknüpftes Paar. Ein False Positive ist ein false merge - zwei verschiedene Personen fälschlich verbunden. Ein False Negative ist ein übersehener Link - ein split. Daraus zwei Kennzahlen: Precision ist der Anteil korrekter unter den von uns vorhergesagten Links - sie misst also unsere false merges. Recall ist der Anteil gefundener unter den echten Links - sie misst die splits. F1 ist einfach das harmonische Mittel aus beiden. Bei Patientendaten ist die Precision die kritische Größe, weil sie die fachlich kritischen false merges abbildet. Mit diesem Vorwissen schauen wir uns die drei Ansätze an - und starten mit dem amtierenden Modell.
+    [YQ] Ganz kurz und konkret die Grundidee: Wir betrachten jedes Paar von Records und fragen - gleiche Person oder nicht? Daraus ergeben sich vier Fälle. Für Precision, Recall und F1 sind vor allem drei davon relevant: True Positive, False Positive und False Negative. True Negatives gibt es natürlich auch, aber sie dominieren bei paarweisem Record Linkage zahlenmäßig und werden deshalb für diese Kennzahlen nicht verwendet. Ein True Positive ist ein korrekt verknüpftes Paar. Ein False Positive ist ein false merge - zwei verschiedene Personen fälschlich verbunden. Ein False Negative ist ein übersehener Link - ein split. Daraus zwei Kennzahlen: Precision ist der Anteil korrekter unter den von uns vorhergesagten Links - sie misst also unsere false merges. Recall ist der Anteil gefundener unter den echten Links - sie misst die splits. F1 ist einfach das harmonische Mittel aus beiden. Bei Patientendaten ist die Precision die kritische Größe, weil sie die fachlich kritischen false merges abbildet. Mit diesem Vorwissen schauen wir uns die drei Ansätze an - und starten mit dem amtierenden Modell.
   </aside>
 </section>
 
@@ -2150,7 +2150,7 @@ dim/
     Das bestehende Modell ist ein <span class="hl">starker, konservativer Baseline-Ansatz</span> — aber es übersieht viele echte Links.
   </p>
 
-  <div class="zone-map-mini fragment fade-in" data-fragment-index="1" style="margin: 0 auto 18px;">
+  <div class="zone-map-mini" style="margin: 0 auto 18px;">
     <div class="zm-zone zm-landing">Landing</div>
     <span class="zm-arrow">→</span>
     <div class="zm-zone zm-raw">Raw</div>
@@ -2269,7 +2269,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ] Ansatz eins ist unser bestehendes Modell. Wir haben die SQL-Logik als validierbare Python-Variante nachgebaut, die deterministische Kaskade mit den drei Regeln von eben. Und das Ergebnis auf dem Proxy-Dataset ist bemerkenswert: Precision 100 Prozent. Kein einziger false merge. Aber - und das ist die Kehrseite - der Recall liegt nur bei 69 Prozent, der F1 bei knapp 82. Das heißt: Das Modell ist extrem sicher, macht praktisch keine kritischen Fehler, aber es verliert fast ein Drittel der echten Verknüpfungen in splits. Eine sehr guter, konservativer Safety-Baseline - aber mit Luft nach oben. [Enabler-Callback] Übrigens: Dass ich alle drei Ansätze gleich gegen exakt denselben Datenstand teste, ermöglicht erst die unveränderliche Raw-Historie, die Sebastian gezeigt hat. Können wir mehr Links finden, ohne diese perfekte Precision zu opfern? Das war die Frage für Ansatz zwei.
+    [YQ] Ansatz eins ist unser bestehendes Modell. Wir haben die SQL-Logik als validierbare Python-Variante nachgebaut, die deterministische Kaskade mit den drei Regeln von eben. Und das Ergebnis auf dem Proxy-Dataset ist bemerkenswert: Precision 100 Prozent. Kein einziger false merge. Aber - und das ist die Kehrseite - der Recall liegt nur bei 69 Prozent, der F1 bei knapp 82. Das heißt: Das Modell ist extrem sicher, macht praktisch keine kritischen Fehler, aber es verliert fast ein Drittel der echten Verknüpfungen in splits. Eine sehr gute, konservative Safety-Baseline - aber mit Luft nach oben. [Enabler-Callback] Übrigens: Dass ich alle drei Ansätze gleich gegen exakt denselben Datenstand teste, ermöglicht erst die unveränderliche Raw-Historie, die Sebastian gezeigt hat. Können wir mehr Links finden, ohne diese perfekte Precision zu opfern? Das war die Frage für Ansatz zwei.
   </aside>
 </section>
 
@@ -2481,7 +2481,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ] Ansatz zwei nennen wir Hybrid Cascade. Die Idee: exakte Matches zuerst, so wie bisher - aber dort, wo das Modell vorher aufgegeben hat, ein fuzzy Fallback. Damit fangen wir Tippfehler und Schreibvarianten ab. Konkret: Wir nutzen Edit Distance für kurze Namen und Q-Gram-Jaccard für längere, und adaptive Blocking-Grenzen, damit uns die Paarvergleiche nicht explodieren. Die Kaskade hat jetzt fünf Stufen, von EGK exakt bis hin zu fuzzy Name plus PLZ plus Geburtsjahr. [auf den Pfeil nach oben zeigen] Und das Ergebnis: Der Recall springt von 69 auf fast 82 Prozent - plus zwölfeinhalb Prozentpunkte. Und die Precision? Bleibt bei 99,91 Prozent - praktisch unverändert. Wir finden also deutlich mehr echte Links und bezahlen kaum etwas dafür. Geht es noch besser - mit einem grundlegend anderen Ansatz?
+    [YQ] Ansatz zwei nennen wir Hybrid Cascade. Die Idee: exakte Matches zuerst, so wie bisher - aber dort, wo das Modell vorher aufgegeben hat, ein fuzzy Fallback. Damit fangen wir Tippfehler und Schreibvarianten ab. Die Kaskade hat jetzt fünf Stufen, von EGK exakt bis hin zu fuzzy Name plus PLZ plus Geburtsjahr. [auf den Pfeil nach oben zeigen] Und das Ergebnis: Der Recall springt von 69 auf fast 82 Prozent - plus zwölfeinhalb Prozentpunkte. Und die Precision? Bleibt bei 99,91 Prozent - praktisch unverändert. Wir finden also deutlich mehr echte Links und bezahlen kaum etwas dafür. Geht es noch besser - mit einem grundlegend anderen Ansatz?
   </aside>
 </section>
 
@@ -2608,7 +2608,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ] Ansatz drei ist methodisch der spannendste: FlexRL, ein probabilistisches Modell aus einem Paper von Robach et al. aus 2024. Statt fester Regeln macht es Unsicherheit explizit. Vereinfacht gesagt: Es betrachtet unsere Attribute als teilweise identifizierende Variablen und lernt mit einem EM-Algorithmus aus den Daten selbst drei Dinge: wie wahrscheinlich ein Paar überhaupt ein Link ist, wie fehleranfällig jede einzelne Variable ist, und wie oft sie rein zufällig übereinstimmt. Ein Beispiel: Ein Geburtsdatum stimmt auch mal zufällig überein, eine Versichertennummer fast nie - genau das lernt das Modell. Wir setzen einen bewusst konservativen Schwellenwert von 0,9, weil false merges bei Patientendaten besonders kritisch sind. Wie schlägt sich dieser dritte Ansatz im direkten Vergleich?
+    [YQ] Ansatz drei ist methodisch der spannendste: FlexRL, ein probabilistisches Modell aus einem Paper von Robach et al. aus 2024. Statt fester Regeln macht es Unsicherheit explizit. Vereinfacht gesagt: Es betrachtet unsere Attribute als teilweise identifizierende Variablen und lernt mit einem EM-Algorithmus aus den Daten selbst drei Dinge: wie wahrscheinlich ein Paar überhaupt ein Link ist, wie fehleranfällig jede einzelne Variable ist, und wie oft sie rein zufällig übereinstimmt. Ein Beispiel: Ein Geburtsdatum stimmt auch mal zufällig überein, eine Versichertennummer fast nie - genau das lernt das Modell. Wir setzen einen bewusst konservativen Schwellenwert von 0.9, weil false merges bei Patientendaten besonders kritisch sind. Wie schlägt sich dieser dritte Ansatz im direkten Vergleich?
   </aside>
 </section>
 
@@ -2730,7 +2730,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ, das ist der Höhepunkt - Tempo rausnehmen] Hier ist das Gesamtbild. [auf die Balken zeigen] Schauen Sie auf die Precision - alle drei stehen quasi bei 100 Prozent: 100, 99,91, 99,89. Der kritische Fehler bleibt über alle Ansätze hinweg praktisch ausgeschlossen. Und jetzt der Recall: 69 Prozent beim bestehenden Modell, 82 bei der Hybrid Cascade, und 92 Prozent bei FlexRL. [Pause] Wir verknüpfen deutlich mehr echte Patienten korrekt zusammen - der Recall steigt um über zwanzig Prozentpunkte - und das praktisch ohne neue Fehlverschmelzungen. Der F1 geht von 82 auf fast 96. Aber - und das ist die eigentliche Botschaft - die Entscheidung ist trotzdem keine rein technische. Sie ist fachlich: Sind uns die wenigen zusätzlichen false merges den großen Recall-Gewinn wert? Welche unsicheren Fälle schicken wir ins manuelle Review? Welche Schwelle ist im Produktivbetrieb vertretbar? Nicht der komplexeste Ansatz gewinnt automatisch, sondern der mit dem fachlich akzeptablen Trade-off. Doch eine gefundene Verknüpfung allein reicht noch nicht.
+    [YQ, das ist der Höhepunkt - Tempo rausnehmen] Hier ist das Gesamtbild. [auf die Balken zeigen] Schauen Sie auf die Precision - alle drei stehen quasi bei 100 Prozent. Der kritische Fehler bleibt über alle Ansätze hinweg praktisch ausgeschlossen. Und jetzt der Recall: 69 Prozent beim bestehenden Modell, 82 bei der Hybrid Cascade, und 92 Prozent bei FlexRL. [Pause] Wir verknüpfen deutlich mehr echte Patienten korrekt zusammen - der Recall steigt um über zwanzig Prozentpunkte - und das praktisch ohne neue Fehlverschmelzungen. Der F1 geht von 82 auf fast 96. Aber - und das ist die eigentliche Botschaft - die Entscheidung ist trotzdem keine rein technische. Sie ist fachlich: Sind uns die wenigen zusätzlichen false merges den großen Recall-Gewinn wert? Welche unsicheren Fälle schicken wir ins manuelle Review? Nicht der komplexeste Ansatz gewinnt automatisch, sondern der mit dem fachlich akzeptablen Trade-off. Doch eine gefundene Verknüpfung allein reicht noch nicht.
   </aside>
 </section>
 
@@ -2848,7 +2848,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ] Record Linkage sagt uns nur: Diese Records gehören zur selben Person. Aber welche Adresse, welche Schreibweise des Namens ist jetzt die richtige? Das löst das Survivorship - und damit wandern wir in der Architektur eine Zone weiter, in die Access Zone. [auf die Zonen-Map zeigen] Wir bauen pro Person einen konsolidierten Patientenstamm, einen Golden Record. Aus Zeitgründen gehe ich nicht im Detail auf die Strategie ein. Was wichtig ist: Da unser Proxy-Dataset die echten Golden Records mitbringt, können wir sogar diesen Survivorship-Schritt messen. So weit die Evaluation - aber ein Notebook ist noch keine Produktion.
+    [YQ] Record Linkage sagt uns nur: Diese Records gehören zur selben Person. Aber welche Adresse, welche Schreibweise des Namens ist jetzt die richtige? Das löst das Survivorship - und damit wandern wir in der Architektur eine Zone weiter, in die Access Zone. [auf die Zonen-Map zeigen] Wir bauen pro Person einen konsolidierten Patientenstamm, einen Golden Record. Aus Zeitgründen gehe ich nicht im Detail auf die Strategie ein. Was wichtig ist: Da unser Proxy-Dataset die echten Golden Records mitbringt, können wir sogar diesen Survivorship-Schritt messen. So weit die Evaluation - aber ein Notebook ist noch keine produktive Pipeline.
   </aside>
 </section>
 
@@ -2936,7 +2936,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ] Und hier schließt sich der Kreis zur Architektur. [auf die durchgehende Linie zeigen] Was als Exploration im Notebook begann - Prozess verstehen, Proxy-Dataset bauen, Ansätze evaluieren, Fehler analysieren -, wandert jetzt als produktiver Pfad durch genau die Zonen, die Sebastian zu Beginn gezeigt hat: In Raw liegen die historisierten Quellvarianten. In Process passiert Standardisierung und die eigentliche Patientenbildung. Und in Access entsteht der konsolidierte Patientenstamm als konsumierbares Datenprodukt. Und jetzt sehen Sie, was die Plattform liefert, das ein Notebook allein nie könnte: reproduzierbare Laufparameter, versionierte Schwellen und Algorithmusversionen, Qualitätsmetriken bei jedem Lauf, und ein Monitoring der Split- und Merge-Risiken. Das ist unser Leitsatz in Aktion - die Plattform macht aus einem klugen Modell einen verantwortbaren, wiederholbaren Prozess. So viel zu unserem Leitbeispiel. Wir haben aber noch ein zweites - und das erzählt eine andere, ebenso lehrreiche Geschichte.
+    [YQ] Und hier schließt sich der Kreis zur Architektur. Was als Exploration im Notebook begann - Prozess verstehen, Proxy-Dataset bauen, Ansätze evaluieren, Fehler analysieren -, wandert jetzt als produktiver Pfad durch genau die Zonen, die Sebastian zu Beginn gezeigt hat: In Raw liegen die historisierten Quellvarianten. In Process passiert Standardisierung und die eigentliche Patientenbildung. Und in Access entsteht der konsolidierte Patientenstamm als konsumierbares Datenprodukt. Und jetzt sehen Sie, was die Plattform liefert, das ein Notebook allein nie könnte: reproduzierbare Laufparameter, versionierte Schwellen und Algorithmusversionen, Qualitätsmetriken bei jedem Lauf, und ein Monitoring der Split- und Merge-Risiken. Das ist unser Leitsatz in Aktion - die Plattform macht aus einem klugen Modell einen verantwortbaren, wiederholbaren Prozess.
   </aside>
 </section>
 
@@ -3007,7 +3007,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ, bewusst zügig - nur ein kurzer Beat] Wir haben auf derselben Plattform einen zweiten ML-Use-Case gebaut - Anomalieerkennung in Abrechnungsdaten. Technisch alles dran: Feature Engineering, ein Anomaliemodell namens ECOD, Explainability und sogar eine Review-App. Als Demonstration der Pipeline von Process bis zur fertigen ML-Anwendung ist das richtig schön. [auf die gelbe Kachel zeigen] Der Unterschied zur Patientenbildung ist aber entscheidend: Hier haben wir noch kein automatisiertes Ground-Truth-Dataset, die fachliche Validierung der Treffer läuft noch, und genau das macht es zum nächsten Projekt statt zur heutigen Hauptstory. Deshalb steht die Patientenbildung im Mittelpunkt und dieser Fall zeigt, was als Nächstes validierbar gemacht werden muss.
+    [YQ, bewusst zügig - nur ein kurzer Beat] Wir haben auf derselben Plattform einen zweiten ML-Use-Case gebaut - Anomalieerkennung in Abrechnungsdaten. Technisch alles dabei: Feature Engineering, ein Anomaliemodell aus der Literatur und sogar eine Review-App. Der Unterschied zur Patientenbildung ist aber entscheidend: Hier haben wir noch kein automatisiertes Ground-Truth-Dataset, die fachliche Validierung der Treffer läuft noch, und genau das macht es zum nächsten Projekt statt zur heutigen Hauptstory. Deshalb steht die Patientenbildung im Mittelpunkt und dieser Fall zeigt, was als Nächstes validierbar gemacht werden muss.
   </aside>
 </section>
 
@@ -3164,7 +3164,7 @@ dim/
         <p>Prototypen brauchen klare Validierungsstrategie bevor sie zur tragenden Story werden.</p>
       </div>
 
-      <div class="do-card fragment fade-in" data-fragment-index="5" style="border-top-color:var(--teal);">
+      <div class="do-card fragment fade-in" data-fragment-index="4" style="border-top-color:var(--teal);">
         <div class="card-title" style="color:var(--teal); display:flex; align-items:center; gap:5px;">
           <svg viewBox="0 0 14 14" width="13" height="13" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
             <path d="M2 11 L6 7 L8.5 9.5 L12.5 3" stroke="var(--teal)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
@@ -3180,14 +3180,14 @@ dim/
     </div>
 
     <div style="display:flex; justify-content:center; padding-top:16px; padding-bottom:8px;">
-      <div class="callout callout--teal fragment fade-in" data-fragment-index="6" style="width:fit-content;">
+      <div class="callout callout--teal fragment fade-in" data-fragment-index="5" style="width:fit-content;">
         <strong>Fazit:</strong> Der Engpass ist nicht das Modell — Entitäten, Features und Validierbarkeit entscheiden.
       </div>
     </div>
   </div>
 
   <aside class="notes">
-    [YQ] Und auf der KI-Seite. Die Kernlesson deckt sich genau mit unserem Leitsatz: Produktive KI beginnt vor dem Modell - bei Entitäten, Features, Historie, Governance und fachlicher Prüfbarkeit. Stabile Entitäten sind nicht nur Stammdaten, sie sind zentrale ML-Infrastruktur. Die Patientenbildung hat uns gelehrt, dass nicht alle Fehler gleich sind - false merges sind oft kritischer als verpasste Matches, und das muss man bewusst in die Schwellen einbauen. Es hat sich gelohnt, den Fachprozess früh auf Community-Begriffe zu mappen - aus „Patientenbildung" wurde Record Linkage und damit anschlussfähig an Forschung und Standards. Recherche vor der Implementierung spart Umwege. Modellmetriken allein reichen nicht - die fachliche Validierung entscheidet. Und genau deshalb sind die Abrechnungsanomalien das nächste Projekt: Ein Prototyp braucht eine klare Validierungsstrategie, bevor er zur Hauptstory wird. Was davon würden wir wieder so machen?
+    [YQ] Und auf der KI-Seite. Die Kernlesson deckt sich genau mit unserem Leitsatz: Produktive KI beginnt vor dem Modell. Stabile Entitäten sind nicht nur Stammdaten, sie sind zentrale ML-Infrastruktur. Die Patientenbildung hat uns gelehrt, dass nicht alle Fehler gleich sind - false merges sind oft kritischer als verpasste Matches, und das muss man bewusst in die Schwellen einbauen. Es hat sich gelohnt, den Fachprozess früh auf Community-Begriffe zu mappen - aus „Patientenbildung" wurde Record Linkage und damit anschlussfähig an Forschung und Standards. Recherche vor der Implementierung spart Umwege. Modellmetriken allein reichen nicht - die fachliche Validierung entscheidet. Was davon würden wir wieder so machen?
   </aside>
 </section>
 
@@ -3321,7 +3321,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [SG] Und die Anti-Patterns - das, was wir gesehen haben und was wir Ihnen ersparen wollen. Layer ohne klare Verträge - das war unser Ausgangsproblem. Landing-Zonen, die heimlich zum Dauerarchiv werden. [YQ] Notebook-Logik ohne Pfad in die Produktion. Datenprodukte ohne fachliche Semantik. ML ohne Datenqualitätsstrategie. KI-Initiativen, die mit einem großen Chatbot starten, bevor Datenqualität, Ownership und Lineage überhaupt geklärt sind - das ist genau die Reihenfolge, vor der wir am Anfang gewarnt haben. Scores ohne Erklärbarkeit und ohne fachlichen Review. Und der Klassiker: Toolfokus statt Architekturprinzipien. Damit sind wir am Ende - und kommen zurück zum Anfang.
+    [SG] Und die Anti-Patterns - das, was wir gesehen haben und was wir Ihnen ersparen wollen. Layer ohne klare Verträge - das war unser Ausgangsproblem. Landing-Zonen, die heimlich zum Dauerarchiv werden. [YQ] Notebook-Logik ohne Pfad in die Produktion. KI-Initiativen vor Datenqualitätsstrategie - das ist genau die Reihenfolge, vor der wir am Anfang gewarnt haben. Scores ohne fachliches Review. Und der Klassiker: Toolfokus statt Architekturprinzipien. Damit sind wir am Ende - und kommen zurück zum Anfang.
   </aside>
 </section>
 
@@ -3377,7 +3377,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ] Fassen wir zusammen. Wir haben Ihnen eine Plattform gezeigt, die von den Rohdaten bis zur ML-Anwendung trägt - mit reproduzierbaren Datenständen statt Ad-hoc-Extrakten, mit klaren Verantwortlichkeiten statt gewachsener Zonenlogik, und mit Datenqualität als Voraussetzung für Modellqualität. Wir haben KI nicht als abstraktes Technologieprogramm eingeführt, sondern über konkrete, validierbare Use Cases - die Patientenbildung als Record Linkage im Zentrum, die Abrechnungsanomalien als nächstes Projekt auf derselben Plattform.
+    [YQ] Fassen wir zusammen. Wir haben Ihnen eine Plattform gezeigt, die von den Rohdaten bis zur ML-Anwendung trägt - mit reproduzierbaren Datenständen statt Ad-hoc-Extrakten, mit klaren Verantwortlichkeiten statt gewachsener Zonenlogik, und mit Datenqualität als Voraussetzung für Modellqualität. Wir haben KI nicht als abstraktes Technologieprogramm eingeführt, sondern über konkrete, validierbare Use Cases - die Patientenbildung als Record Linkage im Zentrum.
   </aside>
 </section>
 
