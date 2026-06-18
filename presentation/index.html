@@ -1350,9 +1350,7 @@ dim/
   <aside class="notes">
     [YQ] Unser Leitbeispiel heißt intern „Patientenbildung". Der entscheidende Schritt war zu erkennen: Das ist kein KVWL-Sonderfall, sondern ein bekanntes Problem aus der Forschung — „Patient Record Linkage". [auf das Visual zeigen] Wir haben dieselbe Person in mehreren Quellen, mit leicht abweichenden Schreibweisen, und wollen sie sicher zu einer Person zusammenführen. Das Ziel sind stabile Patient-Entitäten — die Grundlage für Analysen und für jeden nachgelagerten ML-Use-Case. Anschließend bauen wir über Survivorship einen Golden Record.
     
-    Konkret: Wir haben heterogene Quellen — interne Daten, nachbearbeitete Abrechnungsdaten und Daten aus externen Quellen. Wir haben Identifikatoren und Attribute: die EGK-Versichertennummer, Vorname, Nachname, Geburtsdatum, PLZ. Und wir haben jede Menge Realität: unvollständige Attribute, Schreibvarianten und Tippfehler, fehlende oder wechselnde Nummern, historische Stände über viele Quartale.
-    
-    Eine kleine Randnotiz hierzu: Das ist klassisches ML, kein Deep-Learning-Hype — und genau das ist oft der kürzeste Weg zu messbarem Nutzen auf strukturierten Unternehmensdaten. Bevor wir technisch werden, müssen Sie verstehen, warum dieses Problem so heikel ist.
+    Eine kleine Randnotiz hierzu: Das ist klassisches ML, kein Deep-Learning-Hype — und genau das ist oft der kürzeste Weg zu messbarem Nutzen auf strukturierten Unternehmensdaten. Bevor wir technisch werden, müssen Sie verstehen, warum dieses Problem heikel sein kann.
   </aside>
 </section>
 
@@ -1597,7 +1595,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [YQ] Der erste Schritt war Verstehen des Ist-Zustands. Es gab bereits einen Prozess — eine Stored Procedure. [auf die Treppe zeigen] Im Kern ist das eine sequentielle Matching-Kaskade mit drei Regeln: Erst Versichertennummer plus Geburtsdatum. Dann Versichertennummer plus Vor- und Nachname. Und schließlich Vorname, Nachname, Geburtsdatum und PLZ. Wer einmal gematcht ist, wird in späteren Phasen nicht erneut bewertet. Neue Patientencluster entstehen über transitive Abschlüsse — wenn A zu B passt und B zu C, dann gehören alle drei zusammen. Und eine Lookup-Tabelle merkt sich neue Attributkombinationen für künftige Läufe. Indem wir den bestehenden Prozess sauber dokumentiert haben, wurden seine Stärken sichtbar, aber auch seine Grenzen präzise benennbar — und damit der Vergleich mit wissenschaftlichen Ansätzen überhaupt erst möglich. Wie wir bei diesem Vergleich vorgegangen sind, zeige ich jetzt.
+    [YQ] Der erste Schritt war Verstehen des Ist-Zustands. Es gab bereits einen Prozess — eine Stored Procedure. [auf die Treppe zeigen] Im Kern ist das eine sequentielle Matching-Kaskade mit drei Regeln: Erst Versichertennummer plus Geburtsdatum. Dann Versichertennummer plus Vor- und Nachname. Und schließlich Vorname, Nachname, Geburtsdatum und PLZ. Wer einmal gematcht ist, wird in späteren Phasen nicht erneut bewertet. Neue Patientencluster entstehen über transitive Abschlüsse — wenn A zu B passt und B zu C, dann gehören alle drei zusammen. Indem wir den bestehenden Prozess sauber dokumentiert haben, wurden seine Stärken sichtbar, aber auch seine Grenzen präzise benennbar — und damit der Vergleich mit wissenschaftlichen Ansätzen überhaupt erst möglich. Wie wir bei diesem Vergleich vorgegangen sind, zeige ich jetzt.
   </aside>
 </section>
 
@@ -3294,7 +3292,7 @@ dim/
         <p>ML ohne Datenqualitätsstrategie macht Modellqualität nicht belastbar.</p>
       </div>
 
-      <div class="practice-card anti-card anti-card--stop fragment fade-in" data-fragment-index="3">
+      <div class="practice-card anti-card anti-card--stop fragment fade-in" data-fragment-index="2">
         <div class="practice-card__top">
           <span class="practice-card__title">Der KI-Hype-Fehler</span>
           <span class="practice-card__icon">!</span>
@@ -3302,7 +3300,7 @@ dim/
         <p>Mit einem großen GenAI-Chatbot starten, bevor fundamentale Datenqualität geklärt ist.</p>
       </div>
 
-      <div class="practice-card anti-card fragment fade-in" data-fragment-index="4">
+      <div class="practice-card anti-card fragment fade-in" data-fragment-index="2">
         <div class="practice-card__top">
           <span class="practice-card__title">Blackbox-Modelle</span>
           <span class="practice-card__icon">!</span>
@@ -3310,7 +3308,7 @@ dim/
         <p>Scores in den Raum werfen ohne Erklärbarkeit und fachlichen Review-Prozess.</p>
       </div>
 
-      <div class="practice-card anti-card fragment fade-in" data-fragment-index="5">
+      <div class="practice-card anti-card fragment fade-in" data-fragment-index="2">
         <div class="practice-card__top">
           <span class="practice-card__title">Toolfokus</span>
           <span class="practice-card__icon">!</span>
