@@ -349,17 +349,23 @@
 .zone-map-mini {
   display: flex;
   gap: 3px;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   margin: 0 auto 14px;
   font-size: 0.7em;
 }
 .zone-map-mini .zm-zone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 3px 7px;
+  min-height: 1.8em;
   border-radius: 3px;
+  box-sizing: border-box;
   color: white;
   font-weight: 600;
   font-size: 0.85em;
+  line-height: 1;
   opacity: 0.45;
 }
 .zone-map-mini .zm-zone.active { opacity: 1; }
@@ -387,7 +393,14 @@
 .zm-zone.zm-raw     { background: var(--teal-deep); }
 .zm-zone.zm-process { background: var(--teal); }
 .zm-zone.zm-access  { background: var(--navy); }
-.zone-map-mini .zm-arrow { color: var(--steel); font-size: 0.8em; }
+.zone-map-mini .zm-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--steel);
+  font-size: 0.8em;
+  line-height: 1;
+}
 
 .zone-map-mini .zm-arrow,
 .orchestration-arrow,

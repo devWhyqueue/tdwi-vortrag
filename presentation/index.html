@@ -61,9 +61,9 @@
   </div>
 
   <aside class="notes">
-    <p>[SG] Herzlich willkommen, schön, dass Sie da sind. Unser Titel klingt erst einmal nach einem dieser großen Plattform-Versprechen — „Lakehouse als Enabler für Machine Learning". Genau das wollen wir aber nicht abstrakt halten. Wir zeigen Ihnen heute eine konkrete Implementierung, die bei der Kassenärztlichen Vereinigung Westfalen-Lippe läuft — Open Source, On-Premise, von den Rohdaten bis zum ML-Modell.</p>
+    <p>[SG] Herzlich willkommen, schön, dass ihr da seid. Unser Titel klingt erst einmal nach einem dieser großen Plattform-Versprechen — „Lakehouse als Enabler für Machine Learning". Genau das wollen wir aber nicht abstrakt halten. Wir zeigen euch heute eine konkrete Implementierung, die bei der Kassenärztlichen Vereinigung Westfalen-Lippe läuft — Open Source, On-Premise, von den Rohdaten bis zum ML-Modell.</p>
 
-    <p><strong>[YQ]</strong> Und wir nehmen Sie an einem <strong>echten Fachproblem</strong> mit, an dem man am Ende sogar messen kann, ob sich der ganze Aufwand gelohnt hat.</p>
+    <p><strong>[YQ]</strong> Und wir nehmen euch an einem <strong>echten Fachproblem</strong> mit, an dem man am Ende sogar messen kann, ob sich der ganze Aufwand gelohnt hat.</p>
     <p>Die Leitfrage über allem: <strong>Welche Datenplattform braucht man eigentlich</strong>, damit Data Engineering und Machine Learning im Gesundheitswesen produktiv funktionieren? Dazu stellen wir uns kurz vor.</p>
   </aside>
 </section>
@@ -312,7 +312,7 @@
     <p>Wir starten bei der <strong>Ausgangslage</strong> — einer klassischen SSIS- und DWH-Welt mit uneinheitlichen Zonen.</p>
     <p>Dann zeigt Sebastian die <strong>Zielarchitektur</strong>, das Multi-Zone-Functional Lakehouse, samt Orchestrierung und Technologieentscheidungen.</p>
     <p>Danach übernehme ich mit unserem Leitbeispiel: dem Prozess der <strong>Patientenbildung</strong>, die im Kern ein <strong>Record-Linkage- und Survivorship-Problem</strong> ist.</p>
-    <p>Ein zweites Beispiel — <strong>Anomalieerkennung in Abrechnungsdaten</strong> — streifen wir bewusst kürzer, und ich sage Ihnen später auch, warum.</p>
+    <p>Ein zweites Beispiel — <strong>Anomalieerkennung in Abrechnungsdaten</strong> — streifen wir bewusst kürzer, und ich sage euch später auch, warum.</p>
     <p>Der rote Faden ist dabei immer: <strong>Nutzen früh greifbar machen, ohne die Datenplattform zu überspringen.</strong></p>
     <p>Und ganz am Ende stehen die Lessons Learned — was sich bewährt hat und was schwierig bleibt. Beginnen wir zunächst mit der Ausgangslage.</p>
   </aside>
@@ -564,7 +564,7 @@
   </div>
 
   <aside class="notes">
-    [SG] Das hier ist das zentrale Bild des Vortrags — merken Sie es sich, es kommt später im ML-Teil immer wieder. Wir definieren Zonen jetzt über ihre Funktion und über klare Verträge, nicht mehr über historisch gewachsene Namen. Von links nach rechts: Die Landing Zone ist optional und transient. Die Raw Zone ist die unveränderliche Rohdatenhistorie. Die Process Zone sorgt für technische Qualität und Standardisierung. Und die Access Zone enthält die fachlichen Datenprodukte — für BI, Analytics und eben auch für ML. Horizontal also die Zonen mit klaren Verträgen, und vertikal ziehen sich Orchestrierung und Governance durch alle Schichten. [kurze Pause] Der Trick ist: Jede Zone hat eine klar definierte Aufgabe und ein Versprechen an die nächste. Gehen wir die wichtigen Zonen einzeln durch.
+    [SG] Das hier ist das zentrale Bild des Vortrags — merkt es euch, es kommt später im ML-Teil immer wieder. Wir definieren Zonen jetzt über ihre Funktion und über klare Verträge, nicht mehr über historisch gewachsene Namen. Von links nach rechts: Die Landing Zone ist optional und transient. Die Raw Zone ist die unveränderliche Rohdatenhistorie. Die Process Zone sorgt für technische Qualität und Standardisierung. Und die Access Zone enthält die fachlichen Datenprodukte — für BI, Analytics und eben auch für ML. Horizontal also die Zonen mit klaren Verträgen, und vertikal ziehen sich Orchestrierung und Governance durch alle Schichten. [kurze Pause] Der Trick ist: Jede Zone hat eine klar definierte Aufgabe und ein Versprechen an die nächste. Gehen wir die wichtigen Zonen einzeln durch.
   </aside>
 </section>
 
@@ -942,7 +942,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [SG] Jetzt zu den Werkzeugen — und Sie sehen, sie ordnen sich sauber den Zonen zu. PySpark nutzen wir für Ingestion, technische Standardisierung, große Datenmengen und für komplexe Algorithmen, die man in SQL nicht sinnvoll abbildet — das wird im ML-Teil wichtig. dbt setzen wir für die fachlichen Modelle in der Access Zone ein, inklusive Tests, Dokumentation und Lineage. Delta Lake nutzen wir in Process und Access — ACID, Schema Enforcement, MERGE-Upserts, Time Travel. Der Hive Metastore gibt uns zentralen Tabellen- und Metadatenzugriff. Und DataHub ist die Brücke zwischen technischen Tabellen und fachlicher Nutzbarkeit — Katalog, Ownership, Lineage, Data Contracts. Wie wir das orchestrieren, sehen Sie als Nächstes.
+    [SG] Jetzt zu den Werkzeugen — und ihr seht, sie ordnen sich sauber den Zonen zu. PySpark nutzen wir für Ingestion, technische Standardisierung, große Datenmengen und für komplexe Algorithmen, die man in SQL nicht sinnvoll abbildet — das wird im ML-Teil wichtig. dbt setzen wir für die fachlichen Modelle in der Access Zone ein, inklusive Tests, Dokumentation und Lineage. Delta Lake nutzen wir in Process und Access — ACID, Schema Enforcement, MERGE-Upserts, Time Travel. Der Hive Metastore gibt uns zentralen Tabellen- und Metadatenzugriff. Und DataHub ist die Brücke zwischen technischen Tabellen und fachlicher Nutzbarkeit — Katalog, Ownership, Lineage, Data Contracts. Wie wir das orchestrieren, seht ihr als Nächstes.
   </aside>
 </section>
 
@@ -1131,7 +1131,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [SG] Die klare Antwort ist: nein. Enterprise-grade Lakehouse heißt nicht, dass man am ersten Tag ein Kubernetes-Cluster oder einen großen Cloud-Anbieter braucht. Wir sind bei der KVWL mit drei Red-Hat-Umgebungen gestartet — dev, test, prod —, mit Podman für Containerisierung und Betrieb, und das mit einem sehr kleinen Admin-Footprint. Das Ergebnis: Wir verarbeiten bereits mit diesem einfachen Setup große Datenmengen, mit klaren Umgebungen und reproduzierbaren Containern. Und die Weiterentwicklung gibt uns recht — inzwischen gibt es ein unternehmensweites Kubernetes, und wir ziehen Schritt für Schritt um, ohne großen Architekturbruch, weil eben alles sauber containerisiert war. Die Lesson, die wir Ihnen mitgeben: so simpel wie möglich starten und die technische Reife gezielt ausbauen.
+    [SG] Die klare Antwort ist: nein. Enterprise-grade Lakehouse heißt nicht, dass man am ersten Tag ein Kubernetes-Cluster oder einen großen Cloud-Anbieter braucht. Wir sind bei der KVWL mit drei Red-Hat-Umgebungen gestartet — dev, test, prod —, mit Podman für Containerisierung und Betrieb, und das mit einem sehr kleinen Admin-Footprint. Das Ergebnis: Wir verarbeiten bereits mit diesem einfachen Setup große Datenmengen, mit klaren Umgebungen und reproduzierbaren Containern. Und die Weiterentwicklung gibt uns recht — inzwischen gibt es ein unternehmensweites Kubernetes, und wir ziehen Schritt für Schritt um, ohne großen Architekturbruch, weil eben alles sauber containerisiert war. Die Lesson dabei: so simpel wie möglich starten und die technische Reife gezielt ausbauen.
   </aside>
 </section>
 
@@ -1230,7 +1230,7 @@ dim/
 
   <aside class="notes">
     <p><strong>[YQ]</strong> Ich will direkt an unseren Leitsatz von vorhin anknüpfen: <strong>Der Engpass ist selten der Modellaufruf.</strong></p>
-    <p>Was Machine Learning wirklich benötigt, ist all das hier — und Sie sehen, Anforderungen hängen an den Zonen der Architektur, die Sebastian gerade gezeigt hat.</p>
+    <p>Was Machine Learning wirklich benötigt, ist all das hier — und ihr seht, Anforderungen hängen an den Zonen der Architektur, die Sebastian gerade gezeigt hat.</p>
     <p>Wir brauchen <strong>konsistente Trainings- und Validierungs-Daten</strong>. Wir brauchen <strong>stabile Entitäten</strong>. Wir brauchen <strong>nachvollziehbare Feature-Definitionen</strong>.</p>
     <p>Wir brauchen <strong>Datenqualitätschecks vor dem Training</strong>, <strong>Versionierung</strong> und <strong>Auditierbarkeit der Ergebnisse</strong>.</p>
     <p>Und wir brauchen <strong>Katalog und Lineage</strong>, damit Teams Daten nicht nur finden, sondern verantwortbar nutzen.</p>
@@ -2103,7 +2103,7 @@ dim/
   <aside class="notes">
     <p><strong>[YQ]</strong> Genau das leisten die Proxy-Daten: Sie machen aus einer fachlichen Diskussion - „welcher Ansatz ist besser?" - eine <strong>messbare Engineering-Frage</strong>.</p>
     <p>Als Ground Truth haben wir die <strong>`entity_id`</strong> für die wahren Personencluster und die Golden-Record-Felder für das Survivorship.</p>
-    <p><em>[auf den rot markierten Quadranten zeigen]</em> Und hier sehen Sie die Stakes von eben wieder: Der <strong>false positive</strong>, der <strong>false merge</strong>, ist rot - er ist bei Patientendaten fachlich riskanter als ein verpasster Match.</p>
+    <p><em>[auf den rot markierten Quadranten zeigen]</em> Und hier seht ihr die Stakes von eben wieder: Der <strong>false positive</strong>, der <strong>false merge</strong>, ist rot - er ist bei Patientendaten fachlich riskanter als ein verpasster Match.</p>
     <p>Das heißt für uns: <strong>Modellparameter bewusst konservativ wählen</strong>.</p>
     <p>Und wir lassen es nicht bei Zahlen - wir exportieren false positives und false negatives und schauen sie uns qualitativ an, um typische Fehlermuster zu verstehen.</p>
     <p>Für alle, die nicht täglich mit Record Linkage zu tun haben, folgt eine kurze Einführung der Vergleichsmetriken.</p>
@@ -2810,7 +2810,7 @@ dim/
 
   <aside class="notes">
     <p><strong>[YQ, das ist der Höhepunkt - Tempo rausnehmen]</strong> Hier ist das Gesamtbild.</p>
-    <p><em>[auf die Balken zeigen]</em> Schauen Sie auf die <strong>Precision</strong> - alle drei stehen quasi bei 100 Prozent. Der kritische Fehler bleibt über alle Ansätze hinweg praktisch ausgeschlossen.</p>
+    <p><em>[auf die Balken zeigen]</em> Schaut auf die <strong>Precision</strong> - alle drei stehen quasi bei 100 Prozent. Der kritische Fehler bleibt über alle Ansätze hinweg praktisch ausgeschlossen.</p>
     <p>Und jetzt der <strong>Recall</strong>: 69 Prozent beim bestehenden Modell, 82 bei der Hybrid Cascade, und <strong>92 Prozent bei FlexRL</strong>.</p>
     <p><em>[Pause]</em> Wir verknüpfen deutlich mehr echte Patienten korrekt zusammen - der Recall steigt um über zwanzig Prozentpunkte - und das praktisch ohne neue Fehlverschmelzungen. Der F1 geht von 82 auf fast 96.</p>
     <p>Aber - und das ist die eigentliche Botschaft - die Entscheidung ist trotzdem <strong>keine rein technische</strong>.</p>
@@ -2963,28 +2963,28 @@ dim/
     <!-- Zone map with right sidebar -->
     <div class="fragment fade-in" data-fragment-index="2" style="display:flex; gap:10px; align-items:stretch; min-height:150px;">
 
-      <div class="zone-map" style="flex:1;">
-        <div class="zone zone--raw" style="flex:1.1; border:2px solid var(--green); justify-content:center;">
+      <div class="zone-map" style="flex:1; display:grid; grid-template-columns:1.1fr 36px 1.1fr 36px 1.1fr; align-items:stretch;">
+        <div class="zone zone--raw" style="border:2px solid var(--green); justify-content:flex-start; align-self:stretch; height:100%; box-sizing:border-box; padding-top:12px;">
           <div class="zone__label">Raw Zone</div>
           <p>Historisierte Quellvarianten</p>
         </div>
-        <div style="display:flex; align-items:center; justify-content:center; flex-shrink:0; width:36px; background:var(--bg-soft);">
+        <div style="display:flex; align-items:center; justify-content:center; background:var(--bg-soft); align-self:stretch;">
           <svg viewBox="0 0 40 40" width="30" height="30" xmlns="http://www.w3.org/2000/svg">
             <path d="M 5 20 L 30 20" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"/>
             <polygon points="26,15 35,20 26,25" fill="var(--green)"/>
           </svg>
         </div>
-        <div class="zone zone--process" style="flex:1.1; border:2px solid var(--green); justify-content:center;">
+        <div class="zone zone--process" style="border:2px solid var(--green); justify-content:flex-start; align-self:stretch; height:100%; box-sizing:border-box; padding-top:12px;">
           <div class="zone__label">Process Zone ★</div>
           <p>Standardisierung + Patientenbildung</p>
         </div>
-        <div style="display:flex; align-items:center; justify-content:center; flex-shrink:0; width:36px; background:var(--bg-soft);">
+        <div style="display:flex; align-items:center; justify-content:center; background:var(--bg-soft); align-self:stretch;">
           <svg viewBox="0 0 40 40" width="30" height="30" xmlns="http://www.w3.org/2000/svg">
             <path d="M 5 20 L 30 20" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"/>
             <polygon points="26,15 35,20 26,25" fill="var(--green)"/>
           </svg>
         </div>
-        <div class="zone zone--access" style="flex:1.1; border:2px solid var(--green); justify-content:center;">
+        <div class="zone zone--access" style="border:2px solid var(--green); justify-content:flex-start; align-self:stretch; height:100%; box-sizing:border-box; padding-top:12px;">
           <div class="zone__label">Access Zone ★</div>
           <p>Konsolidiertes Patientenstamm-Datenprodukt</p>
         </div>
@@ -3030,7 +3030,7 @@ dim/
     <p><strong>[YQ]</strong> Und hier schließt sich der Kreis zur Architektur.</p>
     <p>Was als Exploration im Notebook begann - Prozess verstehen, Proxy-Dataset bauen, Ansätze evaluieren, Fehler analysieren -, wandert jetzt als <strong>produktiver Pfad</strong> durch genau die Zonen, die Sebastian zu Beginn gezeigt hat.</p>
     <p>In <strong>Raw</strong> liegen die historisierten Quellvarianten. In <strong>Process</strong> passiert Standardisierung und die eigentliche Patientenbildung. Und in <strong>Access</strong> entsteht der konsolidierte Patientenstamm als konsumierbares Datenprodukt.</p>
-    <p>Und jetzt sehen Sie, was die Plattform liefert, das ein Notebook allein nie könnte: <strong>reproduzierbare Laufparameter</strong>, <strong>Versionierung</strong>, <strong>Qualitätsmetriken bei jedem Lauf</strong>, und ein Monitoring der Split- und Merge-Risiken.</p>
+    <p>Und jetzt seht ihr, was die Plattform liefert, das ein Notebook allein nie könnte: <strong>reproduzierbare Laufparameter</strong>, <strong>Versionierung</strong>, <strong>Qualitätsmetriken bei jedem Lauf</strong>, und ein Monitoring der Split- und Merge-Risiken.</p>
     <p>Das ist unser Leitsatz in Aktion - die Plattform macht aus einem klugen Modell einen <strong>verantwortbaren, wiederholbaren Prozess</strong>.</p>
   </aside>
 </section>
@@ -3192,7 +3192,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [SG] Lassen Sie uns das Gelernte verdichten, erst auf der Architekturseite. Die wichtigste Erkenntnis: Entscheidend sind nicht die Toolnamen, sondern die klaren Verträge zwischen den Layern. [auf die Zonen-Map zeigen] Raw muss wirklich raw bleiben - in dem Moment, wo Sie dort Fachlogik einschmuggeln, wird Reprocessing schwach, und genau das hat uns Yanniks Benchmark erst ermöglicht. Process braucht technische Qualitätsgarantien. Access braucht fachliche Semantik und echte Datenprodukte. PySpark und dbt ergänzen sich hervorragend - aber nur, wenn ihre Rollen klar getrennt sind. Und der Betrieb: Ein einfaches Modell reicht für den Start völlig, solange Containerisierung und Umgebungen sauber geschnitten sind. Kubernetes kann später kommen. Yannik, deine Seite.
+    [SG] Lassen wir das Gelernte verdichten, erst auf der Architekturseite. Die wichtigste Erkenntnis: Entscheidend sind nicht die Toolnamen, sondern die klaren Verträge zwischen den Layern. [auf die Zonen-Map zeigen] Raw muss wirklich raw bleiben - in dem Moment, wo man dort Fachlogik einschmuggelt, wird Reprocessing schwach, und genau das hat uns Yanniks Benchmark erst ermöglicht. Process braucht technische Qualitätsgarantien. Access braucht fachliche Semantik und echte Datenprodukte. PySpark und dbt ergänzen sich hervorragend - aber nur, wenn ihre Rollen klar getrennt sind. Und der Betrieb: Ein einfaches Modell reicht für den Start völlig, solange Containerisierung und Umgebungen sauber geschnitten sind. Kubernetes kann später kommen. Yannik, deine Seite.
   </aside>
 </section>
 
@@ -3433,7 +3433,7 @@ dim/
   </div>
 
   <aside class="notes">
-    <p>[SG] Und die Anti-Patterns - das, was wir gesehen haben und was wir Ihnen ersparen wollen. Layer ohne klare Verträge - das war unser Ausgangsproblem. Landing-Zonen, die heimlich zum Dauerarchiv werden.</p>
+    <p>[SG] Und die Anti-Patterns - das, was wir gesehen haben und was wir euch ersparen wollen. Layer ohne klare Verträge - das war unser Ausgangsproblem. Landing-Zonen, die heimlich zum Dauerarchiv werden.</p>
 
     <p><strong>[YQ]</strong> <strong>Notebook-Logik ohne Pfad in die Produktion.</strong></p>
     <p><strong>KI-Initiativen vor Datenqualitätsstrategie</strong> - das ist genau die Reihenfolge, vor der wir am Anfang gewarnt haben.</p>
@@ -3496,7 +3496,7 @@ dim/
 
   <aside class="notes">
     <p><strong>[YQ]</strong> Fassen wir zusammen.</p>
-    <p>Wir haben Ihnen eine Plattform gezeigt, die von den Rohdaten bis zur ML-Anwendung trägt - mit <strong>reproduzierbaren Datenständen</strong>, mit <strong>klaren Verantwortlichkeiten</strong>, und mit <strong>Datenqualität als Voraussetzung für Modellqualität</strong>.</p>
+    <p>Wir haben euch eine Plattform gezeigt, die von den Rohdaten bis zur ML-Anwendung trägt - mit <strong>reproduzierbaren Datenständen</strong>, mit <strong>klaren Verantwortlichkeiten</strong>, und mit <strong>Datenqualität als Voraussetzung für Modellqualität</strong>.</p>
     <p>Wir haben KI nicht als abstraktes Technologieprogramm eingeführt, sondern über <strong>konkrete, validierbare Use Cases</strong> - die <strong>Patientenbildung als Record Linkage</strong> im Zentrum.</p>
   </aside>
 </section>
@@ -3515,12 +3515,12 @@ dim/
       Es ist eine Plattform, die <strong>reproduzierbare, validierbare Datenstände</strong> liefert —
       gezeigt an einem Problem, das man messen kann.
     </p>
-    <div class="final-thanks">Vielen Dank. Wir freuen uns auf Ihre Fragen.</div>
+    <div class="final-thanks">Vielen Dank. Wir freuen uns auf eure Fragen.</div>
   </div>
   <aside class="notes">
     [SG] Und damit schließt sich die Klammer zum Anfang.
     [Pause, den Leitsatz langsam und betont] Der Engpass für KI im Gesundheitswesen ist nicht das Modell, sondern eine Plattform, die reproduzierbare, validierbare Datenstände liefert.
-    <p><strong>[YQ]</strong> Vielen Dank für Ihre Aufmerksamkeit - wir freuen uns jetzt auf Ihre <strong>Fragen und die Diskussion</strong>.</p>
+    <p><strong>[YQ]</strong> Vielen Dank für eure Aufmerksamkeit - wir freuen uns jetzt auf eure <strong>Fragen und die Diskussion</strong>.</p>
   </aside>
 </section>
 
