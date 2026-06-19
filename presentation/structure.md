@@ -374,7 +374,7 @@ Jede Folie ist nach demselben Schema beschrieben, damit daraus direkt ein Slide-
 
 ### Folie 18 - Patientenbildung: Fachliches Problem und was auf dem Spiel steht
 
-**Headline:** Ein false merge heißt: zwei verschiedene Menschen werden fälschlich verschmolzen und Abrechnungen verfälscht - das ist der Grund, warum dieses Problem präzise gelöst werden muss.
+**Headline:** Ein false merge heißt: zwei verschiedene Menschen werden fälschlich verschmolzen und ihre Datenspuren falsch zusammengeführt - das ist der Grund, warum dieses Problem präzise gelöst werden muss.
 
 **Inhalt**
 
@@ -384,11 +384,11 @@ Jede Folie ist nach demselben Schema beschrieben, damit daraus direkt ein Slide-
 * Heterogene Quellen: ABR1, ABR2, bearbeitete/unbearbeitete Daten, KVUEPP
 * Identifikatoren/Attribute: EGK-Versichertennummer, Vorname, Nachname, Geburtsdatum, PLZ
 * Herausforderungen: unvollständige Attribute, Schreibvarianten/Tippfehler, fehlende oder wechselnde Identifikatoren, historische Stände und Quartale
-* **Stakes:** false merge = verschiedene Personen verschmolzen (falsche Abrechnungszuordnung); split = eine Person zerfällt in mehrere Datensätze
+* **Stakes:** false merge = verschiedene Personen verschmolzen (falsche Zusammenführung von Personendaten); split = eine Person zerfällt in mehrere Datensätze
 
 **Visual:** Zwei Karteikarten verschiedener Personen, die fälschlich zu einer verschmelzen - rotes Warnsymbol. Diese menschliche Konsequenz ist der emotionale Kern des ML-Teils.
 
-**Sprechernotiz (Skript):** [YQ, langsamer werden] Ich möchte, dass Sie eine Sache wirklich mitnehmen. [auf die verschmelzenden Karteikarten zeigen] Wenn wir zwei Datensätze fälschlich zusammenführen, die zu zwei verschiedenen Menschen gehören - das nennen wir einen false merge -, dann verfälschen wir Abrechnungen und Fallberichte. Eine falsche Fallzuordnung in unseren Systemen. Das ist nicht nur eine Zahl in einer Metrik, das ist der kritischste Fehler. Der umgekehrte Fehler, der split, ist, dass eine Person in mehrere Datensätze zerfällt - unschön für Auswertungen, aber deutlich weniger kritisch. [Tempo wieder normal] Diese Asymmetrie ist der Grund, warum wir das Problem präzise lösen müssen. Konkret: Wir haben heterogene Quellen - ABR1, ABR2, bearbeitete und unbearbeitete Daten, KVUEPP. Wir haben Identifikatoren und Attribute: die EGK-Versichertennummer, Vorname, Nachname, Geburtsdatum, PLZ. Und wir haben jede Menge Realität: unvollständige Attribute, Schreibvarianten und Tippfehler, fehlende oder wechselnde Nummern, historische Stände über viele Quartale. Die gute Nachricht: Indem wir das als Record Linkage abstrahieren, können wir auf Literatur, Standardbegriffe und etablierte Evaluationsmetriken zugreifen. Der erste Schritt war aber nicht, etwas Neues zu bauen.
+**Sprechernotiz (Skript):** [YQ, langsamer werden] Ich möchte, dass Sie eine Sache wirklich mitnehmen. [auf die verschmelzenden Karteikarten zeigen] Wenn wir zwei Datensätze fälschlich zusammenführen, die zu zwei verschiedenen Menschen gehören - das nennen wir einen false merge -, dann erzeugen wir eine falsche Personenzuordnung in unseren Systemen. Das ist nicht nur eine Zahl in einer Metrik, das ist der kritischste Fehler. Der umgekehrte Fehler, der split, ist, dass eine Person in mehrere Datensätze zerfällt - unschön für Auswertungen, aber deutlich weniger kritisch. [Tempo wieder normal] Diese Asymmetrie ist der Grund, warum wir das Problem präzise lösen müssen. Konkret: Wir haben heterogene Quellen - ABR1, ABR2, bearbeitete und unbearbeitete Daten, KVUEPP. Wir haben Identifikatoren und Attribute: die EGK-Versichertennummer, Vorname, Nachname, Geburtsdatum, PLZ. Und wir haben jede Menge Realität: unvollständige Attribute, Schreibvarianten und Tippfehler, fehlende oder wechselnde Nummern, historische Stände über viele Quartale. Die gute Nachricht: Indem wir das als Record Linkage abstrahieren, können wir auf Literatur, Standardbegriffe und etablierte Evaluationsmetriken zugreifen. Der erste Schritt war aber nicht, etwas Neues zu bauen.
 
 ---
 
@@ -625,7 +625,7 @@ Jede Folie ist nach demselben Schema beschrieben, damit daraus direkt ein Slide-
 * Unterschied zur Patientenbildung: noch kein automatisiertes Ground-Truth-/Proxy-Dataset, fachliche Validierung der Treffer läuft noch; genau deshalb ist es das nächste Projekt und noch nicht die tragende Hauptstory
 * leitet die Lesson ein: Validierbarkeit entscheidet, wann aus einem Prototyp eine tragende Story wird
 
-**Visual:** Zwei Beispiel-Kacheln nebeneinander auf derselben Zonen-Map: „Patientenbildung - validiert" (grün) vs. „Abrechnungsanomalien - nächstes Projekt" (gelb).
+**Visual:** Zwei Beispiel-Kacheln nebeneinander auf derselben Zonen-Map: „Patientenbildung - validiert" (grün, mit kleinem Hinweis „KI-/Ethik-Prüfung ausstehend" unten rechts im weißen Kartenbereich) vs. „Abrechnungsanomalien - nächstes Projekt" (gelb).
 
 **Sprechernotiz (Skript):** [YQ, bewusst zügig - nur ein kurzer Beat] Ganz kurz, weil es eine wichtige Pointe hat: Wir haben auf derselben Plattform einen zweiten ML-Use-Case gebaut - Anomalieerkennung in Abrechnungsdaten. Technisch alles dran: Feature Engineering, ein Anomaliemodell namens ECOD, Explainability und sogar eine Review-App. Als Demonstration der Pipeline von Process bis zur fertigen ML-Anwendung ist das richtig schön. [auf die gelbe Kachel zeigen] Der Unterschied zur Patientenbildung ist aber entscheidend: Hier haben wir noch kein automatisiertes Ground-Truth-Dataset, die fachliche Validierung der Treffer läuft noch, und genau das macht es zum nächsten Projekt statt zur heutigen Hauptstory. Deshalb steht die Patientenbildung im Mittelpunkt und dieser Fall zeigt, was als Nächstes validierbar gemacht werden muss. Und das führt uns direkt zu unserer wichtigsten Lesson: Validierbarkeit entscheidet, wann aus einem interessanten Prototyp eine tragende Story wird. Damit zu dem, was wir insgesamt gelernt haben.
 

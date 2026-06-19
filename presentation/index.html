@@ -61,7 +61,7 @@
   </div>
 
   <aside class="notes">
-    <p>[SG] Herzlich willkommen, schön, dass Sie da sind. Unser Titel klingt erst einmal nach einem dieser großen Plattform-Versprechen — „Lakehouse als Enabler für Machine Learning". Genau das wollen wir aber nicht abstrakt halten. Wir zeigen Ihnen heute eine konkrete Implementierung, die bei der Kassenärztlichen Vereinigung Westfalen-Lippe produktiv läuft — Open Source, On-Premise, von den Rohdaten bis zum ML-Modell.</p>
+    <p>[SG] Herzlich willkommen, schön, dass Sie da sind. Unser Titel klingt erst einmal nach einem dieser großen Plattform-Versprechen — „Lakehouse als Enabler für Machine Learning". Genau das wollen wir aber nicht abstrakt halten. Wir zeigen Ihnen heute eine konkrete Implementierung, die bei der Kassenärztlichen Vereinigung Westfalen-Lippe läuft — Open Source, On-Premise, von den Rohdaten bis zum ML-Modell.</p>
 
     <p><strong>[YQ]</strong> Und wir nehmen Sie an einem <strong>echten Fachproblem</strong> mit, an dem man am Ende sogar messen kann, ob sich der ganze Aufwand gelohnt hat.</p>
     <p>Die Leitfrage über allem: <strong>Welche Datenplattform braucht man eigentlich</strong>, damit Data Engineering und Machine Learning im Gesundheitswesen produktiv funktionieren? Dazu stellen wir uns kurz vor.</p>
@@ -154,7 +154,7 @@
   <aside class="notes">
     <p><strong>[YQ]</strong> Sehr gerne. Ich bin <strong>Yannik Queisler</strong>, Data Engineer bei der Kassenärztlichen Vereinigung Westfalen-Lippe.</p>
     <p>Kurz gesagt organisiert, sichert und steuert die KVWL die ambulante medizinische Versorgung in Westfalen-Lippe und vertritt dabei die niedergelassenen Ärzt:innen und Psychotherapeut:innen.</p>
-    <p>Mein Alltag ist <strong>Spark, Airflow, Delta Lake</strong> — und zunehmend ML Engineering. Ich bringe heute die konkrete <strong>On-Premise-Umsetzung</strong> mit, unser durchgängiges KI-Beispiel und die Lessons Learned aus dem Aufbau.</p>
+    <p>Mein Alltag ist <strong>Spark, Airflow, Delta Lake</strong> — und zunehmend Machine Learning. Ich bringe heute die konkrete <strong>On-Premise-Umsetzung</strong> mit, unser KI-Beispiel und die Lessons Learned aus dem Aufbau.</p>
     <p>Wichtig zum Kontext: <strong>KI ist bei uns ein neues Handlungsfeld.</strong> Wir führen das über greifbare Fachprozesse ein und zwar bewusst entlang der Reihenfolge: <strong>erst Datenqualität, dann Plattform, dann konkrete Use Cases.</strong></p>
     <p>Warum diese Reihenfolge so entscheidend ist, dazu kommen wir direkt.</p>
   </aside>
@@ -210,7 +210,7 @@
     <p><strong>[YQ]</strong> Wenn heute über KI gesprochen wird, geht es fast immer ums Modell. Unsere Erfahrung — und das deckt sich mit der Forschung — ist eine andere: <strong>Produktive KI scheitert selten am Modell.</strong></p>
     <p>Sie scheitert an der <strong>Datenhistorie</strong>, an der <strong>Datenqualität</strong>, an <strong>unklaren Verantwortlichkeiten</strong> und an <strong>fehlender Reproduzierbarkeit</strong>.</p>
     <p><em>[auf den Eisberg zeigen]</em> Das Modell ist die sichtbare Spitze; der große Teil unter Wasser sind die Daten, die Historie, die Governance.</p>
-    <p>Robuste Data Warehouses liefern stabile Berichte — aber Machine Learning stellt neue Anforderungen, und es entstehen Spannungen: <strong>Governance gegen Iterationsgeschwindigkeit</strong>, <strong>Reporting-Stabilität gegen Feature-Engineering</strong>, kuratierte Datenprodukte gegen die rohe Historie.</p>
+    <p>Robuste Data Warehouses liefern stabile Berichte — aber Machine Learning stellt neue Anforderungen, und es entstehen Spannungen: <strong>Governance gegen Iterationsgeschwindigkeit</strong>, <strong>Reporting-Stabilität gegen Feature-Engineering</strong>.</p>
     <p>Bei Gesundheitsdaten kommt verschärfte Nachvollziehbarkeit dazu.</p>
     <p><em>[langsamer, das ist das Versprechen]</em> Deshalb unser Leitsatz für diese Präsentation: <strong>Der Engpass ist nicht das Modell</strong>, sondern eine Plattform, die <strong>reproduzierbare, validierbare Datenstände</strong> liefert — und das zeigen wir an einem Problem, das man tatsächlich messen kann.</p>
   </aside>
@@ -314,7 +314,7 @@
     <p>Danach übernehme ich mit unserem Leitbeispiel: dem Prozess der <strong>Patientenbildung</strong>, die im Kern ein <strong>Record-Linkage- und Survivorship-Problem</strong> ist.</p>
     <p>Ein zweites Beispiel — <strong>Anomalieerkennung in Abrechnungsdaten</strong> — streifen wir bewusst kürzer, und ich sage Ihnen später auch, warum.</p>
     <p>Der rote Faden ist dabei immer: <strong>Nutzen früh greifbar machen, ohne die Datenplattform zu überspringen.</strong></p>
-    <p>Und ganz am Ende stehen die Lessons Learned — was sich bewährt hat und was schwierig bleibt. Sebastian, fang gern mit der Ausgangslage an.</p>
+    <p>Und ganz am Ende stehen die Lessons Learned — was sich bewährt hat und was schwierig bleibt. Beginnen wir zunächst mit der Ausgangslage.</p>
   </aside>
 </section>
 
@@ -1231,7 +1231,7 @@ dim/
   <aside class="notes">
     <p><strong>[YQ]</strong> Ich will direkt an unseren Leitsatz von vorhin anknüpfen: <strong>Der Engpass ist selten der Modellaufruf.</strong></p>
     <p>Was Machine Learning wirklich benötigt, ist all das hier — und Sie sehen, Anforderungen hängen an den Zonen der Architektur, die Sebastian gerade gezeigt hat.</p>
-    <p>Wir brauchen <strong>konsistente Trainings- und Validierungs-Daten</strong>. Wir brauchen <strong>nachvollziehbare Feature-Definitionen</strong>. Wir brauchen <strong>stabile Entitäten</strong>.</p>
+    <p>Wir brauchen <strong>konsistente Trainings- und Validierungs-Daten</strong>. Wir brauchen <strong>stabile Entitäten</strong>. Wir brauchen <strong>nachvollziehbare Feature-Definitionen</strong>.</p>
     <p>Wir brauchen <strong>Datenqualitätschecks vor dem Training</strong>, <strong>Versionierung</strong> und <strong>Auditierbarkeit der Ergebnisse</strong>.</p>
     <p>Und wir brauchen <strong>Katalog und Lineage</strong>, damit Teams Daten nicht nur finden, sondern verantwortbar nutzen.</p>
     <p>Genau diese Liste lösen wir jetzt an einem konkreten Beispiel ein — und beginnen mit den Entitäten.</p>
@@ -1377,8 +1377,8 @@ dim/
     <p>Das Ziel sind <strong>stabile Patient-Entitäten</strong> — die Grundlage für Analysen und für jeden nachgelagerten ML-Use-Case.</p>
     <p>Anschließend bauen wir über Survivorship einen <strong>Golden Record</strong>.</p>
     
-    <p>Eine kleine Randnotiz hierzu: Das ist <strong>klassisches ML, kein Deep-Learning-Hype</strong> — und genau das ist oft der kürzeste Weg zu messbarem Nutzen auf strukturierten Unternehmensdaten.</p>
-    <p>Bevor wir technisch werden, müssen Sie verstehen, warum dieses Problem heikel sein kann.</p>
+    <p>Eine kleine Randnotiz hierzu: Das ist <strong>klassisches ML, kein Deep-Learning</strong> — und genau das ist oft der kürzeste Weg zu messbarem Nutzen auf strukturierten Unternehmensdaten.</p>
+    <p>Bevor wir technisch werden, müssen wir verstehen, warum dieses Problem heikel sein kann.</p>
   </aside>
 </section>
 
@@ -1387,7 +1387,7 @@ dim/
      ============================================================ -->
 <section>
   <p class="slide-headline">
-    <span class="hl-red">Fehlverschmelzungen (False Merges)</span> verfälschen Abrechnungen und nachgelagerte Auswertungen.
+    <span class="hl-red">Fehlverschmelzungen (False Merges)</span> verfälschen Personenbezug und nachgelagerte Auswertungen.
   </p>
 
   <div class="row flex-1" style="align-items:center; justify-content:center; gap:24px; margin: auto; max-width:54em; width:100%;">
@@ -1404,7 +1404,7 @@ dim/
       <div class="card__body" style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:16px; box-sizing:border-box;">
         <ul class="bullets" style="margin:0; padding-left:14px; font-size:0.88em; line-height:1.4;">
           <li>Zwei verschiedene Personen werden fälschlich verschmolzen.</li>
-          <li style="color:var(--red); font-weight:700; margin-top:8px;">Falsche Abrechnungszuordnung = Kritischer Fehler.</li>
+          <li style="color:var(--red); font-weight:700; margin-top:8px;">Falsche Personenzuordnung = Kritischer Fehler.</li>
         </ul>
       </div>
     </div>
@@ -1513,8 +1513,8 @@ dim/
   </div>
 
   <aside class="notes">
-    <p><strong>[YQ]</strong> Wenn wir zwei Datensätze fälschlich zusammenführen, die zu zwei verschiedenen Menschen gehören — das nennen wir einen <strong>false merge</strong> —, dann verfälschen wir Abrechnungen und Fallberichte.</p>
-    <p>Eine falsche Fallzuordnung in unseren Systemen. Das ist nicht nur eine Zahl in einer Metrik, <strong>das ist der kritischste Fehler.</strong></p>
+    <p><strong>[YQ]</strong> Wenn wir zwei Datensätze fälschlich zusammenführen, die zu zwei verschiedenen Menschen gehören — das nennen wir einen <strong>false merge</strong> —, dann erzeugen wir eine falsche Personenzuordnung in unseren Systemen.</p>
+    <p>Das ist nicht nur eine Zahl in einer Metrik, <strong>das ist der kritischste Fehler.</strong></p>
     <p>Der umgekehrte Fehler, der <strong>split</strong>, ist, dass eine Person in mehrere Datensätze zerfällt — unschön für Auswertungen, aber deutlich weniger kritisch.</p>
     <p><strong>Diese Asymmetrie</strong> ist der Grund, warum wir das Problem präzise lösen müssen.</p>
     
@@ -1882,8 +1882,8 @@ dim/
     <p><strong>[YQ]</strong> Um zu messen, welcher Ansatz besser ist, braucht man die <strong>Wahrheit</strong> - man muss wissen, welche Records wirklich zur selben Person gehören.</p>
     <p>Und genau die hat man in den Echtdaten nicht: Es gibt keinen perfekten, unabhängigen Wahrheitsdatensatz für alle Verknüpfungen.</p>
     <p>Dazu kommt der Datenschutz - echte Patientendaten können nicht als Entwicklungs- oder Benchmark-Dataset frei verwendet werden. Die Lösung ist ein <strong>synthetisches Proxy-Dataset</strong>.</p>
-    <p><em>[auf den Ablauf zeigen]</em> Das gibt kontrollierte <strong>Ground Truth über eine `entity_id`</strong>, dazu realistische Fehler, Dubletten, Lücken und historische Varianten - und damit eine wiederholbare, vergleichbare Evaluation für alle drei Ansätze.</p>
-    <p>Dieses Testset ist selbst ein <strong>versioniertes, reproduzierbares Datenprodukt</strong> in der Plattform.</p>
+    <p><em>[auf den Ablauf zeigen]</em> Das gibt kontrollierte <strong>Ground Truth über eine `entity_id`</strong>, dazu realistische Fehler, Dubletten und Lücken - und damit eine wiederholbare, vergleichbare Evaluation für alle drei Ansätze.</p>
+    <p>Dieses Testset ist selbst ein <strong>versioniertes Datenprodukt</strong> in der Plattform.</p>
     <p>Ohne die Plattform-Disziplin wäre mein Benchmark nicht reproduzierbar. Genau das meinen wir mit <strong>„die Plattform ist der Enabler"</strong>.</p>
     <p>Wie dieses Dataset entsteht, ohne dass es frei erfunden ist, zeige ich kurz.</p>
   </aside>
@@ -2088,7 +2088,7 @@ dim/
 
       <div class="fragment fade-in" data-fragment-index="3" style="display:flex; flex-direction:column; gap:10px; min-height:0;">
         <div class="callout callout--red" style="flex:1; overflow:hidden; font-size:0.72em; line-height:1.18; padding:8px 12px; display:flex; align-items:center;">
-          <strong>Stakes:</strong> False merges betreffen Billing-Genauigkeit, Datenschutz und Compliance.
+          <strong>Stakes:</strong> False merges betreffen Personenbezug, Datenschutz und Compliance.
         </div>
         <div class="callout callout--amber" style="flex:1; overflow:hidden; font-size:0.72em; line-height:1.18; padding:8px 12px; display:flex; align-items:center;">
           <strong>Schwellen:</strong> konservativ wählen und begründen.
@@ -2104,9 +2104,9 @@ dim/
     <p><strong>[YQ]</strong> Genau das leisten die Proxy-Daten: Sie machen aus einer fachlichen Diskussion - „welcher Ansatz ist besser?" - eine <strong>messbare Engineering-Frage</strong>.</p>
     <p>Als Ground Truth haben wir die <strong>`entity_id`</strong> für die wahren Personencluster und die Golden-Record-Felder für das Survivorship.</p>
     <p><em>[auf den rot markierten Quadranten zeigen]</em> Und hier sehen Sie die Stakes von eben wieder: Der <strong>false positive</strong>, der <strong>false merge</strong>, ist rot - er ist bei Patientendaten fachlich riskanter als ein verpasster Match.</p>
-    <p>Das heißt für uns: <strong>Schwellen konservativ wählen</strong> und diese Wahl begründen.</p>
+    <p>Das heißt für uns: <strong>Modellparameter bewusst konservativ wählen</strong>.</p>
     <p>Und wir lassen es nicht bei Zahlen - wir exportieren false positives und false negatives und schauen sie uns qualitativ an, um typische Fehlermuster zu verstehen.</p>
-    <p>Für alle, die nicht täglich mit Record Linkage zu tun haben, lohnt sich an dieser Stelle ein kurzer Exkurs, was diese Metriken eigentlich bedeuten.</p>
+    <p>Für alle, die nicht täglich mit Record Linkage zu tun haben, folgt eine kurze Einführung der Vergleichsmetriken.</p>
   </aside>
 </section>
 
@@ -2188,14 +2188,13 @@ dim/
 
     <!-- Bottom Red Banner Callout -->
     <div class="callout callout--red fragment fade-in" data-fragment-index="3" style="width:100%; box-sizing:border-box; margin:0; font-size:0.78em; line-height:1.35; text-align:center; padding:10px 16px; box-shadow:0 4px 10px rgba(220,38,38,0.08); flex-shrink:0;">
-      <strong>Kritische Fachregel:</strong> Bei Patientendaten ist Precision besonders wichtig. Falsche Verschmelzungen (FP) sind für Billing-Genauigkeit, Datenschutz und Compliance kritischer als übersehene Historien (FN = Splits).
+      <strong>Kritische Fachregel:</strong> Bei Patientendaten ist Precision besonders wichtig. Falsche Verschmelzungen (FP) sind für Personenbezug, Datenschutz und Compliance kritischer als übersehene Historien (FN = Splits).
     </div>
   </div>
 
   <aside class="notes">
     <p><strong>[YQ]</strong> Ganz kurz und konkret die Grundidee: Wir betrachten jedes Paar von Records und fragen - <strong>gleiche Person oder nicht?</strong></p>
     <p>Daraus ergeben sich vier Fälle. Für <strong>Precision, Recall und F1</strong> sind vor allem drei davon relevant: <strong>True Positive</strong>, <strong>False Positive</strong> und <strong>False Negative</strong>.</p>
-    <p>True Negatives gibt es natürlich auch, aber sie dominieren bei paarweisem Record Linkage zahlenmäßig und werden deshalb für diese Kennzahlen nicht verwendet.</p>
     <p>Ein True Positive ist ein korrekt verknüpftes Paar. Ein False Positive ist ein <strong>false merge</strong> - zwei verschiedene Personen fälschlich verbunden. Ein False Negative ist ein übersehener Link - ein <strong>split</strong>.</p>
     <p>Daraus zwei Kennzahlen: <strong>Precision</strong> ist der Anteil korrekter unter den von uns vorhergesagten Links - sie misst also unsere false merges. <strong>Recall</strong> ist der Anteil gefundener unter den echten Links - sie misst die splits.</p>
     <p><strong>F1</strong> ist einfach das harmonische Mittel aus beiden.</p>
@@ -2336,7 +2335,7 @@ dim/
     <p>Aber - und das ist die Kehrseite - der <strong>Recall liegt nur bei 69 Prozent</strong>, der F1 bei knapp 82.</p>
     <p>Das heißt: Das Modell ist extrem sicher, macht praktisch keine kritischen Fehler, aber es verliert fast ein Drittel der echten Verknüpfungen in <strong>splits</strong>.</p>
     <p>Eine sehr gute, konservative <strong>Safety-Baseline</strong> - aber mit Luft nach oben.</p>
-    <p><em>[Enabler-Callback]</em> Übrigens: Dass ich alle drei Ansätze gleich gegen exakt denselben Datenstand teste, ermöglicht erst die <strong>unveränderliche Raw-Historie</strong>, die Sebastian gezeigt hat.</p>
+    <p><em>[Enabler-Callback]</em> Übrigens: Dass ich alle drei Ansätze gegen denselben Datenstand testen kann, ermöglicht erst die <strong>unveränderliche Raw-Historie</strong>, die Sebastian gezeigt hat.</p>
     <p>Können wir mehr Links finden, ohne diese perfekte Precision zu opfern? Das war die Frage für Ansatz zwei.</p>
   </aside>
 </section>
@@ -2682,7 +2681,7 @@ dim/
   </div>
 
   <aside class="notes">
-    <p><strong>[YQ]</strong> Ansatz drei ist methodisch der spannendste: <strong>FlexRL</strong>, ein probabilistisches Modell aus einem Paper von Robach et al. aus 2024.</p>
+    <p><strong>[YQ]</strong> Ansatz drei ist methodisch der spannendste: <strong>FlexRL</strong>, ein probabilistisches Modell aus einem Paper von Robach und Kollegen aus 2024.</p>
     <p>Statt fester Regeln macht es <strong>Unsicherheit explizit</strong>.</p>
     <p>Vereinfacht gesagt: Es betrachtet unsere Attribute als teilweise identifizierende Variablen und lernt mit einem <strong>EM-Algorithmus</strong> aus den Daten selbst drei Dinge:</p>
     <p><strong>Wie wahrscheinlich</strong> ein Paar überhaupt ein Link ist, <strong>wie fehleranfällig</strong> jede einzelne Variable ist, und <strong>wie oft</strong> sie rein zufällig übereinstimmt.</p>
@@ -3031,7 +3030,7 @@ dim/
     <p><strong>[YQ]</strong> Und hier schließt sich der Kreis zur Architektur.</p>
     <p>Was als Exploration im Notebook begann - Prozess verstehen, Proxy-Dataset bauen, Ansätze evaluieren, Fehler analysieren -, wandert jetzt als <strong>produktiver Pfad</strong> durch genau die Zonen, die Sebastian zu Beginn gezeigt hat.</p>
     <p>In <strong>Raw</strong> liegen die historisierten Quellvarianten. In <strong>Process</strong> passiert Standardisierung und die eigentliche Patientenbildung. Und in <strong>Access</strong> entsteht der konsolidierte Patientenstamm als konsumierbares Datenprodukt.</p>
-    <p>Und jetzt sehen Sie, was die Plattform liefert, das ein Notebook allein nie könnte: <strong>reproduzierbare Laufparameter</strong>, <strong>versionierte Schwellen und Algorithmusversionen</strong>, <strong>Qualitätsmetriken bei jedem Lauf</strong>, und ein Monitoring der Split- und Merge-Risiken.</p>
+    <p>Und jetzt sehen Sie, was die Plattform liefert, das ein Notebook allein nie könnte: <strong>reproduzierbare Laufparameter</strong>, <strong>Versionierung</strong>, <strong>Qualitätsmetriken bei jedem Lauf</strong>, und ein Monitoring der Split- und Merge-Risiken.</p>
     <p>Das ist unser Leitsatz in Aktion - die Plattform macht aus einem klugen Modell einen <strong>verantwortbaren, wiederholbaren Prozess</strong>.</p>
   </aside>
 </section>
@@ -3047,20 +3046,23 @@ dim/
   <div style="flex:1; display:flex; flex-direction:column; gap:10px; width:1060px; margin:0 auto; box-sizing:border-box; overflow:hidden;">
     <div style="display:grid; grid-template-columns:1.3fr 44px 1fr; flex:1; overflow:hidden; align-items:stretch;">
 
-      <!-- LEFT: Patientenbildung (abgeschlossen) — full weight -->
+      <!-- LEFT: Patientenbildung (validiert, KI-/Ethik-Prüfung ausstehend) — full weight -->
       <div class="card card--good fragment fade-in" data-fragment-index="1" style="display:flex; flex-direction:column; overflow:hidden;">
         <div class="card__head" style="background:linear-gradient(135deg,var(--green),#3ab870); justify-content:space-between;">
           <span>✓ Patientenbildung</span>
           <span style="background:rgba(255,255,255,0.22); border-radius:10px; padding:2px 9px; font-size:0.78em; font-weight:700; letter-spacing:0.03em; white-space:nowrap;">Abgeschlossen</span>
         </div>
-        <div class="card__body" style="flex:1; display:flex; flex-direction:column; gap:6px; overflow:hidden;">
+        <div class="card__body" style="flex:1; display:flex; flex-direction:column; gap:6px; overflow:hidden; position:relative;">
           <div class="card__item"><span style="color:var(--green); font-weight:700; flex-shrink:0; width:14px;">✓</span> Proxy-Dataset (Ground Truth vorhanden)</div>
           <div class="card__item"><span style="color:var(--green); font-weight:700; flex-shrink:0; width:14px;">✓</span> Klare Metrik: Precision/Recall</div>
           <div class="card__item"><span style="color:var(--green); font-weight:700; flex-shrink:0; width:14px;">✓</span> Bereit für produktiven Einsatz</div>
-          <div style="flex:1; display:flex; align-items:center; justify-content:center; padding:8px 0;">
+          <div style="flex:1; display:flex; align-items:center; justify-content:center; padding:8px 0 34px;">
             <div style="background:rgba(22,163,74,0.07); border:1.5px dashed rgba(22,163,74,0.3); border-radius:8px; padding:12px 20px; text-align:center; color:#16a34a; font-weight:600; font-size:0.8em; line-height:1.5;">
               Implementierung &amp; Tests abgeschlossen<br>Bereit für produktiven Einsatz
             </div>
+          </div>
+          <div style="position:absolute; right:14px; bottom:12px; background:#e8f7ec; color:#166534; border:1px solid rgba(22,101,52,0.2); border-radius:999px; padding:4px 10px; font-size:0.74em; font-weight:700; line-height:1.2;">
+            KI-/Ethik-Prüfung ausstehend
           </div>
         </div>
       </div>
@@ -3106,7 +3108,7 @@ dim/
     <p><strong>[YQ, bewusst zügig - nur ein kurzer Beat]</strong> Wir haben auf derselben Plattform einen zweiten ML-Use-Case gebaut - <strong>Anomalieerkennung in Abrechnungsdaten</strong>.</p>
     <p>Technisch alles dabei: Feature Engineering, ein Anomaliemodell aus der Literatur und sogar eine Review-App.</p>
     <p>Der Unterschied zur Patientenbildung ist aber entscheidend: Hier haben wir noch <strong>kein automatisiertes Ground-Truth-Dataset</strong>, die fachliche Validierung der Treffer läuft noch, und genau das macht es zum nächsten Projekt statt zur heutigen Hauptstory.</p>
-    <p>Deshalb steht die <strong>Patientenbildung</strong> im Mittelpunkt und dieser Fall zeigt, was als Nächstes validierbar gemacht werden muss.</p>
+    <p><strong>[YQ]</strong> Und das führt uns direkt zu unserer wichtigsten Lesson: <strong>Validierbarkeit entscheidet</strong>, wann aus einem interessanten Prototyp eine tragende Story wird.</p>
   </aside>
 </section>
 
@@ -3124,7 +3126,6 @@ dim/
     </p>
   </div>
   <aside class="notes">
-    <p><strong>[YQ]</strong> Und das führt uns direkt zu unserer wichtigsten Lesson: <strong>Validierbarkeit entscheidet</strong>, wann aus einem interessanten Prototyp eine tragende Story wird.</p>
     <p>Damit zu dem, was wir insgesamt gelernt haben.</p>
     [SG] In diesem letzten Kapitel ziehen wir Bilanz.
   </aside>
@@ -3289,7 +3290,7 @@ dim/
   <aside class="notes">
     <p><strong>[YQ]</strong> Und auf der KI-Seite. Die Kernlesson deckt sich genau mit unserem Leitsatz: <strong>Produktive KI beginnt vor dem Modell.</strong></p>
     <p><strong>Stabile Entitäten</strong> sind nicht nur Stammdaten, sie sind zentrale ML-Infrastruktur.</p>
-    <p>Die Patientenbildung hat uns gelehrt, dass nicht alle Fehler gleich sind - <strong>false merges sind oft kritischer</strong> als verpasste Matches, und das muss man bewusst in die Schwellen einbauen.</p>
+    <p>Die Patientenbildung hat uns gelehrt, dass nicht alle Fehler gleich sind - <strong>false merges sind oft kritischer</strong>, und das muss man bewusst in die Modelle einbauen.</p>
     <p>Es hat sich gelohnt, den Fachprozess früh auf Community-Begriffe zu mappen - aus „Patientenbildung" wurde <strong>Record Linkage</strong> und damit anschlussfähig an Forschung und Standards.</p>
     <p><strong>Recherche vor der Implementierung spart Umwege.</strong></p>
     <p>Modellmetriken allein reichen nicht - <strong>die fachliche Validierung entscheidet.</strong></p>
@@ -3495,7 +3496,7 @@ dim/
 
   <aside class="notes">
     <p><strong>[YQ]</strong> Fassen wir zusammen.</p>
-    <p>Wir haben Ihnen eine Plattform gezeigt, die von den Rohdaten bis zur ML-Anwendung trägt - mit <strong>reproduzierbaren Datenständen</strong> statt Ad-hoc-Extrakten, mit <strong>klaren Verantwortlichkeiten</strong> statt gewachsener Zonenlogik, und mit <strong>Datenqualität als Voraussetzung für Modellqualität</strong>.</p>
+    <p>Wir haben Ihnen eine Plattform gezeigt, die von den Rohdaten bis zur ML-Anwendung trägt - mit <strong>reproduzierbaren Datenständen</strong>, mit <strong>klaren Verantwortlichkeiten</strong>, und mit <strong>Datenqualität als Voraussetzung für Modellqualität</strong>.</p>
     <p>Wir haben KI nicht als abstraktes Technologieprogramm eingeführt, sondern über <strong>konkrete, validierbare Use Cases</strong> - die <strong>Patientenbildung als Record Linkage</strong> im Zentrum.</p>
   </aside>
 </section>
@@ -3518,7 +3519,7 @@ dim/
   </div>
   <aside class="notes">
     [SG] Und damit schließt sich die Klammer zum Anfang.
-    [Pause, den Leitsatz langsam und betont] Der Engpass für KI im Gesundheitswesen ist nicht das Modell, sondern eine Plattform, die reproduzierbare, validierbare Datenstände liefert - gezeigt an einem Problem, das man messen kann.
+    [Pause, den Leitsatz langsam und betont] Der Engpass für KI im Gesundheitswesen ist nicht das Modell, sondern eine Plattform, die reproduzierbare, validierbare Datenstände liefert.
     <p><strong>[YQ]</strong> Vielen Dank für Ihre Aufmerksamkeit - wir freuen uns jetzt auf Ihre <strong>Fragen und die Diskussion</strong>.</p>
   </aside>
 </section>
