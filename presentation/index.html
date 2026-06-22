@@ -61,7 +61,7 @@
   </div>
 
   <aside class="notes">
-    <p>[SG] Herzlich willkommen, schön, dass ihr da seid. Unser Titel klingt erst einmal nach einem dieser großen Plattform-Versprechen — „Lakehouse als Enabler für Machine Learning". Genau das wollen wir aber nicht abstrakt halten. Wir zeigen euch heute eine konkrete Implementierung, die bei der Kassenärztlichen Vereinigung Westfalen-Lippe läuft — Open Source, On-Premise, von den Rohdaten bis zum ML-Modell.</p>
+    <p>[SG] Herzlich willkommen, schön, dass ihr da seid. Unser Titel klingt erst einmal nach einem dieser großen Plattform-Versprechen — „Lakehouse als Enabler für Machine Learning". Genau das wollen wir aber nicht abstrakt halten. Wir zeigen euch heute eine <strong>konkrete Implementierung</strong>, die bei der Kassenärztlichen Vereinigung Westfalen-Lippe läuft — <strong>Open Source, On-Premise, von den Rohdaten bis zum ML-Modell</strong>.</p>
 
     <p><strong>[YQ]</strong> Und wir nehmen euch an einem <strong>echten Fachproblem</strong> mit, an dem man am Ende sogar messen kann, ob sich der ganze Aufwand gelohnt hat.</p>
     <p>Die Leitfrage über allem: <strong>Welche Datenplattform braucht man eigentlich</strong>, damit Data Engineering und Machine Learning im Gesundheitswesen produktiv funktionieren? Dazu stellen wir uns kurz vor.</p>
@@ -109,7 +109,7 @@
   </div>
 
   <aside class="notes">
-    [SG] Mein Name ist Sebastian Gobst, ich bin Principal Consultant für Systemarchitektur bei der DATA MART Consulting. Wir kommen klassisch aus der Welt der Data Warehouses und Business Intelligence und begleiten Kunden dabei, ihre Datenlandschaften zu optimieren — nicht nur in der Cloud, sondern zum Beispiel bei der KVWL als Open-Source-Lakehouse on premises. Meine Rolle heute ist die Architekturperspektive: Wie sieht das Zielbild aus, welche Migrationslogik steckt dahinter, und wie grenzt sich das Ganze von klassischen DWH-Mustern ab. Den zweiten Teil, das Machine Learning, übernimmt mein Kollege — stell dich gern vor.
+    [SG] Mein Name ist Sebastian Gobst, ich bin Principal Consultant für Systemarchitektur bei der DATA MART Consulting. Wir kommen klassisch aus der Welt der <strong>Data Warehouses und Business Intelligence</strong> und begleiten Kunden dabei, ihre Datenlandschaften zu optimieren — nicht nur in der Cloud, sondern zum Beispiel bei der KVWL als <strong>Open-Source-Lakehouse on premises</strong>. Meine Rolle heute ist die <strong>Architekturperspektive</strong>: <strong>Wie sieht das Zielbild aus</strong>, welche <strong>Migrationslogik</strong> steckt dahinter, und wie grenzt sich das Ganze von <strong>klassischen DWH-Mustern</strong> ab. Den zweiten Teil, das Machine Learning, übernimmt mein Kollege — stell dich gern vor.
   </aside>
 </section>
 
@@ -332,7 +332,7 @@
     </p>
   </div>
   <aside class="notes">
-    [SG] Wir steigen nun in Kapitel 1 ein: Lakehouse, Architektur und Orchestrierung. Wir schauen uns die Ausgangslage an, führen unsere Lakehouse-Architektur ein und beleuchten unsere Technologieentscheidungen.
+    [SG] Wir steigen nun in <strong>Kapitel 1</strong> ein: <strong>Lakehouse, Architektur und Orchestrierung</strong>. Wir schauen uns die <strong>Ausgangslage</strong> an, führen unsere Lakehouse-Architektur ein und beleuchten unsere <strong>Technologieentscheidungen</strong>.
   </aside>
 </section>
 
@@ -378,7 +378,7 @@
   </div>
 
   <aside class="notes">
-    [SG] Der Ausgangspunkt war eine gewachsene SSIS- und Data-Warehouse-Welt. Das übergeordnete Ziel war klar: Die Transformationen aus dieser alten Welt ablösen. Spannend ist aber, dass der Umbau gar nicht bei den Tools beginnt, sondern bei einer scheinbar simplen Frage — wo sollten verschiedene Arten von Daten und Logik eigentlich verortet werden? Drei Leitfragen haben wir uns dabei gestellt: Erstens, wo wird Logik implementiert — in welchem Layer? Zweitens, welche Technologie passt für welchen Schritt — PySpark, dbt, Datei und OpenTableFormate? Und drittens, eine oft unterschätzte Frage: Welche Garantien darf ein nachgelagerter Consumer von den Daten überhaupt erwarten? Wenn man diese Fragen nicht beantwortet, bekommt man genau die Probleme, die wir vorher hatten.
+    [SG] Der <strong>Ausgangspunkt</strong> war eine gewachsene <strong>SSIS- und Data-Warehouse-Welt</strong>. Das übergeordnete Ziel war klar: <strong>Die Transformationen aus dieser alten Welt ablösen</strong>. Spannend ist aber, dass der Umbau gar nicht bei den Tools beginnt, sondern bei einer scheinbar simplen Frage — <strong>wo sollten verschiedene Arten von Daten und Logik eigentlich verortet werden?</strong> Drei Leitfragen haben wir uns dabei gestellt: <strong>Wo wird Logik implementiert</strong> — in welchem Layer? <strong>Welche Technologie passt für welchen Schritt</strong>? Und: <strong>Welche Garantien darf ein nachgelagerter Consumer erwarten?</strong> Wenn man diese Fragen nicht beantwortet, bekommt man genau die Probleme, die wir vorher hatten.
   </aside>
 </section>
 
@@ -403,27 +403,27 @@
           <div class="zone-strip" style="position:relative; width:100%; border-radius:0; border:none; background:white;">
             <div class="zs-zone zs-landing" style="position:relative; display:flex; flex-direction:column;">
               <div class="zs-label">Landing Zone</div>
-              <div class="zs-desc">Temporäre Ablage</div>
-              <div class="zs-desc">und gleichzeitig Archiv</div>
-            <div style="margin-top:auto; background:rgba(255,255,255,0.96); border:1.5px dashed rgba(201,64,64,0.65); border-radius:8px; padding:8px 10px; color:var(--navy); font-weight:700; font-size:0.72em; line-height:1.3; text-align:center; box-shadow:0 3px 8px rgba(201,64,64,0.08);">Ablage oder Archiv?</div>
+              <div class="zs-desc">Lebenszyklus nicht eindeutig</div>
+              <div class="zs-desc">und damit schwer abgrenzbar</div>
+            <div style="margin-top:auto; background:rgba(255,255,255,0.96); border:1.5px dashed rgba(201,64,64,0.65); border-radius:8px; padding:8px 10px; color:var(--navy); font-weight:700; font-size:0.72em; line-height:1.3; text-align:center; box-shadow:0 3px 8px rgba(201,64,64,0.08);">Kein klarer Übergang</div>
             </div>
             <div class="zs-zone zs-process" style="position:relative; display:flex; flex-direction:column;">
               <div class="zs-label">Staging Zone</div>
-              <div class="zs-desc">Nur sporadisch genutzt</div>
-              <div class="zs-desc">wilder Mix aus Formaten</div>
-            <div style="margin-top:auto; background:rgba(255,255,255,0.96); border:1.5px dashed rgba(201,64,64,0.65); border-radius:8px; padding:8px 10px; color:var(--navy); font-weight:700; font-size:0.72em; line-height:1.3; text-align:center; box-shadow:0 3px 8px rgba(201,64,64,0.08);">Zwischenablage ohne klare Aufgabe?</div>
+              <div class="zs-desc">Unregelmäßige Nutzung</div>
+              <div class="zs-desc">und wechselnde Formate</div>
+            <div style="margin-top:auto; background:rgba(255,255,255,0.96); border:1.5px dashed rgba(201,64,64,0.65); border-radius:8px; padding:8px 10px; color:var(--navy); font-weight:700; font-size:0.72em; line-height:1.3; text-align:center; box-shadow:0 3px 8px rgba(201,64,64,0.08);">Kein definierter Zweck</div>
             </div>
             <div class="zs-zone zs-raw" style="position:relative; display:flex; flex-direction:column;">
               <div class="zs-label">History Zone</div>
-              <div class="zs-desc">Mischmasch aus Rohhistorie</div>
-              <div class="zs-desc">und Fachlogik</div>
-            <div style="margin-top:auto; background:rgba(255,255,255,0.96); border:1.5px dashed rgba(201,64,64,0.65); border-radius:8px; padding:8px 10px; color:var(--navy); font-weight:700; font-size:0.72em; line-height:1.3; text-align:center; box-shadow:0 3px 8px rgba(201,64,64,0.08);">Historie oder Transformation?</div>
+              <div class="zs-desc">Rohdaten und Fachlogik</div>
+              <div class="zs-desc">statt klarer Historisierung</div>
+            <div style="margin-top:auto; background:rgba(255,255,255,0.96); border:1.5px dashed rgba(201,64,64,0.65); border-radius:8px; padding:8px 10px; color:var(--navy); font-weight:700; font-size:0.72em; line-height:1.3; text-align:center; box-shadow:0 3px 8px rgba(201,64,64,0.08);">SSIS-SQLs, Flows, SPs, Views</div>
             </div>
             <div class="zs-zone zs-access" style="position:relative; display:flex; flex-direction:column;">
               <div class="zs-label">Analysis Zone</div>
-              <div class="zs-desc">Stark von SSIS-Altprozessen geprägt</div>
-              <div class="zs-desc">Höchste fachliche Last</div>
-            <div style="margin-top:auto; background:rgba(255,255,255,0.96); border:1.5px dashed rgba(201,64,64,0.65); border-radius:8px; padding:8px 10px; color:var(--navy); font-weight:700; font-size:0.72em; line-height:1.3; text-align:center; box-shadow:0 3px 8px rgba(201,64,64,0.08);">SSIS-Altlast oder Analytik?</div>
+              <div class="zs-desc">SSIS-Altlogik</div>
+              <div class="zs-desc">und Auswertungen vermischt</div>
+            <div style="margin-top:auto; background:rgba(255,255,255,0.96); border:1.5px dashed rgba(201,64,64,0.65); border-radius:8px; padding:8px 10px; color:var(--navy); font-weight:700; font-size:0.72em; line-height:1.3; text-align:center; box-shadow:0 3px 8px rgba(201,64,64,0.08);">Logik nicht klar verortet</div>
             </div>
           </div>
         </div>
@@ -433,7 +433,7 @@
       </div>
     </div>
   <aside class="notes">
-    [SG] Schauen wir auf die alte Zonenlogik. Auf dem Papier gab es Zonen, aber ihre Verantwortlichkeiten waren unscharf. Die Landing Zone war gleichzeitig temporäre Ablage und Archiv. Die Staging Zone wurde nur sporadisch genutzt, in unterschiedlichsten Formaten. Die History Zone war ein Mischmasch: teils Rohhistorie, teils Standardisierung, teils schon Fachlogik. Und die Analysis Zone war noch stark von den alten SSIS-Prozessen geprägt. Die überlagerten Felder oben zeigen das eigentliche Problem: Die Zuständigkeiten laufen ineinander, man weiß nicht genau, wo eine bestimmte Logik liegt, Reprocessing wird zur Qual, und der Bus-Faktor ist hoch. Genau das wollten wir auflösen. Bevor ich zeige, wie, kurz das Prinzip dahinter.
+    [SG] Schauen wir auf die <strong>alte Zonenlogik</strong>. Auf dem Papier gab es Zonen, aber ihre Verantwortlichkeiten waren unscharf. Die Landing Zone war gleichzeitig temporäre Ablage und Archiv. Die Staging Zone wurde nur sporadisch genutzt, in unterschiedlichsten Formaten. Die History Zone war ein Mischmasch aus Rohdaten und Fachlogik. Und genau dort lag die Logik oft verteilt: in <strong>Source-SQLs der SSIS-Pakete</strong>, im <strong>SSIS-Datenfluss</strong>, in <strong>Stored Procedures</strong> oder in <strong>Views auf der History-Schicht</strong>. Die Analysis Zone war ebenfalls von <strong>SSIS-Altlogik und Auswertungen</strong> durchmischt. Die überlagerten Felder oben zeigen das eigentliche Problem: Die Zuständigkeiten laufen ineinander, man weiß nicht genau, wo eine bestimmte Logik liegt, <strong>Reprocessing wird zur Qual</strong>, und der <strong>Bus-Faktor ist hoch</strong>. Genau das wollten wir auflösen. Bevor ich zeige, wie, kurz das Prinzip dahinter.
   </aside>
 </section>
 
@@ -452,7 +452,7 @@
   </div>
 
   <aside class="notes">
-    [SG] Der Begriff Lakehouse wird viel benutzt, deshalb sage ich, was wir konkret darunter verstehen. Auf der einen Seite die Offenheit eines Data Lake — ein einheitlicher Speicher für strukturierte, semi-strukturierte und perspektivisch weitere Datenformen. Auf der anderen Seite die Garantien eines Warehouse. Konkret heißt das bei uns: ACID-Tabellen und paralleler Lese- und Schreibzugriff über Delta Lake, Schema-Validierung, ein Metadatenkatalog, Lineage und Zugriffskontrolle. Für die Governance setzen wir DataHub ein — als Katalog, für Discovery, Ownership, Lineage und Data Contracts.
+    [SG] Der Begriff <strong>Lakehouse</strong> wird viel benutzt, deshalb sage ich, was wir konkret darunter verstehen. Auf der einen Seite die <strong>Offenheit eines Data Lake</strong> — ein einheitlicher Speicher für strukturierte, semi-strukturierte und perspektivisch weitere Datenformen. Auf der anderen Seite die <strong>Garantien eines Warehouse</strong>. Konkret heißt das bei uns: <strong>ACID-Tabellen</strong> und paralleler Lese- und Schreibzugriff über <strong>Delta Lake</strong>, <strong>Schema-Validierung</strong>, ein <strong>Metadatenkatalog</strong>, Lineage und Zugriffskontrolle. Für die Governance setzen wir <strong>DataHub</strong> ein — als Katalog, für Discovery, Ownership, Lineage und Data Contracts.
   </aside>
 </section>
 
@@ -564,7 +564,7 @@
   </div>
 
   <aside class="notes">
-    [SG] Das hier ist das zentrale Bild des Vortrags — merkt es euch, es kommt später im ML-Teil immer wieder. Wir definieren Zonen jetzt über ihre Funktion und über klare Verträge, nicht mehr über historisch gewachsene Namen. Von links nach rechts: Die Landing Zone ist optional und transient. Die Raw Zone ist die unveränderliche Rohdatenhistorie. Die Process Zone sorgt für technische Qualität und Standardisierung. Und die Access Zone enthält die fachlichen Datenprodukte — für BI, Analytics und eben auch für ML. Horizontal also die Zonen mit klaren Verträgen, und vertikal ziehen sich Orchestrierung und Governance durch alle Schichten. [kurze Pause] Der Trick ist: Jede Zone hat eine klar definierte Aufgabe und ein Versprechen an die nächste. Gehen wir die wichtigen Zonen einzeln durch.
+    [SG] Das hier ist das <strong>zentrale Bild des Vortrags</strong> — merkt es euch, es kommt später im ML-Teil immer wieder. Wir definieren Zonen jetzt über ihre <strong>Funktion</strong> und über <strong>klare Verträge</strong>, nicht mehr über historisch gewachsene Namen. Von links nach rechts: Die Landing Zone ist <strong>optional und transient</strong>. Die Raw Zone ist die <strong>unveränderliche Rohdatenhistorie</strong>. Die Process Zone sorgt für <strong>technische Qualität und Standardisierung</strong>. Und die Access Zone enthält die <strong>fachlichen Datenprodukte</strong> — für BI, Analytics und eben auch für ML. Horizontal also die Zonen mit klaren Verträgen, und vertikal ziehen sich Orchestrierung und Governance durch alle Schichten. [kurze Pause] Der Trick ist: <strong>Jede Zone hat eine klar definierte Aufgabe</strong> und ein Versprechen an die nächste. Gehen wir die wichtigen Zonen einzeln durch.
   </aside>
 </section>
 
@@ -655,7 +655,7 @@
   </div>
 
   <aside class="notes">
-    [SG] Beginnen wir links. Die Landing Zone ist bewusst kurzlebig: keine Transformationen, nur Anlieferung, und nach kurzer Aufbewahrung automatisch bereinigt. Das eigentlich Wichtige ist die Raw Zone. Sie ist unser System of Record — langfristig historisiert, append-only, quellnah, mit Schema-on-Read. Wir schreiben technische Metadaten mit: Quelle, Pfad, Ladezeitpunkt, Dateigröße, Checksumme. Und wir validieren hier nur minimal — Parsbarkeit, Existenz, Größe, technische Integrität, mehr nicht. Warum ist das so streng? Weil eine unveränderliche, append-only Historie bedeutet: Wir können jederzeit exakt denselben Datenstand wiederherstellen. Ermöglicht Audits, Reprocessing — und, das wird im ML-Teil entscheidend, für reproduzierbare Datenstände.
+    [SG] Beginnen wir links. Die Landing Zone ist bewusst <strong>kurzlebig</strong>: keine Transformationen, nur Anlieferung, und nach kurzer Aufbewahrung automatisch bereinigt. Das eigentlich Wichtige ist die Raw Zone. Sie ist unser <strong>System of Record</strong> — <strong>langfristig historisiert, append-only, quellnah</strong>, mit Schema-on-Read. Wir schreiben technische Metadaten mit: Quelle, Pfad, Ladezeitpunkt, Dateigröße, Checksumme. Und wir validieren hier nur minimal — Parsbarkeit, Existenz, Größe, technische Integrität, mehr nicht. Warum ist das so streng? Weil eine <strong>unveränderliche, append-only Historie</strong> bedeutet: Wir können jederzeit exakt denselben Datenstand wiederherstellen. Ermöglicht <strong>Audits</strong>, <strong>Reprocessing</strong> — und, das wird im ML-Teil entscheidend, <strong>reproduzierbare Datenstände</strong>.
   </aside>
 </section>
 
@@ -751,7 +751,7 @@
   </div>
 
   <aside class="notes">
-    [SG] Eine Zone weiter: die Process Zone. Hier wird aus der historisierten Rohmasse eine technisch verlässliche Grundlage. Wir standardisieren Formate und Datentypen, nutzen Delta Lake als robustes Tabellenformat, und wir bereinigen technisch — fehlende Werte, Inkonsistenzen, Deduplikation, Schema-Evolution. Provenienz und Laufmetadaten laufen mit. Entscheidend sind aber die Verträge: Was ist hier erlaubt, was nicht? Erlaubt ist dataset-unabhängige Standardisierung und Integration. Verboten ist verbraucherspezifische Denormalisierung und das Bauen fachlicher Marts. Denn sobald man Fachlogik in die Process Zone schmuggelt, hat man wieder den Mischmasch von vorhin. Fachlichkeit gehört eine Zone weiter.
+    [SG] Eine Zone weiter: die Process Zone. Hier wird aus der historisierten Rohmasse eine <strong>technisch verlässliche Grundlage</strong>. Wir standardisieren Formate und Datentypen, nutzen <strong>Delta Lake</strong> als robustes Tabellenformat, und wir bereinigen technisch — fehlende Werte, Inkonsistenzen, Deduplikation, Schema-Evolution. Provenienz und Laufmetadaten laufen mit. Entscheidend sind aber die <strong>Verträge</strong>: Was ist hier erlaubt, was nicht? Erlaubt ist dataset-unabhängige Standardisierung und Integration. Verboten ist verbraucherspezifische Denormalisierung und das Bauen fachlicher Marts. Denn sobald man Fachlogik in die Process Zone schmuggelt, hat man wieder den Mischmasch von vorhin. <strong>Fachlichkeit gehört eine Zone weiter.</strong>
   </aside>
 </section>
 
@@ -852,7 +852,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [SG] Und damit die Access Zone — der Ort, an dem Fachlichkeit lebt. Hier entstehen fachliche Transformationen, Aggregationen, Star Schemas, Wide Tables. Hier passiert Feature Engineering und es entstehen serving-nahe Tabellen für ML. Wichtig ist, dass das echte Datenprodukte sind: mit dokumentierten Metrikdefinitionen, fachlicher Granularität und Service-Level-Objectives. Bei Breaking Changes versionieren wir und lassen alte Stände parallel auslaufen. Wir testen auf Metrikkonsistenz, dimensionale Integrität und Freshness. Und eine klare Regel: keine Rückkopplung zurück in Raw oder Process, außer über dokumentierte und kontrollierte Korrekturläufe. Damit das in der Praxis funktioniert, braucht es die richtigen Werkzeuge je Zone.
+    [SG] Und damit die <strong>Access Zone</strong> — der Ort, an dem <strong>Fachlichkeit lebt</strong>. Hier entstehen fachliche Transformationen, Aggregationen, Star Schemas, Wide Tables. Hier passiert Feature Engineering und es entstehen serving-nahe Tabellen für ML. Wichtig ist, dass das <strong>echte Datenprodukte</strong> sind: mit dokumentierten Metrikdefinitionen, fachlicher Granularität und Service-Level-Objectives. Bei Breaking Changes versionieren wir und lassen alte Stände parallel auslaufen. Wir testen auf <strong>Metrikkonsistenz</strong>, <strong>dimensionale Integrität</strong> und <strong>Freshness</strong>. Und eine klare Regel: <strong>keine Rückkopplung zurück in Raw oder Process</strong>, außer über dokumentierte und kontrollierte Korrekturläufe. Damit das in der Praxis funktioniert, braucht es die richtigen Werkzeuge je Zone.
   </aside>
 </section>
 
@@ -906,12 +906,14 @@ dim/
             </div>
 
             <!-- Delta Lake + Hive Metastore -->
-            <div class="fragment fade-in" data-fragment-index="3" style="display:flex; gap:8px; align-items:stretch;">
-              <div style="flex:1; background:linear-gradient(135deg,#cffafe,#a5f3fc); border:1.5px solid var(--teal); border-radius:8px; padding:12px 12px; text-align:center;">
+            <div class="fragment fade-in" data-fragment-index="3" style="display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:8px; align-items:stretch;">
+              <div></div>
+              <div></div>
+              <div style="grid-column:3 / span 2; background:linear-gradient(135deg,#cffafe,#a5f3fc); border:1.5px solid var(--teal); border-radius:8px; padding:12px 12px; text-align:center; display:flex; flex-direction:column; justify-content:center; align-items:center;">
                 <div style="font-size:0.9em; font-weight:700; color:var(--teal-deep);">▲ Delta Lake</div>
                 <div style="font-size:0.72em; color:var(--teal-deep); margin-top:3px;">(in Process &amp; Access)</div>
               </div>
-              <div style="width:180px; background:white; border:1.5px solid #94a3b8; border-radius:8px; padding:10px 10px; text-align:center; display:flex; flex-direction:column; justify-content:center; gap:4px; box-sizing:border-box;">
+              <div style="grid-column:3 / span 2; background:white; border:1.5px solid #94a3b8; border-radius:8px; padding:10px 10px; text-align:center; display:flex; flex-direction:column; justify-content:center; gap:4px; box-sizing:border-box;">
                 <div style="font-size:0.95em;">🗂</div>
                 <div style="font-size:0.84em; font-weight:700; color:var(--navy);">Hive Metastore</div>
                 <div style="font-size:0.66em; color:var(--ink-muted); line-height:1.35;">Zentrale Tabellen-<br>und Metadatenbasis</div>
@@ -942,7 +944,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [SG] Jetzt zu den Werkzeugen — und ihr seht, sie ordnen sich sauber den Zonen zu. PySpark nutzen wir für Ingestion, technische Standardisierung, große Datenmengen und für komplexe Algorithmen, die man in SQL nicht sinnvoll abbildet — das wird im ML-Teil wichtig. dbt setzen wir für die fachlichen Modelle in der Access Zone ein, inklusive Tests, Dokumentation und Lineage. Delta Lake nutzen wir in Process und Access — ACID, Schema Enforcement, MERGE-Upserts, Time Travel. Der Hive Metastore gibt uns zentralen Tabellen- und Metadatenzugriff. Und DataHub ist die Brücke zwischen technischen Tabellen und fachlicher Nutzbarkeit — Katalog, Ownership, Lineage, Data Contracts. Wie wir das orchestrieren, seht ihr als Nächstes.
+    [SG] Jetzt zu den Werkzeugen — und ihr seht, sie ordnen sich <strong>sauber den Zonen zu</strong>. PySpark nutzen wir für <strong>Ingestion</strong>, technische Standardisierung, große Datenmengen und für komplexe Algorithmen, die man in SQL nicht sinnvoll abbildet — das wird im ML-Teil wichtig. dbt setzen wir für die <strong>fachlichen Modelle in der Access Zone</strong> ein, inklusive Tests, Dokumentation und Lineage. <strong>Delta Lake</strong> nutzen wir in Process und Access — <strong>ACID, Schema Enforcement, MERGE-Upserts, Time Travel</strong>. Der Hive Metastore gibt uns <strong>zentralen Tabellen- und Metadatenzugriff</strong>. Und <strong>DataHub</strong> ist die <strong>Brücke</strong> zwischen technischen Tabellen und fachlicher Nutzbarkeit — Katalog, Ownership, Lineage, Data Contracts. Wie wir das orchestrieren, seht ihr als Nächstes.
   </aside>
 </section>
 
@@ -1042,7 +1044,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [SG] Eine Architektur allein macht noch keine Reproduzierbarkeit. Das entsteht erst, wenn wir Datenstände, Jobs, Abhängigkeiten und Metadaten zusammenführen. Genau dafür nutzen wir Airflow als Orchestrierungsschicht über Ingestion, Processing und Access-Produkte. Die DAGs machen Abhängigkeiten, Wiederanläufe und Scheduling explizit — nichts läuft im Verborgenen. Pro Lauf schreiben wir die wichtigsten Pipeline-Metadaten mit: Quelle, Zeitraum, Extraktzeitpunkt, Row Counts, Checksummen, Status. DataHub bleibt der sichtbare Governance-Layer. Und zwischen den Layern sitzen Quality Gates — [auf die Schlösser zeigen] — also Prüf- und Freigabepunkte: Parsbarkeit beim Übergang von Landing zu Raw, Volumen beim Übergang von Raw zu Process und Fachregeln beim Übergang von Process zu Access. Erst wenn das plausibel ist, geht es in die nächste Zone. Braucht man dafür riesige Infrastruktur? Nicht zwingend.
+    [SG] Eine Architektur allein macht noch keine <strong>Reproduzierbarkeit</strong>. Das entsteht erst, wenn wir <strong>Datenstände, Jobs, Abhängigkeiten und Metadaten</strong> zusammenführen. Genau dafür nutzen wir <strong>Airflow</strong> als Orchestrierungsschicht über Ingestion, Processing und Access-Produkte. Die DAGs machen <strong>Abhängigkeiten, Wiederanläufe und Scheduling</strong> explizit — nichts läuft im Verborgenen. Pro Lauf schreiben wir die wichtigsten Pipeline-Metadaten mit: Quelle, Zeitraum, Extraktzeitpunkt, Row Counts, Checksummen, Status. <strong>DataHub</strong> bleibt der sichtbare Governance-Layer. Und zwischen den Layern sitzen <strong>Quality Gates</strong> — [auf die Schlösser zeigen] — also Prüf- und Freigabepunkte: Parsbarkeit beim Übergang von Landing zu Raw, Volumen beim Übergang von Raw zu Process und Fachregeln beim Übergang von Process zu Access. Erst wenn das plausibel ist, geht es in die nächste Zone. Braucht man dafür riesige Infrastruktur? Nicht zwingend.
   </aside>
 </section>
 
@@ -1131,7 +1133,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [SG] Die klare Antwort ist: nein. Enterprise-grade Lakehouse heißt nicht, dass man am ersten Tag ein Kubernetes-Cluster oder einen großen Cloud-Anbieter braucht. Wir sind bei der KVWL mit drei Red-Hat-Umgebungen gestartet — dev, test, prod —, mit Podman für Containerisierung und Betrieb, und das mit einem sehr kleinen Admin-Footprint. Das Ergebnis: Wir verarbeiten bereits mit diesem einfachen Setup große Datenmengen, mit klaren Umgebungen und reproduzierbaren Containern. Und die Weiterentwicklung gibt uns recht — inzwischen gibt es ein unternehmensweites Kubernetes, und wir ziehen Schritt für Schritt um, ohne großen Architekturbruch, weil eben alles sauber containerisiert war. Die Lesson dabei: so simpel wie möglich starten und die technische Reife gezielt ausbauen.
+    [SG] Die klare Antwort ist: <strong>nein</strong>. Enterprise-grade Lakehouse heißt nicht, dass man am ersten Tag ein Kubernetes-Cluster oder einen großen Cloud-Anbieter braucht. Wir sind bei der KVWL mit <strong>drei Red-Hat-Umgebungen</strong> gestartet — dev, test, prod —, mit <strong>Podman</strong> für Containerisierung und Betrieb, und das mit einem <strong>sehr kleinen Admin-Footprint</strong>. Das Ergebnis: Wir verarbeiten bereits mit diesem einfachen Setup <strong>große Datenmengen</strong>, mit klaren Umgebungen und reproduzierbaren Containern. Und die Weiterentwicklung gibt uns recht — inzwischen gibt es ein unternehmensweites Kubernetes, und wir ziehen Schritt für Schritt um, ohne großen Architekturbruch, weil eben alles sauber containerisiert war. Die Lesson dabei: <strong>so simpel wie möglich starten</strong> und die technische Reife gezielt ausbauen.
   </aside>
 </section>
 
@@ -1149,7 +1151,7 @@ dim/
     </p>
   </div>
   <aside class="notes">
-    [SG] Die Plattform steht. Und jetzt wird es spannend — Yannik, was lässt sich darauf bauen?
+    [SG] Die <strong>Plattform steht</strong>. Und jetzt wird es spannend — <strong>Yannik, was lässt sich darauf bauen?</strong>
 
     <p><strong>[YQ]</strong> Danke, Sebastian. Wir werden jetzt an einem <strong>echten Fachproblem</strong> sehen, was KI wirklich braucht.</p>
   </aside>
@@ -3127,7 +3129,7 @@ dim/
   </div>
   <aside class="notes">
     <p>Damit zu dem, was wir insgesamt gelernt haben.</p>
-    [SG] In diesem letzten Kapitel ziehen wir Bilanz.
+    [SG] In diesem <strong>letzten Kapitel</strong> ziehen wir Bilanz.
   </aside>
 </section>
 
@@ -3192,7 +3194,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [SG] Lassen wir das Gelernte verdichten, erst auf der Architekturseite. Die wichtigste Erkenntnis: Entscheidend sind nicht die Toolnamen, sondern die klaren Verträge zwischen den Layern. [auf die Zonen-Map zeigen] Raw muss wirklich raw bleiben - in dem Moment, wo man dort Fachlogik einschmuggelt, wird Reprocessing schwach, und genau das hat uns Yanniks Benchmark erst ermöglicht. Process braucht technische Qualitätsgarantien. Access braucht fachliche Semantik und echte Datenprodukte. PySpark und dbt ergänzen sich hervorragend - aber nur, wenn ihre Rollen klar getrennt sind. Und der Betrieb: Ein einfaches Modell reicht für den Start völlig, solange Containerisierung und Umgebungen sauber geschnitten sind. Kubernetes kann später kommen. Yannik, deine Seite.
+    [SG] Was haben wir im Vortrag gelernt, erstmal aus der Architektursicht. <strong>Entscheidend sind nicht die Tools, sondern die klaren Verträge zwischen den Layern. </strong> <strong>Raw muss wirklich Roh bleiben</strong> - das gewährleistet Reproduzierbarkeit durch alle Schichten <strong> Process braucht technische Qualitätsgarantien.</strong> <strong>Access braucht fachliche Semantik und echte Datenprodukte.</strong> PySpark und dbt ergänzen sich hervorragend. Und der Betrieb: <strong>Ein einfaches Modell reicht für den Start völlig</strong>, solange Containerisierung und Umgebungen sauber geschnitten sind. Kubernetes kann später kommen. Yannik, deine Seite.
   </aside>
 </section>
 
@@ -3433,7 +3435,7 @@ dim/
   </div>
 
   <aside class="notes">
-    <p>[SG] Und die Anti-Patterns - das, was wir gesehen haben und was wir euch ersparen wollen. Layer ohne klare Verträge - das war unser Ausgangsproblem. Landing-Zonen, die heimlich zum Dauerarchiv werden.</p>
+    <p>[SG] Und die <strong>Anti-Patterns</strong> - das, was wir gesehen haben und was wir euch ersparen wollen. <strong>Layer ohne klare Verträge</strong> - das war unser Ausgangsproblem. <strong>Landing-Zonen, die heimlich zum Dauerarchiv werden</strong>.</p>
 
     <p><strong>[YQ]</strong> <strong>Notebook-Logik ohne Pfad in die Produktion.</strong></p>
     <p><strong>KI-Initiativen vor Datenqualitätsstrategie</strong> - das ist genau die Reihenfolge, vor der wir am Anfang gewarnt haben.</p>
@@ -3518,8 +3520,8 @@ dim/
     <div class="final-thanks">Vielen Dank. Wir freuen uns auf eure Fragen.</div>
   </div>
   <aside class="notes">
-    [SG] Und damit schließt sich die Klammer zum Anfang.
-    [Pause, den Leitsatz langsam und betont] Der Engpass für KI im Gesundheitswesen ist nicht das Modell, sondern eine Plattform, die reproduzierbare, validierbare Datenstände liefert.
+    [SG] Und damit <strong>schließt sich die Klammer zum Anfang</strong>.
+    [Pause, den Leitsatz langsam und betont] <strong>Der Engpass für KI im Gesundheitswesen ist nicht das Modell</strong>, sondern eine Plattform, die <strong>reproduzierbare, validierbare Datenstände</strong> liefert.
     <p><strong>[YQ]</strong> Vielen Dank für eure Aufmerksamkeit - wir freuen uns jetzt auf eure <strong>Fragen und die Diskussion</strong>.</p>
   </aside>
 </section>

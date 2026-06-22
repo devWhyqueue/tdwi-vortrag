@@ -157,15 +157,15 @@ Jede Folie ist nach demselben Schema beschrieben, damit daraus direkt ein Slide-
 
 **Inhalt**
 
-* Landing Zone: gleichzeitig temporäre Ablage und Archiv
-* Staging Zone: nur sporadisch genutzt, unterschiedliche Formate
-* History Zone: teils Rohhistorie, teils Standardisierung, teils Fachlogik
-* Analysis Zone: noch stark von SSIS-/Altprozessen geprägt
+* Landing Zone: Lebenszyklus nicht eindeutig
+* Staging Zone: unregelmäßige Nutzung, wechselnde Formate
+* History Zone: Rohdaten und Fachlogik statt klarer Historisierung
+* Analysis Zone: SSIS-Altlogik und Auswertungen vermischt
 * Konsequenz: unklare Codelokalisierung, schweres Reprocessing, hoher Bus-Faktor
 
 **Visual:** Vier Zonen-Kästen mit überlappenden, durcheinander laufenden Pfeilen (bewusst „chaotisch") - Kontrast zur sauberen Zielarchitektur auf Folie 9.
 
-**Sprechernotiz (Skript):** [SG] Schauen wir auf die alte Zonenlogik. Auf dem Papier gab es Zonen - aber ihre Verantwortlichkeiten waren unscharf. Die Landing Zone war gleichzeitig temporäre Ablage und Archiv. Die Staging Zone wurde nur sporadisch genutzt, in unterschiedlichsten Formaten. Die History Zone war ein Mischmasch: teils Rohhistorie, teils Standardisierung, teils schon Fachlogik. Und die Analysis Zone war noch stark von den alten SSIS-Prozessen geprägt. [auf die chaotischen Pfeile zeigen] Die Konsequenz sehen Sie an diesen Pfeilen: Man weiß nicht, wo eine bestimmte Logik liegt, Reprocessing wird zur Qual, und der Bus-Faktor ist hoch - es hängt zu viel an einzelnen Köpfen. Genau das wollten wir auflösen. Bevor ich zeige, wie, kurz das Prinzip dahinter.
+**Sprechernotiz (Skript):** [SG] Schauen wir auf die alte Zonenlogik. Auf dem Papier gab es Zonen - aber ihre Verantwortlichkeiten waren unscharf. Die Landing Zone war gleichzeitig temporäre Ablage und Archiv. Die Staging Zone wurde nur sporadisch genutzt, in unterschiedlichsten Formaten. Die History Zone war ein Mischmasch aus Rohdaten und Fachlogik. Und genau dort lag die Logik oft verteilt: in Source-SQLs der SSIS-Pakete, im SSIS-Datenfluss, in Stored Procedures oder in Views auf der History-Schicht. Die Analysis Zone war ebenfalls von SSIS-Altlogik und Auswertungen durchmischt. [auf die chaotischen Pfeile zeigen] Die Konsequenz sehen Sie an diesen Pfeilen: Man weiß nicht, wo eine bestimmte Logik liegt, Reprocessing wird zur Qual, und der Bus-Faktor ist hoch - es hängt zu viel an einzelnen Köpfen. Genau das wollten wir auflösen. Bevor ich zeige, wie, kurz das Prinzip dahinter.
 
 ---
 
