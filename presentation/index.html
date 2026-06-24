@@ -843,7 +843,6 @@ dim/
           <ul style="margin:0; padding-left:18px; font-size:0.74em; color:var(--ink); line-height:1.45;">
             <li>Dokumentierte Metrikdefinitionen und SLOs</li>
             <li>Versionierung bei Breaking Changes</li>
-            <li>Keine R&#252;ckkopplung in Upstream-Zonen (Reverse Dependencies verboten)</li>
           </ul>
         </div>
 
@@ -852,7 +851,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [SG] Und damit die <strong>Access Zone</strong> — der Ort, an dem <strong>Fachlichkeit lebt</strong>. Hier entstehen fachliche Transformationen, Aggregationen, Star Schemas, Wide Tables. Hier passiert Feature Engineering und es entstehen serving-nahe Tabellen für ML. Wichtig ist, dass das <strong>echte Datenprodukte</strong> sind: mit dokumentierten Metrikdefinitionen, fachlicher Granularität und Service-Level-Objectives. Bei Breaking Changes versionieren wir und lassen alte Stände parallel auslaufen. Wir testen auf <strong>Metrikkonsistenz</strong>, <strong>dimensionale Integrität</strong> und <strong>Freshness</strong>. Und eine klare Regel: <strong>keine Rückkopplung zurück in Raw oder Process</strong>, außer über dokumentierte und kontrollierte Korrekturläufe. Damit das in der Praxis funktioniert, braucht es die richtigen Werkzeuge je Zone.
+    [SG] Und damit die <strong>Access Zone</strong> — der Ort, an dem <strong>Fachlichkeit lebt</strong>. Hier entstehen fachliche Transformationen, Aggregationen, Star Schemas, Wide Tables. Hier passiert Feature Engineering und es entstehen serving-nahe Tabellen für ML. Wichtig ist, dass das <strong>echte Datenprodukte</strong> sind: mit dokumentierten Metrikdefinitionen, fachlicher Granularität und Service-Level-Objectives. Bei Breaking Changes versionieren wir und lassen alte Stände parallel auslaufen. Wir testen auf <strong>Metrikkonsistenz</strong>, <strong>dimensionale Integrität</strong> und <strong>Freshness</strong>. Damit das in der Praxis funktioniert, braucht es die richtigen Werkzeuge je Zone.
   </aside>
 </section>
 
@@ -3169,7 +3168,7 @@ dim/
             <span style="opacity:0.5;">·</span>
             [SEMANTICS]
           </div>
-          <div class="card__body" style="font-size:0.82em; flex:1; display:flex; align-items:center;">Fachliche Produkte und Data Products leben ausschließlich hier.</div>
+          <div class="card__body" style="font-size:0.82em; flex:1; display:flex; align-items:center;">Fachmodell und Data Products leben ausschließlich hier.</div>
         </div>
       </div>
 
@@ -3376,12 +3375,12 @@ dim/
         <p>Ohne strikte Verträge degenerieren Zonen zum Data Swamp.</p>
       </div>
 
-      <div class="practice-card anti-card fragment fade-in" data-fragment-index="1">
+      <div class="practice-card anti-card anti-card--stop fragment fade-in" data-fragment-index="1">
         <div class="practice-card__top">
-          <span class="practice-card__title">Schattenarchive</span>
+          <span class="practice-card__title">Fachlogik in Process</span>
           <span class="practice-card__icon">!</span>
         </div>
-        <p>Landing Zone, die heimlich als wilde Dateiablage missbraucht wird.</p>
+        <p>Wenn fachliche Regeln in die Process-Schicht rutschen, wird Standardisierung stillschweigend zur Fachlogik.</p>
       </div>
 
       <div class="practice-card anti-card anti-card--stop fragment fade-in" data-fragment-index="2">
@@ -3437,7 +3436,9 @@ dim/
   <aside class="notes">
     <p>[SG] Und die <strong>Anti-Patterns</strong> - das, was wir gesehen haben und was wir euch ersparen wollen. <strong>Layer ohne klare Verträge</strong> - das war unser Ausgangsproblem. <strong>Landing-Zonen, die heimlich zum Dauerarchiv werden</strong>.</p>
 
-    <p><strong>[YQ]</strong> <strong>Notebook-Logik ohne Pfad in die Produktion.</strong></p>
+    <p><strong>[YQ]</strong> <strong>Fachlogik, die fälschlicherweise in der Process-Schicht landet.</strong></p>
+    <p>Dann wird aus technischer Standardisierung schleichend fachliche Modellierung - und genau das wollen wir trennen.</p>
+    <p><strong>Notebook-Logik ohne Pfad in die Produktion.</strong></p>
     <p><strong>KI-Initiativen vor Datenqualitätsstrategie</strong> - das ist genau die Reihenfolge, vor der wir am Anfang gewarnt haben.</p>
     <p><strong>Scores ohne fachliches Review.</strong></p>
     <p>Und der Klassiker: <strong>Toolfokus statt Architekturprinzipien.</strong></p>

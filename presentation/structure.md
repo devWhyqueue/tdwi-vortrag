@@ -258,11 +258,10 @@ Jede Folie ist nach demselben Schema beschrieben, damit daraus direkt ein Slide-
 * dokumentierte Metrikdefinitionen, fachliche Granularität und SLOs
 * Versionierung bei Breaking Changes, parallele Auslaufphasen
 * Tests für Metrikkonsistenz, dimensionale Integrität und Freshness
-* keine Rückkopplung in Raw oder Process außer dokumentierten Backfill-/Reconciliation-Verfahren
 
 **Visual:** Zonen-Map mit Markierung auf Access; Datenprodukt-Karten (Star Schema, Wide Table, Feature Set) als Output-Symbole.
 
-**Sprechernotiz (Skript):** [SG] Und damit die Access Zone - der Ort, an dem Fachlichkeit lebt. Hier entstehen fachliche Transformationen, Aggregationen, Star Schemas, Wide Tables. Hier passiert Feature Engineering und es entstehen serving-nahe Tabellen für ML. Wichtig ist, dass das echte Datenprodukte sind: mit dokumentierten Metrikdefinitionen, fachlicher Granularität und Service-Level-Objectives. Bei Breaking Changes versionieren wir und lassen alte Stände parallel auslaufen. Wir testen auf Metrikkonsistenz, dimensionale Integrität und Freshness. Und eine klare Regel: keine Rückkopplung zurück in Raw oder Process - außer über dokumentierte Backfill- und Reconciliation-Verfahren. Damit das in der Praxis funktioniert, braucht es die richtigen Werkzeuge je Zone.
+**Sprechernotiz (Skript):** [SG] Und damit die Access Zone - der Ort, an dem Fachlichkeit lebt. Hier entstehen fachliche Transformationen, Aggregationen, Star Schemas, Wide Tables. Hier passiert Feature Engineering und es entstehen serving-nahe Tabellen für ML. Wichtig ist, dass das echte Datenprodukte sind: mit dokumentierten Metrikdefinitionen, fachlicher Granularität und Service-Level-Objectives. Bei Breaking Changes versionieren wir und lassen alte Stände parallel auslaufen. Wir testen auf Metrikkonsistenz, dimensionale Integrität und Freshness. Damit das in der Praxis funktioniert, braucht es die richtigen Werkzeuge je Zone.
 
 ---
 
@@ -701,6 +700,7 @@ Jede Folie ist nach demselben Schema beschrieben, damit daraus direkt ein Slide-
 
 * Layer ohne klare Verträge
 * Landing-Zonen als dauerhaftes Schattenarchiv
+* Fachlogik, die fälschlicherweise in der Process-Schicht landet
 * Notebook-Logik ohne Operationalisierungspfad
 * Datenprodukte ohne fachliche Semantik
 * ML ohne Datenqualitätsstrategie
@@ -710,7 +710,7 @@ Jede Folie ist nach demselben Schema beschrieben, damit daraus direkt ein Slide-
 
 **Visual:** Rote „Anti-Pattern"-Liste, gespiegeltes Layout zu Folie 34.
 
-**Sprechernotiz (Skript):** [SG] Und die Anti-Patterns - das, was wir gesehen haben und was wir Ihnen ersparen wollen. Layer ohne klare Verträge - das war unser Ausgangsproblem. Landing-Zonen, die heimlich zum Dauerarchiv werden. [YQ] Notebook-Logik ohne Pfad in die Produktion. Datenprodukte ohne fachliche Semantik. ML ohne Datenqualitätsstrategie. KI-Initiativen, die mit einem großen Chatbot starten, bevor Datenqualität, Ownership und Lineage überhaupt geklärt sind - das ist genau die Reihenfolge, vor der wir am Anfang gewarnt haben. Scores ohne Erklärbarkeit und ohne fachlichen Review. Und der Klassiker: Toolfokus statt Architekturprinzipien. Damit sind wir am Ende - und kommen zurück zum Anfang.
+**Sprechernotiz (Skript):** [SG] Und die Anti-Patterns - das, was wir gesehen haben und was wir Ihnen ersparen wollen. Layer ohne klare Verträge - das war unser Ausgangsproblem. Landing-Zonen, die heimlich zum Dauerarchiv werden. [YQ] Fachlogik, die fälschlicherweise in der Process-Schicht landet - dann wird aus technischer Standardisierung schleichend fachliche Modellierung. Notebook-Logik ohne Pfad in die Produktion. Datenprodukte ohne fachliche Semantik. ML ohne Datenqualitätsstrategie. KI-Initiativen, die mit einem großen Chatbot starten, bevor Datenqualität, Ownership und Lineage überhaupt geklärt sind - das ist genau die Reihenfolge, vor der wir am Anfang gewarnt haben. Scores ohne Erklärbarkeit und ohne fachlichen Review. Und der Klassiker: Toolfokus statt Architekturprinzipien. Damit sind wir am Ende - und kommen zurück zum Anfang.
 
 ---
 
