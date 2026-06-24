@@ -461,7 +461,7 @@
      ============================================================ -->
 <section>
   <p class="slide-headline">
-    Die neue Architektur definiert Zonen über <span class="hl">Funktionen und Verträge</span>, nicht über historisch gewachsene Namen.
+    Die neue Architektur definiert Zonen über <span class="hl">Funktionen und Verträge</span>, nicht über historisch gewachsene Strukturen.
   </p>
 
   <!-- Canonical Zone Map — architectural layout -->
@@ -564,7 +564,7 @@
   </div>
 
   <aside class="notes">
-    [SG] Das hier ist das <strong>zentrale Bild des Vortrags</strong> — merkt es euch, es kommt später im ML-Teil immer wieder. Wir definieren Zonen jetzt über ihre <strong>Funktion</strong> und über <strong>klare Verträge</strong>, nicht mehr über historisch gewachsene Namen. Von links nach rechts: Die Landing Zone ist <strong>optional und transient</strong>. Die Raw Zone ist die <strong>unveränderliche Rohdatenhistorie</strong>. Die Process Zone sorgt für <strong>technische Qualität und Standardisierung</strong>. Und die Access Zone enthält die <strong>fachlichen Datenprodukte</strong> — für BI, Analytics und eben auch für ML. Horizontal also die Zonen mit klaren Verträgen, und vertikal ziehen sich Orchestrierung und Governance durch alle Schichten. [kurze Pause] Der Trick ist: <strong>Jede Zone hat eine klar definierte Aufgabe</strong> und ein Versprechen an die nächste. Gehen wir die wichtigen Zonen einzeln durch.
+    [SG] Das hier ist unsere <strong>Lakehouse-Architektur</strong> — auf die geht Yannik im ML-Teil immer wieder ein. Wir definieren Zonen jetzt über ihre <strong>Funktion</strong> und über <strong>klare Verträge</strong>, nicht mehr über historisch gewachsene Namen. Von links nach rechts: Die Landing Zone ist <strong>optional und transient</strong>. Die Raw Zone ist die <strong>unveränderliche Rohdatenhistorie</strong>. Die Process Zone sorgt für <strong>technische Qualität und Standardisierung</strong>. Und die Access Zone enthält die <strong>fachlichen Datenprodukte</strong> — für BI, Analytics und eben auch für ML. Horizontal also die Zonen mit klaren Verträgen, und vertikal ziehen sich Orchestrierung und Governance durch alle Schichten. <strong>Jede Zone hat eine klar definierte Aufgabe</strong> und ein Versprechen an die nächste. Gehen wir die wichtigen Zonen einzeln durch.
   </aside>
 </section>
 
@@ -997,8 +997,8 @@ dim/
         <path class="dag-arrow-head" d="M878 150 l-32 -20 v40 z"/>
       </svg>
 
-      <div class="fragment fade-in" data-fragment-index="3" style="position:absolute; left:0; right:0; top:122px; height:52px; pointer-events:none; z-index:2;">
-        <div style="position:absolute; left:22%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:2px;">
+      <div class="fragment fade-in" data-fragment-index="3" style="position:absolute; left:0; right:0; top:110px; height:72px; pointer-events:none; z-index:2;">
+        <div style="position:absolute; left:22%; transform:translateX(-50%); display:flex; flex-direction:column-reverse; align-items:center; gap:4px;">
           <div style="width:24px; height:24px; border-radius:6px; background:linear-gradient(135deg,#dbeafe,#bfdbfe); border:1px solid #93c5fd; color:#1d4ed8; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 6px rgba(22,56,72,0.08);">
             <svg viewBox="0 0 44 44" width="16" height="16" aria-hidden="true">
               <rect x="10" y="19" width="24" height="18" rx="4" fill="currentColor"/>
@@ -1006,9 +1006,9 @@ dim/
               <path d="M16 28l4 4 9-10" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
-          <div style="font-size:0.58em; font-weight:700; color:#1d4ed8; text-transform:uppercase; letter-spacing:0.05em; line-height:1;">Parsbarkeit</div>
+          <div style="padding:3px 8px; border-radius:999px; background:rgba(255,255,255,0.95); border:1px solid rgba(29,78,216,0.16); box-shadow:0 4px 10px rgba(22,56,72,0.08); font-size:0.58em; font-weight:700; color:#1d4ed8; text-transform:uppercase; letter-spacing:0.05em; line-height:1; white-space:nowrap;">Parsbarkeit</div>
         </div>
-        <div style="position:absolute; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:2px;">
+        <div style="position:absolute; left:50%; transform:translateX(-50%); display:flex; flex-direction:column-reverse; align-items:center; gap:4px;">
           <div style="width:24px; height:24px; border-radius:6px; background:linear-gradient(135deg,#dbeafe,#bfdbfe); border:1px solid #93c5fd; color:#1d4ed8; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 6px rgba(22,56,72,0.08);">
             <svg viewBox="0 0 44 44" width="16" height="16" aria-hidden="true">
               <rect x="10" y="19" width="24" height="18" rx="4" fill="currentColor"/>
@@ -1016,9 +1016,9 @@ dim/
               <path d="M16 28l4 4 9-10" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
-          <div style="font-size:0.58em; font-weight:700; color:#1d4ed8; text-transform:uppercase; letter-spacing:0.05em; line-height:1;">Volumen</div>
+          <div style="padding:3px 8px; border-radius:999px; background:rgba(255,255,255,0.95); border:1px solid rgba(29,78,216,0.16); box-shadow:0 4px 10px rgba(22,56,72,0.08); font-size:0.58em; font-weight:700; color:#1d4ed8; text-transform:uppercase; letter-spacing:0.05em; line-height:1; white-space:nowrap;">Volumen</div>
         </div>
-        <div style="position:absolute; left:78%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:2px;">
+        <div style="position:absolute; left:78%; transform:translateX(-50%); display:flex; flex-direction:column-reverse; align-items:center; gap:4px;">
           <div style="width:24px; height:24px; border-radius:6px; background:linear-gradient(135deg,#d1fae5,#a7f3d0); border:1px solid #6ee7b7; color:#047857; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 6px rgba(22,56,72,0.08);">
             <svg viewBox="0 0 44 44" width="16" height="16" aria-hidden="true">
               <rect x="10" y="19" width="24" height="18" rx="4" fill="currentColor"/>
@@ -1026,7 +1026,7 @@ dim/
               <path d="M16 28l4 4 9-10" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
-          <div style="font-size:0.58em; font-weight:700; color:#047857; text-transform:uppercase; letter-spacing:0.05em; line-height:1;">Fachregeln</div>
+          <div style="padding:3px 8px; border-radius:999px; background:rgba(255,255,255,0.95); border:1px solid rgba(4,120,87,0.16); box-shadow:0 4px 10px rgba(22,56,72,0.08); font-size:0.58em; font-weight:700; color:#047857; text-transform:uppercase; letter-spacing:0.05em; line-height:1; white-space:nowrap;">Fachregeln</div>
         </div>
       </div>
 
@@ -1044,7 +1044,7 @@ dim/
   </div>
 
   <aside class="notes">
-    [SG] Eine Architektur allein macht noch keine <strong>Reproduzierbarkeit</strong>. Das entsteht erst, wenn wir <strong>Datenstände, Jobs, Abhängigkeiten und Metadaten</strong> zusammenführen. Genau dafür nutzen wir <strong>Airflow</strong> als Orchestrierungsschicht über Ingestion, Processing und Access-Produkte. Die DAGs machen <strong>Abhängigkeiten, Wiederanläufe und Scheduling</strong> explizit — nichts läuft im Verborgenen. Pro Lauf schreiben wir die wichtigsten Pipeline-Metadaten mit: Quelle, Zeitraum, Extraktzeitpunkt, Row Counts, Checksummen, Status. <strong>DataHub</strong> bleibt der sichtbare Governance-Layer. Und zwischen den Layern sitzen <strong>Quality Gates</strong> — [auf die Schlösser zeigen] — also Prüf- und Freigabepunkte: Parsbarkeit beim Übergang von Landing zu Raw, Volumen beim Übergang von Raw zu Process und Fachregeln beim Übergang von Process zu Access. Erst wenn das plausibel ist, geht es in die nächste Zone. Braucht man dafür riesige Infrastruktur? Nicht zwingend.
+    [SG] Eine Architektur allein macht noch keine <strong>Reproduzierbarkeit</strong>. Das entsteht erst, wenn wir <strong>Datenstände, Jobs, Abhängigkeiten und Metadaten</strong> zusammenführen. Genau dafür nutzen wir <strong>Airflow</strong> als Orchestrierungsschicht über Ingestion, Processing und Access-Produkte. Die DAGs machen <strong>Abhängigkeiten, Wiederanläufe und Scheduling</strong> explizit — nichts läuft im Verborgenen. Pro Lauf schreiben wir die wichtigsten Pipeline-Metadaten mit: Quelle, Zeitraum, Extraktzeitpunkt, Row Counts, Checksummen, Status. Zwischen den Layern sitzen <strong>Quality Gates</strong> — [auf die Schlösser zeigen] — also Prüf- und Freigabepunkte: Parsbarkeit beim Übergang von Landing zu Raw, Volumen beim Übergang von Raw zu Process und Fachregeln beim Übergang von Process zu Access. Erst wenn das plausibel ist, geht es in die nächste Zone. Braucht man dafür riesige Infrastruktur? Nicht zwingend.
   </aside>
 </section>
 
